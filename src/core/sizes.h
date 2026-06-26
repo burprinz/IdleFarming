@@ -1,0 +1,11 @@
+#pragma once
+//
+// Created by luisb on 25.06.2026.
+//
+
+constexpr glm::vec2 plant_name_size = {4.0, 0.5};
+
+constexpr glm::vec2 market_stash_size = {2.0, 0.5};
+constexpr glm::vec2 trade_buttons_topleft = {0.1, config::CAMERA_VIEW_HEIGHT-1.2};
+
+constexpr glm::vec2 base_icon_size = {32, 32};
