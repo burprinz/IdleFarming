@@ -80,23 +80,20 @@ void EntityFactory::loadBasePlants() noexcept {
         Color color = extract_color(plant["color"]);
         m_registry->ecs.emplace<Color>(plant_id, color);
 
-        std::string id_name = plant["id_name"].get<std::string>();
-        m_registry->plants[id_name] = plant_id;
-        m_registry->plant_id_names[plant_id] = id_name;
-
-        m_registry->plant_ids.push_back(id_name);
-
         m_registry->ecs.emplace<Amount>(plant_id);
 
         Price price = extract_price(plant["price"]);
         m_registry->ecs.emplace<Price>(plant_id, price);
 
+        std::string id_name = plant["id_name"].get<std::string>();
         IconTexture it;
         it.info = create_icon(id_name);
         m_registry->ecs.emplace<IconTexture>(plant_id, it);
 
         Unlockable unlocked = extract_unlock_infos(plant["unlock"]);
         m_registry->ecs.emplace<Unlockable>(plant_id, unlocked);
+
+        m_registry->plant_order.push_back(plant_id);
     }
 
     std::cout<<"Plants loaded"<<std::endl;

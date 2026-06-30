@@ -154,11 +154,7 @@ public:
 
     bool debug = false;
 
-    std::vector<std::string> plant_ids;
-    std::map<std::string, entt::entity> plants;
-
-    std::map<entt::entity, std::string> plant_id_names;
-
+    std::vector<entt::entity> plant_order;
 
     /**
      * Farmland

@@ -55,7 +55,7 @@ void UISystem::initWindowSwitchButtons() noexcept {
 }
 
 void UISystem::initPlantSelectButton() noexcept {
-    this->m_field_plant_select_buttons.clear();
+    m_field_plant_select_buttons.clear();
 
     Registry* registry = m_registry;
 
@@ -65,20 +65,22 @@ void UISystem::initPlantSelectButton() noexcept {
     float y_center = y_start - plant_name_size.y / 2.0;
 
     int c = 0;
-    for (std::string plant_name : m_registry->plant_ids) {
+
+    for (entt::entity plant_id : m_registry->plant_order) {
         float y = y_center - c*(plant_name_size.y + 0.1);
         TextButton plantB;
         plantB.pos = {x_center, y};
         plantB.size = plant_name_size;
-        plantB.text = plant_name;
-        plantB.on_click = [registry, plant_name] {
+        plantB.id_label = plant_id;
+        plantB.on_click = [registry, plant_id] {
             registry->last_selected_plant = registry->current_selected_plant;
-            registry->current_selected_plant = registry->plants[plant_name];
+            registry->current_selected_plant = plant_id;
         };
-        this->m_field_plant_select_buttons.push_back(plantB);
+        m_field_plant_select_buttons.push_back(plantB);
         c += 1;
     }
 
+    std::reverse(m_field_plant_select_buttons.begin(), m_field_plant_select_buttons.end());
 }
 
 void UISystem::initMarketplaceTradeButtons() noexcept {
@@ -89,7 +91,7 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
     Registry* registry = m_registry;
 
     int c = 0;
-    for (std::string plant_name : m_registry->plant_ids) {
+    for (entt::entity plant_id : m_registry->plant_order) {
         std::vector<TextButton> currentB;
 
         float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1);
@@ -99,12 +101,11 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
         buyB.pos = {x1, y};
         buyB.size = trade_button_size;
         buyB.text = "Buy";
-        buyB.label = plant_name;
-        buyB.on_click = [registry, plant_name] {
-            entt::entity p_id = registry->plants[plant_name];
-            BigNumber price = registry->ecs.get<Price>(p_id).buy;
+        buyB.id_label = plant_id;
+        buyB.on_click = [registry, plant_id] {
+            BigNumber price = registry->ecs.get<Price>(plant_id).buy;
             BigNumber &money = registry->ecs.get<Amount>(registry->money()).am;
-            BigNumber &amount = registry->ecs.get<Amount>(p_id).am;
+            BigNumber &amount = registry->ecs.get<Amount>(plant_id).am;
             price = price * registry->market_multiplier;
             if (money >= price) {
                 money = money - price;
@@ -117,12 +118,11 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
         sellB.pos = {x2, y};
         sellB.size = trade_button_size;
         sellB.text = "Sell";
-        sellB.label = plant_name;
-        sellB.on_click = [registry, plant_name] {
-            entt::entity p_id = registry->plants[plant_name];
-            BigNumber price = registry->ecs.get<Price>(p_id).sell;
+        sellB.id_label = plant_id;
+        sellB.on_click = [registry, plant_id] {
+            BigNumber price = registry->ecs.get<Price>(plant_id).sell;
             BigNumber &money = registry->ecs.get<Amount>(registry->money()).am;
-            BigNumber &amount = registry->ecs.get<Amount>(p_id).am;
+            BigNumber &amount = registry->ecs.get<Amount>(plant_id).am;
             if (amount > BigNumber(0)) {
                 BigNumber multiplier = registry->market_multiplier;
                 if (amount < multiplier) {
@@ -138,6 +138,8 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
         m_market_trade_buttons.push_back(currentB);
         c += 1;
     }
+
+    std::reverse(m_market_trade_buttons.begin(), m_market_trade_buttons.end());
 
 }
 

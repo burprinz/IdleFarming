@@ -61,8 +61,6 @@ void RenderSystem::step(const float /*delta*/) noexcept {
     std::string text = "Money: " + money.toString();
     m_draw->drawStringInBox(text, {config::CAMERA_VIEW_WIDTH-1.0, config::CAMERA_VIEW_HEIGHT-0.25}, {2.0, 0.5}, black);
 
-
-
     if (m_registry->window() == FIELDS) {
         bool fieldMarked = false;
         glm::vec2 markedPos, markedSize;
@@ -90,7 +88,6 @@ void RenderSystem::step(const float /*delta*/) noexcept {
                 float radius = (f.grow / p.growTime) * (fSize.x / 2) * 0.9;
                 TextureInformation icon = m_registry->ecs.get<IconTexture>(f.plant).info;
                 m_draw->drawTexture(icon.text, fPos, {radius, radius});
-
             }
         }
 
@@ -104,7 +101,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         m_draw->drawLine({x, 0.0}, {x, y_start}, black);
 
         for (TextButton b : m_ui->m_field_plant_select_buttons) {
-            entt::entity plant_id = m_registry->plants[b.text];
+            entt::entity plant_id = b.id_label;
             Plant p = m_registry->ecs.get<Plant>(plant_id);
             text = p.name;
             m_draw->drawStringInBox(text, b.pos, b.size, black);
@@ -145,7 +142,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
 
     } else if (m_registry->window() == MARKETPLACE) {
         for (std::vector<TextButton> &buts : m_ui->m_market_trade_buttons) {
-            entt::entity p_id = m_registry->plants[buts[0].label];
+            entt::entity p_id = buts[0].id_label;
             Plant p = m_registry->ecs.get<Plant>(p_id);
 
             float y = buts[0].pos.y;
