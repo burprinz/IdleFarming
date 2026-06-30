@@ -145,22 +145,36 @@ public:
         return current_window;
     }
 
+    // Entity Component System
     entt::registry ecs;
 
+    // Which keys are pressed
     std::map<std::string, bool> keys;
 
+    // Camera information
     glm::vec2 camera_origin;
     glm::vec2 camera_pos = {0,0};
 
+    // Debug-Mode (F5)
     bool debug = false;
 
+    // Orders
     std::vector<entt::entity> plant_order;
+    std::vector<entt::entity> flower_order;
+    std::vector<entt::entity> tree_order;
 
     /**
-     * Farmland
+     * Farm
      */
+    // Plant
     entt::entity last_selected_plant = entt::null;
     entt::entity current_selected_plant = entt::null;
+    // Tree
+    entt::entity last_selected_tree = entt::null;
+    entt::entity current_selected_tree = entt::null;
+    // Flower
+    entt::entity last_selected_flower = entt::null;
+    entt::entity current_selected_flower = entt::null;
 
     /**
      * Marketplace

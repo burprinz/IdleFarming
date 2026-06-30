@@ -10,7 +10,7 @@
  * @param rem the value to remove
  * @return true when success, false when rem greater than num
  */
-inline bool try_to_remove(BigNumber &num, BigNumber &rem) {
+inline bool try_to_remove(BigNumber &num, BigNumber rem) {
     if (rem <= num) {
         num = num - rem;
         return true;
@@ -18,3 +18,6 @@ inline bool try_to_remove(BigNumber &num, BigNumber &rem) {
     return false;
 }
 
+inline bool has_enough(BigNumber num, BigNumber rem) {
+    return rem <= num;
+}

@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "core/colors.h"
+#include "core/operations.h"
 #include "core/sizes.h"
 #include "utils/BigNumber.h"
 #include "utils/geometry.h"
@@ -106,11 +107,15 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             text = p.name;
             m_draw->drawStringInBox(text, b.pos, b.size, black);
 
+            Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
+
             glm::vec3 color;
-            if (plant_id == m_registry->current_selected_plant) {
+            if (!u.unlocked) {
+                color = has_enough(money, u.price) ? blue : red;
+            } else if (plant_id == m_registry->current_selected_plant) {
                 color = selected;
             } else {
-                color = b.selected?b.select_color:b.unselect_color;
+                color = b.selected ? b.select_color : b.unselect_color;
             }
 
             m_draw->drawRectBySize(b.pos, b.size, color);

@@ -14,7 +14,7 @@ struct TextButton {
     std::string text = "Button";
     std::string label = "none";
     entt::entity id_label = entt::null;
-    glm::vec3 unselect_color = blue;
+    glm::vec3 unselect_color = black;
     glm::vec3 select_color = green;
     glm::vec3 lock_color = green;
     std::function<void()> on_click;

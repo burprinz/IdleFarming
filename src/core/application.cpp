@@ -155,7 +155,7 @@ void Application::reset() noexcept {
 	/**
 	 * Load Base Values
 	 */
-	m_entity_factory.loadBasePlants();
+	m_entity_factory.loadBaseValues();
 
 	/**
 	 * Init Buttons
@@ -192,13 +192,6 @@ void Application::reset() noexcept {
 }
 
 void Application::changeWindow() noexcept {
-
-	switch (m_registry->window()) {
-		case FIELDS:
-		default:
-
-			break;
-	}
 
 }
 

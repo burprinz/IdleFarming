@@ -42,3 +42,7 @@ inline PolygonShape createConvexPolygon(std::vector<glm::vec2> points) {
 
     return shape;
 }
+
+inline glm::vec2 calc_center(glm::vec2 top_left, glm::vec2 size) {
+    return top_left + (glm::vec2{size.x, -size.y} / 2.0f);
+}

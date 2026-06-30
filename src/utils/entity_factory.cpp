@@ -59,46 +59,37 @@ void EntityFactory::createFromFile(const std::string &path) noexcept {
     (void) path;
 }
 
-void EntityFactory::loadBasePlants() noexcept {
-    std::string json_path = "/assets/data/basevalues/plants.json";
-    bool loaded = readPath(json_path, &m_json);
-    if (!loaded) {
-        std::cout<<"Error loading base plants in EntityFactory"<<std::endl;
-    }
 
-    for (auto& plant : m_json["plants"]) {
+void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order) noexcept {
+    entt::entity plant_id = m_registry->ecs.create();
+    Plant p;
+    p.name = plant["name"].get<std::string>();
+    p.growTime = plant["growtime"].get<float>();
+    p.min_collect = plant["collect_amount"]["min"].get<int>();
+    p.max_collect = plant["collect_amount"]["max"].get<int>();
+    Unlockable unlocked = extract_unlock_infos(plant["unlock"]);
+    p.unlocked = unlocked.unlocked;
+    m_registry->ecs.emplace<Plant>(plant_id, p);
 
-        entt::entity plant_id = m_registry->ecs.create();
-        Plant p;
-        p.name = plant["name"].get<std::string>();
-        p.growTime = plant["growtime"].get<float>();
-        p.min_collect = plant["collect_amount"]["min"].get<int>();
-        p.max_collect = plant["collect_amount"]["max"].get<int>();
-        p.unlocked = plant["unlocked"].get<bool>();
-        m_registry->ecs.emplace<Plant>(plant_id, p);
+    m_registry->ecs.emplace<Unlockable>(plant_id, unlocked);
 
-        Color color = extract_color(plant["color"]);
-        m_registry->ecs.emplace<Color>(plant_id, color);
 
-        m_registry->ecs.emplace<Amount>(plant_id);
+    Color color = extract_color(plant["color"]);
+    m_registry->ecs.emplace<Color>(plant_id, color);
 
-        Price price = extract_price(plant["price"]);
-        m_registry->ecs.emplace<Price>(plant_id, price);
+    m_registry->ecs.emplace<Amount>(plant_id);
 
-        std::string id_name = plant["id_name"].get<std::string>();
-        IconTexture it;
-        it.info = create_icon(id_name);
-        m_registry->ecs.emplace<IconTexture>(plant_id, it);
+    Price price = extract_price(plant["price"]);
+    m_registry->ecs.emplace<Price>(plant_id, price);
 
-        Unlockable unlocked = extract_unlock_infos(plant["unlock"]);
-        m_registry->ecs.emplace<Unlockable>(plant_id, unlocked);
+    std::string id_name = plant["id_name"].get<std::string>();
+    IconTexture it;
+    it.info = create_icon(id_name);
+    m_registry->ecs.emplace<IconTexture>(plant_id, it);
 
-        m_registry->plant_order.push_back(plant_id);
-    }
 
-    std::cout<<"Plants loaded"<<std::endl;
+    order.push_back(plant_id);
 }
-
 
 
 

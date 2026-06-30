@@ -4,6 +4,7 @@
 
 #include "ui.h"
 
+#include "core/operations.h"
 #include "core/sizes.h"
 #include "core/util.h"
 
@@ -59,17 +60,17 @@ void UISystem::initPlantSelectButton() noexcept {
 
     Registry* registry = m_registry;
 
-    float x_start = 6.0;
-    float y_start = config::CAMERA_VIEW_HEIGHT-1.2;
-    float x_center = x_start + plant_name_size.x / 2.0;
-    float y_center = y_start - plant_name_size.y / 2.0;
+    glm::vec2 top_left = {6.0, config::CAMERA_VIEW_HEIGHT-1.2};
+    glm::vec2 center = calc_center(top_left, plant_name_size);
 
+    /**
+     * Plant selection
+     */
     int c = 0;
-
     for (entt::entity plant_id : m_registry->plant_order) {
-        float y = y_center - c*(plant_name_size.y + 0.1);
+        float y = center.y - c*(plant_name_size.y + 0.1);
         TextButton plantB;
-        plantB.pos = {x_center, y};
+        plantB.pos = {center.x, y};
         plantB.size = plant_name_size;
         plantB.id_label = plant_id;
         plantB.on_click = [registry, plant_id] {
@@ -79,9 +80,9 @@ void UISystem::initPlantSelectButton() noexcept {
         m_field_plant_select_buttons.push_back(plantB);
         c += 1;
     }
-
     std::reverse(m_field_plant_select_buttons.begin(), m_field_plant_select_buttons.end());
 }
+
 
 void UISystem::initMarketplaceTradeButtons() noexcept {
     glm::vec2 trade_button_size = {0.7, 0.5};
@@ -103,12 +104,12 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
         buyB.text = "Buy";
         buyB.id_label = plant_id;
         buyB.on_click = [registry, plant_id] {
-            BigNumber price = registry->ecs.get<Price>(plant_id).buy;
             BigNumber &money = registry->ecs.get<Amount>(registry->money()).am;
-            BigNumber &amount = registry->ecs.get<Amount>(plant_id).am;
-            price = price * registry->market_multiplier;
-            if (money >= price) {
-                money = money - price;
+            BigNumber price = registry->ecs.get<Price>(plant_id).buy * registry->market_multiplier;
+
+            bool success = try_to_remove(money, price);
+            if (success) {
+                BigNumber &amount = registry->ecs.get<Amount>(plant_id).am;
                 amount = amount + registry->market_multiplier;
             }
         };
