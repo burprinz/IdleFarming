@@ -130,7 +130,6 @@ public:
     void on_key_callback(int key, int action) noexcept;
     void on_mouse_callback(int key, int action) noexcept;
 
-
     inline entt::entity money() noexcept { return m_money; }
 
     inline entt::entity create_money() noexcept {
@@ -158,10 +157,14 @@ public:
     std::vector<std::string> plant_ids;
     std::map<std::string, entt::entity> plants;
 
+    std::map<entt::entity, std::string> plant_id_names;
+
+
     /**
      * Farmland
      */
-    std::string current_selected_plant = "carrot";
+    entt::entity last_selected_plant = entt::null;
+    entt::entity current_selected_plant = entt::null;
 
     /**
      * Marketplace

@@ -10,6 +10,7 @@
 #include "discord.h"
 #include "draw.h"
 #include "systems/field.h"
+#include "systems/unlock.h"
 #include "utils/entity_factory.h"
 
 
@@ -35,6 +36,8 @@ class Application {
 		RenderSystem m_render;
 
 		FieldSystem m_field;
+
+		UnlockSystem m_unlock;
 
 		EntityFactory m_entity_factory;
 

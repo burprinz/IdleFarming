@@ -110,7 +110,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             m_draw->drawStringInBox(text, b.pos, b.size, black);
 
             glm::vec3 color;
-            if (b.text == m_registry->current_selected_plant) {
+            if (plant_id == m_registry->current_selected_plant) {
                 color = selected;
             } else {
                 color = b.selected?b.select_color:b.unselect_color;
@@ -119,27 +119,28 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             m_draw->drawRectBySize(b.pos, b.size, color);
         }
 
-        glm::vec2 selectInfoSize = {4.0f, 5.0f};
-        glm::vec2 topLeft = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x - 0.2, selectInfoSize.y + 0.2};
-        glm::vec2 selectInfoPos = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x/2 - 0.2, selectInfoSize.y/2 + 0.2};
-        m_draw->drawRectBySize(selectInfoPos, selectInfoSize, black);
-        std::string selected_plant = m_registry->current_selected_plant;
-        entt::entity id = m_registry->plants[selected_plant];
-        Plant plant = m_registry->ecs.get<Plant>(id);
+        // Wenn aktuell eine Pflanze selected ist, gib die infos
+        if (m_registry->current_selected_plant != entt::null) {
+            glm::vec2 selectInfoSize = {4.0f, 5.0f};
+            glm::vec2 topLeft = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x - 0.2, selectInfoSize.y + 0.2};
+            glm::vec2 selectInfoPos = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x/2 - 0.2, selectInfoSize.y/2 + 0.2};
+            m_draw->drawRectBySize(selectInfoPos, selectInfoSize, black);
+            //std::string selected_plant = m_registry->current_selected_plant;
+            entt::entity id = m_registry->current_selected_plant;
+            Plant plant = m_registry->ecs.get<Plant>(id);
 
-        float text_height = 0.3f;
-        x = selectInfoPos.x;
-        float y = topLeft.y - text_height/2.0f - 0.05f;
-        m_draw->drawStringInBox(plant.name, {x, y}, {selectInfoSize.x, text_height}, black);
+            float text_height = 0.3f;
+            x = selectInfoPos.x;
+            float y = topLeft.y - text_height/2.0f - 0.05f;
+            m_draw->drawStringInBox(plant.name, {x, y}, {selectInfoSize.x, text_height}, black);
 
-        y -= text_height/2.0f+0.05f;
-        m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
+            y -= text_height/2.0f+0.05f;
+            m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
 
-        y -= text_height/2.0f+0.05f;
-        BigNumber am = m_registry->ecs.get<Amount>(id).am;
-        m_draw->drawStringInBox("x" + am.toString(), {x, y}, {selectInfoSize.x, text_height}, black);
-
-
+            y -= text_height/2.0f+0.05f;
+            BigNumber am = m_registry->ecs.get<Amount>(id).am;
+            m_draw->drawStringInBox("x" + am.toString(), {x, y}, {selectInfoSize.x, text_height}, black);
+        }
     } else if (m_registry->window() == GENE_LAB) {
 
     } else if (m_registry->window() == MARKETPLACE) {

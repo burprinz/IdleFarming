@@ -157,6 +157,9 @@ add_executable(${PROJECT_NAME}
 		src/core/paths.h
 		src/systems/camera.cpp
 		src/systems/camera.h
+		src/systems/unlock.cpp
+		src/systems/unlock.h
+		src/core/money.h
 )
 
 

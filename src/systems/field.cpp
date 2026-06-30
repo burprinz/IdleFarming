@@ -34,15 +34,15 @@ void FieldSystem::step(const float delta) noexcept {
             glm::vec2 pos = m_registry->ecs.get<Position>(fieldID).pos;
             glm::vec2 size = m_registry->ecs.get<Dimension>(fieldID).dim;
 
-            // Check if mouse is over cell if no cell already found
-            if (!pointFound && point_in_rect(mousePos, pos, size)) {
+            // Check if mouse is over cell if no cell already found and plant is selected
+            if (!pointFound && m_registry->current_selected_plant != entt::null && point_in_rect(mousePos, pos, size)) {
                 pointFound = true;
                 f.marked = true;
 
                 if (f.is_empty && m_registry->keys["mouse_left"]) {
                     // Plant if field is empty and left click pressed
                     f.is_empty = false;
-                    f.plant = m_registry->plants[m_registry->current_selected_plant];
+                    f.plant = m_registry->current_selected_plant;
                     f.grow = 0.0;
                     f.harvestable = false;
                 } else if (f.harvestable && m_registry->keys["mouse_right"]) {

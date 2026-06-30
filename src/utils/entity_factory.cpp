@@ -82,6 +82,8 @@ void EntityFactory::loadBasePlants() noexcept {
 
         std::string id_name = plant["id_name"].get<std::string>();
         m_registry->plants[id_name] = plant_id;
+        m_registry->plant_id_names[plant_id] = id_name;
+
         m_registry->plant_ids.push_back(id_name);
 
         m_registry->ecs.emplace<Amount>(plant_id);

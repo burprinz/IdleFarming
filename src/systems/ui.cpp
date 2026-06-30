@@ -72,19 +72,8 @@ void UISystem::initPlantSelectButton() noexcept {
         plantB.size = plant_name_size;
         plantB.text = plant_name;
         plantB.on_click = [registry, plant_name] {
-
-            entt::entity id = registry->plants[plant_name];
-            Unlockable &u = registry->ecs.get<Unlockable>(id);
-            if (u.unlocked) {
-                registry->current_selected_plant = plant_name;
-            } else {
-                BigNumber &money = registry->ecs.get<Amount>(registry->money()).am;
-                if (u.price <= money) {
-                    money = money - u.price;
-                    u.unlocked = true;
-                    registry->current_selected_plant = plant_name;
-                }
-            }
+            registry->last_selected_plant = registry->current_selected_plant;
+            registry->current_selected_plant = registry->plants[plant_name];
         };
         this->m_field_plant_select_buttons.push_back(plantB);
         c += 1;
