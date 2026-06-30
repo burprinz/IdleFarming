@@ -139,8 +139,6 @@ add_executable(${PROJECT_NAME}
 	${PROJECT_SOURCE_DIR}/src/utils/shader.cpp
 	${PROJECT_SOURCE_DIR}/src/utils/framebuffer.cpp
 	${PROJECT_SOURCE_DIR}/src/utils/texture.cpp
-		src/systems/camera.cpp
-		src/systems/camera.h
         src/core/util.h
 		src/core/draw.cpp
 		src/core/draw.h
@@ -157,6 +155,8 @@ add_executable(${PROJECT_NAME}
 		src/systems/ui.h
 		src/core/sizes.h
 		src/core/paths.h
+		src/systems/camera.cpp
+		src/systems/camera.h
 )
 
 

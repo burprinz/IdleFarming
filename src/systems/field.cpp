@@ -33,26 +33,34 @@ void FieldSystem::step(const float delta) noexcept {
         if (m_registry->window() == FIELDS) {
             glm::vec2 pos = m_registry->ecs.get<Position>(fieldID).pos;
             glm::vec2 size = m_registry->ecs.get<Dimension>(fieldID).dim;
+
+            // Check if mouse is over cell if no cell already found
             if (!pointFound && point_in_rect(mousePos, pos, size)) {
                 pointFound = true;
                 f.marked = true;
+
                 if (f.is_empty && m_registry->keys["mouse_left"]) {
+                    // Plant if field is empty and left click pressed
                     f.is_empty = false;
                     f.plant = m_registry->plants[m_registry->current_selected_plant];
                     f.grow = 0.0;
                     f.harvestable = false;
                 } else if (f.harvestable && m_registry->keys["mouse_right"]) {
+                    // Harvest if plant is ready and right click pressed
+                    Plant p = m_registry->ecs.get<Plant>(f.plant);
                     BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
-                    am += 1;
+                    am += p.min_collect;
 
                     f.harvestable = false;
                     f.is_empty = true;
                 }
             } else {
+                // If cell already found or mouse does not hover over cell
                 f.marked = false;
             }
         }
 
+        // Update every cell if not empty and still growing
         if (!f.is_empty && !f.harvestable) {
             Plant p = m_registry->ecs.get<Plant>(f.plant);
             if (f.grow < p.growTime) {

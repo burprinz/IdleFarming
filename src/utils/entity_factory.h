@@ -58,10 +58,21 @@ private:
         return BigNumber(raw["base"].get<float>(), raw["exp"].get<int>());
     }
 
+    inline Unlockable extract_unlock_infos(nlohmann::json raw) noexcept {
+        Unlockable info;
+        info.unlocked = raw["unlocked"].get<bool>();
+        info.price = extract_bignumber(raw["price"]);
+        return info;
+    }
+
     inline TextureInformation create_icon(std::string name) noexcept {
         TextureInformation info;
         std::string text_path = getTexturePath("icons/" + name + ".png");
-        info.text = Texture::init(text_path);
+        if (std::filesystem::exists(text_path)) {
+            info.text = Texture::init(text_path);
+        } else {
+            info.text = Texture::init(getTexturePath("icons/notfound.png"));
+        }
         info.base_size = base_icon_size;
         return info;
     }

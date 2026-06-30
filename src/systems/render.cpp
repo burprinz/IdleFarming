@@ -67,6 +67,9 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         bool fieldMarked = false;
         glm::vec2 markedPos, markedSize;
 
+        /**
+         * Draw Field
+         */
         glm::vec3 fieldColor = {0.82, 0.49, 0.18};
         for (entt::entity fieldID : m_registry->ecs.view<FarmField>()) {
             FarmField f = m_registry->ecs.get<FarmField>(fieldID);
@@ -74,6 +77,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             glm::vec2 fSize = m_registry->ecs.get<Dimension>(fieldID).dim;
             m_draw->fillRectBySize(fPos, fSize, fieldColor, 1.0f);
 
+            // Save infos for marked cell
             if (f.marked) {
                 fieldMarked = true;
                 markedPos = fPos;
@@ -81,10 +85,9 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             }
             m_draw->drawRectBySize(fPos, fSize, black);
             if (!f.is_empty) {
+                // Draw the plant if cell is not empty
                 Plant p = m_registry->ecs.get<Plant>(f.plant);
-                //glm::vec3 pColor = m_registry->ecs.get<Color>(f.plant).c;
                 float radius = (f.grow / p.growTime) * (fSize.x / 2) * 0.9;
-                //m_draw->fillCircle(fPos, radius, pColor, 1.0f);
                 TextureInformation icon = m_registry->ecs.get<IconTexture>(f.plant).info;
                 m_draw->drawTexture(icon.text, fPos, {radius, radius});
 

@@ -72,7 +72,19 @@ void UISystem::initPlantSelectButton() noexcept {
         plantB.size = plant_name_size;
         plantB.text = plant_name;
         plantB.on_click = [registry, plant_name] {
-            registry->current_selected_plant = plant_name;
+
+            entt::entity id = registry->plants[plant_name];
+            Unlockable &u = registry->ecs.get<Unlockable>(id);
+            if (u.unlocked) {
+                registry->current_selected_plant = plant_name;
+            } else {
+                BigNumber &money = registry->ecs.get<Amount>(registry->money()).am;
+                if (u.price <= money) {
+                    money = money - u.price;
+                    u.unlocked = true;
+                    registry->current_selected_plant = plant_name;
+                }
+            }
         };
         this->m_field_plant_select_buttons.push_back(plantB);
         c += 1;
@@ -122,10 +134,14 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
             BigNumber price = registry->ecs.get<Price>(p_id).sell;
             BigNumber &money = registry->ecs.get<Amount>(registry->money()).am;
             BigNumber &amount = registry->ecs.get<Amount>(p_id).am;
-            price = price * registry->market_multiplier;
-            if (amount >= registry->market_multiplier) {
+            if (amount > BigNumber(0)) {
+                BigNumber multiplier = registry->market_multiplier;
+                if (amount < multiplier) {
+                    multiplier = amount;
+                }
+                price = price * multiplier;
                 money = money + price;
-                amount = amount - registry->market_multiplier;
+                amount = amount - multiplier;
             }
         };
         currentB.push_back(sellB);

@@ -1,0 +1,9 @@
+{
+  "unlock": {
+    "unlocked": false,
+    "price": {
+      "base": 0.0,
+      "exp": 0
+    }
+  }
+}

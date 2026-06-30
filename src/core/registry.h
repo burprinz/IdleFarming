@@ -29,6 +29,19 @@ struct Viewport{
     glm::uvec2 m_size;
 };
 
+struct CameraState {
+    glm::vec2 center{0.f, 0.f};
+    glm::vec2 viewSize{1.f, 1.f};
+
+    glm::vec2 worldMin{0.f, 0.f};
+    glm::vec2 worldMax{0.f, 0.f};
+
+    float bufferLeft   = 0.f;
+    float bufferRight  = 0.f;
+    float bufferTop    = 0.f;
+    float bufferBottom = 0.f;
+};
+
 struct Position {
     glm::vec2 pos;
 };
@@ -36,33 +49,6 @@ struct Position {
 struct Dimension {
     glm::vec2 dim;
 };
-
-struct Radius {
-    float r;
-};
-
-struct Scale {
-    glm::vec2 scale;
-};
-
-struct Hitbox {
-    bool can_climb = false;
-    bool touchable = true;
-    bool can_pogo = false;
-};
-
-struct BackgroundImage {
-    Texture text;
-    float speed;
-};
-
-struct Mouse {
-
-};
-
-/**
- * Objects
- */
 
 struct Rect {
     glm::vec2 pos;
@@ -79,56 +65,6 @@ struct PolygonShape {
     std::vector<int> triangle_indices;   // Triangulated indices (3 ints per triangle)
     BoundingBox bounding_box;       // Axis-aligned bounding box
 };
-
-struct Platform {
-
-};
-
-struct Spike {
-
-};
-
-struct CameraState {
-    glm::vec2 center{0.f, 0.f};
-    glm::vec2 viewSize{1.f, 1.f};
-
-    glm::vec2 worldMin{0.f, 0.f};
-    glm::vec2 worldMax{0.f, 0.f};
-
-    float bufferLeft   = 0.f;
-    float bufferRight  = 0.f;
-    float bufferTop    = 0.f;
-    float bufferBottom = 0.f;
-};
-
-
-struct RoomTexture {
-    glm::vec2 pos;
-    Texture texture;
-};
-
-
-
-struct Prism {
-};
-
-struct ReflectiveSurface {
-};
-
-struct LightBeamCollider {
-};
-
-struct Arrow {
-    int direction;
-};
-
-struct MirrorRotatable {
-};
-
-struct MirrorIndicator {
-    float opacity;
-};
-
 
 /**
  * Field
@@ -161,6 +97,11 @@ struct Amount {
 struct Price {
     BigNumber buy;
     BigNumber sell;
+};
+
+struct Unlockable {
+    bool unlocked = false;
+    BigNumber price;
 };
 
 /**

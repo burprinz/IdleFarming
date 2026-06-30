@@ -92,6 +92,9 @@ void EntityFactory::loadBasePlants() noexcept {
         IconTexture it;
         it.info = create_icon(id_name);
         m_registry->ecs.emplace<IconTexture>(plant_id, it);
+
+        Unlockable unlocked = extract_unlock_infos(plant["unlock"]);
+        m_registry->ecs.emplace<Unlockable>(plant_id, unlocked);
     }
 
     std::cout<<"Plants loaded"<<std::endl;
