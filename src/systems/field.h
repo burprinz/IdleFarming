@@ -18,4 +18,6 @@ private:
     Registry* m_registry;
     Window* m_window;
 
+    void try_to_plant(std::vector<entt::entity> field, entt::entity p_id) noexcept;
+
 };

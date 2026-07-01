@@ -73,34 +73,12 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         /**
          * Draw Field
          */
-        bool fieldMarked = false;
-        glm::vec2 markedPos, markedSize;
-        glm::vec3 fieldColor = {0.82, 0.49, 0.18};
-        for (entt::entity fieldID : m_registry->ecs.view<FarmField>()) {
-            FarmField f = m_registry->ecs.get<FarmField>(fieldID);
-            glm::vec2 fPos = m_registry->ecs.get<Position>(fieldID).pos;
-            glm::vec2 fSize = m_registry->ecs.get<Dimension>(fieldID).dim;
-            m_draw->fillRectBySize(fPos, fSize, fieldColor, 1.0f);
-
-            // Save infos for marked cell
-            if (f.marked) {
-                fieldMarked = true;
-                markedPos = fPos;
-                markedSize = fSize;
-            }
-            m_draw->drawRectBySize(fPos, fSize, black);
-            if (!f.is_empty) {
-                // Draw the plant if cell is not empty
-                Plant p = m_registry->ecs.get<Plant>(f.plant);
-                float radius = (f.grow / p.growTime) * (fSize.x / 2) * 0.9;
-                TextureInformation icon = m_registry->ecs.get<IconTexture>(f.plant).info;
-                m_draw->drawTexture(icon.text, fPos, {radius, radius});
-            }
-        }
-
-        // If mouse is hovering over field
-        if (fieldMarked) {
-            m_draw->drawRectBySize(markedPos, markedSize, green);
+        if (m_registry->current_selected_field == PLANT_FIELD) {
+            glm::vec3 fieldColor = {0.82, 0.49, 0.18};
+            drawCurrentField(m_registry->plant_field_tiles, fieldColor);
+        } else if (m_registry->current_selected_field == FLOWER_FIELD) {
+            glm::vec3 fieldColor = {0.28, 0.43, 0.21};
+            drawCurrentField(m_registry->flower_field_tiles, fieldColor);
         }
 
         // Separator between field and buttons
@@ -110,9 +88,9 @@ void RenderSystem::step(const float /*delta*/) noexcept {
 
         // Draw Plant selection
         if (m_registry->current_selected_field == PLANT_FIELD) {
-            drawPlantSelection(m_ui->m_field_plant_select_buttons);
+            drawPlantSelection(m_ui->m_field_plant_select_buttons, m_registry->current_selected_plant);
         } else if (m_registry->current_selected_field == FLOWER_FIELD) {
-            drawPlantSelection(m_ui->m_field_flower_select_buttons);
+            drawPlantSelection(m_ui->m_field_flower_select_buttons, m_registry->current_selected_flower);
         }
 
         // Wenn aktuell eine Pflanze selected ist, gib die infos
@@ -170,7 +148,7 @@ void RenderSystem::drawBasicTextButton(std::vector<TextButton> &buttons) noexcep
     }
 }
 
-void RenderSystem::drawPlantSelection(std::vector<TextButton> &buttons) noexcept {
+void RenderSystem::drawPlantSelection(std::vector<TextButton> &buttons, entt::entity current_selected) noexcept {
     BigNumber &money = m_registry->ecs.get<Amount>(m_registry->money()).am;
     std::string text;
 
@@ -185,7 +163,7 @@ void RenderSystem::drawPlantSelection(std::vector<TextButton> &buttons) noexcept
         glm::vec3 color;
         if (!u.unlocked) {
             color = has_enough(money, u.price) ? blue : red;
-        } else if (plant_id == m_registry->current_selected_plant) {
+        } else if (plant_id == current_selected) {
             color = selected;
         } else {
             color = b.selected ? b.select_color : b.unselect_color;
@@ -195,6 +173,37 @@ void RenderSystem::drawPlantSelection(std::vector<TextButton> &buttons) noexcept
     }
 }
 
+void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::vec3 color) {
+    bool fieldMarked = false;
+    glm::vec2 markedPos, markedSize;
+
+    for (entt::entity fieldID : field_ids) {
+        FarmField f = m_registry->ecs.get<FarmField>(fieldID);
+        glm::vec2 fPos = m_registry->ecs.get<Position>(fieldID).pos;
+        glm::vec2 fSize = m_registry->ecs.get<Dimension>(fieldID).dim;
+        m_draw->fillRectBySize(fPos, fSize, color, 1.0f);
+
+        // Save infos for marked cell
+        if (f.marked) {
+            fieldMarked = true;
+            markedPos = fPos;
+            markedSize = fSize;
+        }
+        m_draw->drawRectBySize(fPos, fSize, black);
+        if (!f.is_empty) {
+            // Draw the plant if cell is not empty
+            Plant p = m_registry->ecs.get<Plant>(f.plant);
+            float radius = (f.grow / p.growTime) * (fSize.x / 2) * 0.9;
+            TextureInformation icon = m_registry->ecs.get<IconTexture>(f.plant).info;
+            m_draw->drawTexture(icon.text, fPos, {radius, radius});
+        }
+    }
+
+    // If mouse is hovering over field
+    if (fieldMarked) {
+        m_draw->drawRectBySize(markedPos, markedSize, green);
+    }
+}
 
 
 

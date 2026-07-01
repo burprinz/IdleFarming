@@ -26,6 +26,7 @@ class RenderSystem {
 		UISystem* m_ui;
 
 		void drawBasicTextButton(std::vector<TextButton> &buttons) noexcept;
-		void drawPlantSelection(std::vector<TextButton> &buttons) noexcept;
+		void drawPlantSelection(std::vector<TextButton> &buttons, entt::entity current_selected) noexcept;
+		void drawCurrentField(std::vector<entt::entity> &field_ids, glm::vec3 color);
 
 };

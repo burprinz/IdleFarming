@@ -118,8 +118,8 @@ void UISystem::initFieldButton() noexcept {
         flowerB.size = plant_name_size;
         flowerB.id_label = flower_id;
         flowerB.on_click = [registry, flower_id] {
-            registry->last_selected_plant = registry->current_selected_plant;
-            registry->current_selected_plant = flower_id;
+            registry->last_selected_flower = registry->current_selected_flower;
+            registry->current_selected_flower = flower_id;
         };
         m_field_flower_select_buttons.push_back(flowerB);
         c += 1;

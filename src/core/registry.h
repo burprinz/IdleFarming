@@ -169,12 +169,15 @@ public:
     // Plant
     entt::entity last_selected_plant = entt::null;
     entt::entity current_selected_plant = entt::null;
-    // Tree
-    entt::entity last_selected_tree = entt::null;
-    entt::entity current_selected_tree = entt::null;
+    std::vector<entt::entity> plant_field_tiles;
     // Flower
     entt::entity last_selected_flower = entt::null;
     entt::entity current_selected_flower = entt::null;
+    std::vector<entt::entity> flower_field_tiles;
+    // Tree
+    entt::entity last_selected_tree = entt::null;
+    entt::entity current_selected_tree = entt::null;
+
 
     /**
      * Marketplace
