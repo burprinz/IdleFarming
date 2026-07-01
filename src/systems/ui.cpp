@@ -14,7 +14,7 @@ UISystem UISystem::init(Window *window, Registry *registry) noexcept {
     self.m_window = window;
 
     self.initWindowSwitchButtons();
-    self.initPlantSelectButton();
+    self.initFieldButton();
     self.initMarketplaceTradeButtons();
 
     return self;
@@ -55,17 +55,43 @@ void UISystem::initWindowSwitchButtons() noexcept {
 
 }
 
-void UISystem::initPlantSelectButton() noexcept {
+void UISystem::initFieldButton() noexcept {
     m_field_plant_select_buttons.clear();
+    m_field_flower_select_buttons.clear();
+    m_field_mode_buttons.clear();
 
     Registry* registry = m_registry;
 
-    glm::vec2 top_left = {6.0, config::CAMERA_VIEW_HEIGHT-1.2};
-    glm::vec2 center = calc_center(top_left, plant_name_size);
+    glm::vec2 top_left = {0.1, config::CAMERA_VIEW_HEIGHT-0.65};
+    glm::vec2 select_button_size = {1.0, 0.5};
+    glm::vec2 center = calc_center(top_left, select_button_size);
+
+    TextButton plantFieldB;
+    plantFieldB.text = "Plant";
+    plantFieldB.pos = center;
+    plantFieldB.size = select_button_size;
+    plantFieldB.on_click = [registry] {
+        registry->current_selected_field = PLANT_FIELD;
+    };
+    m_field_mode_buttons.push_back(plantFieldB);
+
+    center += glm::vec2{select_button_size.x + 0.1, 0};
+
+    TextButton flowerFieldB;
+    flowerFieldB.text = "Flower";
+    flowerFieldB.pos = center;
+    flowerFieldB.size = select_button_size;
+    flowerFieldB.on_click = [registry] {
+        registry->current_selected_field = FLOWER_FIELD;
+    };
+    m_field_mode_buttons.push_back(flowerFieldB);
+
 
     /**
      * Plant selection
      */
+    top_left = {6.0, config::CAMERA_VIEW_HEIGHT-1.2};
+    center = calc_center(top_left, plant_name_size);
     int c = 0;
     for (entt::entity plant_id : m_registry->plant_order) {
         float y = center.y - c*(plant_name_size.y + 0.1);
@@ -80,9 +106,26 @@ void UISystem::initPlantSelectButton() noexcept {
         m_field_plant_select_buttons.push_back(plantB);
         c += 1;
     }
-    std::reverse(m_field_plant_select_buttons.begin(), m_field_plant_select_buttons.end());
-}
 
+    /**
+     * Flower selection
+     */
+    c = 0;
+    for (entt::entity flower_id : m_registry->flower_order) {
+        float y = center.y - c*(plant_name_size.y + 0.1);
+        TextButton flowerB;
+        flowerB.pos = {center.x, y};
+        flowerB.size = plant_name_size;
+        flowerB.id_label = flower_id;
+        flowerB.on_click = [registry, flower_id] {
+            registry->last_selected_plant = registry->current_selected_plant;
+            registry->current_selected_plant = flower_id;
+        };
+        m_field_flower_select_buttons.push_back(flowerB);
+        c += 1;
+    }
+
+}
 
 void UISystem::initMarketplaceTradeButtons() noexcept {
     glm::vec2 trade_button_size = {0.7, 0.5};
@@ -158,26 +201,34 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
     (void) (button + action + mods);
     if (action == GLFW_PRESS) {
         if (button == GLFW_MOUSE_BUTTON_1) {
-            for (TextButton &b : m_window_buttons) {
-                if (b.selected) {
-                    b.on_click();
-                    return;
-                }
+            bool found = check_text_button_list(m_window_buttons);
+            if (found) {
+                return;
             }
             if (m_registry->window() == FIELDS) {
-                for (TextButton &b : m_field_plant_select_buttons) {
-                    if (b.selected) {
-                        b.on_click();
+                found = check_text_button_list(m_field_mode_buttons);
+                if (found) {
+                    return;
+                }
+
+                if (m_registry->current_selected_field == PLANT_FIELD) {
+                    found = check_text_button_list(m_field_plant_select_buttons);
+                    if (found) {
+                        return;
+                    }
+                } else if (m_registry->current_selected_field == FLOWER_FIELD) {
+                    found = check_text_button_list(m_field_flower_select_buttons);
+                    if (found) {
                         return;
                     }
                 }
+
+
             } else if (m_registry->window() == MARKETPLACE) {
                 for (std::vector<TextButton> &buttons : m_market_trade_buttons) {
-                    for (TextButton &b : buttons) {
-                        if (b.selected) {
-                            b.on_click();
-                            return;
-                        }
+                    found = check_text_button_list(buttons);
+                    if (found) {
+                        return;
                     }
                 }
             }
@@ -191,34 +242,27 @@ void UISystem::step(const float delta) noexcept {
 
     glm::vec2 mousePos = m_window->getMousePosition();
     bool selection_found = false;
-    for (TextButton &button : m_window_buttons) {
-        if (!selection_found && point_in_rect(mousePos, button.pos, button.size)) {
-            button.selected = true;
-            selection_found = true;
-        } else {
-            button.selected = false;
-        }
-    }
+
+    // Window switch buttons
+    selection_found = update_text_button_list(m_window_buttons, mousePos, selection_found);
 
     if (m_registry->window() == FIELDS) {
-        for (TextButton &b : m_field_plant_select_buttons) {
-            if (!selection_found && point_in_rect(mousePos, b.pos, b.size)) {
-                b.selected = true;
-                selection_found = true;
-            } else {
-                b.selected = false;
-            }
+
+        // Field buttons
+        selection_found = update_text_button_list(m_field_mode_buttons, mousePos, selection_found);
+        if (m_registry->current_selected_field == PLANT_FIELD) {
+            selection_found = update_text_button_list(m_field_plant_select_buttons, mousePos, selection_found);
+        } else if (m_registry->current_selected_field == FLOWER_FIELD) {
+            selection_found = update_text_button_list(m_field_flower_select_buttons, mousePos, selection_found);
         }
+        (void) selection_found;
+
+
     } else if (m_registry->window() == MARKETPLACE) {
+
+        // Marketplace buy / sell
         for (std::vector<TextButton> &buttons : m_market_trade_buttons) {
-            for (TextButton &b : buttons) {
-                if (!selection_found && point_in_rect(mousePos, b.pos, b.size)) {
-                    b.selected = true;
-                    selection_found = true;
-                } else {
-                    b.selected = false;
-                }
-            }
+            selection_found = update_text_button_list(buttons, mousePos, selection_found);
         }
     }
 }

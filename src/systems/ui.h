@@ -4,6 +4,7 @@
 #include "window.h"
 #include "core/colors.h"
 #include "core/registry.h"
+#include "core/util.h"
 //
 // Created by luisb on 24.06.2026.
 //
@@ -37,11 +38,16 @@ public:
 
 
     void initWindowSwitchButtons() noexcept;
-    void initPlantSelectButton() noexcept;
+    void initFieldButton() noexcept;
     void initMarketplaceTradeButtons() noexcept;
 
-
+    /**
+     * Field
+     */
+    std::vector<TextButton> m_field_mode_buttons;
     std::vector<TextButton> m_field_plant_select_buttons;
+    std::vector<TextButton> m_field_flower_select_buttons;
+
     std::vector<std::vector<TextButton>> m_market_trade_buttons;
 
     std::vector<TextButton> get_current_text_buttons() noexcept;
@@ -54,4 +60,25 @@ private:
 
     std::vector<TextButton> m_window_buttons;
 
+    inline bool check_text_button_list(std::vector<TextButton> &buttons) noexcept {
+        for (TextButton &b : buttons) {
+            if (b.selected) {
+                b.on_click();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    inline bool update_text_button_list(std::vector<TextButton> &buttons, glm::vec2 mouse_pos, bool selection_found) noexcept {
+        for (TextButton &b : buttons) {
+            if (!selection_found && point_in_rect(mouse_pos, b.pos, b.size)) {
+                b.selected = true;
+                selection_found = true;
+            } else {
+                b.selected = false;
+            }
+        }
+        return selection_found;
+    }
 };

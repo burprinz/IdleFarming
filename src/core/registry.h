@@ -14,15 +14,13 @@ constexpr int FIELDS = 0;
 constexpr int GENE_LAB = 1;
 constexpr int MARKETPLACE = 2;
 
+/**
+ * Field State
+ */
+constexpr int PLANT_FIELD = 0;
+constexpr int FLOWER_FIELD = 1;
+constexpr int TREE_FIELD = 2;
 
-constexpr int IDLE = 0;
-constexpr int ATTACKING = 1;
-
-constexpr float ATTACK_LENGTH = 0.35f;
-
-constexpr glm::vec2 PLAYER_ATTACK_HITBOX_SIZE = {0.35, 0.15};
-
-enum Direction {LEFT, UP, RIGHT, DOWN};
 
 struct Viewport{
     glm::uvec2 m_origin;
@@ -166,6 +164,8 @@ public:
     /**
      * Farm
      */
+    int current_selected_field = PLANT_FIELD;
+
     // Plant
     entt::entity last_selected_plant = entt::null;
     entt::entity current_selected_plant = entt::null;

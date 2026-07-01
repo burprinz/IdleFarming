@@ -160,7 +160,7 @@ void Application::reset() noexcept {
 	/**
 	 * Init Buttons
 	 */
-	m_ui->initPlantSelectButton();
+	m_ui->initFieldButton();
 	m_ui->initMarketplaceTradeButtons();
 
 	/**

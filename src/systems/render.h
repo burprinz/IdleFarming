@@ -24,4 +24,8 @@ class RenderSystem {
 		Window* m_window;
 		Draw* m_draw;
 		UISystem* m_ui;
+
+		void drawBasicTextButton(std::vector<TextButton> &buttons) noexcept;
+		void drawPlantSelection(std::vector<TextButton> &buttons) noexcept;
+
 };

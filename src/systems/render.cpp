@@ -63,12 +63,18 @@ void RenderSystem::step(const float /*delta*/) noexcept {
     m_draw->drawStringInBox(text, {config::CAMERA_VIEW_WIDTH-1.0, config::CAMERA_VIEW_HEIGHT-0.25}, {2.0, 0.5}, black);
 
     if (m_registry->window() == FIELDS) {
-        bool fieldMarked = false;
-        glm::vec2 markedPos, markedSize;
+
+        /**
+         * Draw Field Selection
+         */
+        drawBasicTextButton(m_ui->m_field_mode_buttons);
+
 
         /**
          * Draw Field
          */
+        bool fieldMarked = false;
+        glm::vec2 markedPos, markedSize;
         glm::vec3 fieldColor = {0.82, 0.49, 0.18};
         for (entt::entity fieldID : m_registry->ecs.view<FarmField>()) {
             FarmField f = m_registry->ecs.get<FarmField>(fieldID);
@@ -92,33 +98,21 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             }
         }
 
+        // If mouse is hovering over field
         if (fieldMarked) {
             m_draw->drawRectBySize(markedPos, markedSize, green);
         }
 
+        // Separator between field and buttons
         float x = 5.5;
         float y_start = config::CAMERA_VIEW_HEIGHT-1.2;
-
         m_draw->drawLine({x, 0.0}, {x, y_start}, black);
 
-        for (TextButton b : m_ui->m_field_plant_select_buttons) {
-            entt::entity plant_id = b.id_label;
-            Plant p = m_registry->ecs.get<Plant>(plant_id);
-            text = p.name;
-            m_draw->drawStringInBox(text, b.pos, b.size, black);
-
-            Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
-
-            glm::vec3 color;
-            if (!u.unlocked) {
-                color = has_enough(money, u.price) ? blue : red;
-            } else if (plant_id == m_registry->current_selected_plant) {
-                color = selected;
-            } else {
-                color = b.selected ? b.select_color : b.unselect_color;
-            }
-
-            m_draw->drawRectBySize(b.pos, b.size, color);
+        // Draw Plant selection
+        if (m_registry->current_selected_field == PLANT_FIELD) {
+            drawPlantSelection(m_ui->m_field_plant_select_buttons);
+        } else if (m_registry->current_selected_field == FLOWER_FIELD) {
+            drawPlantSelection(m_ui->m_field_flower_select_buttons);
         }
 
         // Wenn aktuell eine Pflanze selected ist, gib die infos
@@ -150,21 +144,57 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             entt::entity p_id = buts[0].id_label;
             Plant p = m_registry->ecs.get<Plant>(p_id);
 
+            // Plant name
             float y = buts[0].pos.y;
             glm::vec2 pos = {trade_buttons_topleft.x + plant_name_size.x/2.0f, y};
             m_draw->drawRectBySize(pos, plant_name_size, black);
             m_draw->drawStringInBox(p.name, pos, plant_name_size, black);
 
+            // Amount of plants
             pos = {pos.x + plant_name_size.x/2.0f + market_stash_size.x/2.0f + 0.1f, pos.y};
             BigNumber stash = m_registry->ecs.get<Amount>(p_id).am;
             m_draw->drawRectBySize(pos, market_stash_size, black);
             m_draw->drawStringInBox("x" + stash.toString(), pos, market_stash_size, black);
 
-            for (TextButton &b : buts) {
-                glm::vec3 color = b.selected?b.select_color:b.unselect_color;
-                m_draw->drawRectBySize(b.pos, b.size, color);
-                m_draw->drawStringInBox(b.text, b.pos, b.size, black);
-            }
+            // Buy / Sell
+            drawBasicTextButton(buts);
         }
     }
 }
+
+void RenderSystem::drawBasicTextButton(std::vector<TextButton> &buttons) noexcept {
+    for (TextButton &b : buttons) {
+        glm::vec3 color = b.selected?b.select_color:b.unselect_color;
+        m_draw->drawRectBySize(b.pos, b.size, color);
+        m_draw->drawStringInBox(b.text, b.pos, b.size, black);
+    }
+}
+
+void RenderSystem::drawPlantSelection(std::vector<TextButton> &buttons) noexcept {
+    BigNumber &money = m_registry->ecs.get<Amount>(m_registry->money()).am;
+    std::string text;
+
+    for (TextButton b : buttons) {
+        entt::entity plant_id = b.id_label;
+        Plant p = m_registry->ecs.get<Plant>(plant_id);
+        text = p.name;
+        m_draw->drawStringInBox(text, b.pos, b.size, black);
+
+        Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
+
+        glm::vec3 color;
+        if (!u.unlocked) {
+            color = has_enough(money, u.price) ? blue : red;
+        } else if (plant_id == m_registry->current_selected_plant) {
+            color = selected;
+        } else {
+            color = b.selected ? b.select_color : b.unselect_color;
+        }
+
+        m_draw->drawRectBySize(b.pos, b.size, color);
+    }
+}
+
+
+
+
