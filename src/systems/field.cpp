@@ -30,6 +30,8 @@ void FieldSystem::step(const float delta) noexcept {
             try_to_plant(m_registry->plant_field_tiles, m_registry->current_selected_plant);
         } else if (m_registry->current_selected_field == FLOWER_FIELD) {
             try_to_plant(m_registry->flower_field_tiles, m_registry->current_selected_flower);
+        } else if (m_registry->current_selected_field == TREE_FIELD) {
+            try_to_plant(m_registry->tree_field_tiles, m_registry->current_selected_tree);
         }
     }
 
@@ -38,12 +40,26 @@ void FieldSystem::step(const float delta) noexcept {
         FarmField &f = m_registry->ecs.get<FarmField>(fID);
         if (!f.is_empty && !f.harvestable) {
             Plant p = m_registry->ecs.get<Plant>(f.plant);
-            if (f.grow < p.growTime) {
-                f.grow += delta;
+
+            if (!f.is_tree_field) {
+                // Flower growth
+                if (f.grow < p.growTime) {
+                    f.grow += delta;
+                } else {
+                    f.grow = p.growTime;
+                    f.harvestable = true;
+                }
             } else {
-                f.grow = p.growTime;
-                f.harvestable = true;
+                float grow_time = p.growTime + p.regrowTime;
+                if (f.grow < grow_time) {
+                    f.grow += delta;
+                } else {
+                    f.grow = grow_time;
+                    f.harvestable = true;
+                }
             }
+
+
         }
     }
 
@@ -78,7 +94,13 @@ void FieldSystem::try_to_plant(std::vector<entt::entity> field, entt::entity p_i
                 am += p.min_collect;
 
                 f.harvestable = false;
-                f.is_empty = true;
+                if (!f.is_tree_field) {
+                    // Plant -> fully remove
+                    f.is_empty = true;
+                } else {
+                    // Tree -> Set to growTime so only regrowtime is needed
+                    f.grow = p.growTime;
+                }
             }
 
         } else {

@@ -74,14 +74,22 @@ struct FarmField {
     entt::entity plant;
     float grow;
     bool harvestable = false;
+
+    // Unique for trees
+    bool is_tree_field = false;
 };
 
 struct Plant {
     std::string name = "Plant";
+
     bool unlocked = false;
     float growTime = 1.0;
     int min_collect = 1;
     int max_collect = 1;
+
+    // Unique for trees
+    bool is_tree = false;
+    float regrowTime = 1.0;
 };
 
 struct Color {
@@ -112,6 +120,7 @@ struct TextureInformation {
 
 struct IconTexture {
     TextureInformation info;
+    TextureInformation ungrownInfo;
 };
 
 // NOTE: For your own project you may want to move the registry to a different file, as it grows in size.
@@ -156,27 +165,26 @@ public:
     // Debug-Mode (F5)
     bool debug = false;
 
-    // Orders
-    std::vector<entt::entity> plant_order;
-    std::vector<entt::entity> flower_order;
-    std::vector<entt::entity> tree_order;
-
     /**
      * Farm
      */
     int current_selected_field = PLANT_FIELD;
 
     // Plant
+    std::vector<entt::entity> plant_order;
     entt::entity last_selected_plant = entt::null;
     entt::entity current_selected_plant = entt::null;
     std::vector<entt::entity> plant_field_tiles;
     // Flower
+    std::vector<entt::entity> flower_order;
     entt::entity last_selected_flower = entt::null;
     entt::entity current_selected_flower = entt::null;
     std::vector<entt::entity> flower_field_tiles;
     // Tree
+    std::vector<entt::entity> tree_order;
     entt::entity last_selected_tree = entt::null;
     entt::entity current_selected_tree = entt::null;
+    std::vector<entt::entity> tree_field_tiles;
 
 
     /**

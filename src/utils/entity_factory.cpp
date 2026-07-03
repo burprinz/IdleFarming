@@ -56,7 +56,7 @@ bool EntityFactory::readPath(const std::string& path, nlohmann::json* json_link)
 }
 
 
-void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order) noexcept {
+void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order, bool is_tree) noexcept {
     entt::entity plant_id = m_registry->ecs.create();
     Plant p;
     p.name = plant["name"].get<std::string>();
@@ -65,6 +65,10 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
     p.max_collect = plant["collect_amount"]["max"].get<int>();
     Unlockable unlocked = extract_unlock_infos(plant["unlock"]);
     p.unlocked = unlocked.unlocked;
+    p.is_tree = is_tree;
+    if (is_tree) {
+        p.regrowTime = plant["regrowtime"].get<float>();
+    }
     m_registry->ecs.emplace<Plant>(plant_id, p);
 
     m_registry->ecs.emplace<Unlockable>(plant_id, unlocked);
@@ -80,9 +84,13 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
 
     std::string id_name = plant["id_name"].get<std::string>();
     IconTexture it;
-    it.info = create_icon(id_name);
+    if (!is_tree) {
+        it.info = create_icon(id_name);
+    } else {
+        it.info = create_icon(id_name + "_grown");
+        it.ungrownInfo = create_icon(id_name + "_ungrown");
+    }
     m_registry->ecs.emplace<IconTexture>(plant_id, it);
-
 
     order.push_back(plant_id);
 }

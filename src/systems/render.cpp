@@ -87,6 +87,13 @@ void RenderSystem::step(const float /*delta*/) noexcept {
                 fieldColor,
                 m_ui->m_field_flower_select_buttons,
                 m_registry->current_selected_flower);
+        } else if (m_registry->current_selected_field == TREE_FIELD) {
+            glm::vec3 fieldColor = {0.28, 0.43, 0.21};
+            drawCurrentField(
+                m_registry->tree_field_tiles,
+                fieldColor,
+                m_ui->m_field_tree_select_buttons,
+                m_registry->current_selected_tree);
         }
 
     } else if (m_registry->window() == GENE_LAB) {
@@ -144,8 +151,19 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
         if (!f.is_empty) {
             // Draw the plant if cell is not empty
             Plant p = m_registry->ecs.get<Plant>(f.plant);
-            float radius = (f.grow / p.growTime) * (fSize.x / 2) * 0.9;
-            TextureInformation icon = m_registry->ecs.get<IconTexture>(f.plant).info;
+            float radius = 0.0;
+
+            float grow_time = p.growTime;
+            if (f.is_tree_field) {
+                grow_time += p.regrowTime;
+            }
+            radius = (f.grow / grow_time) * (fSize.x / 2) * 0.9;
+
+            IconTexture iconText = m_registry->ecs.get<IconTexture>(f.plant);
+            TextureInformation icon = iconText.info;
+            if (f.is_tree_field && !f.harvestable) {
+                icon = iconText.ungrownInfo;
+            }
             m_draw->drawTexture(icon.text, fPos, {radius, radius});
         }
     }

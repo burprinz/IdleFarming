@@ -19,8 +19,9 @@ public:
     bool readPath(const std::string& path, nlohmann::json* json) noexcept;
 
     inline void loadBaseValues() noexcept {
-        load_base_plant_like("plants", m_registry->plant_order);
-        load_base_plant_like("flowers", m_registry->flower_order);
+        load_base_plant_like("plants", m_registry->plant_order, false);
+        load_base_plant_like("flowers", m_registry->flower_order, false);
+        load_base_plant_like("trees", m_registry->tree_order, true);
     }
 
 
@@ -35,14 +36,14 @@ private:
     nlohmann::json m_levelJson;
     nlohmann::json m_objectJson;
 
-    void create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order) noexcept;
+    void create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order, bool is_tree) noexcept;
 
 
     /**
      * Base loading
      */
 
-    inline void load_base_plant_like(std::string type, std::vector<entt::entity> &order) {
+    inline void load_base_plant_like(std::string type, std::vector<entt::entity> &order, bool is_tree) {
         order.clear();
 
         std::string json_path = "/assets/data/basevalues/" + type + ".json";
@@ -60,7 +61,7 @@ private:
                 std::cout<<"Error loading " << plant_name << " in EntityFactory with path <"<<plant_path<<">"<<std::endl;
                 continue;
             }
-            create_plant_like(plant_json, order);
+            create_plant_like(plant_json, order, is_tree);
         }
         std::cout<<"Plants loaded"<<std::endl;
     }

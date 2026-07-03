@@ -95,6 +95,23 @@ void UISystem::initFieldButton() noexcept {
     m_field_mode_buttons.push_back(flowerFieldB);
     initPlantLikePlantSelection(m_registry->flower_order, registry->last_selected_flower, registry->current_selected_flower, m_field_flower_select_buttons);
 
+
+    center += glm::vec2{select_button_size.x + 0.1, 0};
+
+    /**
+    * Flower selection
+    */
+    TextButton treeFieldB;
+    treeFieldB.text = "Tree";
+    treeFieldB.pos = center;
+    treeFieldB.size = select_button_size;
+    treeFieldB.on_click = [registry] {
+        registry->current_selected_field = TREE_FIELD;
+    };
+    m_field_mode_buttons.push_back(treeFieldB);
+    initPlantLikePlantSelection(m_registry->tree_order, registry->last_selected_tree, registry->current_selected_tree, m_field_tree_select_buttons);
+
+
 }
 
 void UISystem::initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept {
@@ -212,6 +229,11 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                     if (found) {
                         return;
                     }
+                } else if (m_registry->current_selected_field == TREE_FIELD) {
+                    found = check_text_button_list(m_field_tree_select_buttons);
+                    if (found) {
+                        return;
+                    }
                 }
 
 
@@ -245,6 +267,8 @@ void UISystem::step(const float delta) noexcept {
             selection_found = update_text_button_list(m_field_plant_select_buttons, mousePos, selection_found);
         } else if (m_registry->current_selected_field == FLOWER_FIELD) {
             selection_found = update_text_button_list(m_field_flower_select_buttons, mousePos, selection_found);
+        } else if (m_registry->current_selected_field == TREE_FIELD) {
+            selection_found = update_text_button_list(m_field_tree_select_buttons, mousePos, selection_found);
         }
         (void) selection_found;
 

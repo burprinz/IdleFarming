@@ -152,6 +152,9 @@ void Application::reset() noexcept {
 	entt::entity money = m_registry->create_money();
 	m_registry->ecs.emplace<Amount>(money);
 
+	// Reset world before factory
+	m_world.reset();
+
 	/**
 	 * Load Base Values
 	 */
@@ -166,9 +169,10 @@ void Application::reset() noexcept {
 	/**
 	 * Fields
 	 */
-	float fieldSize = 0.5;
+	//float fieldSize = 0.5;
 
 	// Plants
+	/*
 	m_registry->plant_field_tiles.clear();
 	for (int y = 0; y < 15; y++) {
 		for (int x = 0; x < 10; x++) {
@@ -202,13 +206,12 @@ void Application::reset() noexcept {
 			m_registry->ecs.emplace<Dimension>(fID, size);
 
 			m_registry->flower_field_tiles.push_back(fID);
-
 		}
 	}
+	*/
 
 
-	// reset systems
-	m_world.reset();
+	// reset other systems
 	m_ui->reset();
 	m_render.reset();
 	m_camera.reset();

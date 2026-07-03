@@ -23,7 +23,9 @@ class WorldSystem {
 
 		bool m_reset;
 
-		std::default_random_engine m_random_engine;
-		std::uniform_real_distribution<float> m_uniform_distribution;
+		void create_field(std::vector<entt::entity> &type, bool is_tree_field) noexcept;
+
+
+
 };
 
