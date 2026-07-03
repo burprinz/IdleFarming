@@ -51,12 +51,8 @@ bool EntityFactory::readPath(const std::string& path, nlohmann::json* json_link)
     //CHATGPT Suggested move as it is better in terms of memory. Also in this StackOverflow: https://stackoverflow.com/questions/3413470/what-is-stdmove-and-when-should-it-be-used
     *json_link = std::move(j);
 
-    fmt::println("Successfully loaded level file: '{}'", fullPath);
+    //fmt::println("Successfully loaded level file: '{}'", fullPath);
     return true;
-}
-
-void EntityFactory::createFromFile(const std::string &path) noexcept {
-    (void) path;
 }
 
 
