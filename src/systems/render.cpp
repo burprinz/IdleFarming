@@ -75,46 +75,20 @@ void RenderSystem::step(const float /*delta*/) noexcept {
          */
         if (m_registry->current_selected_field == PLANT_FIELD) {
             glm::vec3 fieldColor = {0.82, 0.49, 0.18};
-            drawCurrentField(m_registry->plant_field_tiles, fieldColor);
+            drawCurrentField(
+                m_registry->plant_field_tiles,
+                fieldColor,
+                m_ui->m_field_plant_select_buttons,
+                m_registry->current_selected_plant);
         } else if (m_registry->current_selected_field == FLOWER_FIELD) {
             glm::vec3 fieldColor = {0.28, 0.43, 0.21};
-            drawCurrentField(m_registry->flower_field_tiles, fieldColor);
+            drawCurrentField(
+                m_registry->flower_field_tiles,
+                fieldColor,
+                m_ui->m_field_flower_select_buttons,
+                m_registry->current_selected_flower);
         }
 
-        // Separator between field and buttons
-        float x = 5.5;
-        float y_start = config::CAMERA_VIEW_HEIGHT-1.2;
-        m_draw->drawLine({x, 0.0}, {x, y_start}, black);
-
-        // Draw Plant selection
-        if (m_registry->current_selected_field == PLANT_FIELD) {
-            drawPlantSelection(m_ui->m_field_plant_select_buttons, m_registry->current_selected_plant);
-        } else if (m_registry->current_selected_field == FLOWER_FIELD) {
-            drawPlantSelection(m_ui->m_field_flower_select_buttons, m_registry->current_selected_flower);
-        }
-
-        // Wenn aktuell eine Pflanze selected ist, gib die infos
-        if (m_registry->current_selected_plant != entt::null) {
-            glm::vec2 selectInfoSize = {4.0f, 5.0f};
-            glm::vec2 topLeft = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x - 0.2, selectInfoSize.y + 0.2};
-            glm::vec2 selectInfoPos = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x/2 - 0.2, selectInfoSize.y/2 + 0.2};
-            m_draw->drawRectBySize(selectInfoPos, selectInfoSize, black);
-            //std::string selected_plant = m_registry->current_selected_plant;
-            entt::entity id = m_registry->current_selected_plant;
-            Plant plant = m_registry->ecs.get<Plant>(id);
-
-            float text_height = 0.3f;
-            x = selectInfoPos.x;
-            float y = topLeft.y - text_height/2.0f - 0.05f;
-            m_draw->drawStringInBox(plant.name, {x, y}, {selectInfoSize.x, text_height}, black);
-
-            y -= text_height/2.0f+0.05f;
-            m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
-
-            y -= text_height/2.0f+0.05f;
-            BigNumber am = m_registry->ecs.get<Amount>(id).am;
-            m_draw->drawStringInBox("x" + am.toString(), {x, y}, {selectInfoSize.x, text_height}, black);
-        }
     } else if (m_registry->window() == GENE_LAB) {
 
     } else if (m_registry->window() == MARKETPLACE) {
@@ -148,32 +122,9 @@ void RenderSystem::drawBasicTextButton(std::vector<TextButton> &buttons) noexcep
     }
 }
 
-void RenderSystem::drawPlantSelection(std::vector<TextButton> &buttons, entt::entity current_selected) noexcept {
-    BigNumber &money = m_registry->ecs.get<Amount>(m_registry->money()).am;
-    std::string text;
+void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::vec3 color,
+    std::vector<TextButton> &buttons, entt::entity current_selected) noexcept {
 
-    for (TextButton b : buttons) {
-        entt::entity plant_id = b.id_label;
-        Plant p = m_registry->ecs.get<Plant>(plant_id);
-        text = p.name;
-        m_draw->drawStringInBox(text, b.pos, b.size, black);
-
-        Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
-
-        glm::vec3 color;
-        if (!u.unlocked) {
-            color = has_enough(money, u.price) ? blue : red;
-        } else if (plant_id == current_selected) {
-            color = selected;
-        } else {
-            color = b.selected ? b.select_color : b.unselect_color;
-        }
-
-        m_draw->drawRectBySize(b.pos, b.size, color);
-    }
-}
-
-void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::vec3 color) {
     bool fieldMarked = false;
     glm::vec2 markedPos, markedSize;
 
@@ -203,7 +154,62 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
     if (fieldMarked) {
         m_draw->drawRectBySize(markedPos, markedSize, green);
     }
+
+
+
+    // Separator between field and buttons
+    float x = 5.5;
+    float y_start = config::CAMERA_VIEW_HEIGHT-1.2;
+    m_draw->drawLine({x, 0.0}, {x, y_start}, black);
+
+
+
+    // Draw Plant selection
+    BigNumber &money = m_registry->ecs.get<Amount>(m_registry->money()).am;
+    std::string text;
+    for (TextButton b : buttons) {
+        entt::entity plant_id = b.id_label;
+        Plant p = m_registry->ecs.get<Plant>(plant_id);
+        text = p.name;
+        m_draw->drawStringInBox(text, b.pos, b.size, black);
+
+        Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
+
+        glm::vec3 draw_color;
+        if (!u.unlocked) {
+            draw_color = has_enough(money, u.price) ? blue : red;
+        } else if (plant_id == current_selected) {
+            draw_color = selected;
+        } else {
+            draw_color = b.selected ? b.select_color : b.unselect_color;
+        }
+        m_draw->drawRectBySize(b.pos, b.size, draw_color);
+    }
+
+
+    // Wenn aktuell eine Pflanze selected ist, gib die infos
+    if (current_selected != entt::null) {
+        glm::vec2 selectInfoSize = {4.0f, 5.0f};
+        glm::vec2 topLeft = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x - 0.2, selectInfoSize.y + 0.2};
+        glm::vec2 selectInfoPos = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x/2 - 0.2, selectInfoSize.y/2 + 0.2};
+        m_draw->drawRectBySize(selectInfoPos, selectInfoSize, black);
+        Plant plant = m_registry->ecs.get<Plant>(current_selected);
+
+        float text_height = 0.3f;
+        x = selectInfoPos.x;
+        float y = topLeft.y - text_height/2.0f - 0.05f;
+        m_draw->drawStringInBox(plant.name, {x, y}, {selectInfoSize.x, text_height}, black);
+
+        y -= text_height/2.0f+0.05f;
+        m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
+
+        y -= text_height/2.0f+0.05f;
+        BigNumber am = m_registry->ecs.get<Amount>(current_selected).am;
+        m_draw->drawStringInBox("x" + am.toString(), {x, y}, {selectInfoSize.x, text_height}, black);
+    }
+
 }
+
 
 
 

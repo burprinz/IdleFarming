@@ -66,6 +66,9 @@ void UISystem::initFieldButton() noexcept {
     glm::vec2 select_button_size = {1.0, 0.5};
     glm::vec2 center = calc_center(top_left, select_button_size);
 
+    /**
+    * Plant selection
+    */
     TextButton plantFieldB;
     plantFieldB.text = "Plant";
     plantFieldB.pos = center;
@@ -74,9 +77,14 @@ void UISystem::initFieldButton() noexcept {
         registry->current_selected_field = PLANT_FIELD;
     };
     m_field_mode_buttons.push_back(plantFieldB);
+    initPlantLikePlantSelection(m_registry->plant_order, registry->last_selected_plant, registry->current_selected_plant, m_field_plant_select_buttons);
+
 
     center += glm::vec2{select_button_size.x + 0.1, 0};
 
+    /**
+    * Flower selection
+    */
     TextButton flowerFieldB;
     flowerFieldB.text = "Flower";
     flowerFieldB.pos = center;
@@ -85,47 +93,30 @@ void UISystem::initFieldButton() noexcept {
         registry->current_selected_field = FLOWER_FIELD;
     };
     m_field_mode_buttons.push_back(flowerFieldB);
+    initPlantLikePlantSelection(m_registry->flower_order, registry->last_selected_flower, registry->current_selected_flower, m_field_flower_select_buttons);
 
+}
 
-    /**
-     * Plant selection
-     */
-    top_left = {6.0, config::CAMERA_VIEW_HEIGHT-1.2};
-    center = calc_center(top_left, plant_name_size);
+void UISystem::initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept {
+    buttons.clear();
+    glm::vec2 top_left = {6.0, config::CAMERA_VIEW_HEIGHT-1.2};
+    glm::vec2 center = calc_center(top_left, plant_name_size);
     int c = 0;
-    for (entt::entity plant_id : m_registry->plant_order) {
+    for (entt::entity id : order) {
         float y = center.y - c*(plant_name_size.y + 0.1);
         TextButton plantB;
         plantB.pos = {center.x, y};
         plantB.size = plant_name_size;
-        plantB.id_label = plant_id;
-        plantB.on_click = [registry, plant_id] {
-            registry->last_selected_plant = registry->current_selected_plant;
-            registry->current_selected_plant = plant_id;
+        plantB.id_label = id;
+        plantB.on_click = [&last_selected, &current_selected, id] {
+            last_selected = current_selected;
+            current_selected = id;
         };
-        m_field_plant_select_buttons.push_back(plantB);
+        buttons.push_back(plantB);
         c += 1;
     }
-
-    /**
-     * Flower selection
-     */
-    c = 0;
-    for (entt::entity flower_id : m_registry->flower_order) {
-        float y = center.y - c*(plant_name_size.y + 0.1);
-        TextButton flowerB;
-        flowerB.pos = {center.x, y};
-        flowerB.size = plant_name_size;
-        flowerB.id_label = flower_id;
-        flowerB.on_click = [registry, flower_id] {
-            registry->last_selected_flower = registry->current_selected_flower;
-            registry->current_selected_flower = flower_id;
-        };
-        m_field_flower_select_buttons.push_back(flowerB);
-        c += 1;
-    }
-
 }
+
 
 void UISystem::initMarketplaceTradeButtons() noexcept {
     glm::vec2 trade_button_size = {0.7, 0.5};

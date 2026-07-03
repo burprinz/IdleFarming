@@ -47,6 +47,9 @@ public:
     std::vector<TextButton> m_field_mode_buttons;
     std::vector<TextButton> m_field_plant_select_buttons;
     std::vector<TextButton> m_field_flower_select_buttons;
+    void initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept;
+
+
 
     std::vector<std::vector<TextButton>> m_market_trade_buttons;
 
