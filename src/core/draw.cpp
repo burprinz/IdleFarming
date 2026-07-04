@@ -35,6 +35,7 @@ Draw *Draw::init(Window* window, Registry* registry) noexcept {
 	self->m_text_shader = Shader::init(assets::Shader::text).value();
     self->m_sprite_shader = Shader::init(assets::Shader::sprite).value();
     self->m_circle_shader = Shader::init(assets::Shader::circle).value();
+    self->m_round_rect_shader = Shader::init(assets::Shader::round_rect).value();
 
 	// line VAO/VBO
     glGenVertexArrays(1, &self->m_line_vao);
@@ -133,6 +134,24 @@ Draw *Draw::init(Window* window, Registry* registry) noexcept {
 	glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE,sizeof(glm::vec2),nullptr);
 
 
+    // Round rect
+    // round rect VAO/VBO (pos.xy + localCoord.xy pro Vertex)
+    glGenVertexArrays(1, &self->m_round_rect_vao);
+    glBindVertexArray(self->m_round_rect_vao);
+
+    glGenBuffers(1, &self->m_round_rect_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, self->m_round_rect_vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * 4, nullptr, GL_DYNAMIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)sizeof(glm::vec2));
+
+    GLuint round_rect_indices[6] = { 0, 2, 1, 1, 2, 3 };
+    glGenBuffers(1, &self->m_round_rect_ebo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, self->m_round_rect_ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(round_rect_indices), round_rect_indices, GL_STATIC_DRAW);
+
     return self;
 }
 
@@ -146,6 +165,7 @@ void Draw::deinit() noexcept {
     m_text_shader.deinit();
     m_sprite_shader.deinit();
     m_intermediate_framebuffer.deinit();
+    m_round_rect_shader.deinit();
 }
 
 void Draw::start() noexcept {
@@ -237,6 +257,44 @@ void Draw::drawRectBySize(glm::vec2 center, glm::vec2 size, glm::vec3 color) noe
     glm::vec2 br = center + glm::vec2{w, -h};
 
     drawRect(tl, tr, bl, br, color);
+}
+
+void Draw::drawRoundRect(glm::vec2 center, glm::vec2 size, float radius, glm::vec3 color, float thickness) noexcept {
+    glm::vec2 halfSize = size / 2.0f;
+    radius = std::min({radius, halfSize.x, halfSize.y});
+
+    glBindVertexArray(m_round_rect_vao);
+    setupRoundRectQuad(m_round_rect_vbo, center, size);
+
+    m_round_rect_shader.use()
+        .setMat4("view", view)
+        .setMat4("projection", projection)
+        .setVec2("halfSize", halfSize)
+        .setFloat("radius", radius)
+        .setFloat("thickness", thickness)
+        .setVec3("color", color)
+        .setFloat("opacity", 1.0f);
+
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+}
+
+void Draw::fillRoundRect(glm::vec2 center, glm::vec2 size, float radius, glm::vec3 color, float opacity) noexcept {
+    glm::vec2 halfSize = size / 2.0f;
+    radius = std::min({radius, halfSize.x, halfSize.y});
+
+    glBindVertexArray(m_round_rect_vao);
+    setupRoundRectQuad(m_round_rect_vbo, center, size);
+
+    m_round_rect_shader.use()
+        .setMat4("view", view)
+        .setMat4("projection", projection)
+        .setVec2("halfSize", halfSize)
+        .setFloat("radius", radius)
+        .setFloat("thickness", 0.0f)
+        .setVec3("color", color)
+        .setFloat("opacity", opacity);
+
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 void Draw::fillCircle(glm::vec2 position, float radius, glm::vec3 color, float opacity) noexcept {
@@ -493,3 +551,4 @@ void Draw::onResizeCallback(GLFWwindow *, int width, int height) noexcept {
     m_intermediate_framebuffer.deinit();
     m_intermediate_framebuffer = Framebuffer::init({(GLsizei) size.x, (GLsizei) size.y, 1, true});
 }
+

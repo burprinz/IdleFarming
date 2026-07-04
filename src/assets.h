@@ -30,6 +30,7 @@ enum struct Shader {
 	circle,
 	polygon,
 	beam,
+	round_rect,
 	count
 };
 

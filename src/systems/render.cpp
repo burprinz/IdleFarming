@@ -180,8 +180,6 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
     float y_start = config::CAMERA_VIEW_HEIGHT-1.2;
     m_draw->drawLine({x, 0.0}, {x, y_start}, black);
 
-
-
     // Draw Plant selection
     BigNumber &money = m_registry->ecs.get<Amount>(m_registry->money()).am;
     std::string text;
@@ -192,18 +190,23 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
         Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
 
         glm::vec3 draw_color;
+
+        // For popup later
+        bool has_enough_money = false;
+
         if (!u.unlocked) {
             // Not unlocked
             m_draw->fillRectBySize(b.pos, b.size, black, 1.0f);
             Texture lock_text;
-            if (has_enough(money, u.price)) {
+            has_enough_money = has_enough(money, u.price);
+            if (has_enough_money) {
                 // can buy
                 lock_text = m_registry->ecs.get<TextureInformation>(m_registry->lock_unlocked_texture).text;
             } else {
                 // can not buy
                 lock_text = m_registry->ecs.get<TextureInformation>(m_registry->lock_locked_texture).text;
             }
-            m_draw->drawTexture(lock_text, b.pos, glm::vec2{b.size.y, b.size.y} / 2.1f);
+            m_draw->drawTexture(lock_text, b.pos, glm::vec2{b.size.y, b.size.y} / 2.2f);
             draw_color = b.selected ? b.select_color : b.unselect_color;
         } else {
             // Unlocked
@@ -218,6 +221,15 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
             m_draw->drawStringInBox(text, b.pos, b.size, black);
         }
         m_draw->drawRectBySize(b.pos, b.size, draw_color);
+
+        // Draw Price popup if not unlocked and selected
+        if (!u.unlocked && b.selected) {
+            std::cout<<"Hallo"<<std::endl;
+            glm::vec2 popup_size = {1.0, 0.5};
+            glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
+            glm::vec3 text_color = has_enough_money?green:red;
+            drawPopup(u.price.toString(), popup_pos, popup_size, text_color);
+        }
     }
 
 
@@ -244,6 +256,35 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
 
 }
 
+glm::vec2 RenderSystem::getPopupPositionForMouse(glm::vec2 popup_size) noexcept {
+    glm::vec2 mouse_pos = m_window->getMousePosition();
+
+    glm::vec2 result = {0, 0};
+
+    if (mouse_pos.x + popup_size.x > config::CAMERA_VIEW_WIDTH) {
+        result.x = mouse_pos.x - popup_size.x / 2.0f;
+    } else {
+        result.x = mouse_pos.x + popup_size.x / 2.0f;
+    }
+
+    if (mouse_pos.y + popup_size.y > config::CAMERA_VIEW_HEIGHT) {
+        result.y = mouse_pos.y - popup_size.y / 2.0f;
+    } else {
+        result.y = mouse_pos.y + popup_size.y / 2.0f;
+    }
+
+    return result;
+}
+
+
+void RenderSystem::drawPopup(std::string msg, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color) noexcept {
+    float angle = 10.0;
+
+    m_draw->fillRoundRect(pos, size, angle, black, 0.75f);
+    m_draw->drawStringInBox(msg, pos, size, text_color);
+    m_draw->drawRoundRect(pos, size, angle, black);
+
+}
 
 
 

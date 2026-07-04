@@ -41,6 +41,8 @@ public:
     void drawRect(glm::vec2 topleft, glm::vec2 topright,glm::vec2 bottomleft, glm::vec2 bottomright, glm::vec3 color) noexcept;
     void fillRectBySize(glm::vec2 center, glm::vec2 size, glm::vec3 color, float opacity) noexcept;
     void fillRect(glm::vec2 topleft, glm::vec2 topright,glm::vec2 bottomleft, glm::vec2 bottomright, glm::vec3 color, float opacity) noexcept;
+    void drawRoundRect(glm::vec2 center, glm::vec2 size, float radius, glm::vec3 color, float thickness = 0.03f) noexcept;
+    void fillRoundRect(glm::vec2 center, glm::vec2 size, float radius, glm::vec3 color, float opacity) noexcept;
 
     //TODO void drawCircle(glm::vec2 position, float radius, glm::vec3 color, float opacity, glm::mat4 view, glm::mat4 projection) noexcept;
     void fillCircle(glm::vec2 position, float radius, glm::vec3 color, float opacity) noexcept;
@@ -105,7 +107,9 @@ private:
 
     Shader m_polygon_shader;
 
-    //Texture m_player_animation_texture;
+
+    Shader m_round_rect_shader;
+
 
     GLuint m_quad_vao;
     GLuint m_quad_ebo;
@@ -132,9 +136,29 @@ private:
     GLuint m_text_vao;
     GLuint m_text_vbo;
 
-
     GLuint m_circle_vao;
     GLuint m_circle_vbo;
+
+    GLuint m_round_rect_vao;
+    GLuint m_round_rect_vbo;
+    GLuint m_round_rect_ebo;
+
+
+    static void setupRoundRectQuad(GLuint vbo, glm::vec2 center, glm::vec2 size) noexcept {
+        float w = size.x / 2.0f;
+        float h = size.y / 2.0f;
+
+        // vec4: worldPos.xy, localPos.xy (-1..1)
+        glm::vec4 verts[4] = {
+            { center.x - w, center.y + h, -1.0f,  1.0f }, // top-left
+            { center.x + w, center.y + h,  1.0f,  1.0f }, // top-right
+            { center.x - w, center.y - h, -1.0f, -1.0f }, // bottom-left
+            { center.x + w, center.y - h,  1.0f, -1.0f }, // bottom-right
+        };
+
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(verts), verts);
+    }
 
 };
 
