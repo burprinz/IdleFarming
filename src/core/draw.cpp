@@ -27,8 +27,6 @@ Draw *Draw::init(Window* window, Registry* registry) noexcept {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, self->m_quad_ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * indices.size(), indices.data(), GL_STATIC_DRAW);
 
-     // load resources for rendering
-    //self->m_player_mesh = Mesh::init(assets::Mesh::player).value();
 
     self->m_player_shader = Shader::init(assets::Shader::player).value();
     self->m_line_shader = Shader::init(assets::Shader::line).value();
@@ -443,7 +441,7 @@ void Draw::drawArrow(glm::vec2 start_point, glm::vec2 end_point, glm::vec3 color
 
 
 void Draw::drawTexture(Texture& texture, glm::vec2 position, glm::vec2 scale) noexcept {
-    //position += scale;
+
     glBindVertexArray(m_quad_vao);
     Shader& sprite_shader = m_sprite_shader;
     sprite_shader.use()
@@ -457,6 +455,8 @@ void Draw::drawTexture(Texture& texture, glm::vec2 position, glm::vec2 scale) no
     model = glm::scale(model, glm::vec3(scale, 1));
 
     texture.bind(0);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
     sprite_shader.setMat4("model[0]", model);
     glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, 1);
 }

@@ -83,7 +83,6 @@ void Application::deinit() noexcept {
 	m_field.deinit();
 	m_unlock.deinit();
 
-
 	m_draw->deinit();
 
 	delete m_registry;

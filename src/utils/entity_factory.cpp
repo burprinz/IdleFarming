@@ -95,6 +95,17 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
     order.push_back(plant_id);
 }
 
+void EntityFactory::load_symbols() noexcept {
+
+    m_registry->lock_locked_texture = m_registry->ecs.create();
+    TextureInformation lock = create_symbol("lock_locked");
+    m_registry->ecs.emplace<TextureInformation>(m_registry->lock_locked_texture, lock);
+
+    m_registry->lock_unlocked_texture = m_registry->ecs.create();
+    TextureInformation unlock = create_symbol("lock_unlocked");
+    m_registry->ecs.emplace<TextureInformation>(m_registry->lock_unlocked_texture, unlock);
+
+}
 
 
 

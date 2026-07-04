@@ -188,18 +188,34 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
     for (TextButton b : buttons) {
         entt::entity plant_id = b.id_label;
         Plant p = m_registry->ecs.get<Plant>(plant_id);
-        text = p.name;
-        m_draw->drawStringInBox(text, b.pos, b.size, black);
 
         Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
 
         glm::vec3 draw_color;
         if (!u.unlocked) {
-            draw_color = has_enough(money, u.price) ? blue : red;
-        } else if (plant_id == current_selected) {
-            draw_color = selected;
-        } else {
+            // Not unlocked
+            m_draw->fillRectBySize(b.pos, b.size, black, 1.0f);
+            Texture lock_text;
+            if (has_enough(money, u.price)) {
+                // can buy
+                lock_text = m_registry->ecs.get<TextureInformation>(m_registry->lock_unlocked_texture).text;
+            } else {
+                // can not buy
+                lock_text = m_registry->ecs.get<TextureInformation>(m_registry->lock_locked_texture).text;
+            }
+            m_draw->drawTexture(lock_text, b.pos, glm::vec2{b.size.y, b.size.y} / 2.1f);
             draw_color = b.selected ? b.select_color : b.unselect_color;
+        } else {
+            // Unlocked
+            if (plant_id == current_selected) {
+                // Unlocked and selected
+                draw_color = selected;
+            } else {
+                // Unlocked but not selected
+                draw_color = b.selected ? b.select_color : b.unselect_color;
+            }
+            text = p.name;
+            m_draw->drawStringInBox(text, b.pos, b.size, black);
         }
         m_draw->drawRectBySize(b.pos, b.size, draw_color);
     }

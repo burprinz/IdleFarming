@@ -166,6 +166,13 @@ public:
     bool debug = false;
 
     /**
+     * Textures
+     */
+    entt::entity lock_locked_texture;
+    entt::entity lock_unlocked_texture;
+
+
+    /**
      * Farm
      */
     int current_selected_field = PLANT_FIELD;
@@ -191,6 +198,8 @@ public:
      * Marketplace
      */
     BigNumber market_multiplier = BigNumber(1); // -1 = MAX
+
+
 private:
 
     int current_window = FIELDS;

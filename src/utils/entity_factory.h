@@ -19,6 +19,8 @@ public:
     bool readPath(const std::string& path, nlohmann::json* json) noexcept;
 
     inline void loadBaseValues() noexcept {
+        load_symbols();
+
         load_base_plant_like("plants", m_registry->plant_order, false);
         load_base_plant_like("flowers", m_registry->flower_order, false);
         load_base_plant_like("trees", m_registry->tree_order, true);
@@ -35,6 +37,8 @@ private:
 
     nlohmann::json m_levelJson;
     nlohmann::json m_objectJson;
+
+    void load_symbols() noexcept;
 
     void create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order, bool is_tree) noexcept;
 
@@ -108,6 +112,17 @@ private:
             info.text = Texture::init(getTexturePath("icons/notfound.png"));
         }
         info.base_size = base_icon_size;
+        return info;
+    }
+
+    inline TextureInformation create_symbol(std::string name) {
+        TextureInformation info;
+        std::string text_path = getTexturePath("symbols/" + name + ".png");
+        if (std::filesystem::exists(text_path)) {
+            info.text = Texture::init(text_path);
+        } else {
+            info.text = Texture::init(getTexturePath("icons/notfound.png"));
+        }
         return info;
     }
 
