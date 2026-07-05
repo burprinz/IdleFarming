@@ -65,9 +65,13 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
     p.max_collect = plant["collect_amount"]["max"].get<int>();
     Unlockable unlocked = extract_unlock_infos(plant["unlock"]);
     p.unlocked = unlocked.unlocked;
-    p.is_tree = is_tree;
+    p.is_regrowable = is_tree;
     if (is_tree) {
         p.regrowTime = plant["regrowtime"].get<float>();
+    }
+    if (plant.contains("has_inventory") && plant["has_inventory"].get<bool>()) {
+        p.has_inventory = true;
+        p.inventory_size = extract_bignumber(plant["inventory_size"]);
     }
     m_registry->ecs.emplace<Plant>(plant_id, p);
 
@@ -91,6 +95,7 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
         it.ungrownInfo = create_icon(id_name + "_ungrown");
     }
     m_registry->ecs.emplace<IconTexture>(plant_id, it);
+
 
     order.push_back(plant_id);
 }

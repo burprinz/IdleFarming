@@ -99,7 +99,7 @@ void UISystem::initFieldButton() noexcept {
     center += glm::vec2{select_button_size.x + 0.1, 0};
 
     /**
-    * Flower selection
+    * Tree selection
     */
     TextButton treeFieldB;
     treeFieldB.text = "Tree";
@@ -111,6 +111,20 @@ void UISystem::initFieldButton() noexcept {
     m_field_mode_buttons.push_back(treeFieldB);
     initPlantLikePlantSelection(m_registry->tree_order, registry->last_selected_tree, registry->current_selected_tree, m_field_tree_select_buttons);
 
+    center += glm::vec2{select_button_size.x + 0.1, 0};
+
+    /**
+    * Cave Machine selection
+    */
+    TextButton caveMFieldB;
+    caveMFieldB.text = "Cave";
+    caveMFieldB.pos = center;
+    caveMFieldB.size = select_button_size;
+    caveMFieldB.on_click = [registry] {
+        registry->current_selected_field = CAVE_MACHINES;
+    };
+    m_field_mode_buttons.push_back(caveMFieldB);
+    initPlantLikePlantSelection(m_registry->cave_machine_order, registry->last_selected_cave_machine, registry->current_selected_cave_machine, m_field_cave_machines_select_buttons);
 
 }
 
@@ -234,6 +248,11 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                     if (found) {
                         return;
                     }
+                } else if (m_registry->current_selected_field == CAVE_MACHINES) {
+                    found = check_text_button_list(m_field_cave_machines_select_buttons);
+                    if (found) {
+                        return;
+                    }
                 }
 
 
@@ -269,6 +288,8 @@ void UISystem::step(const float delta) noexcept {
             selection_found = update_text_button_list(m_field_flower_select_buttons, mousePos, selection_found);
         } else if (m_registry->current_selected_field == TREE_FIELD) {
             selection_found = update_text_button_list(m_field_tree_select_buttons, mousePos, selection_found);
+        } else if (m_registry->current_selected_field == CAVE_MACHINES) {
+            selection_found = update_text_button_list(m_field_cave_machines_select_buttons, mousePos, selection_found);
         }
         (void) selection_found;
 

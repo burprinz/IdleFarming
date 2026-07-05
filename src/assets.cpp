@@ -30,7 +30,6 @@ static constexpr std::array<const char*, static_cast<size_t>(assets::Shader::cou
 	"shadow",
 	"circle",
 	"polygon",
-	"beam",
 	"round_rect"
 };
 

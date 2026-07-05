@@ -1,0 +1,7 @@
+1. Init vals and state in Registry
+2. Init field in world
+3. Create basevalue list and plantable folder
+4. Create load in entityfactory
+5. Create SwitchButton in UI
+6. Create SelectionButtons in UI
+7. Update in Render

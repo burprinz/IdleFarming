@@ -29,7 +29,6 @@ enum struct Shader {
 	shadow,
 	circle,
 	polygon,
-	beam,
 	round_rect,
 	count
 };

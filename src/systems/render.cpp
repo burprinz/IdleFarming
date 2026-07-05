@@ -94,6 +94,13 @@ void RenderSystem::step(const float /*delta*/) noexcept {
                 fieldColor,
                 m_ui->m_field_tree_select_buttons,
                 m_registry->current_selected_tree);
+        }else if (m_registry->current_selected_field == CAVE_MACHINES) {
+            glm::vec3 fieldColor = {0.67, 0.64, 0.52};
+            drawCurrentField(
+                m_registry->cave_machine_field_tiles,
+                fieldColor,
+                m_ui->m_field_cave_machines_select_buttons,
+                m_registry->current_selected_cave_machine);
         }
 
     } else if (m_registry->window() == GENE_LAB) {
@@ -153,15 +160,21 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
             Plant p = m_registry->ecs.get<Plant>(f.plant);
             float radius = 0.0;
 
-            float grow_time = p.growTime;
-            if (f.is_tree_field) {
-                grow_time += p.regrowTime;
+            if (!p.has_inventory) {
+                float grow_time = p.growTime;
+                if (f.is_regrowable_field) {
+                    grow_time += p.regrowTime;
+                }
+                radius = (f.grow / grow_time) * (fSize.x / 2) * 0.9;
+            } else {
+                // Has inventory -> direkt full size
+                radius = (fSize.x / 2) * 0.9;
             }
-            radius = (f.grow / grow_time) * (fSize.x / 2) * 0.9;
+
 
             IconTexture iconText = m_registry->ecs.get<IconTexture>(f.plant);
             TextureInformation icon = iconText.info;
-            if (f.is_tree_field && !f.harvestable) {
+            if (f.is_regrowable_field && !f.harvestable) {
                 icon = iconText.ungrownInfo;
             }
             m_draw->drawTexture(icon.text, fPos, {radius, radius});
@@ -172,8 +185,6 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
     if (fieldMarked) {
         m_draw->drawRectBySize(markedPos, markedSize, green);
     }
-
-
 
     // Separator between field and buttons
     float x = 5.5;
@@ -224,7 +235,6 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
 
         // Draw Price popup if not unlocked and selected
         if (!u.unlocked && b.selected) {
-            std::cout<<"Hallo"<<std::endl;
             glm::vec2 popup_size = {1.0, 0.5};
             glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
             glm::vec3 text_color = has_enough_money?green:red;

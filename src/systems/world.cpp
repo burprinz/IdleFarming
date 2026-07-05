@@ -29,6 +29,8 @@ void WorldSystem::reset() noexcept {
     create_field(m_registry->plant_field_tiles, false);
     create_field(m_registry->flower_field_tiles, false);
     create_field(m_registry->tree_field_tiles, true);
+    create_field(m_registry->cave_machine_field_tiles, true);
+
 }
 
 void WorldSystem::step(const float delta) noexcept {
@@ -37,7 +39,7 @@ void WorldSystem::step(const float delta) noexcept {
 }
 
 
-void WorldSystem::create_field(std::vector<entt::entity> &type, bool is_tree_field) noexcept {
+void WorldSystem::create_field(std::vector<entt::entity> &type, bool is_regrowable) noexcept {
     type.clear();
 
     for (int y = 0; y < 15; y++) {
@@ -46,7 +48,7 @@ void WorldSystem::create_field(std::vector<entt::entity> &type, bool is_tree_fie
 
             FarmField f;
             f.unlocked = true;
-            f.is_tree_field = is_tree_field;
+            f.is_regrowable_field = is_regrowable;
             m_registry->ecs.emplace<FarmField>(fID, f);
 
             glm::vec2 pos = {0.5 + x*field_size, 0.5 + y*field_size};

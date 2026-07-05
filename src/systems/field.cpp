@@ -32,6 +32,8 @@ void FieldSystem::step(const float delta) noexcept {
             try_to_plant(m_registry->flower_field_tiles, m_registry->current_selected_flower);
         } else if (m_registry->current_selected_field == TREE_FIELD) {
             try_to_plant(m_registry->tree_field_tiles, m_registry->current_selected_tree);
+        }else if (m_registry->current_selected_field == CAVE_MACHINES) {
+            try_to_plant(m_registry->cave_machine_field_tiles, m_registry->current_selected_cave_machine);
         }
     }
 
@@ -41,7 +43,11 @@ void FieldSystem::step(const float delta) noexcept {
         if (!f.is_empty && !f.harvestable) {
             Plant p = m_registry->ecs.get<Plant>(f.plant);
 
-            if (!f.is_tree_field) {
+            if (p.has_inventory) {
+                std::cout<<m_registry->ecs.get<Inventory>(fID).amount.toString()<<std::endl;
+            }
+
+            if (!f.is_regrowable_field) {
                 // Flower growth
                 if (f.grow < p.growTime) {
                     f.grow += delta;
@@ -50,12 +56,19 @@ void FieldSystem::step(const float delta) noexcept {
                     f.harvestable = true;
                 }
             } else {
+                // Tree / Machine growth
                 float grow_time = p.growTime + p.regrowTime;
                 if (f.grow < grow_time) {
                     f.grow += delta;
                 } else {
-                    f.grow = grow_time;
-                    f.harvestable = true;
+                    if (!p.has_inventory) {
+                        f.grow = grow_time;
+                        f.harvestable = true;
+                    } else {
+                        Inventory &inv = m_registry->ecs.get<Inventory>(fID);
+                        inv.amount = inv.amount + p.min_collect;
+                        f.grow = p.growTime;
+                    }
                 }
             }
 
@@ -85,6 +98,13 @@ void FieldSystem::try_to_plant(std::vector<entt::entity> field, entt::entity p_i
                 f.plant = p_id;
                 f.grow = 0.0;
                 f.harvestable = false;
+                Plant p = m_registry->ecs.get<Plant>(p_id);
+                if (p.has_inventory) {
+                    Inventory inv;
+                    inv.size = BigNumber(p.inventory_size);
+                    inv.amount = BigNumber(0);
+                    m_registry->ecs.emplace<Inventory>(fieldID, inv);
+                }
             }
 
             if (!f.is_empty && f.harvestable && m_registry->keys["mouse_right"]) {
@@ -94,10 +114,10 @@ void FieldSystem::try_to_plant(std::vector<entt::entity> field, entt::entity p_i
                 am += p.min_collect;
 
                 f.harvestable = false;
-                if (!f.is_tree_field) {
+                if (!f.is_regrowable_field) {
                     // Plant -> fully remove
                     f.is_empty = true;
-                } else {
+                } else if (!p.has_inventory) {
                     // Tree -> Set to growTime so only regrowtime is needed
                     f.grow = p.growTime;
                 }

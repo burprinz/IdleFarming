@@ -20,7 +20,7 @@ constexpr int MARKETPLACE = 2;
 constexpr int PLANT_FIELD = 0;
 constexpr int FLOWER_FIELD = 1;
 constexpr int TREE_FIELD = 2;
-
+constexpr int CAVE_MACHINES = 3;
 
 struct Viewport{
     glm::uvec2 m_origin;
@@ -76,7 +76,7 @@ struct FarmField {
     bool harvestable = false;
 
     // Unique for trees
-    bool is_tree_field = false;
+    bool is_regrowable_field = false;
 };
 
 struct Plant {
@@ -87,9 +87,13 @@ struct Plant {
     int min_collect = 1;
     int max_collect = 1;
 
-    // Unique for trees
-    bool is_tree = false;
+    // Unique for trees and machines
+    bool is_regrowable = false;
     float regrowTime = 1.0;
+
+    // Unique for machines
+    bool has_inventory = false;
+    BigNumber inventory_size;
 };
 
 struct Color {
@@ -108,6 +112,11 @@ struct Price {
 struct Unlockable {
     bool unlocked = false;
     BigNumber price;
+};
+
+struct Inventory {
+    BigNumber size;
+    BigNumber amount;
 };
 
 /**
@@ -192,7 +201,11 @@ public:
     entt::entity last_selected_tree = entt::null;
     entt::entity current_selected_tree = entt::null;
     std::vector<entt::entity> tree_field_tiles;
-
+    // Cave Machines
+    std::vector<entt::entity> cave_machine_order;
+    entt::entity last_selected_cave_machine = entt::null;
+    entt::entity current_selected_cave_machine = entt::null;
+    std::vector<entt::entity> cave_machine_field_tiles;
 
     /**
      * Marketplace

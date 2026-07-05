@@ -24,6 +24,7 @@ public:
         load_base_plant_like("plants", m_registry->plant_order, false);
         load_base_plant_like("flowers", m_registry->flower_order, false);
         load_base_plant_like("trees", m_registry->tree_order, true);
+        load_base_plant_like("cave_machines", m_registry->cave_machine_order, true);
     }
 
 
