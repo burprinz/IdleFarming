@@ -180,32 +180,17 @@ public:
     entt::entity lock_locked_texture;
     entt::entity lock_unlocked_texture;
 
-
     /**
      * Farm
      */
-    int current_selected_field = PLANT_FIELD;
+    std::vector<std::string> field_order;
+    std::vector<Color> field_colors;
+    size_t current_selected_field = 0;
+    std::vector<std::vector<entt::entity>> tmp_order;
+    std::vector<entt::entity> last_selected_tmp;
+    std::vector<entt::entity> current_selected_tmp;
+    std::vector<std::vector<entt::entity>> tmp_field_tiles;
 
-    // Plant
-    std::vector<entt::entity> plant_order;
-    entt::entity last_selected_plant = entt::null;
-    entt::entity current_selected_plant = entt::null;
-    std::vector<entt::entity> plant_field_tiles;
-    // Flower
-    std::vector<entt::entity> flower_order;
-    entt::entity last_selected_flower = entt::null;
-    entt::entity current_selected_flower = entt::null;
-    std::vector<entt::entity> flower_field_tiles;
-    // Tree
-    std::vector<entt::entity> tree_order;
-    entt::entity last_selected_tree = entt::null;
-    entt::entity current_selected_tree = entt::null;
-    std::vector<entt::entity> tree_field_tiles;
-    // Cave Machines
-    std::vector<entt::entity> cave_machine_order;
-    entt::entity last_selected_cave_machine = entt::null;
-    entt::entity current_selected_cave_machine = entt::null;
-    std::vector<entt::entity> cave_machine_field_tiles;
 
     /**
      * Marketplace

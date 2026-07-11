@@ -26,15 +26,10 @@ void FieldSystem::reset() noexcept {
 void FieldSystem::step(const float delta) noexcept {
 
     if (m_registry->window() == FIELDS) {
-        if (m_registry->current_selected_field == PLANT_FIELD) {
-            try_to_plant(m_registry->plant_field_tiles, m_registry->current_selected_plant);
-        } else if (m_registry->current_selected_field == FLOWER_FIELD) {
-            try_to_plant(m_registry->flower_field_tiles, m_registry->current_selected_flower);
-        } else if (m_registry->current_selected_field == TREE_FIELD) {
-            try_to_plant(m_registry->tree_field_tiles, m_registry->current_selected_tree);
-        }else if (m_registry->current_selected_field == CAVE_MACHINES) {
-            try_to_plant(m_registry->cave_machine_field_tiles, m_registry->current_selected_cave_machine);
-        }
+        try_to_plant(
+            m_registry->tmp_field_tiles[m_registry->current_selected_field],
+            m_registry->current_selected_tmp[m_registry->current_selected_field]
+            );
     }
 
     // Update every cell if not empty
@@ -109,7 +104,6 @@ void FieldSystem::try_to_plant(std::vector<entt::entity> field, entt::entity p_i
                 // Try to harvest
                 if (p.has_inventory) {
                     // Machine -> Add inventory am to stash and remove inv
-                    std::cout<<"Machine"<<std::endl;
                     Inventory inv = m_registry->ecs.get<Inventory>(fieldID);
                     am += inv.amount;
                     m_registry->ecs.remove<Inventory>(fieldID);

@@ -1,0 +1,13 @@
+{
+  "name": "FLowers",
+  "plants": [
+    "daisy",
+    "dandelion",
+    "tulips"
+  ],
+  "color": {
+    "r": 0.28,
+    "g": 0.43,
+    "b": 0.21
+  }
+}

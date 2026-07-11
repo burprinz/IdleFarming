@@ -73,35 +73,12 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         /**
          * Draw Field
          */
-        if (m_registry->current_selected_field == PLANT_FIELD) {
-            glm::vec3 fieldColor = {0.82, 0.49, 0.18};
-            drawCurrentField(
-                m_registry->plant_field_tiles,
-                fieldColor,
-                m_ui->m_field_plant_select_buttons,
-                m_registry->current_selected_plant);
-        } else if (m_registry->current_selected_field == FLOWER_FIELD) {
-            glm::vec3 fieldColor = {0.28, 0.43, 0.21};
-            drawCurrentField(
-                m_registry->flower_field_tiles,
-                fieldColor,
-                m_ui->m_field_flower_select_buttons,
-                m_registry->current_selected_flower);
-        } else if (m_registry->current_selected_field == TREE_FIELD) {
-            glm::vec3 fieldColor = {0.28, 0.43, 0.21};
-            drawCurrentField(
-                m_registry->tree_field_tiles,
-                fieldColor,
-                m_ui->m_field_tree_select_buttons,
-                m_registry->current_selected_tree);
-        }else if (m_registry->current_selected_field == CAVE_MACHINES) {
-            glm::vec3 fieldColor = {0.67, 0.64, 0.52};
-            drawCurrentField(
-                m_registry->cave_machine_field_tiles,
-                fieldColor,
-                m_ui->m_field_cave_machines_select_buttons,
-                m_registry->current_selected_cave_machine);
-        }
+        drawCurrentField(
+            m_registry->tmp_field_tiles[m_registry->current_selected_field],
+            m_registry->field_colors[m_registry->current_selected_field].c,
+            m_ui->m_field_tmp_select_buttons[m_registry->current_selected_field],
+            m_registry->current_selected_tmp[m_registry->current_selected_field]
+        );
 
     } else if (m_registry->window() == GENE_LAB) {
 

@@ -45,10 +45,9 @@ public:
      * Field
      */
     std::vector<TextButton> m_field_mode_buttons;
-    std::vector<TextButton> m_field_plant_select_buttons;
-    std::vector<TextButton> m_field_flower_select_buttons;
-    std::vector<TextButton> m_field_tree_select_buttons;
-    std::vector<TextButton> m_field_cave_machines_select_buttons;
+
+    std::vector<std::vector<TextButton>> m_field_tmp_select_buttons;
+
     void initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept;
 
 

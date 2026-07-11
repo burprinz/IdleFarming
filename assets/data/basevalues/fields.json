@@ -1,0 +1,24 @@
+{
+  "fields": [
+    {
+      "name": "plants",
+      "is_tree": false,
+      "has_inv": false
+    },
+    {
+      "name": "flowers",
+      "is_tree": false,
+      "has_inv": false
+    },
+    {
+      "name": "trees",
+      "is_tree": true,
+      "has_inv": false
+    },
+    {
+      "name": "cave_machines",
+      "is_tree": false,
+      "has_inv": true
+    }
+  ]
+}

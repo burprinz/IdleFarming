@@ -56,8 +56,8 @@ void UISystem::initWindowSwitchButtons() noexcept {
 }
 
 void UISystem::initFieldButton() noexcept {
-    m_field_plant_select_buttons.clear();
-    m_field_flower_select_buttons.clear();
+
+    m_field_tmp_select_buttons.clear();
     m_field_mode_buttons.clear();
 
     Registry* registry = m_registry;
@@ -66,65 +66,27 @@ void UISystem::initFieldButton() noexcept {
     glm::vec2 select_button_size = {1.0, 0.5};
     glm::vec2 center = calc_center(top_left, select_button_size);
 
-    /**
-    * Plant selection
-    */
-    TextButton plantFieldB;
-    plantFieldB.text = "Plant";
-    plantFieldB.pos = center;
-    plantFieldB.size = select_button_size;
-    plantFieldB.on_click = [registry] {
-        registry->current_selected_field = PLANT_FIELD;
-    };
-    m_field_mode_buttons.push_back(plantFieldB);
-    initPlantLikePlantSelection(m_registry->plant_order, registry->last_selected_plant, registry->current_selected_plant, m_field_plant_select_buttons);
-
-
-    center += glm::vec2{select_button_size.x + 0.1, 0};
 
     /**
-    * Flower selection
-    */
-    TextButton flowerFieldB;
-    flowerFieldB.text = "Flower";
-    flowerFieldB.pos = center;
-    flowerFieldB.size = select_button_size;
-    flowerFieldB.on_click = [registry] {
-        registry->current_selected_field = FLOWER_FIELD;
-    };
-    m_field_mode_buttons.push_back(flowerFieldB);
-    initPlantLikePlantSelection(m_registry->flower_order, registry->last_selected_flower, registry->current_selected_flower, m_field_flower_select_buttons);
+     * Field selection
+     */
 
+    for (size_t field_id = 0; field_id < m_registry->field_order.size(); field_id++) {
+        TextButton fieldB;
+        fieldB.text = m_registry->field_order[field_id];
+        fieldB.pos = center;
+        fieldB.size = select_button_size;
+        fieldB.on_click = [registry, field_id] {
+            registry->current_selected_field = field_id;
+        };
+        m_field_mode_buttons.push_back(fieldB);
 
-    center += glm::vec2{select_button_size.x + 0.1, 0};
+        std::vector<TextButton> plant_select_buttons;
+        initPlantLikePlantSelection(m_registry->tmp_order[field_id], m_registry->last_selected_tmp[field_id], m_registry->current_selected_tmp[field_id], plant_select_buttons);
+        m_field_tmp_select_buttons.push_back(plant_select_buttons);
 
-    /**
-    * Tree selection
-    */
-    TextButton treeFieldB;
-    treeFieldB.text = "Tree";
-    treeFieldB.pos = center;
-    treeFieldB.size = select_button_size;
-    treeFieldB.on_click = [registry] {
-        registry->current_selected_field = TREE_FIELD;
-    };
-    m_field_mode_buttons.push_back(treeFieldB);
-    initPlantLikePlantSelection(m_registry->tree_order, registry->last_selected_tree, registry->current_selected_tree, m_field_tree_select_buttons);
-
-    center += glm::vec2{select_button_size.x + 0.1, 0};
-
-    /**
-    * Cave Machine selection
-    */
-    TextButton caveMFieldB;
-    caveMFieldB.text = "Cave";
-    caveMFieldB.pos = center;
-    caveMFieldB.size = select_button_size;
-    caveMFieldB.on_click = [registry] {
-        registry->current_selected_field = CAVE_MACHINES;
-    };
-    m_field_mode_buttons.push_back(caveMFieldB);
-    initPlantLikePlantSelection(m_registry->cave_machine_order, registry->last_selected_cave_machine, registry->current_selected_cave_machine, m_field_cave_machines_select_buttons);
+        center += glm::vec2{select_button_size.x + 0.1, 0};
+    }
 
 }
 
@@ -157,7 +119,7 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
     Registry* registry = m_registry;
 
     int c = 0;
-    for (entt::entity plant_id : m_registry->plant_order) {
+    for (entt::entity plant_id : m_registry->ecs.view<Plant>()) {
         std::vector<TextButton> currentB;
 
         float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1);
@@ -233,26 +195,9 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                     return;
                 }
 
-                if (m_registry->current_selected_field == PLANT_FIELD) {
-                    found = check_text_button_list(m_field_plant_select_buttons);
-                    if (found) {
-                        return;
-                    }
-                } else if (m_registry->current_selected_field == FLOWER_FIELD) {
-                    found = check_text_button_list(m_field_flower_select_buttons);
-                    if (found) {
-                        return;
-                    }
-                } else if (m_registry->current_selected_field == TREE_FIELD) {
-                    found = check_text_button_list(m_field_tree_select_buttons);
-                    if (found) {
-                        return;
-                    }
-                } else if (m_registry->current_selected_field == CAVE_MACHINES) {
-                    found = check_text_button_list(m_field_cave_machines_select_buttons);
-                    if (found) {
-                        return;
-                    }
+                found = check_text_button_list(m_field_tmp_select_buttons[m_registry->current_selected_field]);
+                if (found) {
+                    return;
                 }
 
 
@@ -282,15 +227,9 @@ void UISystem::step(const float delta) noexcept {
 
         // Field buttons
         selection_found = update_text_button_list(m_field_mode_buttons, mousePos, selection_found);
-        if (m_registry->current_selected_field == PLANT_FIELD) {
-            selection_found = update_text_button_list(m_field_plant_select_buttons, mousePos, selection_found);
-        } else if (m_registry->current_selected_field == FLOWER_FIELD) {
-            selection_found = update_text_button_list(m_field_flower_select_buttons, mousePos, selection_found);
-        } else if (m_registry->current_selected_field == TREE_FIELD) {
-            selection_found = update_text_button_list(m_field_tree_select_buttons, mousePos, selection_found);
-        } else if (m_registry->current_selected_field == CAVE_MACHINES) {
-            selection_found = update_text_button_list(m_field_cave_machines_select_buttons, mousePos, selection_found);
-        }
+
+        selection_found = update_text_button_list(m_field_tmp_select_buttons[m_registry->current_selected_field], mousePos, selection_found);
+
         (void) selection_found;
 
 

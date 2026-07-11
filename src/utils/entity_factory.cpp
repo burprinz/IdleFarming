@@ -56,7 +56,7 @@ bool EntityFactory::readPath(const std::string& path, nlohmann::json* json_link)
 }
 
 
-void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order, bool is_tree) noexcept {
+void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order, bool is_tree, bool has_inv) noexcept {
     entt::entity plant_id = m_registry->ecs.create();
     Plant p;
     p.name = plant["name"].get<std::string>();
@@ -88,11 +88,13 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
 
     std::string id_name = plant["id_name"].get<std::string>();
     IconTexture it;
-    if (!is_tree) {
+    if (!is_tree && !has_inv) {
         it.info = create_icon(id_name);
     } else {
         it.info = create_icon(id_name + "_grown");
         it.ungrownInfo = create_icon(id_name + "_ungrown");
+
+        std::cout<<id_name<<std::endl;
     }
     m_registry->ecs.emplace<IconTexture>(plant_id, it);
 

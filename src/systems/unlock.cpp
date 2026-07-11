@@ -33,13 +33,13 @@ void UnlockSystem::step(const float delta) noexcept {
 void UnlockSystem::checkPlantUnlock() noexcept {
 
     // Wenn keine Pflanze selected ist
-    if (m_registry->current_selected_plant == entt::null) {
+    if (m_registry->current_selected_tmp[m_registry->current_selected_field] == entt::null) {
         return;
     }
 
 
-    entt::entity &current = m_registry->current_selected_plant;
-    entt::entity &last = m_registry->last_selected_plant;
+    entt::entity &current = m_registry->current_selected_tmp[m_registry->current_selected_field];
+    entt::entity &last = m_registry->last_selected_tmp[m_registry->current_selected_field];
 
     Unlockable &unlock = m_registry->ecs.get<Unlockable>(current);
 

@@ -23,9 +23,5 @@ class WorldSystem {
 
 		bool m_reset;
 
-		void create_field(std::vector<entt::entity> &type, bool is_regrowable) noexcept;
-
-
-
 };
 
