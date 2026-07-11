@@ -142,6 +142,8 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
     bool fieldMarked = false;
     glm::vec2 markedPos, markedSize;
 
+    entt::entity field_inv_id = entt::null;
+
     for (entt::entity fieldID : field_ids) {
         FarmField f = m_registry->ecs.get<FarmField>(fieldID);
         glm::vec2 fPos = m_registry->ecs.get<Position>(fieldID).pos;
@@ -160,6 +162,8 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
             Plant p = m_registry->ecs.get<Plant>(f.plant);
             float radius = 0.0;
 
+
+
             if (!p.has_inventory) {
                 float grow_time = p.growTime;
                 if (f.is_regrowable_field) {
@@ -168,6 +172,9 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
                 radius = (f.grow / grow_time) * (fSize.x / 2) * 0.9;
             } else {
                 // Has inventory -> direkt full size
+                if (point_in_rect(m_window->getMousePosition(), fPos, fSize)) {
+                    field_inv_id = fieldID;
+                }
                 radius = (fSize.x / 2) * 0.9;
             }
 
@@ -184,6 +191,15 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
     // If mouse is hovering over field
     if (fieldMarked) {
         m_draw->drawRectBySize(markedPos, markedSize, green);
+    }
+
+    // Draw Inv popup
+    if (field_inv_id != entt::null) {
+        Inventory inv = m_registry->ecs.get<Inventory>(field_inv_id);
+        std::string text = inv.amount.toString() + " / " + inv.size.toString();
+        glm::vec2 popup_size = {1.0, 0.5};
+        glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
+        drawPopup(text, popup_pos, popup_size, white);
     }
 
     // Separator between field and buttons

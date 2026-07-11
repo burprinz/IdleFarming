@@ -43,10 +43,6 @@ void FieldSystem::step(const float delta) noexcept {
         if (!f.is_empty && !f.harvestable) {
             Plant p = m_registry->ecs.get<Plant>(f.plant);
 
-            if (p.has_inventory) {
-                std::cout<<m_registry->ecs.get<Inventory>(fID).amount.toString()<<std::endl;
-            }
-
             if (!f.is_regrowable_field) {
                 // Flower growth
                 if (f.grow < p.growTime) {
@@ -107,19 +103,29 @@ void FieldSystem::try_to_plant(std::vector<entt::entity> field, entt::entity p_i
                 }
             }
 
-            if (!f.is_empty && f.harvestable && m_registry->keys["mouse_right"]) {
-                // Harvest if plant is ready and right click pressed
+            if (!f.is_empty && m_registry->keys["mouse_right"]) {
                 Plant p = m_registry->ecs.get<Plant>(f.plant);
                 BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
-                am += p.min_collect;
-
-                f.harvestable = false;
-                if (!f.is_regrowable_field) {
-                    // Plant -> fully remove
+                // Try to harvest
+                if (p.has_inventory) {
+                    // Machine -> Add inventory am to stash and remove inv
+                    std::cout<<"Machine"<<std::endl;
+                    Inventory inv = m_registry->ecs.get<Inventory>(fieldID);
+                    am += inv.amount;
+                    m_registry->ecs.remove<Inventory>(fieldID);
                     f.is_empty = true;
-                } else if (!p.has_inventory) {
-                    // Tree -> Set to growTime so only regrowtime is needed
-                    f.grow = p.growTime;
+                } else if (f.harvestable) {
+                    // No Machine -> only remove if harvestable
+                    am += p.min_collect;
+
+                    f.harvestable = false;
+                    if (!f.is_regrowable_field) {
+                        // Plant -> fully remove
+                        f.is_empty = true;
+                    } else {
+                        // Tree -> Set to growTime so only regrowtime is needed
+                        f.grow = p.growTime;
+                    }
                 }
             }
 
