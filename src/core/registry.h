@@ -130,6 +130,7 @@ struct TextureInformation {
 struct IconTexture {
     TextureInformation info;
     TextureInformation ungrownInfo;
+    TextureInformation icon;
 };
 
 // NOTE: For your own project you may want to move the registry to a different file, as it grows in size.
@@ -195,6 +196,7 @@ public:
     /**
      * Marketplace
      */
+    std::vector<entt::entity> market_item_order;
     BigNumber market_multiplier = BigNumber(1); // -1 = MAX
 
 

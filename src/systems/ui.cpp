@@ -119,7 +119,7 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
     Registry* registry = m_registry;
 
     int c = 0;
-    for (entt::entity plant_id : m_registry->ecs.view<Plant>()) {
+    for (entt::entity plant_id : m_registry->market_item_order) {
         std::vector<TextButton> currentB;
 
         float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1);
@@ -221,14 +221,14 @@ void UISystem::step(const float delta) noexcept {
     bool selection_found = false;
 
     // Window switch buttons
-    selection_found = update_text_button_list(m_window_buttons, mousePos, selection_found);
+    selection_found = update_text_button_list(m_window_buttons, mousePos, selection_found, false);
 
     if (m_registry->window() == FIELDS) {
 
         // Field buttons
-        selection_found = update_text_button_list(m_field_mode_buttons, mousePos, selection_found);
+        selection_found = update_text_button_list(m_field_mode_buttons, mousePos, selection_found, false);
 
-        selection_found = update_text_button_list(m_field_tmp_select_buttons[m_registry->current_selected_field], mousePos, selection_found);
+        selection_found = update_text_button_list(m_field_tmp_select_buttons[m_registry->current_selected_field], mousePos, selection_found, false);
 
         (void) selection_found;
 
@@ -237,7 +237,7 @@ void UISystem::step(const float delta) noexcept {
 
         // Marketplace buy / sell
         for (std::vector<TextButton> &buttons : m_market_trade_buttons) {
-            selection_found = update_text_button_list(buttons, mousePos, selection_found);
+            selection_found = update_text_button_list(buttons, mousePos, selection_found, true);
         }
     }
 }

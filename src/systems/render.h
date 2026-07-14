@@ -25,10 +25,24 @@ class RenderSystem {
 		Draw* m_draw;
 		UISystem* m_ui;
 
-		void drawBasicTextButton(std::vector<TextButton> &buttons) noexcept;
+		void drawBasicTextButtons(std::vector<TextButton> &buttons) noexcept;
 
 		void drawCurrentField(std::vector<entt::entity> &field_ids, glm::vec3 color, std::vector<TextButton> &buttons, entt::entity current_selected) noexcept;
 
 		glm::vec2 getPopupPositionForMouse(glm::vec2 popup_size) noexcept;
 		void drawPopup(std::string msg, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color=white) noexcept;
+
+
+		inline void drawLockInBlackQuad(glm::vec2 pos, glm::vec2 size, bool open_lock) {
+			// Not unlocked
+			m_draw->fillRectBySize(pos, size, black, 1.0f);
+			Texture lock_text;
+			if (open_lock) {
+				lock_text = m_registry->ecs.get<TextureInformation>(m_registry->lock_unlocked_texture).text;
+			} else {
+				lock_text = m_registry->ecs.get<TextureInformation>(m_registry->lock_locked_texture).text;
+			}
+			m_draw->drawTexture(lock_text, pos, glm::vec2{size.y, size.y} / 2.2f);
+		}
+
 };

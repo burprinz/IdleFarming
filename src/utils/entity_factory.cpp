@@ -93,13 +93,11 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
     } else {
         it.info = create_icon(id_name + "_grown");
         it.ungrownInfo = create_icon(id_name + "_ungrown");
-
-        std::cout<<id_name<<std::endl;
     }
     m_registry->ecs.emplace<IconTexture>(plant_id, it);
 
-
     order.push_back(plant_id);
+    m_registry->market_item_order.push_back(plant_id);
 }
 
 void EntityFactory::load_symbols() noexcept {

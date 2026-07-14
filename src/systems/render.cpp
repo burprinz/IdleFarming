@@ -67,7 +67,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         /**
          * Draw Field Selection
          */
-        drawBasicTextButton(m_ui->m_field_mode_buttons);
+        drawBasicTextButtons(m_ui->m_field_mode_buttons);
 
 
         /**
@@ -86,12 +86,19 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         for (std::vector<TextButton> &buts : m_ui->m_market_trade_buttons) {
             entt::entity p_id = buts[0].id_label;
             Plant p = m_registry->ecs.get<Plant>(p_id);
+            Unlockable u = m_registry->ecs.get<Unlockable>(p_id);
 
-            // Plant name
             float y = buts[0].pos.y;
             glm::vec2 pos = {trade_buttons_topleft.x + plant_name_size.x/2.0f, y};
-            m_draw->drawRectBySize(pos, plant_name_size, black);
-            m_draw->drawStringInBox(p.name, pos, plant_name_size, black);
+
+            if (u.unlocked) {
+                // Plant name
+                m_draw->drawRectBySize(pos, plant_name_size, black);
+                m_draw->drawStringInBox(p.name, pos, plant_name_size, black);
+            } else {
+                // Locked symbol
+                drawLockInBlackQuad(pos, plant_name_size, false);
+            }
 
             // Amount of plants
             pos = {pos.x + plant_name_size.x/2.0f + market_stash_size.x/2.0f + 0.1f, pos.y};
@@ -99,13 +106,14 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             m_draw->drawRectBySize(pos, market_stash_size, black);
             m_draw->drawStringInBox("x" + stash.toString(), pos, market_stash_size, black);
 
+
             // Buy / Sell
-            drawBasicTextButton(buts);
+            drawBasicTextButtons(buts);
         }
     }
 }
 
-void RenderSystem::drawBasicTextButton(std::vector<TextButton> &buttons) noexcept {
+void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons) noexcept {
     for (TextButton &b : buttons) {
         glm::vec3 color = b.selected?b.select_color:b.unselect_color;
         m_draw->drawRectBySize(b.pos, b.size, color);
@@ -200,17 +208,8 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
 
         if (!u.unlocked) {
             // Not unlocked
-            m_draw->fillRectBySize(b.pos, b.size, black, 1.0f);
-            Texture lock_text;
             has_enough_money = has_enough(money, u.price);
-            if (has_enough_money) {
-                // can buy
-                lock_text = m_registry->ecs.get<TextureInformation>(m_registry->lock_unlocked_texture).text;
-            } else {
-                // can not buy
-                lock_text = m_registry->ecs.get<TextureInformation>(m_registry->lock_locked_texture).text;
-            }
-            m_draw->drawTexture(lock_text, b.pos, glm::vec2{b.size.y, b.size.y} / 2.2f);
+            drawLockInBlackQuad(b.pos, b.size, has_enough_money);
             draw_color = b.selected ? b.select_color : b.unselect_color;
         } else {
             // Unlocked
