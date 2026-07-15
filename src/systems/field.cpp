@@ -58,6 +58,9 @@ void FieldSystem::step(const float delta) noexcept {
                     } else {
                         Inventory &inv = m_registry->ecs.get<Inventory>(fID);
                         inv.amount = inv.amount + p.min_collect;
+                        if (inv.amount > inv.size) {
+                            inv.amount = inv.size;
+                        }
                         f.grow = p.growTime;
                     }
                 }

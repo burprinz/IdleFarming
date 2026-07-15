@@ -88,6 +88,7 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
 
     std::string id_name = plant["id_name"].get<std::string>();
     IconTexture it;
+    it.icon = create_icon(id_name);
     if (!is_tree && !has_inv) {
         it.info = create_icon(id_name);
     } else {

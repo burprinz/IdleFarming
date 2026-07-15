@@ -71,7 +71,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_render = RenderSystem::init(self.m_window, self.m_registry, self.m_ui, self.m_draw);
 	self.m_camera = CameraSystem::init(self.m_registry);
 	self.m_field = FieldSystem::init(self.m_window, self.m_registry);
-	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry);
+	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry, self.m_ui);
 
 	return self;
 }

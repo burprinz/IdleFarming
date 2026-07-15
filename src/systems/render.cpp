@@ -87,10 +87,19 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             entt::entity p_id = buts[0].id_label;
             Plant p = m_registry->ecs.get<Plant>(p_id);
             Unlockable u = m_registry->ecs.get<Unlockable>(p_id);
+            IconTexture it = m_registry->ecs.get<IconTexture>(p_id);
 
             float y = buts[0].pos.y;
-            glm::vec2 pos = {trade_buttons_topleft.x + plant_name_size.x/2.0f, y};
 
+            glm::vec2 icon_size = (glm::vec2{buts[0].size.y, buts[0].size.y} / 2.0f);
+
+            //glm::vec2 pos = {trade_buttons_topleft.x + plant_name_size.x/2.0f, y};
+
+
+            glm::vec2 pos = (0.1f+glm::vec2{trade_buttons_topleft.x + icon_size.x / 2.0f, y});
+            m_draw->drawTexture(it.icon.text, pos, icon_size);
+
+            pos.x += icon_size.x + plant_name_size.x/2.0f + 0.1f;
             if (u.unlocked) {
                 // Plant name
                 m_draw->drawRectBySize(pos, plant_name_size, black);
@@ -106,7 +115,6 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             m_draw->drawRectBySize(pos, market_stash_size, black);
             m_draw->drawStringInBox("x" + stash.toString(), pos, market_stash_size, black);
 
-
             // Buy / Sell
             drawBasicTextButtons(buts);
         }
@@ -115,9 +123,11 @@ void RenderSystem::step(const float /*delta*/) noexcept {
 
 void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons) noexcept {
     for (TextButton &b : buttons) {
-        glm::vec3 color = b.selected?b.select_color:b.unselect_color;
-        m_draw->drawRectBySize(b.pos, b.size, color);
-        m_draw->drawStringInBox(b.text, b.pos, b.size, black);
+        if (b.visible) {
+            glm::vec3 color = b.selected?b.select_color:b.unselect_color;
+            m_draw->drawRectBySize(b.pos, b.size, color);
+            m_draw->drawStringInBox(b.text, b.pos, b.size, black);
+        }
     }
 }
 

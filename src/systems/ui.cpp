@@ -112,21 +112,20 @@ void UISystem::initPlantLikePlantSelection(std::vector<entt::entity> order, entt
 
 
 void UISystem::initMarketplaceTradeButtons() noexcept {
-    glm::vec2 trade_button_size = {0.7, 0.5};
 
     m_market_trade_buttons.clear();
 
     Registry* registry = m_registry;
 
-    int c = 0;
+    //int c = 0;
     for (entt::entity plant_id : m_registry->market_item_order) {
         std::vector<TextButton> currentB;
 
-        float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1);
-        float x1 = trade_buttons_topleft.x + plant_name_size.x + market_stash_size.x + 0.2 + trade_button_size.x/2.0f;
-        float x2 = x1 + trade_button_size.x + 0.1;
+        //float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1) - 0.1;
+        //float x1 = trade_buttons_topleft.x + plant_name_size.x + market_stash_size.x + 0.2 + trade_button_size.x/2.0f + trade_button_size.y + 0.1;
+        //float x2 = x1 + trade_button_size.x + 0.1;
         TextButton buyB;
-        buyB.pos = {x1, y};
+        //buyB.pos = {x1, y};
         buyB.size = trade_button_size;
         buyB.text = "Buy";
         buyB.id_label = plant_id;
@@ -143,7 +142,7 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
         currentB.push_back(buyB);
 
         TextButton sellB;
-        sellB.pos = {x2, y};
+        //sellB.pos = {x2, y};
         sellB.size = trade_button_size;
         sellB.text = "Sell";
         sellB.id_label = plant_id;
@@ -164,11 +163,13 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
         currentB.push_back(sellB);
 
         m_market_trade_buttons.push_back(currentB);
-        c += 1;
+        //c += 1;
     }
 
-    std::reverse(m_market_trade_buttons.begin(), m_market_trade_buttons.end());
+    //std::reverse(m_market_trade_buttons.begin(), m_market_trade_buttons.end());
 
+
+    update_button_states();
 }
 
 
@@ -240,6 +241,35 @@ void UISystem::step(const float delta) noexcept {
             selection_found = update_text_button_list(buttons, mousePos, selection_found, true);
         }
     }
+}
+
+void UISystem::update_button_states() noexcept {
+
+    /**
+     * Update Market Trade Buttons
+     */
+    int c = 0;
+    for (std::vector<TextButton> &buttons : m_market_trade_buttons) {
+        bool should_be_visible = m_registry->ecs.get<Unlockable>(buttons[0].id_label).unlocked;
+
+
+        float x1 = trade_buttons_topleft.x + plant_name_size.x + market_stash_size.x + 0.2 + trade_button_size.x/2.0f + trade_button_size.y + 0.1;
+        float x2 = x1 + trade_button_size.x + 0.1;
+        if (should_be_visible) {
+
+            buttons[0].visible = true;
+            buttons[1].visible = true;
+
+            float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1) - 0.1;
+
+            buttons[0].pos = {x1, y};
+            buttons[1].pos = {x2, y};
+
+            c += 1;
+        }
+
+    }
+
 }
 
 

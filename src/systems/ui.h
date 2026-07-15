@@ -21,6 +21,7 @@ struct TextButton {
     std::function<void()> on_click;
     bool selected = false;
     bool color_locked = false;
+    bool visible = true;
 };
 
 
@@ -48,9 +49,8 @@ public:
 
     std::vector<std::vector<TextButton>> m_field_tmp_select_buttons;
 
-    void initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept;
 
-
+    void update_button_states() noexcept;
 
     std::vector<std::vector<TextButton>> m_market_trade_buttons;
 
@@ -64,9 +64,11 @@ private:
 
     std::vector<TextButton> m_window_buttons;
 
+    void initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept;
+
     inline bool check_text_button_list(std::vector<TextButton> &buttons) noexcept {
         for (TextButton &b : buttons) {
-            if (b.selected) {
+            if (b.selected && b.visible) {
                 b.on_click();
                 return true;
             }
@@ -84,7 +86,7 @@ private:
                 }
             }
 
-            if (!selection_found && point_in_rect(mouse_pos, b.pos, b.size)) {
+            if (!selection_found && b.visible && point_in_rect(mouse_pos, b.pos, b.size)) {
                 b.selected = true;
                 selection_found = true;
             } else {

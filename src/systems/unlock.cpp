@@ -6,12 +6,14 @@
 
 #include <iostream>
 
+#include "ui.h"
 #include "core/operations.h"
 
-UnlockSystem UnlockSystem::init(Window *window, Registry *registry) noexcept {
+UnlockSystem UnlockSystem::init(Window *window, Registry *registry, UISystem* ui) noexcept {
     UnlockSystem self;
     self.m_registry = registry;
     self.m_window = window;
+    self.m_ui = ui;
 
     return self;
 }
@@ -53,6 +55,7 @@ void UnlockSystem::checkPlantUnlock() noexcept {
         if (unlock_successful) {
             // Plant got unlocked, so selected plant is new plant
             unlock.unlocked = true;
+            m_ui->update_button_states();
         } else {
             // Plant not unlocked, so last plant is selected
             current = last;

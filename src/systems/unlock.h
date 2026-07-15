@@ -1,4 +1,5 @@
 #pragma once
+#include "ui.h"
 #include "window.h"
 #include "core/registry.h"
 
@@ -11,7 +12,7 @@ public:
     UnlockSystem() = default;
     ~UnlockSystem() = default;
 
-    static UnlockSystem init(Window* window, Registry* registry) noexcept;
+    static UnlockSystem init(Window* window, Registry* registry, UISystem* ui) noexcept;
     void deinit() noexcept;
     void step(const float delta) noexcept;
     void reset() noexcept;
@@ -19,6 +20,7 @@ public:
 private:
     Registry* m_registry;
     Window* m_window;
+    UISystem* m_ui;
 
     void checkPlantUnlock() noexcept;
 
