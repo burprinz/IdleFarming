@@ -58,8 +58,12 @@ bool EntityFactory::readPath(const std::string& path, nlohmann::json* json_link)
 
 void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order, bool is_tree, bool has_inv) noexcept {
     entt::entity plant_id = m_registry->ecs.create();
+
+    Item i;
+    i.name = plant["name"].get<std::string>();
+    m_registry->ecs.emplace<Item>(plant_id, i);
+
     Plant p;
-    p.name = plant["name"].get<std::string>();
     p.growTime = plant["growtime"].get<float>();
     p.min_collect = plant["collect_amount"]["min"].get<int>();
     p.max_collect = plant["collect_amount"]["max"].get<int>();

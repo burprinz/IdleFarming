@@ -13,6 +13,7 @@
 constexpr int FIELDS = 0;
 constexpr int GENE_LAB = 1;
 constexpr int MARKETPLACE = 2;
+constexpr int TOOLSMITH = 3;
 
 /**
  * Field State
@@ -67,6 +68,13 @@ struct PolygonShape {
 /**
  * Field
  */
+
+struct Field {
+    std::string name;
+    std::string display_name;
+    std::string type;
+};
+
 struct FarmField {
     bool is_empty = true;
     bool marked = false;
@@ -80,8 +88,6 @@ struct FarmField {
 };
 
 struct Plant {
-    std::string name = "Plant";
-
     bool unlocked = false;
     float growTime = 1.0;
     int min_collect = 1;
@@ -118,6 +124,26 @@ struct Inventory {
     BigNumber size;
     BigNumber amount;
 };
+
+/**
+ * Items
+ */
+struct Item {
+    std::string name = "Plant";
+
+};
+
+struct Tool {
+    std::string field_type;
+    int stage;
+    int radius;
+};
+
+struct BuyAmount {
+    std::vector<entt::entity> item_ids;
+    std::vector<BigNumber> amounts;
+};
+
 
 /**
  * Textures
@@ -184,13 +210,19 @@ public:
     /**
      * Farm
      */
-    std::vector<std::string> field_order;
+    std::vector<entt::entity> field_order;
     std::vector<Color> field_colors;
     size_t current_selected_field = 0;
-    std::vector<std::vector<entt::entity>> tmp_order;
-    std::vector<entt::entity> last_selected_tmp;
-    std::vector<entt::entity> current_selected_tmp;
-    std::vector<std::vector<entt::entity>> tmp_field_tiles;
+    std::vector<std::vector<entt::entity>> plant_order;
+    std::vector<entt::entity> last_selected_plant;
+    std::vector<entt::entity> current_selected_plant;
+    std::vector<std::vector<std::vector<entt::entity>>> plant_field_tiles;
+
+    /**
+     * Farm Tools
+     */
+    std::map<std::string, entt::entity> current_plant_tools;
+    std::map<std::string, entt::entity> current_harvest_tools;
 
 
     /**
@@ -198,6 +230,7 @@ public:
      */
     std::vector<entt::entity> market_item_order;
     BigNumber market_multiplier = BigNumber(1); // -1 = MAX
+
 
 
 private:

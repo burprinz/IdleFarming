@@ -53,6 +53,15 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(marketButton);
 
+    TextButton toolsButton;
+    toolsButton.pos = {3.9, config::CAMERA_VIEW_HEIGHT-0.35};
+    toolsButton.size = {1.0, 0.5};
+    toolsButton.text = "Tool Smith";
+    toolsButton.on_click = [registry] {
+        registry->change_window(TOOLSMITH);
+    };
+    m_window_buttons.push_back(toolsButton);
+
 }
 
 void UISystem::initFieldButton() noexcept {
@@ -72,8 +81,10 @@ void UISystem::initFieldButton() noexcept {
      */
 
     for (size_t field_id = 0; field_id < m_registry->field_order.size(); field_id++) {
+        Field f = m_registry->ecs.get<Field>(m_registry->field_order[field_id]);
+
         TextButton fieldB;
-        fieldB.text = m_registry->field_order[field_id];
+        fieldB.text = f.display_name;
         fieldB.pos = center;
         fieldB.size = select_button_size;
         fieldB.on_click = [registry, field_id] {
@@ -82,7 +93,7 @@ void UISystem::initFieldButton() noexcept {
         m_field_mode_buttons.push_back(fieldB);
 
         std::vector<TextButton> plant_select_buttons;
-        initPlantLikePlantSelection(m_registry->tmp_order[field_id], m_registry->last_selected_tmp[field_id], m_registry->current_selected_tmp[field_id], plant_select_buttons);
+        initPlantLikePlantSelection(m_registry->plant_order[field_id], m_registry->last_selected_plant[field_id], m_registry->current_selected_plant[field_id], plant_select_buttons);
         m_field_tmp_select_buttons.push_back(plant_select_buttons);
 
         center += glm::vec2{select_button_size.x + 0.1, 0};
@@ -117,15 +128,10 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
 
     Registry* registry = m_registry;
 
-    //int c = 0;
     for (entt::entity plant_id : m_registry->market_item_order) {
         std::vector<TextButton> currentB;
 
-        //float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1) - 0.1;
-        //float x1 = trade_buttons_topleft.x + plant_name_size.x + market_stash_size.x + 0.2 + trade_button_size.x/2.0f + trade_button_size.y + 0.1;
-        //float x2 = x1 + trade_button_size.x + 0.1;
         TextButton buyB;
-        //buyB.pos = {x1, y};
         buyB.size = trade_button_size;
         buyB.text = "Buy";
         buyB.id_label = plant_id;
@@ -142,7 +148,6 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
         currentB.push_back(buyB);
 
         TextButton sellB;
-        //sellB.pos = {x2, y};
         sellB.size = trade_button_size;
         sellB.text = "Sell";
         sellB.id_label = plant_id;
@@ -163,10 +168,8 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
         currentB.push_back(sellB);
 
         m_market_trade_buttons.push_back(currentB);
-        //c += 1;
     }
 
-    //std::reverse(m_market_trade_buttons.begin(), m_market_trade_buttons.end());
 
 
     update_button_states();
@@ -260,7 +263,7 @@ void UISystem::update_button_states() noexcept {
             buttons[0].visible = true;
             buttons[1].visible = true;
 
-            float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1) - 0.1;
+            float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1);
 
             buttons[0].pos = {x1, y};
             buttons[1].pos = {x2, y};

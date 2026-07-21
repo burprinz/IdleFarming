@@ -2,21 +2,25 @@
   "fields": [
     {
       "name": "plants",
+      "type": "field",
       "is_tree": false,
       "has_inv": false
     },
     {
       "name": "flowers",
+      "type": "field",
       "is_tree": false,
       "has_inv": false
     },
     {
       "name": "trees",
+      "type": "field",
       "is_tree": true,
       "has_inv": false
     },
     {
       "name": "cave_machines",
+      "type": "mine",
       "is_tree": false,
       "has_inv": true
     }

@@ -74,10 +74,10 @@ void RenderSystem::step(const float /*delta*/) noexcept {
          * Draw Field
          */
         drawCurrentField(
-            m_registry->tmp_field_tiles[m_registry->current_selected_field],
+            m_registry->plant_field_tiles[m_registry->current_selected_field],
             m_registry->field_colors[m_registry->current_selected_field].c,
             m_ui->m_field_tmp_select_buttons[m_registry->current_selected_field],
-            m_registry->current_selected_tmp[m_registry->current_selected_field]
+            m_registry->current_selected_plant[m_registry->current_selected_field]
         );
 
     } else if (m_registry->window() == GENE_LAB) {
@@ -85,16 +85,14 @@ void RenderSystem::step(const float /*delta*/) noexcept {
     } else if (m_registry->window() == MARKETPLACE) {
         for (std::vector<TextButton> &buts : m_ui->m_market_trade_buttons) {
             entt::entity p_id = buts[0].id_label;
-            Plant p = m_registry->ecs.get<Plant>(p_id);
+            //Plant p = m_registry->ecs.get<Plant>(p_id);
+            Item i = m_registry->ecs.get<Item>(p_id);
             Unlockable u = m_registry->ecs.get<Unlockable>(p_id);
             IconTexture it = m_registry->ecs.get<IconTexture>(p_id);
 
-            float y = buts[0].pos.y;
+            float y = buts[0].pos.y - 0.1;
 
             glm::vec2 icon_size = (glm::vec2{buts[0].size.y, buts[0].size.y} / 2.0f);
-
-            //glm::vec2 pos = {trade_buttons_topleft.x + plant_name_size.x/2.0f, y};
-
 
             glm::vec2 pos = (0.1f+glm::vec2{trade_buttons_topleft.x + icon_size.x / 2.0f, y});
             m_draw->drawTexture(it.icon.text, pos, icon_size);
@@ -103,7 +101,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             if (u.unlocked) {
                 // Plant name
                 m_draw->drawRectBySize(pos, plant_name_size, black);
-                m_draw->drawStringInBox(p.name, pos, plant_name_size, black);
+                m_draw->drawStringInBox(i.name, pos, plant_name_size, black);
             } else {
                 // Locked symbol
                 drawLockInBlackQuad(pos, plant_name_size, false);
@@ -131,7 +129,7 @@ void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons) noexce
     }
 }
 
-void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::vec3 color,
+void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &field_ids, glm::vec3 color,
     std::vector<TextButton> &buttons, entt::entity current_selected) noexcept {
 
     bool fieldMarked = false;
@@ -139,49 +137,53 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
 
     entt::entity field_inv_id = entt::null;
 
-    for (entt::entity fieldID : field_ids) {
-        FarmField f = m_registry->ecs.get<FarmField>(fieldID);
-        glm::vec2 fPos = m_registry->ecs.get<Position>(fieldID).pos;
-        glm::vec2 fSize = m_registry->ecs.get<Dimension>(fieldID).dim;
-        m_draw->fillRectBySize(fPos, fSize, color, 1.0f);
+    for (size_t row_id = 0; row_id < field_ids.size(); row_id++) {
+        std::vector<entt::entity> row = field_ids[row_id];
+        for (size_t cell_id = 0; cell_id < row.size(); cell_id++) {
+            entt::entity fieldID = row[cell_id];
 
-        // Save infos for marked cell
-        if (f.marked) {
-            fieldMarked = true;
-            markedPos = fPos;
-            markedSize = fSize;
-        }
-        m_draw->drawRectBySize(fPos, fSize, black);
-        if (!f.is_empty) {
-            // Draw the plant if cell is not empty
-            Plant p = m_registry->ecs.get<Plant>(f.plant);
-            float radius = 0.0;
+            FarmField f = m_registry->ecs.get<FarmField>(fieldID);
+            glm::vec2 fPos = m_registry->ecs.get<Position>(fieldID).pos;
+            glm::vec2 fSize = m_registry->ecs.get<Dimension>(fieldID).dim;
+            m_draw->fillRectBySize(fPos, fSize, color, 1.0f);
 
-
-
-            if (!p.has_inventory) {
-                float grow_time = p.growTime;
-                if (f.is_regrowable_field) {
-                    grow_time += p.regrowTime;
-                }
-                radius = (f.grow / grow_time) * (fSize.x / 2) * 0.9;
-            } else {
-                // Has inventory -> direkt full size
-                if (point_in_rect(m_window->getMousePosition(), fPos, fSize)) {
-                    field_inv_id = fieldID;
-                }
-                radius = (fSize.x / 2) * 0.9;
+            // Save infos for marked cell
+            if (f.marked) {
+                fieldMarked = true;
+                markedPos = fPos;
+                markedSize = fSize;
             }
+            m_draw->drawRectBySize(fPos, fSize, black);
+            if (!f.is_empty) {
+                // Draw the plant if cell is not empty
+                Plant p = m_registry->ecs.get<Plant>(f.plant);
+                float radius = 0.0;
+
+                if (!p.has_inventory) {
+                    float grow_time = p.growTime;
+                    if (f.is_regrowable_field) {
+                        grow_time += p.regrowTime;
+                    }
+                    radius = (f.grow / grow_time) * (fSize.x / 2) * 0.9;
+                } else {
+                    // Has inventory -> direkt full size
+                    if (point_in_rect(m_window->getMousePosition(), fPos, fSize)) {
+                        field_inv_id = fieldID;
+                    }
+                    radius = (fSize.x / 2) * 0.9;
+                }
 
 
-            IconTexture iconText = m_registry->ecs.get<IconTexture>(f.plant);
-            TextureInformation icon = iconText.info;
-            if (f.is_regrowable_field && !f.harvestable) {
-                icon = iconText.ungrownInfo;
+                IconTexture iconText = m_registry->ecs.get<IconTexture>(f.plant);
+                TextureInformation icon = iconText.info;
+                if (f.is_regrowable_field && !f.harvestable) {
+                    icon = iconText.ungrownInfo;
+                }
+                m_draw->drawTexture(icon.text, fPos, {radius, radius});
             }
-            m_draw->drawTexture(icon.text, fPos, {radius, radius});
         }
     }
+
 
     // If mouse is hovering over field
     if (fieldMarked) {
@@ -207,8 +209,8 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
     std::string text;
     for (TextButton b : buttons) {
         entt::entity plant_id = b.id_label;
-        Plant p = m_registry->ecs.get<Plant>(plant_id);
-
+        //Plant p = m_registry->ecs.get<Plant>(plant_id);
+        Item i = m_registry->ecs.get<Item>(plant_id);
         Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
 
         glm::vec3 draw_color;
@@ -230,7 +232,7 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
                 // Unlocked but not selected
                 draw_color = b.selected ? b.select_color : b.unselect_color;
             }
-            text = p.name;
+            text = i.name;
             m_draw->drawStringInBox(text, b.pos, b.size, black);
         }
         m_draw->drawRectBySize(b.pos, b.size, draw_color);
@@ -251,12 +253,13 @@ void RenderSystem::drawCurrentField(std::vector<entt::entity> &field_ids, glm::v
         glm::vec2 topLeft = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x - 0.2, selectInfoSize.y + 0.2};
         glm::vec2 selectInfoPos = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x/2 - 0.2, selectInfoSize.y/2 + 0.2};
         m_draw->drawRectBySize(selectInfoPos, selectInfoSize, black);
-        Plant plant = m_registry->ecs.get<Plant>(current_selected);
+        //Plant plant = m_registry->ecs.get<Plant>(current_selected);
+        Item i = m_registry->ecs.get<Item>(current_selected);
 
         float text_height = 0.3f;
         x = selectInfoPos.x;
         float y = topLeft.y - text_height/2.0f - 0.05f;
-        m_draw->drawStringInBox(plant.name, {x, y}, {selectInfoSize.x, text_height}, black);
+        m_draw->drawStringInBox(i.name, {x, y}, {selectInfoSize.x, text_height}, black);
 
         y -= text_height/2.0f+0.05f;
         m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);

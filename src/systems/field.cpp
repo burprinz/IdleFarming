@@ -26,9 +26,11 @@ void FieldSystem::reset() noexcept {
 void FieldSystem::step(const float delta) noexcept {
 
     if (m_registry->window() == FIELDS) {
+
         try_to_plant(
-            m_registry->tmp_field_tiles[m_registry->current_selected_field],
-            m_registry->current_selected_tmp[m_registry->current_selected_field]
+            m_registry->ecs.get<Field>(m_registry->field_order[m_registry->current_selected_field]).type,
+            m_registry->plant_field_tiles[m_registry->current_selected_field],
+            m_registry->current_selected_plant[m_registry->current_selected_field]
             );
     }
 
@@ -72,69 +74,57 @@ void FieldSystem::step(const float delta) noexcept {
 
 }
 
-void FieldSystem::try_to_plant(std::vector<entt::entity> field, entt::entity p_id) noexcept {
+void FieldSystem::try_to_plant(std::string field_type, std::vector<std::vector<entt::entity>> field, entt::entity p_id) noexcept {
 
     glm::vec2 mousePos = m_window->getMousePosition();
     bool pointFound = false;
-    for (entt::entity fieldID : field) {
-        FarmField &f = m_registry->ecs.get<FarmField>(fieldID);
-        glm::vec2 pos = m_registry->ecs.get<Position>(fieldID).pos;
-        glm::vec2 size = m_registry->ecs.get<Dimension>(fieldID).dim;
 
-        // Check if mouse is over cell if no cell already found and plant is selected
-        if (!pointFound && point_in_rect(mousePos, pos, size)) {
-            pointFound = true;
-            f.marked = true;
+    int plant_radius = 0;
+    int harvest_radius = 0;
 
-            if (f.is_empty && p_id != entt::null && m_registry->keys["mouse_left"]) {
-                // Plant if field is empty and left click pressed
-                f.is_empty = false;
-                f.plant = p_id;
-                f.grow = 0.0;
-                f.harvestable = false;
-                Plant p = m_registry->ecs.get<Plant>(p_id);
-                if (p.has_inventory) {
-                    Inventory inv;
-                    inv.size = BigNumber(p.inventory_size);
-                    inv.amount = BigNumber(0);
-                    m_registry->ecs.emplace<Inventory>(fieldID, inv);
-                }
-            }
-
-            if (!f.is_empty && m_registry->keys["mouse_right"]) {
-                Plant p = m_registry->ecs.get<Plant>(f.plant);
-                BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
-                // Try to harvest
-                if (p.has_inventory) {
-                    // Machine -> Add inventory am to stash and remove inv
-                    Inventory inv = m_registry->ecs.get<Inventory>(fieldID);
-                    am += inv.amount;
-                    m_registry->ecs.remove<Inventory>(fieldID);
-                    f.is_empty = true;
-                } else if (f.harvestable) {
-                    // No Machine -> only remove if harvestable
-                    am += p.min_collect;
-
-                    f.harvestable = false;
-                    if (!f.is_regrowable_field) {
-                        // Plant -> fully remove
-                        f.is_empty = true;
-                    } else {
-                        // Tree -> Set to growTime so only regrowtime is needed
-                        f.grow = p.growTime;
-                    }
-                }
-            }
-
-        } else {
-            // If cell already found or mouse does not hover over cell
-            f.marked = false;
-        }
-
-
-
+    entt::entity plant_tool_id = m_registry->current_plant_tools[field_type];
+    if (plant_tool_id != entt::null) {
+        plant_radius = m_registry->ecs.get<Tool>(plant_tool_id).radius;
     }
 
+    entt::entity harvest_tool_id = m_registry->current_harvest_tools[field_type];
+    if (harvest_tool_id != entt::null) {
+        harvest_radius = m_registry->ecs.get<Tool>(harvest_tool_id).radius;
+    }
+
+
+    for (size_t y = 0; y < field.size(); y++) {
+        std::vector<entt::entity> row = field[y];
+        for (size_t x = 0; x < row.size(); x++) {
+            entt::entity fieldID = row[x];
+
+            FarmField &f = m_registry->ecs.get<FarmField>(fieldID);
+            glm::vec2 pos = m_registry->ecs.get<Position>(fieldID).pos;
+            glm::vec2 size = m_registry->ecs.get<Dimension>(fieldID).dim;
+
+            // Check if mouse is over cell if no cell already found and plant is selected
+            if (!pointFound && point_in_rect(mousePos, pos, size)) {
+                pointFound = true;
+                f.marked = true;
+
+                // Left Click and Plant selected -> Try to plant in radius
+                if (m_registry->keys["mouse_left"] && p_id != entt::null) {
+                    plant_with_radius(field, p_id, x, y, plant_radius);
+                }
+
+                // Right CLick -> Try to harvest in radius
+                if (m_registry->keys["mouse_right"]) {
+                    harvest_with_radius(field, x, y, harvest_radius);
+                }
+
+            } else {
+                // If cell already found or mouse does not hover over cell
+                f.marked = false;
+            }
+
+
+        }
+    }
 }
 
 

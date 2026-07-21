@@ -1,0 +1,20 @@
+{
+  "category": "field",
+  "list": [
+    {
+      "stage": 1,
+      "radius": 1,
+      "name": "Iron Hoe",
+      "id": "iron_hoe",
+      "price": [
+        {
+          "name": "iron",
+          "amount": {
+            "base": 1.0,
+            "exp": 2
+          }
+        }
+      ]
+    }
+  ]
+}
