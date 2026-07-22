@@ -16,6 +16,7 @@ UISystem UISystem::init(Window *window, Registry *registry) noexcept {
     self.initWindowSwitchButtons();
     self.initFieldButton();
     self.initMarketplaceTradeButtons();
+    self.initToolSmithButtons();
 
     return self;
 }
@@ -66,7 +67,7 @@ void UISystem::initWindowSwitchButtons() noexcept {
 
 void UISystem::initFieldButton() noexcept {
 
-    m_field_tmp_select_buttons.clear();
+    m_field_plant_select_buttons.clear();
     m_field_mode_buttons.clear();
 
     Registry* registry = m_registry;
@@ -94,7 +95,7 @@ void UISystem::initFieldButton() noexcept {
 
         std::vector<TextButton> plant_select_buttons;
         initPlantLikePlantSelection(m_registry->plant_order[field_id], m_registry->last_selected_plant[field_id], m_registry->current_selected_plant[field_id], plant_select_buttons);
-        m_field_tmp_select_buttons.push_back(plant_select_buttons);
+        m_field_plant_select_buttons.push_back(plant_select_buttons);
 
         center += glm::vec2{select_button_size.x + 0.1, 0};
     }
@@ -120,7 +121,6 @@ void UISystem::initPlantLikePlantSelection(std::vector<entt::entity> order, entt
         c += 1;
     }
 }
-
 
 void UISystem::initMarketplaceTradeButtons() noexcept {
 
@@ -175,6 +175,52 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
     update_button_states();
 }
 
+void UISystem::initToolSmithButtons() noexcept {
+    m_toolsmith_buy_buttons.clear();
+
+    Registry* registry = m_registry;
+
+    glm::vec2 size = {0.5, 0.5};
+
+    float button_gap = size.x + 0.1;
+
+
+    glm::vec2 top_left = {0.1, config::CAMERA_VIEW_HEIGHT-1.2};
+    glm::vec2 center = calc_center(top_left, size);
+
+    // Create Button for every Tool
+    int c = 0;
+    for (entt::entity tool_id : m_registry->ecs.view<Tool>()) {
+        float y = center.y + c * button_gap;
+        TextButton toolB;
+        toolB.pos = {center.x, y};
+        toolB.size = size;
+        toolB.id_label = tool_id;
+        toolB.on_click = [registry, tool_id] {
+            bool unlocked = registry->ecs.get<Unlockable>(tool_id).unlocked;
+
+            std::cout<<unlocked<<std::endl;
+
+            if (!unlocked) {
+                registry->trying_to_buy = tool_id;
+            } else {
+                Tool t = registry->ecs.get<Tool>(tool_id);
+                std::cout<<"plant "<<t.is_for_planting<<std::endl;
+                if (t.is_for_planting) {
+                    registry->current_plant_tools[t.field_type] = tool_id;
+                } else {
+                    registry->current_harvest_tools[t.field_type] = tool_id;
+                }
+            }
+        };
+
+        m_toolsmith_buy_buttons.push_back(toolB);
+        c++;
+    }
+
+}
+
+
 
 void UISystem::deinit() noexcept {
 
@@ -199,18 +245,21 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                     return;
                 }
 
-                found = check_text_button_list(m_field_tmp_select_buttons[m_registry->current_selected_field]);
+                found = check_text_button_list(m_field_plant_select_buttons[m_registry->current_selected_field]);
                 if (found) {
                     return;
                 }
-
-
             } else if (m_registry->window() == MARKETPLACE) {
                 for (std::vector<TextButton> &buttons : m_market_trade_buttons) {
                     found = check_text_button_list(buttons);
                     if (found) {
                         return;
                     }
+                }
+            } else if (m_registry->window() == TOOLSMITH) {
+                found = check_text_button_list(m_toolsmith_buy_buttons);
+                if (found) {
+                    return;
                 }
             }
         }
@@ -232,7 +281,7 @@ void UISystem::step(const float delta) noexcept {
         // Field buttons
         selection_found = update_text_button_list(m_field_mode_buttons, mousePos, selection_found, false);
 
-        selection_found = update_text_button_list(m_field_tmp_select_buttons[m_registry->current_selected_field], mousePos, selection_found, false);
+        selection_found = update_text_button_list(m_field_plant_select_buttons[m_registry->current_selected_field], mousePos, selection_found, false);
 
         (void) selection_found;
 
@@ -243,6 +292,8 @@ void UISystem::step(const float delta) noexcept {
         for (std::vector<TextButton> &buttons : m_market_trade_buttons) {
             selection_found = update_text_button_list(buttons, mousePos, selection_found, true);
         }
+    } else if (m_registry->window() == TOOLSMITH) {
+        selection_found = update_text_button_list(m_toolsmith_buy_buttons, mousePos, selection_found, false);
     }
 }
 

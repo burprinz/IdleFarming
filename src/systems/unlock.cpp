@@ -29,6 +29,18 @@ void UnlockSystem::reset() noexcept {
 void UnlockSystem::step(const float delta) noexcept {
     (void) delta;
     checkPlantUnlock();
+
+    if (m_registry->trying_to_buy != entt::null) {
+
+        bool bought = try_to_buy(m_registry, m_registry->trying_to_buy);
+
+        if (bought) {
+            Unlockable &u = m_registry->ecs.get<Unlockable>(m_registry->trying_to_buy);
+            u.unlocked = true;
+        }
+
+        m_registry->trying_to_buy = entt::null;
+    }
 }
 
 

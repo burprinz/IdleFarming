@@ -76,7 +76,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         drawCurrentField(
             m_registry->plant_field_tiles[m_registry->current_selected_field],
             m_registry->field_colors[m_registry->current_selected_field].c,
-            m_ui->m_field_tmp_select_buttons[m_registry->current_selected_field],
+            m_ui->m_field_plant_select_buttons[m_registry->current_selected_field],
             m_registry->current_selected_plant[m_registry->current_selected_field]
         );
 
@@ -116,6 +116,43 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             // Buy / Sell
             drawBasicTextButtons(buts);
         }
+    } else if (m_registry->window() == TOOLSMITH) {
+
+        for (TextButton &but : m_ui->m_toolsmith_buy_buttons) {
+            if (but.visible) {
+                entt::entity tool_id = but.id_label;
+
+                TextureInformation texture = m_registry->ecs.get<TextureInformation>(tool_id);
+                m_draw->drawTexture(texture.text, but.pos, but.size/2.0f);
+
+                glm::vec3 color = red;
+                Unlockable u = m_registry->ecs.get<Unlockable>(tool_id);
+                if (u.unlocked) {
+                    if (id_in_map(tool_id, m_registry->current_plant_tools) || id_in_map(tool_id, m_registry->current_harvest_tools)) {
+                        // Unlocked and selected
+                        if (but.selected) {
+                            color = light_green;
+                        } else {
+                            color = green;
+                        }
+                    } else {
+                        // Unlocked but not selected
+                        if (but.selected) {
+                            color = light_blue;
+                        } else {
+                            color = blue;
+                        }
+                    }
+                } else {
+                    if (but.selected) {
+                        color = light_red;
+                    }
+                }
+
+                m_draw->drawRectBySize(but.pos, but.size, color);
+            }
+        }
+
     }
 }
 

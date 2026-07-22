@@ -60,7 +60,7 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
     entt::entity plant_id = m_registry->ecs.create();
 
     Item i;
-    i.name = plant["name"].get<std::string>();
+    i.name = plant["id_name"].get<std::string>();
     m_registry->ecs.emplace<Item>(plant_id, i);
 
     Plant p;
@@ -103,6 +103,8 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
 
     order.push_back(plant_id);
     m_registry->market_item_order.push_back(plant_id);
+
+
 }
 
 void EntityFactory::load_symbols() noexcept {

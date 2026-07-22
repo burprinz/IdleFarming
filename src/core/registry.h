@@ -130,11 +130,11 @@ struct Inventory {
  */
 struct Item {
     std::string name = "Plant";
-
 };
 
 struct Tool {
     std::string field_type;
+    bool is_for_planting;
     int stage;
     int radius;
 };
@@ -231,7 +231,10 @@ public:
     std::vector<entt::entity> market_item_order;
     BigNumber market_multiplier = BigNumber(1); // -1 = MAX
 
-
+    /**
+     * Buying
+     */
+    entt::entity trying_to_buy = entt::null;
 
 private:
 

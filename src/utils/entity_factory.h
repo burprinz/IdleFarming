@@ -161,6 +161,7 @@ private:
     inline void load_tool_list(nlohmann::json tool_list) {
         std::string category_name = tool_list["category"].get<std::string>();
 
+        bool is_planting = tool_list["type"].get<std::string>() == "planting";
 
         for (auto& t : tool_list["list"]) {
             entt::entity tool_id = m_registry->ecs.create();
@@ -169,11 +170,20 @@ private:
             tool.field_type = category_name;
             tool.stage = t["stage"].get<int>();
             tool.radius = t["radius"].get<int>();
+            tool.is_for_planting = is_planting;
             m_registry->ecs.emplace<Tool>(tool_id, tool);
 
             Item item;
             item.name = t["name"].get<std::string>();
             m_registry->ecs.emplace<Item>(tool_id, item);
+
+            Unlockable u;
+            u.unlocked = false;
+            m_registry->ecs.emplace<Unlockable>(tool_id, u);
+
+            std::string id_name = t["id"].get<std::string>();
+            TextureInformation icon = create_icon(id_name);
+            m_registry->ecs.emplace<TextureInformation>(tool_id, icon);
 
             std::vector<entt::entity> buy_ids;
             std::vector<BigNumber> buy_amounts;
@@ -191,10 +201,8 @@ private:
             buy_amount.item_ids = buy_ids;
             buy_amount.amounts = buy_amounts;
             m_registry->ecs.emplace<BuyAmount>(tool_id, buy_amount);
-
-
-            m_registry->current_plant_tools["field"] = tool_id;
         }
+
     }
 
     inline entt::entity get_item_id_by_name(std::string name) {
@@ -203,6 +211,7 @@ private:
                 return id;
             }
         }
+        std::cout<<"Not found: "<<name<<std::endl;
         return entt::null;
     }
 

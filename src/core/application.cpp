@@ -160,58 +160,15 @@ void Application::reset() noexcept {
 	m_entity_factory.loadBaseValues();
 
 	/**
-	 * Init Buttons
+	 * Reset UI
 	 */
+	m_ui->reset();
 	m_ui->initFieldButton();
 	m_ui->initMarketplaceTradeButtons();
-
-	/**
-	 * Fields
-	 */
-	//float fieldSize = 0.5;
-
-	// Plants
-	/*
-	m_registry->plant_field_tiles.clear();
-	for (int y = 0; y < 15; y++) {
-		for (int x = 0; x < 10; x++) {
-			entt::entity fID = m_registry->ecs.create();
-
-			FarmField f;
-			f.unlocked = true;
-			m_registry->ecs.emplace<FarmField>(fID, f);
-
-			glm::vec2 pos = {0.5 + x*fieldSize, 0.5 + y*fieldSize};
-			m_registry->ecs.emplace<Position>(fID, pos);
-			glm::vec2 size = {fieldSize, fieldSize};
-			m_registry->ecs.emplace<Dimension>(fID, size);
-
-			m_registry->plant_field_tiles.push_back(fID);
-		}
-	}
-
-	// Flowers
-	for (int y = 0; y < 15; y++) {
-		for (int x = 0; x < 10; x++) {
-			entt::entity fID = m_registry->ecs.create();
-
-			FarmField f;
-			f.unlocked = true;
-			m_registry->ecs.emplace<FarmField>(fID, f);
-
-			glm::vec2 pos = {0.5 + x*fieldSize, 0.5 + y*fieldSize};
-			m_registry->ecs.emplace<Position>(fID, pos);
-			glm::vec2 size = {fieldSize, fieldSize};
-			m_registry->ecs.emplace<Dimension>(fID, size);
-
-			m_registry->flower_field_tiles.push_back(fID);
-		}
-	}
-	*/
+	m_ui->initToolSmithButtons();
 
 
 	// reset other systems
-	m_ui->reset();
 	m_render.reset();
 	m_camera.reset();
 	m_unlock.reset();
