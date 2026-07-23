@@ -221,6 +221,7 @@ public:
     /**
      * Farm Tools
      */
+    std::vector<entt::entity> tool_order;
     std::map<std::string, entt::entity> current_plant_tools;
     std::map<std::string, entt::entity> current_harvest_tools;
 

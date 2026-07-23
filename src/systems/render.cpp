@@ -118,7 +118,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         }
     } else if (m_registry->window() == TOOLSMITH) {
 
-        for (TextButton &but : m_ui->m_toolsmith_buy_buttons) {
+        for (TextButton but : m_ui->m_toolsmith_buy_buttons) {
             if (but.visible) {
                 entt::entity tool_id = but.id_label;
 
@@ -148,7 +148,6 @@ void RenderSystem::step(const float /*delta*/) noexcept {
                         color = light_red;
                     }
                 }
-
                 m_draw->drawRectBySize(but.pos, but.size, color);
             }
         }

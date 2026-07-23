@@ -185,13 +185,13 @@ void UISystem::initToolSmithButtons() noexcept {
     float button_gap = size.x + 0.1;
 
 
-    glm::vec2 top_left = {0.1, config::CAMERA_VIEW_HEIGHT-1.2};
+    glm::vec2 top_left = {0.1, config::CAMERA_VIEW_HEIGHT-0.7};
     glm::vec2 center = calc_center(top_left, size);
 
     // Create Button for every Tool
     int c = 0;
-    for (entt::entity tool_id : m_registry->ecs.view<Tool>()) {
-        float y = center.y + c * button_gap;
+    for (entt::entity tool_id : m_registry->tool_order) {
+        float y = center.y - c * button_gap;
         TextButton toolB;
         toolB.pos = {center.x, y};
         toolB.size = size;
@@ -199,13 +199,10 @@ void UISystem::initToolSmithButtons() noexcept {
         toolB.on_click = [registry, tool_id] {
             bool unlocked = registry->ecs.get<Unlockable>(tool_id).unlocked;
 
-            std::cout<<unlocked<<std::endl;
-
             if (!unlocked) {
                 registry->trying_to_buy = tool_id;
             } else {
                 Tool t = registry->ecs.get<Tool>(tool_id);
-                std::cout<<"plant "<<t.is_for_planting<<std::endl;
                 if (t.is_for_planting) {
                     registry->current_plant_tools[t.field_type] = tool_id;
                 } else {

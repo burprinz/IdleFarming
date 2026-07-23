@@ -16,6 +16,21 @@
           }
         }
       ]
+    },
+    {
+      "stage": 2,
+      "radius": 2,
+      "name": "Gold Hoe",
+      "id": "gold_hoe",
+      "price": [
+        {
+          "name": "iron",
+          "amount": {
+            "base": 2.0,
+            "exp": 2
+          }
+        }
+      ]
     }
   ]
 }

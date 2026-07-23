@@ -137,6 +137,8 @@ private:
     void create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order, bool is_tree, bool has_inv) noexcept;
 
     inline void create_tools() noexcept {
+        m_registry->tool_order.clear();
+
         std::string json_path = "/assets/data/basevalues/tool_smith.json";
         nlohmann::json type_json;
         bool loaded = readPath(json_path, &type_json);
@@ -182,7 +184,7 @@ private:
             m_registry->ecs.emplace<Unlockable>(tool_id, u);
 
             std::string id_name = t["id"].get<std::string>();
-            TextureInformation icon = create_icon(id_name);
+            TextureInformation icon = create_symbol("tools/"+id_name);
             m_registry->ecs.emplace<TextureInformation>(tool_id, icon);
 
             std::vector<entt::entity> buy_ids;
@@ -201,6 +203,8 @@ private:
             buy_amount.item_ids = buy_ids;
             buy_amount.amounts = buy_amounts;
             m_registry->ecs.emplace<BuyAmount>(tool_id, buy_amount);
+
+            m_registry->tool_order.push_back(tool_id);
         }
 
     }
@@ -274,7 +278,7 @@ private:
         if (std::filesystem::exists(text_path)) {
             info.text = Texture::init(text_path);
         } else {
-            info.text = Texture::init(getTexturePath("icons/notfound.png"));
+            info.text = Texture::init(getTexturePath("symbols/notfound.png"));
         }
         return info;
     }

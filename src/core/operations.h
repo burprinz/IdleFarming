@@ -24,7 +24,6 @@ inline bool try_to_buy(Registry* registry, entt::entity item_id) noexcept {
 
     for (size_t i = 0; i < am.amounts.size(); i++) {
         BigNumber having = registry->ecs.get<Amount>(am.item_ids[i]).am;
-        std::cout<<having.toString()<<" "<<am.amounts[i].toString()<<std::endl;
         if (having < am.amounts[i]) {
             return false;
         }

@@ -1,0 +1,21 @@
+{
+  "category": "field",
+  "type": "harvesting",
+  "list": [
+    {
+      "stage": 1,
+      "radius": 1,
+      "name": "Iron Sickle",
+      "id": "iron_sickle",
+      "price": [
+        {
+          "name": "iron",
+          "amount": {
+            "base": 1.0,
+            "exp": 2
+          }
+        }
+      ]
+    }
+  ]
+}
