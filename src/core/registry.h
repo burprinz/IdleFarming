@@ -23,6 +23,15 @@ constexpr int FLOWER_FIELD = 1;
 constexpr int TREE_FIELD = 2;
 constexpr int CAVE_MACHINES = 3;
 
+
+/**
+ * Tooltypes
+ */
+constexpr int PLANTING = 0;
+constexpr int HARVESTING = 1;
+constexpr int COLLECTING = 2;
+
+
 struct Viewport{
     glm::uvec2 m_origin;
     glm::uvec2 m_size;
@@ -129,12 +138,13 @@ struct Inventory {
  * Items
  */
 struct Item {
-    std::string name = "Plant";
+    std::string name = "plant";
+    std::string display_name = "Plant";
 };
 
 struct Tool {
     std::string field_type;
-    bool is_for_planting;
+    int usage;
     int stage;
     int radius;
 };
@@ -219,12 +229,12 @@ public:
     std::vector<std::vector<std::vector<entt::entity>>> plant_field_tiles;
 
     /**
-     * Farm Tools
+     * Toolsmith
      */
     std::vector<entt::entity> tool_order;
     std::map<std::string, entt::entity> current_plant_tools;
     std::map<std::string, entt::entity> current_harvest_tools;
-
+    entt::entity current_hover_tool = entt::null;
 
     /**
      * Marketplace

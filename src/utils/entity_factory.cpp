@@ -61,6 +61,7 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
 
     Item i;
     i.name = plant["id_name"].get<std::string>();
+    i.display_name = plant["name"].get<std::string>();
     m_registry->ecs.emplace<Item>(plant_id, i);
 
     Plant p;

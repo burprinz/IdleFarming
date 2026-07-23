@@ -203,10 +203,13 @@ void UISystem::initToolSmithButtons() noexcept {
                 registry->trying_to_buy = tool_id;
             } else {
                 Tool t = registry->ecs.get<Tool>(tool_id);
-                if (t.is_for_planting) {
+
+                if (t.usage == PLANTING) {
                     registry->current_plant_tools[t.field_type] = tool_id;
-                } else {
+                } else if (t.usage == HARVESTING) {
                     registry->current_harvest_tools[t.field_type] = tool_id;
+                } else if (t.usage == COLLECTING) {
+                    // TODO
                 }
             }
         };
@@ -290,7 +293,18 @@ void UISystem::step(const float delta) noexcept {
             selection_found = update_text_button_list(buttons, mousePos, selection_found, true);
         }
     } else if (m_registry->window() == TOOLSMITH) {
-        selection_found = update_text_button_list(m_toolsmith_buy_buttons, mousePos, selection_found, false);
+
+        m_registry->current_hover_tool = entt::null;
+
+        for (TextButton &b : m_toolsmith_buy_buttons) {
+            if (!selection_found && b.visible && point_in_rect(mousePos, b.pos, b.size)) {
+                b.selected = true;
+                selection_found = true;
+                m_registry->current_hover_tool = b.id_label;
+            } else {
+                b.selected = false;
+            }
+        }
     }
 }
 

@@ -163,7 +163,14 @@ private:
     inline void load_tool_list(nlohmann::json tool_list) {
         std::string category_name = tool_list["category"].get<std::string>();
 
-        bool is_planting = tool_list["type"].get<std::string>() == "planting";
+        int usage_id = -1;
+        if (tool_list["type"].get<std::string>() == "planting") {
+            usage_id = PLANTING;
+        } else if (tool_list["type"].get<std::string>() == "harvesting") {
+            usage_id = HARVESTING;
+        }else if (tool_list["type"].get<std::string>() == "collecting") {
+            usage_id = COLLECTING;
+        }
 
         for (auto& t : tool_list["list"]) {
             entt::entity tool_id = m_registry->ecs.create();
@@ -172,11 +179,12 @@ private:
             tool.field_type = category_name;
             tool.stage = t["stage"].get<int>();
             tool.radius = t["radius"].get<int>();
-            tool.is_for_planting = is_planting;
+            tool.usage = usage_id;
             m_registry->ecs.emplace<Tool>(tool_id, tool);
 
             Item item;
-            item.name = t["name"].get<std::string>();
+            item.name = t["id"].get<std::string>();
+            item.display_name = t["name"].get<std::string>();
             m_registry->ecs.emplace<Item>(tool_id, item);
 
             Unlockable u;

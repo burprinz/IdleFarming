@@ -1,0 +1,21 @@
+{
+  "category": "mine",
+  "type": "harvesting",
+  "list": [
+    {
+      "stage": 1,
+      "radius": 1,
+      "name": "Iron Truck",
+      "id": "iron_truck",
+      "price": [
+        {
+          "name": "iron",
+          "amount": {
+            "base": 1.0,
+            "exp": 2
+          }
+        }
+      ]
+    }
+  ]
+}

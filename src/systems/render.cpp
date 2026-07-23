@@ -101,7 +101,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             if (u.unlocked) {
                 // Plant name
                 m_draw->drawRectBySize(pos, plant_name_size, black);
-                m_draw->drawStringInBox(i.name, pos, plant_name_size, black);
+                m_draw->drawStringInBox(i.display_name, pos, plant_name_size, black);
             } else {
                 // Locked symbol
                 drawLockInBlackQuad(pos, plant_name_size, false);
@@ -118,6 +118,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         }
     } else if (m_registry->window() == TOOLSMITH) {
 
+        // Draw Tool Buttons
         for (TextButton but : m_ui->m_toolsmith_buy_buttons) {
             if (but.visible) {
                 entt::entity tool_id = but.id_label;
@@ -152,6 +153,52 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             }
         }
 
+
+        // Draw Hover Info
+        if (m_registry->current_hover_tool != entt::null) {
+            glm::vec2 selectInfoSize = {4.0f, 5.0f};
+            glm::vec2 topLeft = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x - 0.2, selectInfoSize.y + 0.2};
+            glm::vec2 selectInfoPos = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x/2 - 0.2, selectInfoSize.y/2 + 0.2};
+            m_draw->drawRectBySize(selectInfoPos, selectInfoSize, black);
+
+            Item i = m_registry->ecs.get<Item>(m_registry->current_hover_tool);
+            Tool t = m_registry->ecs.get<Tool>(m_registry->current_hover_tool);
+
+            float text_height = 0.3f;
+            float x = selectInfoPos.x;
+            float y = topLeft.y - text_height/2.0f - 0.05f;
+            m_draw->drawStringInBox(i.display_name, {x, y}, {selectInfoSize.x, text_height}, black);
+
+            y -= text_height/2.0f+0.05f;
+            m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
+
+            y -= text_height/2.0f+0.05f;
+            text = "";
+            if (t.usage == PLANTING) {
+                text = "Planting ";
+            } else if (t.usage == HARVESTING) {
+                text = "Harvesting ";
+            } else if (t.usage == COLLECTING) {
+                text = "Collecting ";
+            }
+            text += "radius: " + std::to_string(t.radius);
+            m_draw->drawStringInBox(text, {x, y}, {selectInfoSize.x, text_height}, black);
+
+            y -= text_height/2.0f+0.05f;
+            m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
+
+            y -= text_height/2.0f+0.05f;
+            m_draw->drawStringInBox("Price", {x, y}, {selectInfoSize.x, text_height}, black);
+
+            BuyAmount ba = m_registry->ecs.get<BuyAmount>(m_registry->current_hover_tool);
+            for (size_t idx = 0; idx < ba.amounts.size(); idx++) {
+                // TODO FARBE OB GENUG DA IST BZW OB SCHON GEKAUFT
+                y -= text_height+0.05f;
+                Item b_item = m_registry->ecs.get<Item>(ba.item_ids[idx]);
+                text = b_item.display_name + ") x" + ba.amounts[idx].toString();
+                m_draw->drawStringInBox(text, {x, y}, {selectInfoSize.x, text_height}, black);
+            }
+        }
     }
 }
 
@@ -268,7 +315,7 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
                 // Unlocked but not selected
                 draw_color = b.selected ? b.select_color : b.unselect_color;
             }
-            text = i.name;
+            text = i.display_name;
             m_draw->drawStringInBox(text, b.pos, b.size, black);
         }
         m_draw->drawRectBySize(b.pos, b.size, draw_color);
@@ -295,7 +342,7 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
         float text_height = 0.3f;
         x = selectInfoPos.x;
         float y = topLeft.y - text_height/2.0f - 0.05f;
-        m_draw->drawStringInBox(i.name, {x, y}, {selectInfoSize.x, text_height}, black);
+        m_draw->drawStringInBox(i.display_name, {x, y}, {selectInfoSize.x, text_height}, black);
 
         y -= text_height/2.0f+0.05f;
         m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);

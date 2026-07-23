@@ -1,0 +1,21 @@
+{
+  "category": "mine",
+  "type": "planting",
+  "list": [
+    {
+      "stage": 1,
+      "radius": 1,
+      "name": "Iron Crane",
+      "id": "iron_crane",
+      "price": [
+        {
+          "name": "iron",
+          "amount": {
+            "base": 1.0,
+            "exp": 2
+          }
+        }
+      ]
+    }
+  ]
+}
