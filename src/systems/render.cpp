@@ -190,13 +190,24 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             y -= text_height/2.0f+0.05f;
             m_draw->drawStringInBox("Price", {x, y}, {selectInfoSize.x, text_height}, black);
 
+            y -= text_height/2.0f+0.05f;
+            float quarter = topLeft.x+selectInfoSize.x/4.0f;
+            m_draw->drawLine({quarter, y}, {(quarter+selectInfoSize.x/2.0f), y}, black);
+            y -= text_height/2.0f+0.05f;
+
             BuyAmount ba = m_registry->ecs.get<BuyAmount>(m_registry->current_hover_tool);
             for (size_t idx = 0; idx < ba.amounts.size(); idx++) {
-                // TODO FARBE OB GENUG DA IST BZW OB SCHON GEKAUFT
-                y -= text_height+0.05f;
                 Item b_item = m_registry->ecs.get<Item>(ba.item_ids[idx]);
-                text = b_item.display_name + ") x" + ba.amounts[idx].toString();
-                m_draw->drawStringInBox(text, {x, y}, {selectInfoSize.x, text_height}, black);
+                Amount am = m_registry->ecs.get<Amount>(ba.item_ids[idx]);
+
+                glm::vec3 c = red;
+                if (has_enough(am.am, ba.amounts[idx])) {
+                    c = green;
+                }
+
+                text = "x" + ba.amounts[idx].toString() + " " + b_item.display_name;
+                m_draw->drawStringInBox(text, {x, y}, {selectInfoSize.x, text_height}, c);
+                y -= text_height+0.05f;
             }
         }
     }
