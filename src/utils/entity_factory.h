@@ -79,7 +79,7 @@ private:
             m_registry->current_plant_tools[field_type] = entt::null;
             m_registry->current_harvest_tools[field_type] = entt::null;
             m_registry->current_collect_tools[field_type] = entt::null;
-
+            m_registry->tool_work_area_names[field_type] = "???";
         }
     }
 
@@ -166,6 +166,7 @@ private:
                 std::cout<<"Error loading "<<type_name<<" infos"<<std::endl;
             }
 
+
             load_tool_list(type_info_json);
         }
 
@@ -173,6 +174,7 @@ private:
 
     inline void load_tool_list(nlohmann::json tool_list) {
         std::string category_name = tool_list["category"].get<std::string>();
+        std::string work_area = tool_list["area_name"].get<std::string>();
 
         int usage_id = -1;
         if (tool_list["type"].get<std::string>() == "planting") {
@@ -191,6 +193,7 @@ private:
             tool.stage = t["stage"].get<int>();
             tool.radius = t["radius"].get<int>();
             tool.usage = usage_id;
+            tool.work_area = work_area;
             m_registry->ecs.emplace<Tool>(tool_id, tool);
 
             Item item;

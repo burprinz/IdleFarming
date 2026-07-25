@@ -1,6 +1,7 @@
 {
   "category": "field",
   "type": "planting",
+  "area_name": "Plants,Flowers,Trees",
   "list": [
     {
       "stage": 1,

@@ -152,6 +152,7 @@ struct Item {
 
 struct Tool {
     std::string field_type;
+    std::string work_area = "???";
     int usage;
     int stage;
     int radius;
@@ -241,6 +242,7 @@ public:
      */
     entt::entity current_hover_tool;
     std::vector<entt::entity> tool_order;
+    std::map<std::string, std::string> tool_work_area_names;
     std::map<std::string, entt::entity> current_plant_tools;
     std::map<std::string, entt::entity> current_harvest_tools;
     std::map<std::string, entt::entity> current_collect_tools;

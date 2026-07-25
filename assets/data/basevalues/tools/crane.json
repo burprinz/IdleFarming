@@ -1,6 +1,7 @@
 {
   "category": "mine",
   "type": "planting",
+  "area_name": "Cave",
   "list": [
     {
       "stage": 1,

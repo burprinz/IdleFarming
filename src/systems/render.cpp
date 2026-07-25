@@ -173,6 +173,10 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
 
             y -= text_height/2.0f+0.05f;
+            text = "Works on " + t.work_area;
+            m_draw->drawStringInBox(text, {x, y}, {selectInfoSize.x, text_height}, black);
+
+            y -= text_height+0.05f;
             text = "";
             if (t.usage == PLANTING) {
                 text = "Planting ";

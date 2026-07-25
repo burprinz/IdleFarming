@@ -1,6 +1,7 @@
 {
   "category": "field",
   "type": "harvesting",
+  "area_name": "Plants,Flowers",
   "list": [
     {
       "stage": 1,

@@ -1,6 +1,7 @@
 {
   "category": "regrow",
   "type": "harvesting",
+  "area_name": "Trees",
   "list": [
     {
       "stage": 1,
