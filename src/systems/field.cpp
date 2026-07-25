@@ -28,7 +28,6 @@ void FieldSystem::step(const float delta) noexcept {
     if (m_registry->window() == FIELDS) {
 
         try_to_plant(
-            m_registry->ecs.get<Field>(m_registry->field_order[m_registry->current_selected_field]).type,
             m_registry->plant_field_tiles[m_registry->current_selected_field],
             m_registry->current_selected_plant[m_registry->current_selected_field]
             );
@@ -74,24 +73,33 @@ void FieldSystem::step(const float delta) noexcept {
 
 }
 
-void FieldSystem::try_to_plant(std::string field_type, std::vector<std::vector<entt::entity>> field, entt::entity p_id) noexcept {
+void FieldSystem::try_to_plant(std::vector<std::vector<entt::entity>> field, entt::entity p_id) noexcept {
+
+    Field current_field = m_registry->ecs.get<Field>(m_registry->field_order[m_registry->current_selected_field]);
 
     glm::vec2 mousePos = m_window->getMousePosition();
     bool pointFound = false;
 
     int plant_radius = 0;
     int harvest_radius = 0;
+    int collect_radius = 0;
 
-    entt::entity plant_tool_id = m_registry->current_plant_tools[field_type];
-    if (plant_tool_id != entt::null) {
-        plant_radius = m_registry->ecs.get<Tool>(plant_tool_id).radius;
+    if (!m_registry->keys["strg"]) {
+        entt::entity plant_tool_id = m_registry->current_plant_tools[current_field.type];
+        if (plant_tool_id != entt::null) {
+            plant_radius = m_registry->ecs.get<Tool>(plant_tool_id).radius;
+        }
+
+        entt::entity harvest_tool_id = m_registry->current_harvest_tools[current_field.type];
+        if (harvest_tool_id != entt::null) {
+            harvest_radius = m_registry->ecs.get<Tool>(harvest_tool_id).radius;
+        }
+
+        entt::entity collect_tool_id = m_registry->current_collect_tools[current_field.type];
+        if (collect_tool_id != entt::null) {
+            collect_radius = m_registry->ecs.get<Tool>(collect_tool_id).radius;
+        }
     }
-
-    entt::entity harvest_tool_id = m_registry->current_harvest_tools[field_type];
-    if (harvest_tool_id != entt::null) {
-        harvest_radius = m_registry->ecs.get<Tool>(harvest_tool_id).radius;
-    }
-
 
     for (size_t y = 0; y < field.size(); y++) {
         std::vector<entt::entity> row = field[y];
@@ -107,6 +115,7 @@ void FieldSystem::try_to_plant(std::string field_type, std::vector<std::vector<e
                 pointFound = true;
                 f.marked = true;
 
+
                 // Left Click and Plant selected -> Try to plant in radius
                 if (m_registry->keys["mouse_left"] && p_id != entt::null) {
                     plant_with_radius(field, p_id, x, y, plant_radius);
@@ -114,7 +123,15 @@ void FieldSystem::try_to_plant(std::string field_type, std::vector<std::vector<e
 
                 // Right CLick -> Try to harvest in radius
                 if (m_registry->keys["mouse_right"]) {
-                    harvest_with_radius(field, x, y, harvest_radius);
+
+                    if (current_field.plant_type == NORMAL_PLANT || m_registry->keys["shift"]) {
+                        // Normale Pflanze oder regrow/inv + shift -> Ernten und entfernen
+                        harvest_with_radius(field, x, y, harvest_radius);
+                    } else {
+                        // regrow/inv -> Collecten
+                        collect_with_radius(field, x, y, collect_radius);
+                    }
+
                 }
 
             } else {

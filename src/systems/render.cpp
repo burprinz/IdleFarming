@@ -129,7 +129,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
                 glm::vec3 color = red;
                 Unlockable u = m_registry->ecs.get<Unlockable>(tool_id);
                 if (u.unlocked) {
-                    if (id_in_map(tool_id, m_registry->current_plant_tools) || id_in_map(tool_id, m_registry->current_harvest_tools)) {
+                    if (id_in_map(tool_id, m_registry->current_plant_tools) || id_in_map(tool_id, m_registry->current_harvest_tools)|| id_in_map(tool_id, m_registry->current_collect_tools)) {
                         // Unlocked and selected
                         if (but.selected) {
                             color = light_green;

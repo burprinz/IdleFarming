@@ -13,6 +13,8 @@ Registry* Registry::init() noexcept {
 	self->keys.insert({"q", false});
 	self->keys.insert({"e", false});
 	self->keys.insert({"space", false});
+	self->keys.insert({"shift", false});
+	self->keys.insert({"strg", false});
 	self->keys.insert({"mouse_left", false});
 	self->keys.insert({"mouse_right", false});
 
@@ -45,6 +47,12 @@ void Registry::on_key_callback(int key, int action) noexcept {
 			break;
 		case GLFW_KEY_SPACE:
 			keys.insert_or_assign("space", active);
+			break;
+		case GLFW_KEY_LEFT_SHIFT:
+			keys.insert_or_assign("shift", active);
+			break;
+		case GLFW_KEY_LEFT_CONTROL:
+			keys.insert_or_assign("strg", active);
 			break;
 
 	}

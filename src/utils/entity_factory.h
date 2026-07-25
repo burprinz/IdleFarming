@@ -52,6 +52,15 @@ private:
             bool is_tree = field["is_tree"].get<bool>();
             bool has_inv = field["has_inv"].get<bool>();
 
+            std::string raw_plant_type = field["plant_type"].get<std::string>();
+            int plant_type = -1;
+            if (raw_plant_type == "normal") {
+                plant_type = NORMAL_PLANT;
+            } else if (raw_plant_type == "collect") {
+                plant_type = COLLECT_PLANT;
+            } else if (raw_plant_type == "inventory") {
+                plant_type = INVENTORY_PLANT;
+            }
 
             entt::entity id = m_registry->ecs.create();
 
@@ -61,6 +70,7 @@ private:
             Field f;
             f.name = field_name;
             f.type = field_type;
+            f.plant_type = plant_type;
 
             load_field_plants(&f, is_tree, has_inv);
 
@@ -68,6 +78,7 @@ private:
 
             m_registry->current_plant_tools[field_type] = entt::null;
             m_registry->current_harvest_tools[field_type] = entt::null;
+            m_registry->current_collect_tools[field_type] = entt::null;
 
         }
     }

@@ -2,6 +2,8 @@
   "types": [
     "hoe",
     "sickle",
+    "basket",
+    "axe",
     "crane",
     "truck"
   ]

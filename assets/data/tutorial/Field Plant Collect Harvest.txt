@@ -1,0 +1,6 @@
+
+- Left Click = Plant in selected Tool Radius
+- Right Click = Harvest/Collect in selected Tool Radius
+- Shift + Right Click = Remove Collectable Plant in Tool Radius
+
+- STRG + One Above = Do Action on single field

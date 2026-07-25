@@ -23,6 +23,12 @@ constexpr int FLOWER_FIELD = 1;
 constexpr int TREE_FIELD = 2;
 constexpr int CAVE_MACHINES = 3;
 
+/**
+ * Plant Type for Field
+ */
+constexpr int NORMAL_PLANT = 0;
+constexpr int COLLECT_PLANT = 1;
+constexpr int INVENTORY_PLANT = 2;
 
 /**
  * Tooltypes
@@ -78,10 +84,12 @@ struct PolygonShape {
  * Field
  */
 
+// TODO: FOR TOOLS: WORKS ON "TYPE" (FIELD; TREE_FIELD);
 struct Field {
     std::string name;
     std::string display_name;
     std::string type;
+    int plant_type = 0;
 };
 
 struct FarmField {
@@ -231,10 +239,11 @@ public:
     /**
      * Toolsmith
      */
+    entt::entity current_hover_tool;
     std::vector<entt::entity> tool_order;
     std::map<std::string, entt::entity> current_plant_tools;
     std::map<std::string, entt::entity> current_harvest_tools;
-    entt::entity current_hover_tool = entt::null;
+    std::map<std::string, entt::entity> current_collect_tools;
 
     /**
      * Marketplace

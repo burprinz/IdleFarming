@@ -1,0 +1,21 @@
+{
+  "category": "regrow",
+  "type": "collecting",
+  "list": [
+    {
+      "stage": 1,
+      "radius": 1,
+      "name": "Iron Basket",
+      "id": "iron_basket",
+      "price": [
+        {
+          "name": "iron",
+          "amount": {
+            "base": 1.0,
+            "exp": 2
+          }
+        }
+      ]
+    }
+  ]
+}

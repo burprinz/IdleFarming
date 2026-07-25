@@ -3,24 +3,28 @@
     {
       "name": "plants",
       "type": "field",
+      "plant_type": "normal",
       "is_tree": false,
       "has_inv": false
     },
     {
       "name": "flowers",
       "type": "field",
+      "plant_type": "normal",
       "is_tree": false,
       "has_inv": false
     },
     {
       "name": "trees",
-      "type": "field",
+      "type": "regrow",
+      "plant_type": "collect",
       "is_tree": true,
       "has_inv": false
     },
     {
       "name": "cave_machines",
       "type": "mine",
+      "plant_type": "inventory",
       "is_tree": false,
       "has_inv": true
     }

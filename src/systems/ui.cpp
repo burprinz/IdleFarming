@@ -209,7 +209,7 @@ void UISystem::initToolSmithButtons() noexcept {
                 } else if (t.usage == HARVESTING) {
                     registry->current_harvest_tools[t.field_type] = tool_id;
                 } else if (t.usage == COLLECTING) {
-                    // TODO
+                    registry->current_collect_tools[t.field_type] = tool_id;
                 }
             }
         };
