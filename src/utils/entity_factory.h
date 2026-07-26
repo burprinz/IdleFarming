@@ -10,7 +10,8 @@
 #include "core/registry.h"
 #include <nlohmann/json.hpp>
 
-#include "core/sizes.h"
+#include "../helpers/sizes.h"
+#include "helpers/finder.h"
 
 class EntityFactory {
 public:
@@ -24,6 +25,8 @@ public:
         load_base_fields();
 
         create_tools();
+
+        create_helpers();
     }
 
 
@@ -37,6 +40,8 @@ private:
 
     nlohmann::json m_levelJson;
     nlohmann::json m_objectJson;
+
+    void load_symbols() noexcept;
 
     inline void load_base_fields() noexcept {
         std::string json_path = "/assets/data/basevalues/fields.json";
@@ -176,14 +181,7 @@ private:
         std::string category_name = tool_list["category"].get<std::string>();
         std::string work_area = tool_list["area_name"].get<std::string>();
 
-        int usage_id = -1;
-        if (tool_list["type"].get<std::string>() == "planting") {
-            usage_id = PLANTING;
-        } else if (tool_list["type"].get<std::string>() == "harvesting") {
-            usage_id = HARVESTING;
-        }else if (tool_list["type"].get<std::string>() == "collecting") {
-            usage_id = COLLECTING;
-        }
+        int usage_id = get_usage_by_name(tool_list["type"].get<std::string>());
 
         for (auto& t : tool_list["list"]) {
             entt::entity tool_id = m_registry->ecs.create();
@@ -209,21 +207,7 @@ private:
             TextureInformation icon = create_symbol("tools/"+id_name);
             m_registry->ecs.emplace<TextureInformation>(tool_id, icon);
 
-            std::vector<entt::entity> buy_ids;
-            std::vector<BigNumber> buy_amounts;
-
-            for (auto &item_price : t["price"]) {
-                std::string item_name = item_price["name"];
-                entt::entity item_id = get_item_id_by_name(item_name);
-                BigNumber item_amount = extract_bignumber(item_price["amount"]);
-
-                buy_ids.push_back(item_id);
-                buy_amounts.push_back(item_amount);
-            }
-
-            BuyAmount buy_amount;
-            buy_amount.item_ids = buy_ids;
-            buy_amount.amounts = buy_amounts;
+            BuyAmount buy_amount = extract_buyamount(t["price"]);
             m_registry->ecs.emplace<BuyAmount>(tool_id, buy_amount);
 
             m_registry->tool_order.push_back(tool_id);
@@ -231,18 +215,44 @@ private:
 
     }
 
-    inline entt::entity get_item_id_by_name(std::string name) {
-        for (entt::entity id : m_registry->ecs.view<Item>()) {
-            if (m_registry->ecs.get<Item>(id).name == name) {
-                return id;
-            }
+    inline void create_helpers() {
+        std::string json_path = "/assets/data/basevalues/farm_helpers.json";
+        nlohmann::json type_json;
+        bool loaded = readPath(json_path, &type_json);
+        if (!loaded) {
+            std::cout<<"Error loading Tool Type List"<<std::endl;
         }
-        std::cout<<"Not found: "<<name<<std::endl;
-        return entt::null;
+
+        for (auto& type : type_json["types"]) {
+            std::string type_name = type.get<std::string>();
+            std::string type_path = "/assets/data/basevalues/farm_helpers/" + type_name + ".json";
+            nlohmann::json type_info_json;
+            loaded = readPath(type_path, &type_info_json);
+            if (!loaded) {
+                std::cout<<"Error loading "<<type_name<<" infos"<<std::endl;
+            }
+
+            load_helper(type_info_json);
+        }
     }
 
-    void load_symbols() noexcept;
+    inline void load_helper(nlohmann::json raw_helper_infos) {
 
+        entt::entity helper_id = m_registry->ecs.create();
+
+        FarmHelper helper;
+        helper.name = raw_helper_infos["name"].get<std::string>();
+        helper.field = get_field_id_by_name(m_registry, raw_helper_infos["field"].get<std::string>());
+        helper.usage = get_usage_by_name(raw_helper_infos["type"].get<std::string>());
+        m_registry->ecs.emplace<FarmHelper>(helper_id, helper);
+
+        Unlockable unlock;
+        unlock.unlocked = false;
+        m_registry->ecs.emplace<Unlockable>(helper_id, unlock);
+
+        BuyAmount buyam = extract_buyamount(raw_helper_infos["price"]);
+        m_registry->ecs.emplace<BuyAmount>(helper_id, buyam);
+    }
 
 
     /**
@@ -304,5 +314,25 @@ private:
         }
         return info;
     }
+
+    inline BuyAmount extract_buyamount(nlohmann::json price) {
+        std::vector<entt::entity> buy_ids;
+        std::vector<BigNumber> buy_amounts;
+        for (auto &item_price : price) {
+            std::string item_name = item_price["name"];
+            entt::entity item_id = get_item_id_by_name(m_registry, item_name);
+            BigNumber item_amount = extract_bignumber(item_price["amount"]);
+
+            buy_ids.push_back(item_id);
+            buy_amounts.push_back(item_amount);
+        }
+
+        BuyAmount result;
+        result.item_ids = buy_ids;
+        result.amounts = buy_amounts;
+
+        return result;
+    }
+
 
 };

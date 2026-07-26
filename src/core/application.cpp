@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../config.h"
+#include "../helpers/config.h"
 #include "utils/BigNumber.h"
 
 static void glfwErrorCallback(int error, const char* description) {

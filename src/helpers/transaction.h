@@ -1,7 +1,7 @@
 #pragma once
 #include "utils/BigNumber.h"
 //
-// Created by luisb on 30.06.2026.
+// Created by luisb on 26.07.2026.
 //
 
 /**
@@ -17,6 +17,7 @@ inline bool try_to_remove(BigNumber &num, BigNumber rem) noexcept {
     }
     return false;
 }
+
 
 inline bool try_to_buy(Registry* registry, entt::entity item_id) noexcept {
 
@@ -40,13 +41,4 @@ inline bool try_to_buy(Registry* registry, entt::entity item_id) noexcept {
 
 inline bool has_enough(BigNumber num, BigNumber rem) {
     return rem <= num;
-}
-
-inline bool id_in_map(entt::entity id, std::map<std::string, entt::entity> map) {
-    for (auto &[key, value] : map) {
-        if (id == value) {
-            return true;
-        }
-    }
-    return false;
 }

@@ -6,7 +6,8 @@
 
 #include <iostream>
 
-#include "core/util.h"
+#include "../helpers/util.h"
+#include "helpers/field_editor.h"
 
 FieldSystem FieldSystem::init(Window *window, Registry *registry) noexcept {
     FieldSystem self;
@@ -117,7 +118,7 @@ void FieldSystem::try_to_plant(std::vector<std::vector<entt::entity>> field, ent
 
                 // Left Click and Plant selected -> Try to plant in radius
                 if (m_registry->keys["mouse_left"] && p_id != entt::null) {
-                    plant_with_radius(field, p_id, x, y, plant_radius);
+                    plant_with_radius(m_registry, field, p_id, x, y, plant_radius);
                 }
 
                 // Right CLick -> Try to harvest in radius
@@ -125,10 +126,10 @@ void FieldSystem::try_to_plant(std::vector<std::vector<entt::entity>> field, ent
 
                     if (current_field.plant_type == NORMAL_PLANT || m_registry->keys["shift"]) {
                         // Normale Pflanze oder regrow/inv + shift -> Ernten und entfernen
-                        harvest_with_radius(field, x, y, harvest_radius);
+                        harvest_with_radius(m_registry, field, x, y, harvest_radius);
                     } else {
                         // regrow/inv -> Collecten
-                        collect_with_radius(field, x, y, collect_radius);
+                        collect_with_radius(m_registry, field, x, y, collect_radius);
                     }
 
                 }

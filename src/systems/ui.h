@@ -2,9 +2,9 @@
 #include <iostream>
 
 #include "window.h"
-#include "core/colors.h"
+#include "../helpers/colors.h"
 #include "core/registry.h"
-#include "core/util.h"
+#include "../helpers/util.h"
 //
 // Created by luisb on 24.06.2026.
 //

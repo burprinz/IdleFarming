@@ -2,7 +2,7 @@
 // Created by luisb on 09.03.2026.
 //
 
-#include "config.h"
+#include "../helpers/config.h"
 #include "core/registry.h"
 
 inline std::vector<int> triangulatePrism(const std::vector<glm::vec2>& vertices) noexcept {

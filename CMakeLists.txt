@@ -139,7 +139,7 @@ add_executable(${PROJECT_NAME}
 	${PROJECT_SOURCE_DIR}/src/utils/shader.cpp
 	${PROJECT_SOURCE_DIR}/src/utils/framebuffer.cpp
 	${PROJECT_SOURCE_DIR}/src/utils/texture.cpp
-        src/core/util.h
+        src/helpers/util.h
 		src/core/draw.cpp
 		src/core/draw.h
 		src/utils/geometry.h
@@ -150,16 +150,18 @@ add_executable(${PROJECT_NAME}
 		src/utils/BigNumber.h
 		src/systems/field.cpp
 		src/systems/field.h
-		src/core/colors.h
+        src/helpers/colors.h
 		src/systems/ui.cpp
 		src/systems/ui.h
-		src/core/sizes.h
-		src/core/paths.h
+        src/helpers/sizes.h
+        src/helpers/paths.h
 		src/systems/camera.cpp
 		src/systems/camera.h
 		src/systems/unlock.cpp
 		src/systems/unlock.h
-		src/core/money.h
+		src/helpers/transaction.h
+		src/helpers/finder.h
+		src/helpers/field_editor.h
 )
 
 

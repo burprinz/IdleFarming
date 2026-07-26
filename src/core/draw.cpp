@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-#include "config.h"
+#include "../helpers/config.h"
 
 Draw *Draw::init(Window* window, Registry* registry) noexcept {
     Draw *self = new Draw;

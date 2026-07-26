@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iostream>
 
-#include "config.h"
+#include "../helpers/config.h"
 
 CameraSystem CameraSystem::init(Registry* registry) noexcept {
     CameraSystem self;

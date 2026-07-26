@@ -1,6 +1,14 @@
 {
   "name": "Alice",
   "field": "plants",
-  "type": "planting"
-
+  "type": "planting",
+  "price": [
+    {
+      "name": "iron",
+      "amount": {
+        "base": 1.0,
+        "exp": 1
+      }
+    }
+  ]
 }

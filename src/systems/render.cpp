@@ -1,14 +1,14 @@
 #include "render.h"
-#include "config.h"
+#include "../helpers/config.h"
 #include "core/registry.h"
 
 #include <iostream>
 
-#include "core/colors.h"
-#include "core/operations.h"
-#include "core/sizes.h"
+#include "../helpers/colors.h"
+#include "../helpers/sizes.h"
+#include "helpers/finder.h"
+#include "helpers/transaction.h"
 #include "utils/BigNumber.h"
-#include "utils/geometry.h"
 
 
 constexpr int LIGHT_EFFECT_FRAMECOUNT = 32;          // number of frames in light effect texture

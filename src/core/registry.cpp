@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "config.h"
+#include "../helpers/config.h"
 
 Registry* Registry::init() noexcept {
 	Registry* self = new Registry;

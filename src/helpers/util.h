@@ -3,7 +3,7 @@
 #include <common.h>
 
 #include "config.h"
-#include "registry.h"
+#include "../core/registry.h"
 #include "window.h"
 
 // Template Functions for often reused Function calls searched for and created with help of ChatGPT

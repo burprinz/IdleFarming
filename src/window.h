@@ -2,7 +2,7 @@
 
 #include <common.h>
 
-#include "config.h"
+#include "helpers/config.h"
 
  class Window {
 	public:
