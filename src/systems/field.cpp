@@ -24,7 +24,6 @@ void FieldSystem::reset() noexcept {
 }
 
 void FieldSystem::step(const float delta) noexcept {
-
     if (m_registry->window() == FIELDS) {
 
         try_to_plant(

@@ -27,8 +27,12 @@ void UISystem::initWindowSwitchButtons() noexcept {
 
     Registry* registry = m_registry;
 
+
+    float w = 1.1;
+    float x = 0.6;
+
     TextButton fieldButton;
-    fieldButton.pos = {0.6, config::CAMERA_VIEW_HEIGHT-0.35};
+    fieldButton.pos = {x, config::CAMERA_VIEW_HEIGHT-0.35};
     fieldButton.size = {1.0, 0.5};
     fieldButton.text = "Farmland";
     fieldButton.on_click = [registry] {
@@ -36,8 +40,10 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(fieldButton);
 
+    x += w;
+
     TextButton geneLabButton;
-    geneLabButton.pos = {1.7, config::CAMERA_VIEW_HEIGHT-0.35};
+    geneLabButton.pos = {x, config::CAMERA_VIEW_HEIGHT-0.35};
     geneLabButton.size = {1.0, 0.5};
     geneLabButton.text = "Gene Lab";
     geneLabButton.on_click = [registry] {
@@ -45,8 +51,10 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(geneLabButton);
 
+    x += w;
+
     TextButton marketButton;
-    marketButton.pos = {2.8, config::CAMERA_VIEW_HEIGHT-0.35};
+    marketButton.pos = {x, config::CAMERA_VIEW_HEIGHT-0.35};
     marketButton.size = {1.0, 0.5};
     marketButton.text = "Marketplace";
     marketButton.on_click = [registry] {
@@ -54,8 +62,10 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(marketButton);
 
+    x += w;
+
     TextButton toolsButton;
-    toolsButton.pos = {3.9, config::CAMERA_VIEW_HEIGHT-0.35};
+    toolsButton.pos = {x, config::CAMERA_VIEW_HEIGHT-0.35};
     toolsButton.size = {1.0, 0.5};
     toolsButton.text = "Tool Smith";
     toolsButton.on_click = [registry] {

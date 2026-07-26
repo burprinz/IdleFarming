@@ -83,13 +83,11 @@ struct PolygonShape {
 /**
  * Field
  */
-
-// TODO: FOR TOOLS: WORKS ON "TYPE" (FIELD; TREE_FIELD);
 struct Field {
-    std::string name;
-    std::string display_name;
-    std::string type;
-    int plant_type = 0;
+    std::string name; // ID Name; unique for every field
+    std::string display_name; // Name for buttons
+    std::string type; // Normal field, tree field, normal cave,...
+    int plant_type = 0; // Normal, Collect, Inventory
 };
 
 struct FarmField {
@@ -118,6 +116,18 @@ struct Plant {
     bool has_inventory = false;
     BigNumber inventory_size;
 };
+
+// TODO everything
+struct FarmHelper {
+    std::string name;
+    int usage; // PLANTING, HARVESTING, COLLECTING
+
+    entt::entity field;
+
+    size_t x_pos = 0;
+    size_t y_pos = 0;
+};
+
 
 struct Color {
     glm::vec3 c;
@@ -152,10 +162,10 @@ struct Item {
 
 struct Tool {
     std::string field_type;
-    std::string work_area = "???";
-    int usage;
-    int stage;
-    int radius;
+    std::string work_area = "???"; // Only for tool description ingame
+    int usage; // PLANTING, HARVESTING, COLLECTING
+    int stage; // eg. 1=iron, 2=gold,...
+    int radius; // Working radius
 };
 
 struct BuyAmount {
