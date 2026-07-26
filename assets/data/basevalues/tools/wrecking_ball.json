@@ -1,0 +1,22 @@
+{
+  "category": "normal_mine",
+  "type": "harvesting",
+  "area_name": "Cave",
+  "list": [
+    {
+      "stage": 1,
+      "radius": 1,
+      "name": "Iron Wrecking Ball",
+      "id": "iron_wrecking_ball",
+      "price": [
+        {
+          "name": "iron",
+          "amount": {
+            "base": 1.0,
+            "exp": 2
+          }
+        }
+      ]
+    }
+  ]
+}

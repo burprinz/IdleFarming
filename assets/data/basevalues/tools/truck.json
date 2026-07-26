@@ -1,6 +1,6 @@
 {
-  "category": "mine",
-  "type": "harvesting",
+  "category": "normal_mine",
+  "type": "collecting",
   "area_name": "Cave",
   "list": [
     {
