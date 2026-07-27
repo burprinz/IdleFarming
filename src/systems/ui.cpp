@@ -42,17 +42,6 @@ void UISystem::initWindowSwitchButtons() noexcept {
 
     x += w;
 
-    TextButton geneLabButton;
-    geneLabButton.pos = {x, config::CAMERA_VIEW_HEIGHT-0.35};
-    geneLabButton.size = {1.0, 0.5};
-    geneLabButton.text = "Gene Lab";
-    geneLabButton.on_click = [registry] {
-        registry->change_window(GENE_LAB);
-    };
-    m_window_buttons.push_back(geneLabButton);
-
-    x += w;
-
     TextButton marketButton;
     marketButton.pos = {x, config::CAMERA_VIEW_HEIGHT-0.35};
     marketButton.size = {1.0, 0.5};
