@@ -69,7 +69,6 @@ void RenderSystem::step(const float /*delta*/) noexcept {
          */
         drawBasicTextButtons(m_ui->m_field_mode_buttons);
 
-
         /**
          * Draw Field
          */
@@ -79,35 +78,30 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             m_ui->m_field_plant_select_buttons[m_registry->current_selected_field],
             m_registry->current_selected_plant[m_registry->current_selected_field]
         );
-
-    } else if (m_registry->window() == GENE_LAB) {
-
     } else if (m_registry->window() == MARKETPLACE) {
+
+        drawBasicTextButtons(m_ui->m_market_category_buttons);
+
         for (std::vector<TextButton> &buts : m_ui->m_market_trade_buttons) {
+            if (!buts[0].visible) continue;
+
             entt::entity p_id = buts[0].id_label;
-            //Plant p = m_registry->ecs.get<Plant>(p_id);
             Item i = m_registry->ecs.get<Item>(p_id);
-            Unlockable u = m_registry->ecs.get<Unlockable>(p_id);
             IconTexture it = m_registry->ecs.get<IconTexture>(p_id);
 
             float y = buts[0].pos.y - 0.1;
 
+            // Item Icon
             glm::vec2 icon_size = (glm::vec2{buts[0].size.y, buts[0].size.y} / 2.0f);
-
             glm::vec2 pos = (0.1f+glm::vec2{trade_buttons_topleft.x + icon_size.x / 2.0f, y});
             m_draw->drawTexture(it.icon.text, pos, icon_size);
 
+            // Item Name
             pos.x += icon_size.x + plant_name_size.x/2.0f + 0.1f;
-            if (u.unlocked) {
-                // Plant name
-                m_draw->drawRectBySize(pos, plant_name_size, black);
-                m_draw->drawStringInBox(i.display_name, pos, plant_name_size, black);
-            } else {
-                // Locked symbol
-                drawLockInBlackQuad(pos, plant_name_size, false);
-            }
+            m_draw->drawRectBySize(pos, plant_name_size, black);
+            m_draw->drawStringInBox(i.display_name, pos, plant_name_size, black);
 
-            // Amount of plants
+            // Amount of items
             pos = {pos.x + plant_name_size.x/2.0f + market_stash_size.x/2.0f + 0.1f, pos.y};
             BigNumber stash = m_registry->ecs.get<Amount>(p_id).am;
             m_draw->drawRectBySize(pos, market_stash_size, black);

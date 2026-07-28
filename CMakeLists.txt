@@ -140,13 +140,13 @@ add_executable(${PROJECT_NAME}
 	${PROJECT_SOURCE_DIR}/src/utils/framebuffer.cpp
 	${PROJECT_SOURCE_DIR}/src/utils/texture.cpp
         src/helpers/util.h
-		src/core/draw.cpp
-		src/core/draw.h
+		src/utils/draw.cpp
+		src/utils/draw.h
 		src/utils/geometry.h
 		src/discord.cpp
 		src/discord.h
-		src/utils/entity_factory.cpp
-		src/utils/entity_factory.h
+		src/core/entity_factory.cpp
+		src/core/entity_factory.h
 		src/utils/BigNumber.h
 		src/systems/field.cpp
 		src/systems/field.h

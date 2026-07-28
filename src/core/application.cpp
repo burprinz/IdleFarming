@@ -162,6 +162,7 @@ void Application::reset() noexcept {
 	/**
 	 * Reset UI
 	 */
+	m_registry->current_market_category = get_item_category_by_name(m_registry, "flowers");
 	m_ui->reset();
 	m_ui->initFieldButton();
 	m_ui->initMarketplaceTradeButtons();

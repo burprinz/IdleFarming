@@ -6,6 +6,7 @@
 
 #include "../helpers/sizes.h"
 #include "../helpers/util.h"
+#include "helpers/finder.h"
 #include "helpers/transaction.h"
 
 UISystem UISystem::init(Window *window, Registry *registry) noexcept {
@@ -28,34 +29,34 @@ void UISystem::initWindowSwitchButtons() noexcept {
     Registry* registry = m_registry;
 
 
-    float w = 1.1;
-    float x = 0.6;
+    glm::vec2 size = select_buttons_size;
+    glm::vec2 pos = calc_center(mode_select_buttons_topleft, size);
 
     TextButton fieldButton;
-    fieldButton.pos = {x, config::CAMERA_VIEW_HEIGHT-0.35};
-    fieldButton.size = {1.0, 0.5};
+    fieldButton.pos = pos;
+    fieldButton.size = size;
     fieldButton.text = "Farmland";
     fieldButton.on_click = [registry] {
         registry->change_window(FIELDS);
     };
     m_window_buttons.push_back(fieldButton);
 
-    x += w;
+    pos.x += size.x + 0.1;
 
     TextButton marketButton;
-    marketButton.pos = {x, config::CAMERA_VIEW_HEIGHT-0.35};
-    marketButton.size = {1.0, 0.5};
+    marketButton.pos = pos;
+    marketButton.size = size;
     marketButton.text = "Marketplace";
     marketButton.on_click = [registry] {
         registry->change_window(MARKETPLACE);
     };
     m_window_buttons.push_back(marketButton);
 
-    x += w;
+    pos.x += size.x + 0.1;
 
     TextButton toolsButton;
-    toolsButton.pos = {x, config::CAMERA_VIEW_HEIGHT-0.35};
-    toolsButton.size = {1.0, 0.5};
+    toolsButton.pos = pos;
+    toolsButton.size = size;
     toolsButton.text = "Tool Smith";
     toolsButton.on_click = [registry] {
         registry->change_window(TOOLSMITH);
@@ -123,9 +124,34 @@ void UISystem::initPlantLikePlantSelection(std::vector<entt::entity> order, entt
 
 void UISystem::initMarketplaceTradeButtons() noexcept {
 
+    m_market_category_buttons.clear();
     m_market_trade_buttons.clear();
 
+
     Registry* registry = m_registry;
+
+    glm::vec2 category_size = select_buttons_size;
+    glm::vec2 category_pos = trade_buttons_category_topleft;
+    category_pos = calc_center(category_pos, category_size);
+
+
+    for (entt::entity category_id : m_registry->market_category_order) {
+        ItemCategory category = m_registry->ecs.get<ItemCategory>(category_id);
+
+        TextButton button;
+        button.pos = category_pos;
+        button.size = category_size;
+        button.text = category.display_name;
+        button.id_label = category_id;
+        button.on_click = [registry, category_id, this] {
+            registry->current_market_category = category_id;
+            this->update_button_states();
+        };
+        m_market_category_buttons.push_back(button);
+
+        category_pos.x += category_size.x + 0.1f;
+    }
+
 
     for (entt::entity plant_id : m_registry->market_item_order) {
         std::vector<TextButton> currentB;
@@ -249,6 +275,10 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                     return;
                 }
             } else if (m_registry->window() == MARKETPLACE) {
+                found = check_text_button_list(m_market_category_buttons);
+                if (found) {
+                    return;
+                }
                 for (std::vector<TextButton> &buttons : m_market_trade_buttons) {
                     found = check_text_button_list(buttons);
                     if (found) {
@@ -287,6 +317,8 @@ void UISystem::step(const float delta) noexcept {
 
     } else if (m_registry->window() == MARKETPLACE) {
 
+        selection_found = update_text_button_list(m_market_category_buttons, mousePos, selection_found, false);
+
         // Marketplace buy / sell
         for (std::vector<TextButton> &buttons : m_market_trade_buttons) {
             selection_found = update_text_button_list(buttons, mousePos, selection_found, true);
@@ -309,29 +341,36 @@ void UISystem::step(const float delta) noexcept {
 
 void UISystem::update_button_states() noexcept {
 
+
+    glm::vec2 size = trade_button_size;
+    glm::vec2 pos = trade_buttons_topleft;
+    pos = calc_center(pos, size);
+
     /**
      * Update Market Trade Buttons
      */
-    int c = 0;
     for (std::vector<TextButton> &buttons : m_market_trade_buttons) {
-        bool should_be_visible = m_registry->ecs.get<Unlockable>(buttons[0].id_label).unlocked;
+        entt::entity item_id = buttons[0].id_label;
 
+        bool should_be_visible = m_registry->ecs.get<Unlockable>(item_id).unlocked;
 
-        float x1 = trade_buttons_topleft.x + plant_name_size.x + market_stash_size.x + 0.2 + trade_button_size.x/2.0f + trade_button_size.y + 0.1;
-        float x2 = x1 + trade_button_size.x + 0.1;
-        if (should_be_visible) {
-
-            buttons[0].visible = true;
-            buttons[1].visible = true;
-
-            float y = trade_buttons_topleft.y - c * (trade_button_size.y + 0.1);
-
-            buttons[0].pos = {x1, y};
-            buttons[1].pos = {x2, y};
-
-            c += 1;
+        // If not unlocked OR Not in current category
+        if (!should_be_visible || !is_in_list(m_registry->ecs.get<ItemCategory>(m_registry->current_market_category).items, item_id)) {
+            buttons[0].visible = false;
+            buttons[1].visible = false;
+            continue;
         }
 
+        float x1 = pos.x + plant_name_size.x + market_stash_size.x + 0.2 + trade_button_size.y + 0.1;
+        float x2 = x1 + trade_button_size.x + 0.1;
+
+        buttons[0].visible = true;
+        buttons[1].visible = true;
+
+        buttons[0].pos = {x1, pos.y};
+        buttons[1].pos = {x2, pos.y};
+
+        pos.y -= trade_button_size.y + 0.1;
     }
 
 }

@@ -50,6 +50,7 @@ public:
 
     std::vector<std::vector<TextButton>> m_field_plant_select_buttons;
 
+    std::vector<TextButton> m_market_category_buttons;
     std::vector<std::vector<TextButton>> m_market_trade_buttons;
 
     std::vector<TextButton> m_toolsmith_buy_buttons;

@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "name": "All"
+    },
+    {
+      "id": "eatable",
+      "name": "Eatable"
+    },
+    {
+      "id": "flowers",
+      "name": "Flowers"
+    },
+    {
+      "id": "materials",
+      "name": "Materials"
+    }
+  ]
+}

@@ -1,6 +1,9 @@
 {
   "name": "Wheat",
   "id_name": "wheat",
+  "categories": [
+    "all"
+  ],
   "color": {
     "r": 1.0,
     "g": 1.0,

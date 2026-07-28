@@ -1,6 +1,10 @@
 {
   "name": "Carrot",
   "id_name": "carrot",
+  "categories": [
+    "all",
+    "eatable"
+  ],
   "color": {
     "r": 0.9,
     "g": 0.56,

@@ -1,6 +1,10 @@
 {
   "name": "Daisy",
   "id_name": "daisy",
+  "categories": [
+    "all",
+    "flowers"
+  ],
   "color": {
     "r": 1.0,
     "g": 1.0,

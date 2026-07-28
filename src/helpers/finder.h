@@ -33,6 +33,16 @@ inline entt::entity get_field_id_by_name(Registry* m_registry, std::string name)
     return entt::null;
 }
 
+inline entt::entity get_item_category_by_name(Registry* m_registry, std::string name) {
+    for (entt::entity id : m_registry->ecs.view<ItemCategory>()) {
+        if (m_registry->ecs.get<ItemCategory>(id).id_name == name) {
+            return id;
+        }
+    }
+    std::cout<<"Not found: "<<name<<std::endl;
+    return entt::null;
+}
+
 inline int get_usage_by_name(std::string name) {
     int usage_id = -1;
     if (name == "planting") {
@@ -43,4 +53,11 @@ inline int get_usage_by_name(std::string name) {
         usage_id = COLLECTING;
     }
     return usage_id;
+}
+
+template<typename T> inline bool is_in_list(std::vector<T> list, T value) noexcept{
+    for (T item : list) {
+        if (item == value) return true;
+    }
+    return false;
 }

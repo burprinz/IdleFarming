@@ -1,6 +1,10 @@
 {
   "name": "Peas",
   "id_name": "peas",
+  "categories": [
+    "all",
+    "eatable"
+  ],
   "color": {
     "r": 1.0,
     "g": 1.0,

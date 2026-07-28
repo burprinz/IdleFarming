@@ -8,10 +8,10 @@
 #include <./window.h>
 
 #include "discord.h"
-#include "draw.h"
+#include "../utils/draw.h"
 #include "systems/field.h"
 #include "systems/unlock.h"
-#include "utils/entity_factory.h"
+#include "core/entity_factory.h"
 
 
 class Application {

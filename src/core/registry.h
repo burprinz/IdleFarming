@@ -11,9 +11,8 @@
  * Window State
  */
 constexpr int FIELDS = 0;
-constexpr int GENE_LAB = 1;
-constexpr int MARKETPLACE = 2;
-constexpr int TOOLSMITH = 3;
+constexpr int MARKETPLACE = 1;
+constexpr int TOOLSMITH = 2;
 
 /**
  * Field State
@@ -155,9 +154,17 @@ struct Inventory {
 /**
  * Items
  */
+
+struct ItemCategory {
+    std::string id_name;
+    std::string display_name;
+    std::vector<entt::entity> items;
+};
+
 struct Item {
     std::string name = "plant";
     std::string display_name = "Plant";
+    std::vector<entt::entity> categories;
 };
 
 struct Tool {
@@ -260,13 +267,21 @@ public:
     /**
      * Marketplace
      */
+    std::vector<entt::entity> market_category_order;
     std::vector<entt::entity> market_item_order;
+    entt::entity current_market_category;
     BigNumber market_multiplier = BigNumber(1); // -1 = MAX
 
     /**
      * Buying
      */
     entt::entity trying_to_buy = entt::null;
+
+
+    /**
+     * Items overall
+     */
+
 
 private:
 

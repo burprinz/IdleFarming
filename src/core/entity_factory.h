@@ -20,6 +20,9 @@ public:
     bool readPath(const std::string& path, nlohmann::json* json) noexcept;
 
     inline void loadBaseValues() noexcept {
+
+        load_item_categories();
+
         load_symbols();
 
         load_base_fields();
@@ -42,6 +45,31 @@ private:
     nlohmann::json m_objectJson;
 
     void load_symbols() noexcept;
+
+    inline void load_item_categories() noexcept {
+        std::string json_path = "/assets/data/basevalues/item_categories.json";
+        nlohmann::json cat_json;
+        bool loaded = readPath(json_path, &cat_json);
+        if (!loaded) {
+            std::cout<<"Error loading Field List"<<std::endl;
+        }
+
+        m_registry->market_category_order.clear();
+
+        for (auto& category : cat_json["categories"]) {
+
+            entt::entity id = m_registry->ecs.create();
+
+            ItemCategory ic;
+            ic.id_name = category["id"].get<std::string>();
+            ic.display_name = category["name"].get<std::string>();
+
+            m_registry->ecs.emplace<ItemCategory>(id, ic);
+
+            m_registry->market_category_order.push_back(id);
+        }
+    }
+
 
     inline void load_base_fields() noexcept {
         std::string json_path = "/assets/data/basevalues/fields.json";

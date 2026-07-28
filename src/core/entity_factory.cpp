@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include "geometry.h"
+#include "../utils/geometry.h"
 
 EntityFactory EntityFactory::init(Window *window, Registry *registry) noexcept {
     EntityFactory self;
@@ -62,6 +62,15 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
     Item i;
     i.name = plant["id_name"].get<std::string>();
     i.display_name = plant["name"].get<std::string>();
+
+    for (auto& cat : plant["categories"]) {
+        std::string category_id_name = cat.get<std::string>();
+        entt::entity category_id = get_item_category_by_name(m_registry, category_id_name);
+        i.categories.push_back(category_id);
+
+        ItemCategory &ic = m_registry->ecs.get<ItemCategory>(category_id);
+        ic.items.push_back(plant_id);
+    }
     m_registry->ecs.emplace<Item>(plant_id, i);
 
     Plant p;

@@ -1,6 +1,10 @@
 {
   "name": "Apple",
   "id_name": "apple",
+  "categories": [
+    "all",
+    "eatable"
+  ],
   "color": {
     "r": 0.9,
     "g": 0.56,

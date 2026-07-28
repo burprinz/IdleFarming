@@ -1,6 +1,10 @@
 {
   "name": "Tulips",
   "id_name": "tulips",
+  "categories": [
+    "all",
+    "flowers"
+  ],
   "color": {
     "r": 1.0,
     "g": 1.0,
