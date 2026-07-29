@@ -97,15 +97,15 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             m_draw->drawTexture(it.icon.text, pos, icon_size);
 
             // Item Name
-            pos.x += icon_size.x + plant_name_size.x/2.0f + 0.1f;
-            m_draw->drawRectBySize(pos, plant_name_size, black);
-            m_draw->drawStringInBox(i.display_name, pos, plant_name_size, black);
+            pos.x += icon_size.x + normal_item_name_size.x/2.0f + 0.1f;
+            m_draw->drawRectBySize(pos, normal_item_name_size, black);
+            m_draw->drawStringInBox(i.display_name, pos, normal_item_name_size, black);
 
             // Amount of items
-            pos = {pos.x + plant_name_size.x/2.0f + market_stash_size.x/2.0f + 0.1f, pos.y};
+            pos = {pos.x + normal_item_name_size.x/2.0f + trade_item_stash_size.x/2.0f + 0.1f, pos.y};
             BigNumber stash = m_registry->ecs.get<Amount>(p_id).am;
-            m_draw->drawRectBySize(pos, market_stash_size, black);
-            m_draw->drawStringInBox("x" + stash.toString(), pos, market_stash_size, black);
+            m_draw->drawRectBySize(pos, trade_item_stash_size, black);
+            m_draw->drawStringInBox("x" + stash.toString(), pos, trade_item_stash_size, black);
 
             // Buy / Sell
             drawBasicTextButtons(buts);

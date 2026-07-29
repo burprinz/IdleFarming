@@ -29,8 +29,8 @@ void UISystem::initWindowSwitchButtons() noexcept {
     Registry* registry = m_registry;
 
 
-    glm::vec2 size = select_buttons_size;
-    glm::vec2 pos = calc_center(mode_select_buttons_topleft, size);
+    glm::vec2 size = normal_button_size;
+    glm::vec2 pos = calc_center(mode_select_buttons_topleft, normal_button_size);
 
     TextButton fieldButton;
     fieldButton.pos = pos;
@@ -41,7 +41,7 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(fieldButton);
 
-    pos.x += size.x + 0.1;
+    pos.x += size.x + normal_gap;
 
     TextButton marketButton;
     marketButton.pos = pos;
@@ -52,7 +52,7 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(marketButton);
 
-    pos.x += size.x + 0.1;
+    pos.x += size.x + normal_gap;
 
     TextButton toolsButton;
     toolsButton.pos = pos;
@@ -72,15 +72,14 @@ void UISystem::initFieldButton() noexcept {
 
     Registry* registry = m_registry;
 
-    glm::vec2 top_left = {0.1, config::CAMERA_VIEW_HEIGHT-0.65};
-    glm::vec2 select_button_size = {1.0, 0.5};
+    glm::vec2 top_left = field_cell_topleft;
+    glm::vec2 select_button_size = normal_button_size;
     glm::vec2 center = calc_center(top_left, select_button_size);
 
 
     /**
      * Field selection
      */
-
     for (size_t field_id = 0; field_id < m_registry->field_order.size(); field_id++) {
         Field f = m_registry->ecs.get<Field>(m_registry->field_order[field_id]);
 
@@ -97,28 +96,27 @@ void UISystem::initFieldButton() noexcept {
         initPlantLikePlantSelection(m_registry->plant_order[field_id], m_registry->last_selected_plant[field_id], m_registry->current_selected_plant[field_id], plant_select_buttons);
         m_field_plant_select_buttons.push_back(plant_select_buttons);
 
-        center += glm::vec2{select_button_size.x + 0.1, 0};
+        center.x += select_button_size.x + normal_gap;
     }
-
 }
 
 void UISystem::initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept {
     buttons.clear();
-    glm::vec2 top_left = {6.0, config::CAMERA_VIEW_HEIGHT-1.2};
-    glm::vec2 center = calc_center(top_left, plant_name_size);
-    int c = 0;
+    glm::vec2 top_left = field_plant_selection;
+    glm::vec2 size = normal_item_name_size;
+    glm::vec2 center = calc_center(top_left, size);
     for (entt::entity id : order) {
-        float y = center.y - c*(plant_name_size.y + 0.1);
         TextButton plantB;
-        plantB.pos = {center.x, y};
-        plantB.size = plant_name_size;
+        plantB.pos = center;
+        plantB.size = size;
         plantB.id_label = id;
         plantB.on_click = [&last_selected, &current_selected, id] {
             last_selected = current_selected;
             current_selected = id;
         };
         buttons.push_back(plantB);
-        c += 1;
+
+        center.y -= size.y + normal_gap;
     }
 }
 
@@ -130,8 +128,8 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
 
     Registry* registry = m_registry;
 
-    glm::vec2 category_size = select_buttons_size;
-    glm::vec2 category_pos = trade_buttons_category_topleft;
+    glm::vec2 category_size = normal_button_size;
+    glm::vec2 category_pos = normal_topleft;
     category_pos = calc_center(category_pos, category_size);
 
 
@@ -205,20 +203,14 @@ void UISystem::initToolSmithButtons() noexcept {
 
     Registry* registry = m_registry;
 
-    glm::vec2 size = {0.5, 0.5};
-
-    float button_gap = size.x + 0.1;
-
-
-    glm::vec2 top_left = {0.1, config::CAMERA_VIEW_HEIGHT-0.7};
+    glm::vec2 size = tool_item_buy_size;
+    glm::vec2 top_left = normal_topleft;
     glm::vec2 center = calc_center(top_left, size);
 
     // Create Button for every Tool
-    int c = 0;
     for (entt::entity tool_id : m_registry->tool_order) {
-        float y = center.y - c * button_gap;
         TextButton toolB;
-        toolB.pos = {center.x, y};
+        toolB.pos = center;
         toolB.size = size;
         toolB.id_label = tool_id;
         toolB.on_click = [registry, tool_id] {
@@ -240,7 +232,7 @@ void UISystem::initToolSmithButtons() noexcept {
         };
 
         m_toolsmith_buy_buttons.push_back(toolB);
-        c++;
+        center.y -= size.y + normal_gap;
     }
 
 }
@@ -361,7 +353,7 @@ void UISystem::update_button_states() noexcept {
             continue;
         }
 
-        float x1 = pos.x + plant_name_size.x + market_stash_size.x + 0.2 + trade_button_size.y + 0.1;
+        float x1 = pos.x + normal_item_name_size.x + trade_item_stash_size.x + 0.2 + trade_button_size.y + 0.1;
         float x2 = x1 + trade_button_size.x + 0.1;
 
         buttons[0].visible = true;
