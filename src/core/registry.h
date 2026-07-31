@@ -120,11 +120,13 @@ struct Plant {
 struct FarmHelper {
     std::string name;
     int usage; // PLANTING, HARVESTING, COLLECTING
+    int amount_fields; // How many Fields the Farmer can handle
+    float speed = 1; // How fast interaction happening
 
     entt::entity field;
 
-    size_t x_pos = 0;
-    size_t y_pos = 0;
+    std::vector<entt::entity> working_area; // Selected Working Fields
+    std::vector<entt::entity> working_plants; // Wanted Plants for selected Fields
 };
 
 
