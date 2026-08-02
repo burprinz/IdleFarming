@@ -167,6 +167,7 @@ void Application::reset() noexcept {
 	m_ui->initFieldButton();
 	m_ui->initMarketplaceTradeButtons();
 	m_ui->initToolSmithButtons();
+	m_ui->initHelpersButton();
 
 
 	// reset other systems

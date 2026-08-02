@@ -18,6 +18,7 @@ UISystem UISystem::init(Window *window, Registry *registry) noexcept {
     self.initFieldButton();
     self.initMarketplaceTradeButtons();
     self.initToolSmithButtons();
+    self.initHelpersButton();
 
     return self;
 }
@@ -63,6 +64,17 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(toolsButton);
 
+    pos.x += size.x + normal_gap;
+
+    TextButton helpersButton;
+    helpersButton.pos = pos;
+    helpersButton.size = size;
+    helpersButton.text = "Helpers";
+    helpersButton.on_click = [registry] {
+        registry->change_window(HELPERS);
+    };
+    m_window_buttons.push_back(helpersButton);
+
 }
 
 void UISystem::initFieldButton() noexcept {
@@ -103,7 +115,7 @@ void UISystem::initFieldButton() noexcept {
 void UISystem::initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept {
     buttons.clear();
     glm::vec2 top_left = field_plant_selection;
-    glm::vec2 size = normal_item_name_size;
+    glm::vec2 size = normal_name_size;
     glm::vec2 center = calc_center(top_left, size);
     for (entt::entity id : order) {
         TextButton plantB;
@@ -237,7 +249,30 @@ void UISystem::initToolSmithButtons() noexcept {
 
 }
 
+void UISystem::initHelpersButton() noexcept {
+    m_helper_buy_buttons.clear();
 
+    glm::vec2 top_left = normal_topleft;
+    glm::vec2 size = normal_name_size;
+    glm::vec2 center = calc_center(top_left, size);
+
+    for (entt::entity helper_id : m_registry->helpers_order) {
+        FarmHelper fm = m_registry->ecs.get<FarmHelper>(helper_id);
+
+        TextButton helperB;
+
+        helperB.text = fm.name;
+        helperB.pos = center;
+        helperB.size = size;
+        helperB.id_label = helper_id;
+        helperB.on_click = [] {
+            std::cout<<"TRYING TO BUY HELPER"<<std::endl;
+        };
+        m_helper_buy_buttons.push_back(helperB);
+
+        center.y -= size.y + normal_gap;
+    }
+}
 
 void UISystem::deinit() noexcept {
 
@@ -279,6 +314,11 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                 }
             } else if (m_registry->window() == TOOLSMITH) {
                 found = check_text_button_list(m_toolsmith_buy_buttons);
+                if (found) {
+                    return;
+                }
+            } else if (m_registry->window() == HELPERS) {
+                found = check_text_button_list(m_helper_buy_buttons);
                 if (found) {
                     return;
                 }
@@ -328,6 +368,13 @@ void UISystem::step(const float delta) noexcept {
                 b.selected = false;
             }
         }
+    } else if (m_registry->window() == HELPERS) {
+
+        // Field buttons
+        selection_found = update_text_button_list(m_helper_buy_buttons, mousePos, selection_found, false);
+
+        (void) selection_found;
+
     }
 }
 
@@ -353,7 +400,7 @@ void UISystem::update_button_states() noexcept {
             continue;
         }
 
-        float x1 = pos.x + normal_item_name_size.x + trade_item_stash_size.x + 0.2 + trade_button_size.y + 0.1;
+        float x1 = pos.x + normal_name_size.x + trade_item_stash_size.x + 0.2 + trade_button_size.y + 0.1;
         float x2 = x1 + trade_button_size.x + 0.1;
 
         buttons[0].visible = true;

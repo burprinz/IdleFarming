@@ -104,6 +104,7 @@ private:
             f.name = field_name;
             f.type = field_type;
             f.plant_type = plant_type;
+            f.list_id = m_registry->field_order.size() - 1;
 
             load_field_plants(&f, is_tree, has_inv);
 
@@ -267,11 +268,11 @@ private:
     inline void load_helper(nlohmann::json raw_helper_infos) {
 
         entt::entity helper_id = m_registry->ecs.create();
+        m_registry->helpers_order.push_back(helper_id);
 
         FarmHelper helper;
         helper.name = raw_helper_infos["name"].get<std::string>();
         helper.field = get_field_id_by_name(m_registry, raw_helper_infos["field"].get<std::string>());
-        helper.usage = get_usage_by_name(raw_helper_infos["type"].get<std::string>());
         m_registry->ecs.emplace<FarmHelper>(helper_id, helper);
 
         Unlockable unlock;
@@ -280,6 +281,9 @@ private:
 
         BuyAmount buyam = extract_buyamount(raw_helper_infos["price"]);
         m_registry->ecs.emplace<BuyAmount>(helper_id, buyam);
+
+        TextureInformation texture = create_helper_texture(helper.name);
+        m_registry->ecs.emplace<TextureInformation>(helper_id, texture);
     }
 
 
@@ -335,6 +339,17 @@ private:
     inline TextureInformation create_symbol(std::string name) {
         TextureInformation info;
         std::string text_path = getTexturePath("symbols/" + name + ".png");
+        if (std::filesystem::exists(text_path)) {
+            info.text = Texture::init(text_path);
+        } else {
+            info.text = Texture::init(getTexturePath("symbols/notfound.png"));
+        }
+        return info;
+    }
+
+    inline TextureInformation create_helper_texture(std::string name) {
+        TextureInformation info;
+        std::string text_path = getTexturePath("helpers/" + name + ".png");
         if (std::filesystem::exists(text_path)) {
             info.text = Texture::init(text_path);
         } else {

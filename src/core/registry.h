@@ -13,6 +13,7 @@
 constexpr int FIELDS = 0;
 constexpr int MARKETPLACE = 1;
 constexpr int TOOLSMITH = 2;
+constexpr int HELPERS = 3;
 
 /**
  * Field State
@@ -87,6 +88,7 @@ struct Field {
     std::string display_name; // Name for buttons
     std::string type; // Normal field, tree field, normal cave,...
     int plant_type = 0; // Normal, Collect, Inventory
+    size_t list_id; // The id for the farmfields
 };
 
 struct FarmField {
@@ -116,14 +118,11 @@ struct Plant {
     BigNumber inventory_size;
 };
 
-// TODO everything
 struct FarmHelper {
     std::string name;
-    int usage; // PLANTING, HARVESTING, COLLECTING
     int amount_fields; // How many Fields the Farmer can handle
-    float speed = 1; // How fast interaction happening
 
-    entt::entity field;
+    entt::entity field; // The ID of the field the person is working on
 
     std::vector<entt::entity> working_area; // Selected Working Fields
     std::vector<entt::entity> working_plants; // Wanted Plants for selected Fields
@@ -273,6 +272,12 @@ public:
     std::vector<entt::entity> market_item_order;
     entt::entity current_market_category;
     BigNumber market_multiplier = BigNumber(1); // -1 = MAX
+
+    /**
+     * Helpers
+     */
+    std::vector<entt::entity> helpers_order;
+
 
     /**
      * Buying

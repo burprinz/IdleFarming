@@ -1,7 +1,6 @@
 {
   "name": "Alice",
   "field": "plants",
-  "type": "planting",
   "price": [
     {
       "name": "iron",

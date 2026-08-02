@@ -63,54 +63,67 @@ void RenderSystem::step(const float /*delta*/) noexcept {
     m_draw->drawStringInBox(text, {config::CAMERA_VIEW_WIDTH-1.0, config::CAMERA_VIEW_HEIGHT-0.25}, {2.0, 0.5}, black);
 
     if (m_registry->window() == FIELDS) {
-
-        /**
-         * Draw Field Selection
-         */
-        drawBasicTextButtons(m_ui->m_field_mode_buttons);
-
-        /**
-         * Draw Field
-         */
-        drawCurrentField(
-            m_registry->plant_field_tiles[m_registry->current_selected_field],
-            m_registry->field_colors[m_registry->current_selected_field].c,
-            m_ui->m_field_plant_select_buttons[m_registry->current_selected_field],
-            m_registry->current_selected_plant[m_registry->current_selected_field]
-        );
+        drawField();
     } else if (m_registry->window() == MARKETPLACE) {
-
-        drawBasicTextButtons(m_ui->m_market_category_buttons);
-
-        for (std::vector<TextButton> &buts : m_ui->m_market_trade_buttons) {
-            if (!buts[0].visible) continue;
-
-            entt::entity p_id = buts[0].id_label;
-            Item i = m_registry->ecs.get<Item>(p_id);
-            IconTexture it = m_registry->ecs.get<IconTexture>(p_id);
-
-            float y = buts[0].pos.y - 0.1;
-
-            // Item Icon
-            glm::vec2 icon_size = (glm::vec2{buts[0].size.y, buts[0].size.y} / 2.0f);
-            glm::vec2 pos = (0.1f+glm::vec2{trade_buttons_topleft.x + icon_size.x / 2.0f, y});
-            m_draw->drawTexture(it.icon.text, pos, icon_size);
-
-            // Item Name
-            pos.x += icon_size.x + normal_item_name_size.x/2.0f + 0.1f;
-            m_draw->drawRectBySize(pos, normal_item_name_size, black);
-            m_draw->drawStringInBox(i.display_name, pos, normal_item_name_size, black);
-
-            // Amount of items
-            pos = {pos.x + normal_item_name_size.x/2.0f + trade_item_stash_size.x/2.0f + 0.1f, pos.y};
-            BigNumber stash = m_registry->ecs.get<Amount>(p_id).am;
-            m_draw->drawRectBySize(pos, trade_item_stash_size, black);
-            m_draw->drawStringInBox("x" + stash.toString(), pos, trade_item_stash_size, black);
-
-            // Buy / Sell
-            drawBasicTextButtons(buts);
-        }
+        drawMarketplace();
     } else if (m_registry->window() == TOOLSMITH) {
+        drawToolsmith();
+    } else if (m_registry->window() == HELPERS) {
+        drawHelpers();
+    }
+}
+
+void RenderSystem::drawField() noexcept {
+    /**
+     * Draw Field Selection
+     */
+    drawBasicTextButtons(m_ui->m_field_mode_buttons);
+
+    /**
+     * Draw Field
+     */
+    drawCurrentField(
+        m_registry->plant_field_tiles[m_registry->current_selected_field],
+        m_registry->field_colors[m_registry->current_selected_field].c,
+        m_ui->m_field_plant_select_buttons[m_registry->current_selected_field],
+        m_registry->current_selected_plant[m_registry->current_selected_field]
+    );
+}
+
+void RenderSystem::drawMarketplace() noexcept {
+    drawBasicTextButtons(m_ui->m_market_category_buttons);
+
+    for (std::vector<TextButton> &buts : m_ui->m_market_trade_buttons) {
+        if (!buts[0].visible) continue;
+
+        entt::entity p_id = buts[0].id_label;
+        Item i = m_registry->ecs.get<Item>(p_id);
+        IconTexture it = m_registry->ecs.get<IconTexture>(p_id);
+
+        float y = buts[0].pos.y - 0.1;
+
+        // Item Icon
+        glm::vec2 icon_size = (glm::vec2{buts[0].size.y, buts[0].size.y} / 2.0f);
+        glm::vec2 pos = (0.1f+glm::vec2{trade_buttons_topleft.x + icon_size.x / 2.0f, y});
+        m_draw->drawTexture(it.icon.text, pos, icon_size);
+
+        // Item Name
+        pos.x += icon_size.x + normal_name_size.x/2.0f + 0.1f;
+        m_draw->drawRectBySize(pos, normal_name_size, black);
+        m_draw->drawStringInBox(i.display_name, pos, normal_name_size, black);
+
+        // Amount of items
+        pos = {pos.x + normal_name_size.x/2.0f + trade_item_stash_size.x/2.0f + 0.1f, pos.y};
+        BigNumber stash = m_registry->ecs.get<Amount>(p_id).am;
+        m_draw->drawRectBySize(pos, trade_item_stash_size, black);
+        m_draw->drawStringInBox("x" + stash.toString(), pos, trade_item_stash_size, black);
+
+        // Buy / Sell
+        drawBasicTextButtons(buts);
+    }
+}
+
+void RenderSystem::drawToolsmith() noexcept {
 
         // Draw Tool Buttons
         for (TextButton but : m_ui->m_toolsmith_buy_buttons) {
@@ -167,7 +180,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
 
             y -= text_height/2.0f+0.05f;
-            text = "Works on " + t.work_area;
+            std::string text = "Works on " + t.work_area;
             m_draw->drawStringInBox(text, {x, y}, {selectInfoSize.x, text_height}, black);
 
             y -= text_height+0.05f;
@@ -208,8 +221,36 @@ void RenderSystem::step(const float /*delta*/) noexcept {
                 y -= text_height+0.05f;
             }
         }
-    }
 }
+
+void RenderSystem::drawHelpers() noexcept {
+    // Draw Helper buy Buttons
+
+    for (TextButton &b : m_ui->m_helper_buy_buttons) {
+        if (b.visible) {
+            glm::vec3 color = b.selected?b.select_color:b.unselect_color;
+            m_draw->drawRectBySize(b.pos, b.size, color);
+            m_draw->drawStringInBox(b.text, b.pos, b.size, black);
+
+            if (b.selected) {
+                FarmHelper helper = m_registry->ecs.get<FarmHelper>(b.id_label);
+                Field field = m_registry->ecs.get<Field>(helper.field);
+                TextureInformation texture = m_registry->ecs.get<TextureInformation>(b.id_label);
+
+                m_draw->drawTexture(texture.text, helper_image_center, helper_image_size / 2.0f);
+
+                glm::vec2 pos = helper_image_topleft + glm::vec2{helper_image_size.x/2.0f, helper_image_size.y + normal_gap};
+                glm::vec2 size = normal_button_size;
+                std::string text = "Works on " + field.display_name;
+                m_draw->drawStringInBox(text, pos, size, {0, 0, 0});
+            }
+        }
+    }
+
+}
+
+
+
 
 void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons) noexcept {
     for (TextButton &b : buttons) {
@@ -382,7 +423,6 @@ glm::vec2 RenderSystem::getPopupPositionForMouse(glm::vec2 popup_size) noexcept 
 
     return result;
 }
-
 
 void RenderSystem::drawPopup(std::string msg, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color) noexcept {
     float angle = 10.0;

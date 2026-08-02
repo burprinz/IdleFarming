@@ -42,10 +42,9 @@ public:
     void initFieldButton() noexcept;
     void initMarketplaceTradeButtons() noexcept;
     void initToolSmithButtons() noexcept;
+    void initHelpersButton() noexcept;
 
-    /**
-     * Field
-     */
+
     std::vector<TextButton> m_field_mode_buttons;
 
     std::vector<std::vector<TextButton>> m_field_plant_select_buttons;
@@ -54,6 +53,8 @@ public:
     std::vector<std::vector<TextButton>> m_market_trade_buttons;
 
     std::vector<TextButton> m_toolsmith_buy_buttons;
+
+    std::vector<TextButton> m_helper_buy_buttons;
 
     void update_button_states() noexcept;
 

@@ -25,6 +25,11 @@ class RenderSystem {
 		Draw* m_draw;
 		UISystem* m_ui;
 
+		void drawField() noexcept;
+		void drawMarketplace() noexcept;
+		void drawToolsmith() noexcept;
+		void drawHelpers() noexcept;
+
 		void drawBasicTextButtons(std::vector<TextButton> &buttons) noexcept;
 
 		void drawCurrentField(std::vector<std::vector<entt::entity>> &field_ids, glm::vec3 color, std::vector<TextButton> &buttons, entt::entity current_selected) noexcept;
