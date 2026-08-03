@@ -33,6 +33,16 @@ inline entt::entity get_field_id_by_name(Registry* m_registry, std::string name)
     return entt::null;
 }
 
+inline entt::entity get_field_id_by_type(Registry* m_registry, std::string type) {
+    for (entt::entity id : m_registry->ecs.view<Field>()) {
+        if (m_registry->ecs.get<Field>(id).type == type) {
+            return id;
+        }
+    }
+    std::cout<<"Not found: "<<type<<std::endl;
+    return entt::null;
+}
+
 inline entt::entity get_item_category_by_name(Registry* m_registry, std::string name) {
     for (entt::entity id : m_registry->ecs.view<ItemCategory>()) {
         if (m_registry->ecs.get<ItemCategory>(id).id_name == name) {

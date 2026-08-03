@@ -261,18 +261,18 @@ private:
                 std::cout<<"Error loading "<<type_name<<" infos"<<std::endl;
             }
 
-            load_helper(type_info_json);
+            load_helper(type_info_json, type_name);
         }
     }
 
-    inline void load_helper(nlohmann::json raw_helper_infos) {
+    inline void load_helper(nlohmann::json raw_helper_infos, std::string type) {
 
         entt::entity helper_id = m_registry->ecs.create();
         m_registry->helpers_order.push_back(helper_id);
 
         FarmHelper helper;
         helper.name = raw_helper_infos["name"].get<std::string>();
-        helper.field = get_field_id_by_name(m_registry, raw_helper_infos["field"].get<std::string>());
+        helper.field = get_field_id_by_name(m_registry, type);
         m_registry->ecs.emplace<FarmHelper>(helper_id, helper);
 
         Unlockable unlock;

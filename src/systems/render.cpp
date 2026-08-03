@@ -239,10 +239,11 @@ void RenderSystem::drawHelpers() noexcept {
 
                 m_draw->drawTexture(texture.text, helper_image_center, helper_image_size / 2.0f);
 
-                glm::vec2 pos = helper_image_topleft + glm::vec2{helper_image_size.x/2.0f, helper_image_size.y + normal_gap};
-                glm::vec2 size = normal_button_size;
+                glm::vec2 pos = helper_image_topleft + glm::vec2{helper_image_size.x/2.0f, -(helper_image_size.y + normal_button_size.y/2.0f)};
+                glm::vec2 size = {helper_image_size.x, normal_button_size.y};
                 std::string text = "Works on " + field.display_name;
                 m_draw->drawStringInBox(text, pos, size, {0, 0, 0});
+
             }
         }
     }

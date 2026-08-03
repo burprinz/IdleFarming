@@ -1,5 +1,8 @@
 {
   "types": [
-    "plants"
+    "plants",
+    "flowers",
+    "trees",
+    "cave_machines"
   ]
 }
