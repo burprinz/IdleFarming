@@ -114,6 +114,7 @@ private:
             m_registry->current_harvest_tools[field_type] = entt::null;
             m_registry->current_collect_tools[field_type] = entt::null;
             m_registry->tool_work_area_names[field_type] = "???";
+            m_registry->field_helper[id] = entt::null;
         }
     }
 
@@ -274,6 +275,8 @@ private:
         helper.name = raw_helper_infos["name"].get<std::string>();
         helper.field = get_field_id_by_name(m_registry, type);
         m_registry->ecs.emplace<FarmHelper>(helper_id, helper);
+
+        m_registry->field_helper[helper.field] = helper_id;
 
         Unlockable unlock;
         unlock.unlocked = false;

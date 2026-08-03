@@ -41,7 +41,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
     /**
      * Draw Window switch Buttons
      */
-    std::vector<TextButton> wButtons = m_ui->window_buttons();
+    std::vector<TextButton> wButtons = m_ui->m_window_buttons;
     for (size_t i = 0; i < wButtons.size(); i++) {
         TextButton but = wButtons[i];
         glm::vec3 color;
@@ -88,6 +88,48 @@ void RenderSystem::drawField() noexcept {
         m_ui->m_field_plant_select_buttons[m_registry->current_selected_field],
         m_registry->current_selected_plant[m_registry->current_selected_field]
     );
+
+    /**
+     * Draw Helper Button
+     */
+    entt::entity current_field_id = m_registry->field_order[m_registry->current_selected_field];
+    entt::entity helper_id = m_registry->field_helper[current_field_id];
+    if (helper_id != entt::null) {
+        TextButton &but = m_ui->m_field_helper_buttons[m_registry->current_selected_field];
+        Unlockable u = m_registry->ecs.get<Unlockable>(helper_id);
+
+        if (u.unlocked) {
+            drawBasicTextButton(but);
+        } else {
+            drawLockInBlackQuad(but.pos, but.size, false);
+        }
+    }
+
+    /**
+     * Draw Selected Plant Info
+     */
+    entt::entity current_selected = m_registry->current_selected_plant[m_registry->current_selected_field];
+    // Wenn aktuell eine Pflanze selected ist, gib die infos
+    if (current_selected != entt::null) {
+        glm::vec2 selectInfoSize = {4.0f, 5.0f};
+        glm::vec2 topLeft = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x - normal_gap, selectInfoSize.y + normal_gap};
+        glm::vec2 selectInfoPos = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x/2 - normal_gap, selectInfoSize.y/2 + normal_gap};
+        m_draw->drawRectBySize(selectInfoPos, selectInfoSize, black);
+        //Plant plant = m_registry->ecs.get<Plant>(current_selected);
+        Item i = m_registry->ecs.get<Item>(current_selected);
+
+        float text_height = 0.3f;
+        float x = selectInfoPos.x;
+        float y = topLeft.y - text_height/2.0f - 0.05f;
+        m_draw->drawStringInBox(i.display_name, {x, y}, {selectInfoSize.x, text_height}, black);
+
+        y -= text_height/2.0f+0.05f;
+        m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
+
+        y -= text_height/2.0f+0.05f;
+        BigNumber am = m_registry->ecs.get<Amount>(current_selected).am;
+        m_draw->drawStringInBox("x" + am.toString(), {x, y}, {selectInfoSize.x, text_height}, black);
+    }
 }
 
 void RenderSystem::drawMarketplace() noexcept {
@@ -108,12 +150,12 @@ void RenderSystem::drawMarketplace() noexcept {
         m_draw->drawTexture(it.icon.text, pos, icon_size);
 
         // Item Name
-        pos.x += icon_size.x + normal_name_size.x/2.0f + 0.1f;
-        m_draw->drawRectBySize(pos, normal_name_size, black);
-        m_draw->drawStringInBox(i.display_name, pos, normal_name_size, black);
+        pos.x += icon_size.x + medium_button_size.x/2.0f + 0.1f;
+        m_draw->drawRectBySize(pos, medium_button_size, black);
+        m_draw->drawStringInBox(i.display_name, pos, medium_button_size, black);
 
         // Amount of items
-        pos = {pos.x + normal_name_size.x/2.0f + trade_item_stash_size.x/2.0f + 0.1f, pos.y};
+        pos = {pos.x + medium_button_size.x/2.0f + trade_item_stash_size.x/2.0f + 0.1f, pos.y};
         BigNumber stash = m_registry->ecs.get<Amount>(p_id).am;
         m_draw->drawRectBySize(pos, trade_item_stash_size, black);
         m_draw->drawStringInBox("x" + stash.toString(), pos, trade_item_stash_size, black);
@@ -255,13 +297,18 @@ void RenderSystem::drawHelpers() noexcept {
 
 void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons) noexcept {
     for (TextButton &b : buttons) {
-        if (b.visible) {
-            glm::vec3 color = b.selected?b.select_color:b.unselect_color;
-            m_draw->drawRectBySize(b.pos, b.size, color);
-            m_draw->drawStringInBox(b.text, b.pos, b.size, black);
-        }
+        drawBasicTextButton(b);
     }
 }
+
+void RenderSystem::drawBasicTextButton(TextButton &b) noexcept {
+    if (b.visible) {
+        glm::vec3 color = b.selected?b.select_color:b.unselect_color;
+        m_draw->drawRectBySize(b.pos, b.size, color);
+        m_draw->drawStringInBox(b.text, b.pos, b.size, black);
+    }
+}
+
 
 void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &field_ids, glm::vec3 color,
     std::vector<TextButton> &buttons, entt::entity current_selected) noexcept {
@@ -379,30 +426,6 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
             drawPopup(u.price.toString(), popup_pos, popup_size, text_color);
         }
     }
-
-
-    // Wenn aktuell eine Pflanze selected ist, gib die infos
-    if (current_selected != entt::null) {
-        glm::vec2 selectInfoSize = {4.0f, 5.0f};
-        glm::vec2 topLeft = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x - 0.2, selectInfoSize.y + 0.2};
-        glm::vec2 selectInfoPos = {config::CAMERA_VIEW_WIDTH - selectInfoSize.x/2 - 0.2, selectInfoSize.y/2 + 0.2};
-        m_draw->drawRectBySize(selectInfoPos, selectInfoSize, black);
-        //Plant plant = m_registry->ecs.get<Plant>(current_selected);
-        Item i = m_registry->ecs.get<Item>(current_selected);
-
-        float text_height = 0.3f;
-        x = selectInfoPos.x;
-        float y = topLeft.y - text_height/2.0f - 0.05f;
-        m_draw->drawStringInBox(i.display_name, {x, y}, {selectInfoSize.x, text_height}, black);
-
-        y -= text_height/2.0f+0.05f;
-        m_draw->drawLine({topLeft.x, y}, {topLeft.x+selectInfoSize.x, y}, black);
-
-        y -= text_height/2.0f+0.05f;
-        BigNumber am = m_registry->ecs.get<Amount>(current_selected).am;
-        m_draw->drawStringInBox("x" + am.toString(), {x, y}, {selectInfoSize.x, text_height}, black);
-    }
-
 }
 
 glm::vec2 RenderSystem::getPopupPositionForMouse(glm::vec2 popup_size) noexcept {
@@ -433,6 +456,3 @@ void RenderSystem::drawPopup(std::string msg, glm::vec2 pos, glm::vec2 size, glm
     m_draw->drawRoundRect(pos, size, angle, black);
 
 }
-
-
-

@@ -38,7 +38,7 @@ constexpr int HARVESTING = 1;
 constexpr int COLLECTING = 2;
 
 
-struct Viewport{
+struct Viewport {
     glm::uvec2 m_origin;
     glm::uvec2 m_size;
 };
@@ -127,6 +127,7 @@ struct FarmHelper {
     std::vector<entt::entity> working_area; // Selected Working Fields
     std::vector<entt::entity> working_plants; // Wanted Plants for selected Fields
 };
+
 
 
 struct Color {
@@ -277,7 +278,7 @@ public:
      * Helpers
      */
     std::vector<entt::entity> helpers_order;
-
+    std::map<entt::entity, entt::entity> field_helper; // FieldID, HelperID
 
     /**
      * Buying

@@ -93,8 +93,10 @@ void UISystem::initFieldButton() noexcept {
      * Field selection
      */
     for (size_t field_id = 0; field_id < m_registry->field_order.size(); field_id++) {
-        Field f = m_registry->ecs.get<Field>(m_registry->field_order[field_id]);
+        entt::entity field_entity = m_registry->field_order[field_id];
+        Field f = m_registry->ecs.get<Field>(field_entity);
 
+        // Field Switch
         TextButton fieldB;
         fieldB.text = f.display_name;
         fieldB.pos = center;
@@ -104,9 +106,24 @@ void UISystem::initFieldButton() noexcept {
         };
         m_field_mode_buttons.push_back(fieldB);
 
+        // Plant Selection
         std::vector<TextButton> plant_select_buttons;
         initPlantLikePlantSelection(m_registry->plant_order[field_id], m_registry->last_selected_plant[field_id], m_registry->current_selected_plant[field_id], plant_select_buttons);
         m_field_plant_select_buttons.push_back(plant_select_buttons);
+
+
+        // Helper Configuration
+        entt::entity helper_id = m_registry->field_helper[field_entity];
+        TextButton helper_config_button;
+        helper_config_button.text = helper_id!=entt::null?m_registry->ecs.get<FarmHelper>(helper_id).name:"No Helper";
+        helper_config_button.pos = calc_center(field_helper_topleft, medium_button_size);
+        helper_config_button.size = medium_button_size;
+        helper_config_button.id_label = helper_id;
+        helper_config_button.on_click = [] {
+            std::cout<<"Trying to edit helper"<<std::endl;
+        };
+        m_field_helper_buttons.push_back(helper_config_button);
+
 
         center.x += select_button_size.x + normal_gap;
     }
@@ -115,7 +132,7 @@ void UISystem::initFieldButton() noexcept {
 void UISystem::initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept {
     buttons.clear();
     glm::vec2 top_left = field_plant_selection;
-    glm::vec2 size = normal_name_size;
+    glm::vec2 size = medium_button_size;
     glm::vec2 center = calc_center(top_left, size);
     for (entt::entity id : order) {
         TextButton plantB;
@@ -253,7 +270,7 @@ void UISystem::initHelpersButton() noexcept {
     m_helper_buy_buttons.clear();
 
     glm::vec2 top_left = normal_topleft;
-    glm::vec2 size = normal_name_size;
+    glm::vec2 size = medium_button_size;
     glm::vec2 center = calc_center(top_left, size);
 
     for (entt::entity helper_id : m_registry->helpers_order) {
@@ -301,6 +318,13 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                 if (found) {
                     return;
                 }
+
+                TextButton &b = m_field_helper_buttons[m_registry->current_selected_field];
+                if (b.selected && b.visible) {
+                    b.on_click();
+                    return;
+                }
+
             } else if (m_registry->window() == MARKETPLACE) {
                 found = check_text_button_list(m_market_category_buttons);
                 if (found) {
@@ -344,9 +368,27 @@ void UISystem::step(const float delta) noexcept {
 
         selection_found = update_text_button_list(m_field_plant_select_buttons[m_registry->current_selected_field], mousePos, selection_found, false);
 
+        TextButton &helper_b = m_field_helper_buttons[m_registry->current_selected_field];
+        // If helper exists
+        if (helper_b.id_label != entt::null) {
+            // If Helper is not unlocked
+            Unlockable u = m_registry->ecs.get<Unlockable>(helper_b.id_label);
+            if (!u.unlocked) {
+                helper_b.selected = false;
+            }
+
+            // If Helper can be clicked
+            if (!selection_found && helper_b.visible && point_in_rect(mousePos, helper_b.pos, helper_b.size)) {
+                helper_b.selected = true;
+                selection_found = true;
+            }else {
+                helper_b.selected = false;
+            }
+        } else {
+            helper_b.selected = false;
+        }
+
         (void) selection_found;
-
-
     } else if (m_registry->window() == MARKETPLACE) {
 
         selection_found = update_text_button_list(m_market_category_buttons, mousePos, selection_found, false);
@@ -400,7 +442,7 @@ void UISystem::update_button_states() noexcept {
             continue;
         }
 
-        float x1 = pos.x + normal_name_size.x + trade_item_stash_size.x + 0.2 + trade_button_size.y + 0.1;
+        float x1 = pos.x + medium_button_size.x + trade_item_stash_size.x + 0.2 + trade_button_size.y + 0.1;
         float x2 = x1 + trade_button_size.x + 0.1;
 
         buttons[0].visible = true;
@@ -413,16 +455,5 @@ void UISystem::update_button_states() noexcept {
     }
 
 }
-
-
-std::vector<TextButton> UISystem::window_buttons() {
-    return m_window_buttons;
-}
-
-
-std::vector<TextButton> UISystem::get_current_text_buttons() noexcept {
-    return std::vector<TextButton>();
-}
-
 
 

@@ -39,35 +39,31 @@ public:
 
 
     void initWindowSwitchButtons() noexcept;
+    std::vector<TextButton> m_window_buttons;
+
     void initFieldButton() noexcept;
-    void initMarketplaceTradeButtons() noexcept;
-    void initToolSmithButtons() noexcept;
-    void initHelpersButton() noexcept;
-
-
     std::vector<TextButton> m_field_mode_buttons;
-
     std::vector<std::vector<TextButton>> m_field_plant_select_buttons;
+    std::vector<TextButton> m_field_helper_buttons;
 
+    void initMarketplaceTradeButtons() noexcept;
     std::vector<TextButton> m_market_category_buttons;
     std::vector<std::vector<TextButton>> m_market_trade_buttons;
 
+    void initToolSmithButtons() noexcept;
     std::vector<TextButton> m_toolsmith_buy_buttons;
 
+    void initHelpersButton() noexcept;
     std::vector<TextButton> m_helper_buy_buttons;
+
 
     void update_button_states() noexcept;
 
-
-    std::vector<TextButton> get_current_text_buttons() noexcept;
-
-    std::vector<TextButton> window_buttons();
 
 private:
     Registry* m_registry;
     Window* m_window;
 
-    std::vector<TextButton> m_window_buttons;
 
     void initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept;
 
@@ -100,4 +96,5 @@ private:
         }
         return selection_found;
     }
+
 };
