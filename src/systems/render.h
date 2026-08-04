@@ -30,8 +30,8 @@ class RenderSystem {
 		void drawToolsmith() noexcept;
 		void drawHelpers() noexcept;
 
-		void drawBasicTextButtons(std::vector<TextButton> &buttons) noexcept;
-		void drawBasicTextButton(TextButton &b) noexcept;
+		void drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color) noexcept;
+		void drawBasicTextButton(TextButton &b, glm::vec3 text_color) noexcept;
 
 		void drawCurrentField(std::vector<std::vector<entt::entity>> &field_ids, glm::vec3 color, std::vector<TextButton> &buttons, entt::entity current_selected) noexcept;
 

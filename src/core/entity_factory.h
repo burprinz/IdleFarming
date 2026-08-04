@@ -279,7 +279,7 @@ private:
         m_registry->field_helper[helper.field] = helper_id;
 
         Unlockable unlock;
-        unlock.unlocked = false;
+        unlock.unlocked = true;
         m_registry->ecs.emplace<Unlockable>(helper_id, unlock);
 
         BuyAmount buyam = extract_buyamount(raw_helper_infos["price"]);

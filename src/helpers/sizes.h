@@ -10,8 +10,10 @@ constexpr glm::vec2 base_helper_size = {300, 600};
 
 // Normal Sizes
 constexpr glm::vec2 normal_topleft = {0.1, config::CAMERA_VIEW_HEIGHT-0.7};
+constexpr glm::vec2 small_button_size = {0.5, 0.25};
 constexpr glm::vec2 normal_button_size = {1.0, 0.5};
 constexpr glm::vec2 medium_button_size = {4.0, 0.5};
+constexpr float small_gap = 0.05f;
 constexpr float normal_gap = 0.1f;
 
 // Mode selection
@@ -19,9 +21,13 @@ constexpr glm::vec2 mode_select_buttons_topleft = {0.1, config::CAMERA_VIEW_HEIG
 
 // Field
 constexpr glm::vec2 field_cell_topleft = {0.1, config::CAMERA_VIEW_HEIGHT-0.65};
-constexpr glm::vec2 field_plant_selection = {6.0, config::CAMERA_VIEW_HEIGHT-1.2};
-constexpr glm::vec2 field_helper_topleft = {config::CAMERA_VIEW_WIDTH - medium_button_size.x - normal_gap, field_plant_selection.y};
+constexpr glm::vec2 field_plant_selection_topleft = {6.0, config::CAMERA_VIEW_HEIGHT-1.2};
+constexpr glm::vec2 field_helper_topleft = {config::CAMERA_VIEW_WIDTH - medium_button_size.x - normal_gap, field_plant_selection_topleft.y};
 constexpr float field_size = 0.5;
+
+constexpr glm::vec2 helper_config_topleft = {normal_topleft.x, field_plant_selection_topleft.y};
+constexpr glm::vec2 helper_config_size = {config::CAMERA_VIEW_WIDTH-normal_topleft.x*2.0f, field_plant_selection_topleft.y - normal_gap};
+
 
 // Market
 constexpr glm::vec2 trade_buttons_topleft = {0.1, config::CAMERA_VIEW_HEIGHT-1.3};

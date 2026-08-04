@@ -44,7 +44,9 @@ public:
     void initFieldButton() noexcept;
     std::vector<TextButton> m_field_mode_buttons;
     std::vector<std::vector<TextButton>> m_field_plant_select_buttons;
-    std::vector<TextButton> m_field_helper_buttons;
+    std::vector<std::vector<TextButton>> m_field_helper_buttons;
+    std::vector<TextButton> m_field_helper_config_buttons;
+    //std::vector<std::vector<TextButton>> m_field_helper_plant_select_buttons;
 
     void initMarketplaceTradeButtons() noexcept;
     std::vector<TextButton> m_market_category_buttons;

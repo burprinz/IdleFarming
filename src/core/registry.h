@@ -23,6 +23,9 @@ constexpr int FLOWER_FIELD = 1;
 constexpr int TREE_FIELD = 2;
 constexpr int CAVE_MACHINES = 3;
 
+constexpr int FIELD_FARMING = 0;
+constexpr int FIELD_HELPER_CONFIGURATION = 1;
+
 /**
  * Plant Type for Field
  */
@@ -248,6 +251,7 @@ public:
     /**
      * Farm
      */
+    int field_mode = FIELD_FARMING;
     std::vector<entt::entity> field_order;
     std::vector<Color> field_colors;
     size_t current_selected_field = 0;

@@ -69,8 +69,10 @@ public:
      */
     void drawString(std::string text, glm::vec2 pos, float scale, glm::vec3 color) noexcept;
     void drawStringInBox(std::string text, glm::vec2 pos, glm::vec2 size, glm::vec3 color) noexcept;
+    void drawLinesInBox(std::vector<std::string> lines, glm::vec2 pos, glm::vec2 size, glm::vec3 color) noexcept;
     void drawRainbowString(std::string text, glm::vec2 pos, float scale, std::vector<glm::vec3> colors, std::vector<int> color_ids) noexcept;
     void drawCharacter(Character ch, glm::vec2 position, float scale) noexcept;
+    float getOptimalScalingForMultipleLines(std::vector<std::string> lines, float line_gap, glm::vec2 size) noexcept;
     float getOptimalScaling(std::string text, glm::vec2 size) noexcept;
     float getStringWidth(std::string text, float scale) noexcept;
     float getStringHeight(std::string text, float scale) noexcept;

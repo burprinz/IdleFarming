@@ -391,6 +391,42 @@ void Draw::drawStringInBox(std::string text, glm::vec2 pos, glm::vec2 size, glm:
     drawString(text, pos, scale, color);
 }
 
+void Draw::drawLinesInBox(std::vector<std::string> lines, glm::vec2 pos, glm::vec2 size, glm::vec3 color) noexcept {
+    if (lines.empty()) {
+        return;
+    }
+
+    float avg_height = 0.0f;
+    for (const auto& line : lines) {
+        avg_height += getStringHeight(line, 1.0f);
+    }
+    avg_height /= static_cast<float>(lines.size());
+    float line_gap = avg_height * 0.3f;
+
+    float scale = getOptimalScalingForMultipleLines(lines, line_gap, size * 0.9f);
+
+    std::vector<float> heights;
+    heights.reserve(lines.size());
+    float total_height = 0.0f;
+    for (const auto& line : lines) {
+        float h = getStringHeight(line, scale);
+        heights.push_back(h);
+        total_height += h;
+    }
+    total_height += line_gap * scale * (static_cast<float>(lines.size()) - 1);
+
+    float cursor_y = pos.y + total_height / 2.0f;
+
+    for (size_t i = 0; i < lines.size(); i++) {
+        cursor_y -= heights[i] / 2.0f;
+        drawString(lines[i], {pos.x, cursor_y}, scale, color);
+        cursor_y -= heights[i] / 2.0f;
+
+        if (i < lines.size() - 1) {
+            cursor_y -= line_gap * scale;
+        }
+    }
+}
 
 void Draw::drawRainbowString(std::string text, glm::vec2 pos, float scale, std::vector<glm::vec3> colors, std::vector<int> color_ids) noexcept {
 
@@ -444,6 +480,26 @@ float Draw::getOptimalScaling(std::string text, glm::vec2 size) noexcept {
     float normalH = getStringHeight(text, 1.f);
     return std::min(size.x / normalW, size.y / normalH);
 }
+
+float Draw::getOptimalScalingForMultipleLines(std::vector<std::string> lines, float line_gap, glm::vec2 size) noexcept {
+    float maxWidth = 0.0f;
+    float totalHeight = 0.0f;
+
+    for (size_t i = 0; i < lines.size(); i++) {
+        float w = getStringWidth(lines[i], 1.f);
+        float h = getStringHeight(lines[i], 1.f);
+
+        maxWidth = std::max(maxWidth, w);
+        totalHeight += h;
+
+        if (i < lines.size() - 1) {
+            totalHeight += line_gap;
+        }
+    }
+
+    return std::min(size.x / maxWidth, size.y / totalHeight);
+}
+
 
 
 

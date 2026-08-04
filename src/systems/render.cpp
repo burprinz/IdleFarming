@@ -74,14 +74,11 @@ void RenderSystem::step(const float /*delta*/) noexcept {
 }
 
 void RenderSystem::drawField() noexcept {
-    /**
-     * Draw Field Selection
-     */
-    drawBasicTextButtons(m_ui->m_field_mode_buttons);
 
-    /**
-     * Draw Field
-     */
+    // Draw Field Selection
+    drawBasicTextButtons(m_ui->m_field_mode_buttons, black);
+
+    // Draw Field
     drawCurrentField(
         m_registry->plant_field_tiles[m_registry->current_selected_field],
         m_registry->field_colors[m_registry->current_selected_field].c,
@@ -89,25 +86,24 @@ void RenderSystem::drawField() noexcept {
         m_registry->current_selected_plant[m_registry->current_selected_field]
     );
 
-    /**
-     * Draw Helper Button
-     */
+    // Draw Helper Button
     entt::entity current_field_id = m_registry->field_order[m_registry->current_selected_field];
     entt::entity helper_id = m_registry->field_helper[current_field_id];
     if (helper_id != entt::null) {
-        TextButton &but = m_ui->m_field_helper_buttons[m_registry->current_selected_field];
-        Unlockable u = m_registry->ecs.get<Unlockable>(helper_id);
 
-        if (u.unlocked) {
-            drawBasicTextButton(but);
-        } else {
-            drawLockInBlackQuad(but.pos, but.size, false);
+        Unlockable u = m_registry->ecs.get<Unlockable>(helper_id);
+        std::vector<TextButton> &buts = m_ui->m_field_helper_buttons[m_registry->current_selected_field];
+
+        for (TextButton &but : buts) {
+            if (u.unlocked) {
+                drawBasicTextButton(but, black);
+            } else {
+                drawLockInBlackQuad(but.pos, but.size, false);
+            }
         }
     }
 
-    /**
-     * Draw Selected Plant Info
-     */
+    // Draw Selected Plant Info
     entt::entity current_selected = m_registry->current_selected_plant[m_registry->current_selected_field];
     // Wenn aktuell eine Pflanze selected ist, gib die infos
     if (current_selected != entt::null) {
@@ -130,10 +126,18 @@ void RenderSystem::drawField() noexcept {
         BigNumber am = m_registry->ecs.get<Amount>(current_selected).am;
         m_draw->drawStringInBox("x" + am.toString(), {x, y}, {selectInfoSize.x, text_height}, black);
     }
+
+    // Draw Helper Configuration
+    if (m_registry->field_mode == FIELD_HELPER_CONFIGURATION) {
+        glm::vec2 pos = calc_center(helper_config_topleft, helper_config_size);
+        m_draw->fillRectBySize(pos, helper_config_size, black, 0.95f);
+
+        drawBasicTextButtons(m_ui->m_field_helper_config_buttons, white);
+    }
 }
 
 void RenderSystem::drawMarketplace() noexcept {
-    drawBasicTextButtons(m_ui->m_market_category_buttons);
+    drawBasicTextButtons(m_ui->m_market_category_buttons, black);
 
     for (std::vector<TextButton> &buts : m_ui->m_market_trade_buttons) {
         if (!buts[0].visible) continue;
@@ -161,7 +165,7 @@ void RenderSystem::drawMarketplace() noexcept {
         m_draw->drawStringInBox("x" + stash.toString(), pos, trade_item_stash_size, black);
 
         // Buy / Sell
-        drawBasicTextButtons(buts);
+        drawBasicTextButtons(buts, black);
     }
 }
 
@@ -286,6 +290,28 @@ void RenderSystem::drawHelpers() noexcept {
                 std::string text = "Works on " + field.display_name;
                 m_draw->drawStringInBox(text, pos, size, {0, 0, 0});
 
+                Unlockable &u = m_registry->ecs.get<Unlockable>(b.id_label);
+
+                if (!u.unlocked) {
+                    pos.y -= size.y + small_gap;
+                    size = {helper_image_size.x, small_button_size.y};
+                    text = "Price";
+                    m_draw->drawStringInBox(text, pos, size, black);
+
+                    pos.y -= size.y + small_gap;
+                    float box_h = pos.y;
+                    size = {helper_image_size.x, box_h};
+                    pos.y = box_h / 2.0f + small_gap;
+                    m_draw->drawRectBySize(pos, size, black);
+
+                    BuyAmount am = m_registry->ecs.get<BuyAmount>(b.id_label);
+                    std::vector<std::string> prices;
+                    for (size_t i = 0; i < am.item_ids.size(); i++) {
+                        prices.push_back(am.amounts[i].toString() + "x " + m_registry->ecs.get<Item>(am.item_ids[i]).display_name);
+                    }
+                    m_draw->drawLinesInBox(prices, pos, size, black);
+
+                }
             }
         }
     }
@@ -295,17 +321,17 @@ void RenderSystem::drawHelpers() noexcept {
 
 
 
-void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons) noexcept {
+void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color) noexcept {
     for (TextButton &b : buttons) {
-        drawBasicTextButton(b);
+        drawBasicTextButton(b, text_color);
     }
 }
 
-void RenderSystem::drawBasicTextButton(TextButton &b) noexcept {
+void RenderSystem::drawBasicTextButton(TextButton &b, glm::vec3 text_color) noexcept {
     if (b.visible) {
         glm::vec3 color = b.selected?b.select_color:b.unselect_color;
         m_draw->drawRectBySize(b.pos, b.size, color);
-        m_draw->drawStringInBox(b.text, b.pos, b.size, black);
+        m_draw->drawStringInBox(b.text, b.pos, b.size, text_color);
     }
 }
 

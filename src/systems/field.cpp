@@ -25,8 +25,7 @@ void FieldSystem::reset() noexcept {
 }
 
 void FieldSystem::step(const float delta) noexcept {
-    if (m_registry->window() == FIELDS) {
-
+    if (m_registry->window() == FIELDS && m_registry->field_mode == FIELD_FARMING) {
         try_to_plant(
             m_registry->plant_field_tiles[m_registry->current_selected_field],
             m_registry->current_selected_plant[m_registry->current_selected_field]

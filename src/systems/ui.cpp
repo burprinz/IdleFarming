@@ -81,6 +81,8 @@ void UISystem::initFieldButton() noexcept {
 
     m_field_plant_select_buttons.clear();
     m_field_mode_buttons.clear();
+    m_field_helper_buttons.clear();
+    m_field_helper_config_buttons.clear();
 
     Registry* registry = m_registry;
 
@@ -113,25 +115,46 @@ void UISystem::initFieldButton() noexcept {
 
 
         // Helper Configuration
+        std::vector<TextButton> helper_buttons;
         entt::entity helper_id = m_registry->field_helper[field_entity];
         TextButton helper_config_button;
         helper_config_button.text = helper_id!=entt::null?m_registry->ecs.get<FarmHelper>(helper_id).name:"No Helper";
         helper_config_button.pos = calc_center(field_helper_topleft, medium_button_size);
         helper_config_button.size = medium_button_size;
         helper_config_button.id_label = helper_id;
-        helper_config_button.on_click = [] {
-            std::cout<<"Trying to edit helper"<<std::endl;
-        };
-        m_field_helper_buttons.push_back(helper_config_button);
+        helper_config_button.on_click = [helper_id, registry] {
+            if (helper_id == entt::null) {
+                return;
+            }
 
+            Unlockable u = registry->ecs.get<Unlockable>(helper_id);
+            if (!u.unlocked) {
+                return;
+            }
+
+            registry->field_mode = FIELD_HELPER_CONFIGURATION;
+        };
+        helper_buttons.push_back(helper_config_button);
+        m_field_helper_buttons.push_back(helper_buttons);
 
         center.x += select_button_size.x + normal_gap;
     }
+
+    TextButton helper_back_button;
+    helper_back_button.text = "Back";
+    helper_back_button.pos = helper_config_topleft - glm::vec2{0, helper_config_size.y} + glm::vec2{normal_gap, normal_gap} + normal_button_size / 2.0f;
+    helper_back_button.size = normal_button_size;
+    helper_back_button.unselect_color = white;
+    helper_back_button.on_click = [registry] {
+        registry->field_mode = FIELD_FARMING;
+    };
+    m_field_helper_config_buttons.push_back(helper_back_button);
+    // TODO CONFIGURATION
 }
 
 void UISystem::initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept {
     buttons.clear();
-    glm::vec2 top_left = field_plant_selection;
+    glm::vec2 top_left = field_plant_selection_topleft;
     glm::vec2 size = medium_button_size;
     glm::vec2 center = calc_center(top_left, size);
     for (entt::entity id : order) {
@@ -283,6 +306,7 @@ void UISystem::initHelpersButton() noexcept {
         helperB.size = size;
         helperB.id_label = helper_id;
         helperB.on_click = [] {
+            // TODO
             std::cout<<"TRYING TO BUY HELPER"<<std::endl;
         };
         m_helper_buy_buttons.push_back(helperB);
@@ -314,16 +338,27 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                     return;
                 }
 
-                found = check_text_button_list(m_field_plant_select_buttons[m_registry->current_selected_field]);
-                if (found) {
-                    return;
+                if (m_registry->field_mode == FIELD_FARMING) {
+                    // Planting / Harvesting
+                    found = check_text_button_list(m_field_plant_select_buttons[m_registry->current_selected_field]);
+                    if (found) {
+                        return;
+                    }
+
+                    found = check_text_button_list(m_field_helper_buttons[m_registry->current_selected_field]);
+                    if (found) {
+                        return;
+                    }
+
+                } else if (m_registry->field_mode == FIELD_HELPER_CONFIGURATION) {
+                    // Helper Config
+                    found = check_text_button_list(m_field_helper_config_buttons);
+                    if (found) {
+                        return;
+                    }
+
                 }
 
-                TextButton &b = m_field_helper_buttons[m_registry->current_selected_field];
-                if (b.selected && b.visible) {
-                    b.on_click();
-                    return;
-                }
 
             } else if (m_registry->window() == MARKETPLACE) {
                 found = check_text_button_list(m_market_category_buttons);
@@ -362,31 +397,19 @@ void UISystem::step(const float delta) noexcept {
     selection_found = update_text_button_list(m_window_buttons, mousePos, selection_found, false);
 
     if (m_registry->window() == FIELDS) {
-
         // Field buttons
         selection_found = update_text_button_list(m_field_mode_buttons, mousePos, selection_found, false);
 
-        selection_found = update_text_button_list(m_field_plant_select_buttons[m_registry->current_selected_field], mousePos, selection_found, false);
+        if (m_registry->field_mode == FIELD_FARMING) {
+            // Planting / Harvesting
+            selection_found = update_text_button_list(m_field_plant_select_buttons[m_registry->current_selected_field], mousePos, selection_found, false);
 
-        TextButton &helper_b = m_field_helper_buttons[m_registry->current_selected_field];
-        // If helper exists
-        if (helper_b.id_label != entt::null) {
-            // If Helper is not unlocked
-            Unlockable u = m_registry->ecs.get<Unlockable>(helper_b.id_label);
-            if (!u.unlocked) {
-                helper_b.selected = false;
-            }
-
-            // If Helper can be clicked
-            if (!selection_found && helper_b.visible && point_in_rect(mousePos, helper_b.pos, helper_b.size)) {
-                helper_b.selected = true;
-                selection_found = true;
-            }else {
-                helper_b.selected = false;
-            }
-        } else {
-            helper_b.selected = false;
+            selection_found = update_text_button_list(m_field_helper_buttons[m_registry->current_selected_field], mousePos, selection_found, true);
+        } else if (m_registry->field_mode == FIELD_HELPER_CONFIGURATION) {
+            // Helper Config
+            selection_found = update_text_button_list(m_field_helper_config_buttons, mousePos, selection_found, false);
         }
+
 
         (void) selection_found;
     } else if (m_registry->window() == MARKETPLACE) {

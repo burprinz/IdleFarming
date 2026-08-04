@@ -7,6 +7,13 @@
         "base": 1.0,
         "exp": 1
       }
+    },
+    {
+      "name": "carrot",
+      "amount": {
+        "base": 8.0,
+        "exp": 5
+      }
     }
   ]
 }

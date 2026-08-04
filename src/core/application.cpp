@@ -169,6 +169,8 @@ void Application::reset() noexcept {
 	m_ui->initToolSmithButtons();
 	m_ui->initHelpersButton();
 
+	// Reset Field
+	m_registry->field_mode = FIELD_FARMING;
 
 	// reset other systems
 	m_render.reset();
