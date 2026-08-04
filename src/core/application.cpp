@@ -71,6 +71,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_render = RenderSystem::init(self.m_window, self.m_registry, self.m_ui, self.m_draw);
 	self.m_camera = CameraSystem::init(self.m_registry);
 	self.m_field = FieldSystem::init(self.m_window, self.m_registry);
+	self.m_helper = HelperSystem::init(self.m_window, self.m_registry);
 	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry, self.m_ui);
 
 	return self;
@@ -81,6 +82,7 @@ void Application::deinit() noexcept {
 	m_render.deinit();
 	m_audio_engine->deinit();
 	m_field.deinit();
+	m_helper.deinit();
 	m_unlock.deinit();
 
 	m_draw->deinit();
@@ -130,6 +132,8 @@ void Application::run() noexcept {
 		m_world.step(delta_time);
 
 		m_field.step(delta_time);
+
+		m_helper.step(delta_time);
 
 		m_camera.step(delta_time);
 

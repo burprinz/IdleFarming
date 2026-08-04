@@ -12,6 +12,7 @@
 #include "systems/field.h"
 #include "systems/unlock.h"
 #include "core/entity_factory.h"
+#include "systems/helper.h"
 
 
 class Application {
@@ -36,6 +37,7 @@ class Application {
 		RenderSystem m_render;
 
 		FieldSystem m_field;
+		HelperSystem m_helper;
 
 		UnlockSystem m_unlock;
 

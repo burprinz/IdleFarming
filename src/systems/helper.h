@@ -2,12 +2,20 @@
 // Created by luisb on 04.08.2026.
 //
 
-#ifndef IDLEFARMING_HELPER_H
-#define IDLEFARMING_HELPER_H
+#include "window.h"
+#include "core/registry.h"
 
+class HelperSystem {
+public:
+    static HelperSystem init(Window* window, Registry* registry) noexcept;
+    void deinit() noexcept;
 
-class helper {
+    void step(const float delta) noexcept;
+    void reset() noexcept;
+
+private:
+
+    Registry* m_registry;
+    Window* m_window;
+
 };
-
-
-#endif //IDLEFARMING_HELPER_H

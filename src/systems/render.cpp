@@ -353,8 +353,9 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
 
     bool fieldMarked = false;
     glm::vec2 markedPos, markedSize;
-
     entt::entity field_inv_id = entt::null;
+
+    std::vector<glm::vec2> locked_pos, locked_size;
 
     for (size_t row_id = 0; row_id < field_ids.size(); row_id++) {
         std::vector<entt::entity> row = field_ids[row_id];
@@ -370,11 +371,17 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
             m_draw->fillRectBySize(fPos, fSize, color, 1.0f);
 
             // Save infos for marked cell
-            if (f.marked) {
+            if (f.marked && !f.helper_active) {
                 fieldMarked = true;
                 markedPos = fPos;
                 markedSize = fSize;
             }
+
+            if (f.helper_active) {
+                locked_pos.push_back(fPos);
+                locked_size.push_back(fSize);
+            }
+
             m_draw->drawRectBySize(fPos, fSize, black);
             if (!f.is_empty) {
                 // Draw the plant if cell is not empty
@@ -395,13 +402,14 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
                     radius = (fSize.x / 2) * 0.9;
                 }
 
-
-                IconTexture iconText = m_registry->ecs.get<IconTexture>(f.plant);
-                TextureInformation icon = iconText.info;
-                if (f.is_regrowable_field && !f.harvestable) {
-                    icon = iconText.ungrownInfo;
+                if (!for_helper) {
+                    IconTexture iconText = m_registry->ecs.get<IconTexture>(f.plant);
+                    TextureInformation icon = iconText.info;
+                    if (f.is_regrowable_field && !f.harvestable) {
+                        icon = iconText.ungrownInfo;
+                    }
+                    m_draw->drawTexture(icon.text, fPos, {radius, radius});
                 }
-                m_draw->drawTexture(icon.text, fPos, {radius, radius});
             }
         }
     }
@@ -412,6 +420,9 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
         m_draw->drawRectBySize(markedPos, markedSize, green);
     }
 
+    for (size_t i = 0; i < locked_pos.size(); i++) {
+        m_draw->drawRectBySize(locked_pos[i], locked_size[i], red);
+    }
 
 
     if (!for_helper) {
@@ -423,52 +434,75 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
             glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
             drawPopup(text, popup_pos, popup_size, white);
         }
+    }
 
-        // Separator between field and buttons
-        float x = 5.5;
-        float y_start = config::CAMERA_VIEW_HEIGHT-1.2;
-        m_draw->drawLine({x, 0.0}, {x, y_start}, black);
+    glm::vec3 normal_color = black;
+    if (for_helper) {
+        normal_color = white;
+    }
 
-        // Draw Plant selection
-        BigNumber &money = m_registry->ecs.get<Amount>(m_registry->money()).am;
-        std::string text;
-        for (TextButton b : buttons) {
-            entt::entity plant_id = b.id_label;
-            //Plant p = m_registry->ecs.get<Plant>(plant_id);
-            Item i = m_registry->ecs.get<Item>(plant_id);
-            Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
+    // Separator between field and buttons
+    float x = 5.5;
+    if (for_helper) {
+        x += helper_config_field_offset.x;
+    }
+    float y_start = config::CAMERA_VIEW_HEIGHT-1.2;
+    m_draw->drawLine({x, 0.0}, {x, y_start}, normal_color);
 
-            glm::vec3 draw_color;
 
-            // For popup later
-            bool has_enough_money = false;
+    // Draw Plant selection
+    BigNumber &money = m_registry->ecs.get<Amount>(m_registry->money()).am;
+    std::string text;
+    for (TextButton b : buttons) {
+        glm::vec2 but_pos = b.pos;
+        glm::vec3 unselect_color = black;
+        if (for_helper) {
+            but_pos += helper_config_field_offset;
+            unselect_color = white;
 
-            if (!u.unlocked) {
-                // Not unlocked
+        }
+
+        entt::entity plant_id = b.id_label;
+        //Plant p = m_registry->ecs.get<Plant>(plant_id);
+        Item i = m_registry->ecs.get<Item>(plant_id);
+        Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
+
+        glm::vec3 draw_color;
+
+        // For popup later
+        bool has_enough_money = false;
+
+        if (!u.unlocked) {
+            // Not unlocked
+            if (!for_helper) {
                 has_enough_money = has_enough(money, u.price);
                 drawLockInBlackQuad(b.pos, b.size, has_enough_money);
                 draw_color = b.selected ? b.select_color : b.unselect_color;
+            }
+        } else {
+            // Unlocked
+            if (plant_id == current_selected) {
+                // Unlocked and selected
+                draw_color = selected;
             } else {
-                // Unlocked
-                if (plant_id == current_selected) {
-                    // Unlocked and selected
-                    draw_color = selected;
-                } else {
-                    // Unlocked but not selected
-                    draw_color = b.selected ? b.select_color : b.unselect_color;
-                }
-                text = i.display_name;
-                m_draw->drawStringInBox(text, b.pos, b.size, black);
-            }
-            m_draw->drawRectBySize(b.pos, b.size, draw_color);
+                // Unlocked but not selected
 
-            // Draw Price popup if not unlocked and selected
-            if (!u.unlocked && b.selected) {
-                glm::vec2 popup_size = {1.0, 0.5};
-                glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
-                glm::vec3 text_color = has_enough_money?green:red;
-                drawPopup(u.price.toString(), popup_pos, popup_size, text_color);
+                draw_color = b.selected ? b.select_color : unselect_color;
             }
+            text = i.display_name;
+            m_draw->drawStringInBox(text, but_pos, b.size, normal_color);
+        }
+        if (u.unlocked || !for_helper) {
+            // For helper only if unlocked
+            m_draw->drawRectBySize(but_pos, b.size, draw_color);
+        }
+
+        // Draw Price popup if not unlocked and selected
+        if (!for_helper && !u.unlocked && b.selected) {
+            glm::vec2 popup_size = {1.0, 0.5};
+            glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
+            glm::vec3 text_color = has_enough_money?green:red;
+            drawPopup(u.price.toString(), popup_pos, popup_size, text_color);
         }
     }
 }

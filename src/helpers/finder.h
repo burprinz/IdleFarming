@@ -65,7 +65,7 @@ inline int get_usage_by_name(std::string name) {
     return usage_id;
 }
 
-template<typename T> inline bool is_in_list(std::vector<T> list, T value) noexcept{
+template<typename T> inline bool is_in_list(std::vector<T> &list, T value) noexcept{
     for (T item : list) {
         if (item == value) return true;
     }
