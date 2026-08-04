@@ -104,6 +104,9 @@ struct FarmField {
 
     // Unique for trees
     bool is_regrowable_field = false;
+
+    // Helpers
+    bool helper_active = false;
 };
 
 struct Plant {

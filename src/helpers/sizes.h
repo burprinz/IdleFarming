@@ -27,6 +27,7 @@ constexpr float field_size = 0.5;
 
 constexpr glm::vec2 helper_config_topleft = {normal_topleft.x, field_plant_selection_topleft.y};
 constexpr glm::vec2 helper_config_size = {config::CAMERA_VIEW_WIDTH-normal_topleft.x*2.0f, field_plant_selection_topleft.y - normal_gap};
+constexpr glm::vec2 helper_config_field_offset = {normal_button_size.x + normal_gap, .0f};
 
 
 // Market

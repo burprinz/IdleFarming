@@ -162,6 +162,8 @@ add_executable(${PROJECT_NAME}
 		src/helpers/transaction.h
 		src/helpers/finder.h
 		src/helpers/field_editor.h
+		src/systems/helper.cpp
+		src/systems/helper.h
 )
 
 

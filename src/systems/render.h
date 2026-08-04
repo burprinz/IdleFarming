@@ -33,7 +33,7 @@ class RenderSystem {
 		void drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color) noexcept;
 		void drawBasicTextButton(TextButton &b, glm::vec3 text_color) noexcept;
 
-		void drawCurrentField(std::vector<std::vector<entt::entity>> &field_ids, glm::vec3 color, std::vector<TextButton> &buttons, entt::entity current_selected) noexcept;
+		void drawCurrentField(std::vector<std::vector<entt::entity>> &field_ids, glm::vec3 color, std::vector<TextButton> &buttons, entt::entity current_selected, bool for_helper) noexcept;
 
 		glm::vec2 getPopupPositionForMouse(glm::vec2 popup_size) noexcept;
 		void drawPopup(std::string msg, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color=white) noexcept;
