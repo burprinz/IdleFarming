@@ -110,7 +110,7 @@ void FieldSystem::try_to_plant(std::vector<std::vector<entt::entity>> field, ent
             glm::vec2 size = m_registry->ecs.get<Dimension>(fieldID).dim;
 
             // Check if mouse is over cell if no cell already found and plant is selected
-            if (!pointFound && point_in_rect(mousePos, pos, size)) {
+            if (!f.helper_active && !pointFound && point_in_rect(mousePos, pos, size)) {
                 pointFound = true;
                 f.marked = true;
 
