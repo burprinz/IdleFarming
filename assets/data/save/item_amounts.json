@@ -30,7 +30,7 @@
         },
         {
             "amount": {
-                "base": 8.0,
+                "base": 5.0,
                 "exp": 0
             },
             "name": "daisy"
@@ -72,8 +72,8 @@
         },
         {
             "amount": {
-                "base": 1.0,
-                "exp": 1
+                "base": 8.0,
+                "exp": 0
             },
             "name": "carrot"
         }

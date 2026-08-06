@@ -35,11 +35,13 @@ public:
         create_helpers();
 
 
+        load_money();
         load_item_amounts();
 
     }
 
     inline void save_values() noexcept {
+        save_money();
         save_item_amounts();
     }
 
@@ -303,6 +305,30 @@ private:
 
 
 
+    // TODO: Field, Helper, Boght Tools, Money
+
+    inline void save_money() noexcept {
+        BigNumber money = m_registry->ecs.get<Amount>(m_registry->money()).am;
+        nlohmann::json result = {{"money", create_bignumber_json(money)}};
+        save(m_save_path + "money.json", result);
+    }
+
+    inline void load_money() noexcept {
+        std::string json_path = "/assets/data/save/money.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading money"<<std::endl;
+            return;
+        }
+
+        BigNumber am = extract_bignumber(json["money"]);
+        Amount a;
+        a.am = am;
+
+        m_registry->ecs.emplace_or_replace<Amount>(m_registry->money(), a);
+    }
+
     inline void save_item_amounts() noexcept {
         std::vector<nlohmann::json> item_list;
         for (entt::entity item_id : m_registry->ecs.view<Item>()) {
@@ -322,6 +348,7 @@ private:
         bool loaded = read(json_path, &json);
         if (!loaded) {
             std::cout<<"Error loading item amounts"<<std::endl;
+            return;
         }
 
         for (const auto& item : json["list"]) {
