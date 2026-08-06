@@ -126,7 +126,7 @@ struct Plant {
 
 struct FarmHelper {
     std::string name;
-    int amount_fields = 1; // How many Fields the Farmer can handle
+    int amount_fields = 10; // How many Fields the Farmer can handle
 
     entt::entity field; // The ID of the field the person is working on
 
@@ -294,8 +294,9 @@ public:
 
 
     /**
-     * Items overall
+     * Maps
      */
+    std::map<std::string, entt::entity> item_entities;
 
 
 private:

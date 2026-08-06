@@ -10,6 +10,8 @@
 #include "core/registry.h"
 #include <nlohmann/json.hpp>
 
+#include "load.h"
+#include "save.h"
 #include "../helpers/sizes.h"
 #include "helpers/finder.h"
 
@@ -17,7 +19,8 @@ class EntityFactory {
 public:
     static EntityFactory init(Window* window, Registry* registry) noexcept;
 
-    bool readPath(const std::string& path, nlohmann::json* json) noexcept;
+    bool read(const std::string& path, nlohmann::json* json) noexcept;
+    bool save(const std::string& path, nlohmann::json json) noexcept;
 
     inline void loadBaseValues() noexcept {
 
@@ -30,6 +33,14 @@ public:
         create_tools();
 
         create_helpers();
+
+
+        load_item_amounts();
+
+    }
+
+    inline void save_values() noexcept {
+        save_item_amounts();
     }
 
 
@@ -38,6 +49,7 @@ private:
     Window* m_window;
 
     std::string m_texture_base_path = getBasePath() + "/assets/textures/";
+    std::string m_save_path = "/assets/data/save/";
 
     nlohmann::json m_json;
 
@@ -49,7 +61,7 @@ private:
     inline void load_item_categories() noexcept {
         std::string json_path = "/assets/data/basevalues/item_categories.json";
         nlohmann::json cat_json;
-        bool loaded = readPath(json_path, &cat_json);
+        bool loaded = read(json_path, &cat_json);
         if (!loaded) {
             std::cout<<"Error loading Field List"<<std::endl;
         }
@@ -70,11 +82,10 @@ private:
         }
     }
 
-
     inline void load_base_fields() noexcept {
         std::string json_path = "/assets/data/basevalues/fields.json";
         nlohmann::json fields_json;
-        bool loaded = readPath(json_path, &fields_json);
+        bool loaded = read(json_path, &fields_json);
         if (!loaded) {
             std::cout<<"Error loading Field List"<<std::endl;
         }
@@ -121,7 +132,7 @@ private:
     inline void load_field_plants(Field *f, bool is_tree, bool has_inv) noexcept {
         std::string json_path = "/assets/data/basevalues/field_infos/" + f->name + ".json";
         nlohmann::json plant_list_json;
-        bool loaded = readPath(json_path, &plant_list_json);
+        bool loaded = read(json_path, &plant_list_json);
         if (!loaded) {
             std::cout<<"Error loading Field List"<<std::endl;
         }
@@ -139,7 +150,7 @@ private:
             std::string plant_path = "/assets/data/basevalues/plantables/" + f->name + "/" + plant_name + ".json";
 
             nlohmann::json plant_json;
-            loaded = readPath(plant_path, &plant_json);
+            loaded = read(plant_path, &plant_json);
             if (!loaded) {
                 std::cout<<"Error loading " << plant_name << " in EntityFactory with path <"<<plant_path<<">"<<std::endl;
                 continue;
@@ -187,7 +198,7 @@ private:
 
         std::string json_path = "/assets/data/basevalues/tool_smith.json";
         nlohmann::json type_json;
-        bool loaded = readPath(json_path, &type_json);
+        bool loaded = read(json_path, &type_json);
         if (!loaded) {
             std::cout<<"Error loading Tool Type List"<<std::endl;
         }
@@ -196,7 +207,7 @@ private:
             std::string type_name = type.get<std::string>();
             std::string type_path = "/assets/data/basevalues/tools/" + type_name + ".json";
             nlohmann::json type_info_json;
-            loaded = readPath(type_path, &type_info_json);
+            loaded = read(type_path, &type_info_json);
             if (!loaded) {
                 std::cout<<"Error loading "<<type_name<<" infos"<<std::endl;
             }
@@ -237,7 +248,7 @@ private:
             TextureInformation icon = create_symbol("tools/"+id_name);
             m_registry->ecs.emplace<TextureInformation>(tool_id, icon);
 
-            BuyAmount buy_amount = extract_buyamount(t["price"]);
+            BuyAmount buy_amount = extract_buyamount(m_registry, t["price"]);
             m_registry->ecs.emplace<BuyAmount>(tool_id, buy_amount);
 
             m_registry->tool_order.push_back(tool_id);
@@ -248,7 +259,7 @@ private:
     inline void create_helpers() {
         std::string json_path = "/assets/data/basevalues/farm_helpers.json";
         nlohmann::json type_json;
-        bool loaded = readPath(json_path, &type_json);
+        bool loaded = read(json_path, &type_json);
         if (!loaded) {
             std::cout<<"Error loading Tool Type List"<<std::endl;
         }
@@ -257,7 +268,7 @@ private:
             std::string type_name = type.get<std::string>();
             std::string type_path = "/assets/data/basevalues/farm_helpers/" + type_name + ".json";
             nlohmann::json type_info_json;
-            loaded = readPath(type_path, &type_info_json);
+            loaded = read(type_path, &type_info_json);
             if (!loaded) {
                 std::cout<<"Error loading "<<type_name<<" infos"<<std::endl;
             }
@@ -282,7 +293,7 @@ private:
         unlock.unlocked = true;
         m_registry->ecs.emplace<Unlockable>(helper_id, unlock);
 
-        BuyAmount buyam = extract_buyamount(raw_helper_infos["price"]);
+        BuyAmount buyam = extract_buyamount(m_registry, raw_helper_infos["price"]);
         m_registry->ecs.emplace<BuyAmount>(helper_id, buyam);
 
         TextureInformation texture = create_helper_texture(helper.name);
@@ -290,95 +301,36 @@ private:
     }
 
 
-    /**
-     * Base loading
-     */
 
-    inline std::string getTexturePath(std::string relative_path) noexcept {
-        return getBasePath() + "/assets/textures/" + relative_path;
-    }
 
-    inline glm::vec2 extract_vec2(nlohmann::json raw) noexcept {
-        return {raw["x"].get<float>(), raw["y"].get<float>()};
-    }
-
-    inline Price extract_price(nlohmann::json raw) noexcept {
-        Price p;
-        p.buy = extract_bignumber(raw["buy"]);
-        p.sell = extract_bignumber(raw["sell"]);
-        return p;
-    }
-    inline Color extract_color(nlohmann::json raw) noexcept {
-        Color c;
-        c.c = {
-            raw["r"].get<float>(),
-            raw["g"].get<float>(),
-            raw["b"].get<float>()};
-        return c;
-    }
-    inline BigNumber extract_bignumber(nlohmann::json raw) noexcept {
-        return BigNumber(raw["base"].get<float>(), raw["exp"].get<int>());
-    }
-
-    inline Unlockable extract_unlock_infos(nlohmann::json raw) noexcept {
-        Unlockable info;
-        info.unlocked = raw["unlocked"].get<bool>();
-        info.price = extract_bignumber(raw["price"]);
-        return info;
-    }
-
-    inline TextureInformation create_icon(std::string name) noexcept {
-        TextureInformation info;
-        std::string text_path = getTexturePath("icons/" + name + ".png");
-        if (std::filesystem::exists(text_path)) {
-            info.text = Texture::init(text_path);
-        } else {
-            info.text = Texture::init(getTexturePath("icons/notfound.png"));
+    inline void save_item_amounts() noexcept {
+        std::vector<nlohmann::json> item_list;
+        for (entt::entity item_id : m_registry->ecs.view<Item>()) {
+            if (m_registry->ecs.all_of<Amount>(item_id)) {
+                item_list.push_back(create_item_amount_json(m_registry, item_id));
+            }
         }
-        info.base_size = base_icon_size;
-        return info;
+        nlohmann::json results = nlohmann::json::object({
+            {"list", item_list}
+        });
+        save(m_save_path + "item_amounts.json", results);
     }
 
-    inline TextureInformation create_symbol(std::string name) {
-        TextureInformation info;
-        std::string text_path = getTexturePath("symbols/" + name + ".png");
-        if (std::filesystem::exists(text_path)) {
-            info.text = Texture::init(text_path);
-        } else {
-            info.text = Texture::init(getTexturePath("symbols/notfound.png"));
-        }
-        return info;
-    }
-
-    inline TextureInformation create_helper_texture(std::string name) {
-        TextureInformation info;
-        std::string text_path = getTexturePath("helpers/" + name + ".png");
-        if (std::filesystem::exists(text_path)) {
-            info.text = Texture::init(text_path);
-        } else {
-            info.text = Texture::init(getTexturePath("symbols/notfound.png"));
-        }
-        return info;
-    }
-
-    inline BuyAmount extract_buyamount(nlohmann::json price) {
-        std::vector<entt::entity> buy_ids;
-        std::vector<BigNumber> buy_amounts;
-        for (auto &item_price : price) {
-            std::string item_name = item_price["name"];
-            entt::entity item_id = get_item_id_by_name(m_registry, item_name);
-            BigNumber item_amount = extract_bignumber(item_price["amount"]);
-
-            buy_ids.push_back(item_id);
-            buy_amounts.push_back(item_amount);
+    inline void load_item_amounts() noexcept {
+        std::string json_path = "/assets/data/save/item_amounts.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading item amounts"<<std::endl;
         }
 
-        BuyAmount result;
-        result.item_ids = buy_ids;
-        result.amounts = buy_amounts;
-
-        return result;
+        for (const auto& item : json["list"]) {
+            std::string name = item["name"].get<std::string>();
+            BigNumber am = extract_bignumber(item["amount"]);
+            Amount amount;
+            amount.am = am;
+            entt::entity item_entity = m_registry->item_entities[name];
+            m_registry->ecs.emplace_or_replace<Amount>(item_entity, amount);
+        }
     }
-
-
 };

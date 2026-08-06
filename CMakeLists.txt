@@ -164,6 +164,8 @@ add_executable(${PROJECT_NAME}
 		src/helpers/field_editor.h
 		src/systems/helper.cpp
 		src/systems/helper.h
+		src/core/save.h
+		src/core/load.h
 )
 
 

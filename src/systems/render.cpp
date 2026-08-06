@@ -384,25 +384,30 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
 
             m_draw->drawRectBySize(fPos, fSize, black);
             if (!f.is_empty) {
+
                 // Draw the plant if cell is not empty
                 Plant p = m_registry->ecs.get<Plant>(f.plant);
                 float radius = 0.0;
 
-                if (!p.has_inventory) {
-                    float grow_time = p.growTime;
-                    if (f.is_regrowable_field) {
-                        grow_time += p.regrowTime;
+                if (!for_helper) {
+                    if (!p.has_inventory) {
+                        float grow_time = p.growTime;
+                        if (f.is_regrowable_field) {
+                            grow_time += p.regrowTime;
+                        }
+                        radius = (f.grow / grow_time) * (fSize.x / 2) * 0.9;
+                    } else {
+                        // Has inventory -> direkt full size
+                        if (point_in_rect(m_window->getMousePosition(), fPos, fSize)) {
+                            field_inv_id = fieldID;
+                        }
+                        radius = (fSize.x / 2.0) * 0.9;
                     }
-                    radius = (f.grow / grow_time) * (fSize.x / 2) * 0.9;
                 } else {
-                    // Has inventory -> direkt full size
-                    if (point_in_rect(m_window->getMousePosition(), fPos, fSize)) {
-                        field_inv_id = fieldID;
-                    }
-                    radius = (fSize.x / 2) * 0.9;
+                    radius = (fSize.x / 2.0f) * 0.9;
                 }
 
-                if (!for_helper) {
+                if (!for_helper || f.helper_active) {
                     IconTexture iconText = m_registry->ecs.get<IconTexture>(f.plant);
                     TextureInformation icon = iconText.info;
                     if (f.is_regrowable_field && !f.harvestable) {

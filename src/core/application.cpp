@@ -143,6 +143,9 @@ void Application::run() noexcept {
 
 		m_window->swapBuffers();
 	}
+
+	std::cout<<"Saving..."<<std::endl;
+	m_entity_factory.save_values();
 }
 
 void Application::reset() noexcept {

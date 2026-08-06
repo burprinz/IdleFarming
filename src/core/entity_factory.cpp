@@ -17,7 +17,7 @@ EntityFactory EntityFactory::init(Window *window, Registry *registry) noexcept {
     return self;
 }
 
-bool EntityFactory::readPath(const std::string& path, nlohmann::json* json_link) noexcept {
+bool EntityFactory::read(const std::string& path, nlohmann::json* json_link) noexcept {
     std::string basePath = getBasePath();
     std::string fullPath = basePath + path;
 
@@ -55,6 +55,24 @@ bool EntityFactory::readPath(const std::string& path, nlohmann::json* json_link)
     return true;
 }
 
+bool EntityFactory::save(const std::string &path, const nlohmann::json json) noexcept {
+    std::string full_path = getBasePath() + path;
+
+    std::ofstream datei(full_path, std::ios::trunc);
+    if (!datei.is_open()) {
+        std::cerr << "Fehler: Datei konnte nicht geöffnet werden: " << full_path << std::endl;
+        return false;
+    }
+    try {
+        datei << json.dump(4);
+    } catch (const std::exception& e) {
+        std::cerr << "Fehler beim Serialisieren nach " << full_path << ": " << e.what() << std::endl;
+        return false;
+    }
+    datei.close();
+    return true;
+}
+
 
 void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order, bool is_tree, bool has_inv) noexcept {
     entt::entity plant_id = m_registry->ecs.create();
@@ -72,6 +90,7 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
         ic.items.push_back(plant_id);
     }
     m_registry->ecs.emplace<Item>(plant_id, i);
+    m_registry->item_entities[i.name] = plant_id;
 
     Plant p;
     p.growTime = plant["growtime"].get<float>();

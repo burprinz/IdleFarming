@@ -1,0 +1,81 @@
+{
+    "list": [
+        {
+            "amount": {
+                "base": 5.599999904632568,
+                "exp": 1
+            },
+            "name": "iron"
+        },
+        {
+            "amount": {
+                "base": 0.0,
+                "exp": 0
+            },
+            "name": "apple"
+        },
+        {
+            "amount": {
+                "base": 5.0,
+                "exp": 0
+            },
+            "name": "tulips"
+        },
+        {
+            "amount": {
+                "base": 5.0,
+                "exp": 0
+            },
+            "name": "dandelion"
+        },
+        {
+            "amount": {
+                "base": 8.0,
+                "exp": 0
+            },
+            "name": "daisy"
+        },
+        {
+            "amount": {
+                "base": 0.0,
+                "exp": 0
+            },
+            "name": "peas"
+        },
+        {
+            "amount": {
+                "base": 0.0,
+                "exp": 0
+            },
+            "name": "wheat"
+        },
+        {
+            "amount": {
+                "base": 0.0,
+                "exp": 0
+            },
+            "name": "corn"
+        },
+        {
+            "amount": {
+                "base": 0.0,
+                "exp": 0
+            },
+            "name": "tomato"
+        },
+        {
+            "amount": {
+                "base": 0.0,
+                "exp": 0
+            },
+            "name": "cucumber"
+        },
+        {
+            "amount": {
+                "base": 1.0,
+                "exp": 1
+            },
+            "name": "carrot"
+        }
+    ]
+}
