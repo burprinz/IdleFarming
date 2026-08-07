@@ -43,6 +43,12 @@ public:
     void fillRect(glm::vec2 topleft, glm::vec2 topright,glm::vec2 bottomleft, glm::vec2 bottomright, glm::vec3 color, float opacity) noexcept;
     void drawRoundRect(glm::vec2 center, glm::vec2 size, float radius, glm::vec3 color, float thickness = 0.03f) noexcept;
     void fillRoundRect(glm::vec2 center, glm::vec2 size, float radius, glm::vec3 color, float opacity) noexcept;
+    void fillFadeRectBySize(glm::vec2 center, glm::vec2 size, glm::vec3 outer_color, glm::vec3 inner_color, float fading_speed, float opacity = 1.0f) noexcept;
+    void fillFadeRect(glm::vec2 topleft, glm::vec2 topright, glm::vec2 bottomleft, glm::vec2 bottomright,
+                       glm::vec3 outer_color, glm::vec3 inner_color, float fading_speed, float opacity = 1.0f) noexcept;
+    void drawFadeRectBySize(glm::vec2 center, glm::vec2 size, glm::vec3 outer_color, float fading_speed, float opacity = 1.0f) noexcept;
+    void drawFadeRect(glm::vec2 topleft, glm::vec2 topright, glm::vec2 bottomleft, glm::vec2 bottomright,
+                       glm::vec3 outer_color, float fading_speed, float opacity = 1.0f) noexcept;
 
     //TODO void drawCircle(glm::vec2 position, float radius, glm::vec3 color, float opacity, glm::mat4 view, glm::mat4 projection) noexcept;
     void fillCircle(glm::vec2 position, float radius, glm::vec3 color, float opacity) noexcept;
@@ -102,7 +108,6 @@ private:
     Shader m_line_shader;
     Shader m_platform_shader;
     Shader m_text_shader;
-    //Shader m_animation_shader;
     Shader m_sprite_shader;
 
     Shader m_circle_shader;
@@ -111,6 +116,10 @@ private:
 
 
     Shader m_round_rect_shader;
+
+    Shader m_fade_rect_shader;
+    Shader m_fade_rect_hollow_shader;
+    GLuint m_fade_rect_vao, m_fade_rect_vbo, m_fade_rect_ebo;
 
 
     GLuint m_quad_vao;

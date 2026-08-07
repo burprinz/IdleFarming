@@ -46,13 +46,18 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         TextButton but = wButtons[i];
         glm::vec3 color;
         if (std::cmp_equal(i, m_registry->window())) {
-            color = selected;
+            //color = selected;
+            color = button_outer_select_color;
         } else {
-            color = but.selected?but.select_color:but.unselect_color;
+            //color = but.selected?but.select_color:but.unselect_color;
+            color = but.selected?button_outer_select_color:button_outer_unselect_color;
         }
 
-        m_draw->drawRectBySize(but.pos, but.size, color);
-        m_draw->drawStringInBox(but.text, but.pos, but.size, black);
+        //m_draw->drawRectBySize(but.pos, but.size, color);
+        //m_draw->drawStringInBox(but.text, but.pos, but.size, black);
+        m_draw->fillFadeRectBySize(but.pos, but.size, color, button_inner_color, button_fading_speed);
+        m_draw->drawStringInBox(but.text, but.pos, but.size, button_text_color);
+
     }
 
     /**
@@ -76,7 +81,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
 void RenderSystem::drawField() noexcept {
 
     // Draw Field Selection
-    drawBasicTextButtons(m_ui->m_field_mode_buttons, black);
+    drawBasicTextButtons(m_ui->m_field_mode_buttons, button_text_color);
 
     // Draw Field
     drawCurrentField(
@@ -97,7 +102,7 @@ void RenderSystem::drawField() noexcept {
 
         for (TextButton &but : buts) {
             if (u.unlocked) {
-                drawBasicTextButton(but, black);
+                drawBasicTextButton(but, button_text_color);
             } else {
                 drawLockInBlackQuad(but.pos, but.size, false);
             }
@@ -135,8 +140,6 @@ void RenderSystem::drawField() noexcept {
 
         drawBasicTextButtons(m_ui->m_field_helper_config_buttons, white);
 
-
-
         // Draw Config Field
         drawCurrentField(
             m_registry->plant_field_tiles[m_registry->current_selected_field],
@@ -149,7 +152,7 @@ void RenderSystem::drawField() noexcept {
 }
 
 void RenderSystem::drawMarketplace() noexcept {
-    drawBasicTextButtons(m_ui->m_market_category_buttons, black);
+    drawBasicTextButtons(m_ui->m_market_category_buttons, button_text_color);
 
     for (std::vector<TextButton> &buts : m_ui->m_market_trade_buttons) {
         if (!buts[0].visible) continue;
@@ -177,7 +180,7 @@ void RenderSystem::drawMarketplace() noexcept {
         m_draw->drawStringInBox("x" + stash.toString(), pos, trade_item_stash_size, black);
 
         // Buy / Sell
-        drawBasicTextButtons(buts, black);
+        drawBasicTextButtons(buts, button_text_color);
     }
 }
 
@@ -191,30 +194,38 @@ void RenderSystem::drawToolsmith() noexcept {
                 TextureInformation texture = m_registry->ecs.get<TextureInformation>(tool_id);
                 m_draw->drawTexture(texture.text, but.pos, but.size/2.0f);
 
-                glm::vec3 color = red;
                 Unlockable u = m_registry->ecs.get<Unlockable>(tool_id);
+                //glm::vec3 color = red;
+                glm::vec3 color = button_outer_unselect_color;
                 if (u.unlocked) {
                     if (id_in_map(tool_id, m_registry->current_plant_tools) || id_in_map(tool_id, m_registry->current_harvest_tools)|| id_in_map(tool_id, m_registry->current_collect_tools)) {
                         // Unlocked and selected
+                        /*
                         if (but.selected) {
                             color = light_green;
                         } else {
                             color = green;
                         }
+                        */
+                        color = button_outer_select_color;
                     } else {
                         // Unlocked but not selected
+                        /*
                         if (but.selected) {
                             color = light_blue;
                         } else {
                             color = blue;
                         }
+                        */
+                        color = button_outer_activatable_color;
                     }
                 } else {
                     if (but.selected) {
-                        color = light_red;
+                        //color = light_red;
+                        color = button_outer_select_color;
                     }
                 }
-                m_draw->drawRectBySize(but.pos, but.size, color);
+                m_draw->drawFadeRectBySize(but.pos, but.size, color, button_fading_speed);
             }
         }
 
@@ -286,9 +297,14 @@ void RenderSystem::drawHelpers() noexcept {
 
     for (TextButton &b : m_ui->m_helper_buy_buttons) {
         if (b.visible) {
+            /*
             glm::vec3 color = b.selected?b.select_color:b.unselect_color;
             m_draw->drawRectBySize(b.pos, b.size, color);
             m_draw->drawStringInBox(b.text, b.pos, b.size, black);
+             */
+            glm::vec3 color = b.selected?button_outer_select_color:button_outer_unselect_color;
+            m_draw->fillFadeRectBySize(b.pos, b.size, color, button_inner_color, button_fading_speed);
+            m_draw->drawStringInBox(b.text, b.pos, b.size, button_text_color);
 
             if (b.selected) {
                 FarmHelper helper = m_registry->ecs.get<FarmHelper>(b.id_label);
@@ -341,8 +357,13 @@ void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons, glm::v
 
 void RenderSystem::drawBasicTextButton(TextButton &b, glm::vec3 text_color) noexcept {
     if (b.visible) {
+        /*
         glm::vec3 color = b.selected?b.select_color:b.unselect_color;
         m_draw->drawRectBySize(b.pos, b.size, color);
+        m_draw->drawStringInBox(b.text, b.pos, b.size, text_color);
+        */
+        glm::vec3 color = b.selected?button_outer_select_color:button_outer_unselect_color;
+        m_draw->fillFadeRectBySize(b.pos, b.size, color, button_inner_color, button_fading_speed);
         m_draw->drawStringInBox(b.text, b.pos, b.size, text_color);
     }
 }
@@ -460,7 +481,7 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
     std::string text;
     for (TextButton b : buttons) {
         glm::vec2 but_pos = b.pos;
-        glm::vec3 unselect_color = black;
+        glm::vec3 unselect_color = button_outer_unselect_color;
         if (for_helper) {
             but_pos += helper_config_field_offset;
             unselect_color = white;
@@ -468,7 +489,6 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
         }
 
         entt::entity plant_id = b.id_label;
-        //Plant p = m_registry->ecs.get<Plant>(plant_id);
         Item i = m_registry->ecs.get<Item>(plant_id);
         Unlockable u = m_registry->ecs.get<Unlockable>(plant_id);
 
@@ -477,30 +497,42 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
         // For popup later
         bool has_enough_money = false;
 
-        if (!u.unlocked) {
-            // Not unlocked
-            if (!for_helper) {
-                has_enough_money = has_enough(money, u.price);
-                drawLockInBlackQuad(b.pos, b.size, has_enough_money);
-                draw_color = b.selected ? b.select_color : b.unselect_color;
+
+        if (!for_helper) {
+            if (!u.unlocked) {
+                // Not unlocked
+                if (!for_helper) {
+                    has_enough_money = has_enough(money, u.price);
+                    drawLockInBlackQuad(b.pos, b.size, has_enough_money);
+                    draw_color = b.selected ? button_outer_select_color : button_outer_unselect_color;
+                }
+            } else {
+                // Unlocked
+                if (plant_id == current_selected) {
+                    // Unlocked and selected
+                    draw_color = button_outer_select_color;
+                } else {
+                    // Unlocked but not selected
+
+                    draw_color = b.selected ? button_outer_select_color : unselect_color;
+                }
+                text = i.display_name;
+                m_draw->fillFadeRectBySize(but_pos, b.size, draw_color, button_inner_color, button_fading_speed);
+                m_draw->drawStringInBox(text, but_pos, b.size, button_text_color);
             }
         } else {
-            // Unlocked
-            if (plant_id == current_selected) {
-                // Unlocked and selected
-                draw_color = selected;
-            } else {
-                // Unlocked but not selected
-
-                draw_color = b.selected ? b.select_color : unselect_color;
+            if (u.unlocked) {
+                // For helper only if unlocked
+                draw_color = b.selected||plant_id == current_selected ? button_outer_select_color : unselect_color;
+                std::cout<<b.selected<<std::endl;
+                text = i.display_name;
+                m_draw->fillFadeRectBySize(but_pos, b.size, draw_color, button_inner_color, button_fading_speed);
+                m_draw->drawStringInBox(text, but_pos, b.size, normal_color);
             }
-            text = i.display_name;
-            m_draw->drawStringInBox(text, but_pos, b.size, normal_color);
         }
-        if (u.unlocked || !for_helper) {
-            // For helper only if unlocked
-            m_draw->drawRectBySize(but_pos, b.size, draw_color);
-        }
+
+
+
 
         // Draw Price popup if not unlocked and selected
         if (!for_helper && !u.unlocked && b.selected) {

@@ -30,6 +30,8 @@ enum struct Shader {
 	circle,
 	polygon,
 	round_rect,
+	fade_rect,
+	fade_rect_hollow,
 	count
 };
 

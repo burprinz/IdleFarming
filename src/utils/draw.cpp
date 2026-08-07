@@ -152,6 +152,28 @@ Draw *Draw::init(Window* window, Registry* registry) noexcept {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, self->m_round_rect_ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(round_rect_indices), round_rect_indices, GL_STATIC_DRAW);
 
+
+    // Fading Rect
+    self->m_fade_rect_shader = Shader::init(assets::Shader::fade_rect).value();
+    self->m_fade_rect_hollow_shader = Shader::init(assets::Shader::fade_rect_hollow).value();
+
+    glGenVertexArrays(1, &self->m_fade_rect_vao);
+    glBindVertexArray(self->m_fade_rect_vao);
+
+    glGenBuffers(1, &self->m_fade_rect_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, self->m_fade_rect_vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * 4, nullptr, GL_DYNAMIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)sizeof(glm::vec2));
+
+    GLuint fade_rect_indices[6] = { 0, 2, 1, 1, 2, 3 };
+    glGenBuffers(1, &self->m_fade_rect_ebo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, self->m_fade_rect_ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(fade_rect_indices), fade_rect_indices, GL_STATIC_DRAW);
+
+
     return self;
 }
 
@@ -166,6 +188,8 @@ void Draw::deinit() noexcept {
     m_sprite_shader.deinit();
     m_intermediate_framebuffer.deinit();
     m_round_rect_shader.deinit();
+    m_fade_rect_shader.deinit();
+    m_fade_rect_hollow_shader.deinit();
 }
 
 void Draw::start() noexcept {
@@ -239,6 +263,85 @@ void Draw::fillRectBySize(glm::vec2 center, glm::vec2 size, glm::vec3 color, flo
 
     fillRect(tl, tr, bl, br, color, opacity);
 }
+
+void Draw::fillFadeRect(glm::vec2 topleft, glm::vec2 topright, glm::vec2 bottomleft, glm::vec2 bottomright,
+                         glm::vec3 outer_color, glm::vec3 inner_color, float fading_speed, float opacity) noexcept {
+    glm::vec4 verts[4] = {
+        glm::vec4(topleft,     -1.0f,  1.0f),
+        glm::vec4(topright,     1.0f,  1.0f),
+        glm::vec4(bottomleft,  -1.0f, -1.0f),
+        glm::vec4(bottomright,  1.0f, -1.0f),
+    };
+
+    glm::vec2 halfSize = { glm::length(topright - topleft) * 0.5f, glm::length(topleft - bottomleft) * 0.5f };
+
+    glBindVertexArray(m_fade_rect_vao);
+    glBindBuffer(GL_ARRAY_BUFFER, m_fade_rect_vbo);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(verts), verts);
+
+    m_fade_rect_shader.use()
+        .setMat4("view", view)
+        .setMat4("projection", projection)
+        .setVec2("halfSize", halfSize)
+        .setVec3("outer_color", outer_color)
+        .setVec3("inner_color", inner_color)
+        .setFloat("fading_speed", fading_speed)
+        .setFloat("opacity", opacity);
+
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+}
+
+void Draw::fillFadeRectBySize(glm::vec2 center, glm::vec2 size, glm::vec3 outer_color, glm::vec3 inner_color, float fading_speed, float opacity) noexcept {
+    float w = size.x/2;
+    float h = size.y/2;
+
+    glm::vec2 tl = center + glm::vec2{-w, h};
+    glm::vec2 tr = center + glm::vec2{w, h};
+    glm::vec2 bl = center + glm::vec2{-w, -h};
+    glm::vec2 br = center + glm::vec2{w, -h};
+
+    fillFadeRect(tl, tr, bl, br, outer_color, inner_color, fading_speed, opacity);
+}
+
+void Draw::drawFadeRect(glm::vec2 topleft, glm::vec2 topright, glm::vec2 bottomleft, glm::vec2 bottomright,
+                       glm::vec3 outer_color, float fading_speed, float opacity) noexcept {
+    glm::vec4 verts[4] = {
+        glm::vec4(topleft,     -1.0f,  1.0f),
+        glm::vec4(topright,     1.0f,  1.0f),
+        glm::vec4(bottomleft,  -1.0f, -1.0f),
+        glm::vec4(bottomright,  1.0f, -1.0f),
+    };
+
+    glm::vec2 halfSize = { glm::length(topright - topleft) * 0.5f, glm::length(topleft - bottomleft) * 0.5f };
+
+    glBindVertexArray(m_fade_rect_vao); // Nutzt dasselbe VAO/VBO[cite: 1]
+    glBindBuffer(GL_ARRAY_BUFFER, m_fade_rect_vbo); //[cite: 1]
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(verts), verts); //[cite: 1]
+
+    m_fade_rect_hollow_shader.use() // Nutzt den NEUEN Shader
+        .setMat4("view", view) //[cite: 1]
+        .setMat4("projection", projection) //[cite: 1]
+        .setVec2("halfSize", halfSize) //[cite: 1]
+        .setVec3("outer_color", outer_color) //[cite: 1]
+        .setFloat("fading_speed", fading_speed) //[cite: 1]
+        .setFloat("opacity", opacity); //[cite: 1]
+
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); //[cite: 1]
+}
+
+void Draw::drawFadeRectBySize(glm::vec2 center, glm::vec2 size, glm::vec3 outer_color, float fading_speed, float opacity) noexcept {
+    float w = size.x / 2.0f;
+    float h = size.y / 2.0f;
+
+    glm::vec2 tl = center + glm::vec2{-w,  h};
+    glm::vec2 tr = center + glm::vec2{ w,  h};
+    glm::vec2 bl = center + glm::vec2{-w, -h};
+    glm::vec2 br = center + glm::vec2{ w, -h};
+
+    drawFadeRect(tl, tr, bl, br, outer_color, fading_speed, opacity);
+}
+
+
 
 void Draw::drawRect(glm::vec2 topleft, glm::vec2 topright,glm::vec2 bottomleft, glm::vec2 bottomright, glm::vec3 color) noexcept {
     drawLine(topleft, topright, color);

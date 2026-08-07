@@ -1,6 +1,6 @@
 #version 410 core
 layout (location = 0) in vec2 worldPos;
-layout (location = 1) in vec2 localPos; // -1..1 innerhalb des Rechtecks
+layout (location = 1) in vec2 localPos;
 
 uniform mat4 view;
 uniform mat4 projection;
