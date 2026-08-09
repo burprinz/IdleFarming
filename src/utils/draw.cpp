@@ -489,8 +489,11 @@ void Draw::drawString(std::string text, glm::vec2 pos, float scale, glm::vec3 co
     }
 }
 
-void Draw::drawStringInBox(std::string text, glm::vec2 pos, glm::vec2 size, glm::vec3 color) noexcept {
-    float scale = getOptimalScaling(text, size*0.9f);
+void Draw::drawStringInBox(std::string text, glm::vec2 pos, glm::vec2 size, glm::vec3 color, float max_size) noexcept {
+    float scale = getOptimalScaling(text, size*0.8f);
+    if (max_size != -1) {
+        scale = std::min(scale, max_size);
+    }
     drawString(text, pos, scale, color);
 }
 

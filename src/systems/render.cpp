@@ -56,7 +56,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         //m_draw->drawRectBySize(but.pos, but.size, color);
         //m_draw->drawStringInBox(but.text, but.pos, but.size, black);
         m_draw->fillFadeRectBySize(but.pos, but.size, color, button_inner_color, button_fading_speed);
-        m_draw->drawStringInBox(but.text, but.pos, but.size, button_text_color);
+        m_draw->drawStringInBox(but.text, but.pos, but.size, button_text_color, max_button_text_size);
 
     }
 
@@ -81,7 +81,7 @@ void RenderSystem::step(const float /*delta*/) noexcept {
 void RenderSystem::drawField() noexcept {
 
     // Draw Field Selection
-    drawBasicTextButtons(m_ui->m_field_mode_buttons, button_text_color);
+    drawBasicTextButtons(m_ui->m_field_mode_buttons, button_text_color, true);
 
     // Draw Field
     drawCurrentField(
@@ -102,7 +102,7 @@ void RenderSystem::drawField() noexcept {
 
         for (TextButton &but : buts) {
             if (u.unlocked) {
-                drawBasicTextButton(but, button_text_color);
+                drawBasicTextButton(but, button_text_color, false);
             } else {
                 drawLockInBlackQuad(but.pos, but.size, false);
             }
@@ -138,7 +138,7 @@ void RenderSystem::drawField() noexcept {
         glm::vec2 pos = calc_center(helper_config_topleft, helper_config_size);
         m_draw->fillRectBySize(pos, helper_config_size, black, 0.95f);
 
-        drawBasicTextButtons(m_ui->m_field_helper_config_buttons, white);
+        drawBasicTextButtons(m_ui->m_field_helper_config_buttons, white, false);
 
         // Draw Config Field
         drawCurrentField(
@@ -152,7 +152,7 @@ void RenderSystem::drawField() noexcept {
 }
 
 void RenderSystem::drawMarketplace() noexcept {
-    drawBasicTextButtons(m_ui->m_market_category_buttons, button_text_color);
+    drawBasicTextButtons(m_ui->m_market_category_buttons, button_text_color, true);
 
     for (std::vector<TextButton> &buts : m_ui->m_market_trade_buttons) {
         if (!buts[0].visible) continue;
@@ -180,7 +180,7 @@ void RenderSystem::drawMarketplace() noexcept {
         m_draw->drawStringInBox("x" + stash.toString(), pos, trade_item_stash_size, black);
 
         // Buy / Sell
-        drawBasicTextButtons(buts, button_text_color);
+        drawBasicTextButtons(buts, button_text_color, true);
     }
 }
 
@@ -349,22 +349,25 @@ void RenderSystem::drawHelpers() noexcept {
 
 
 
-void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color) noexcept {
+void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color, bool with_max_size) noexcept {
     for (TextButton &b : buttons) {
-        drawBasicTextButton(b, text_color);
+        drawBasicTextButton(b, text_color, with_max_size);
     }
 }
 
-void RenderSystem::drawBasicTextButton(TextButton &b, glm::vec3 text_color) noexcept {
+void RenderSystem::drawBasicTextButton(TextButton &b, glm::vec3 text_color, bool with_max_size) noexcept {
     if (b.visible) {
         /*
         glm::vec3 color = b.selected?b.select_color:b.unselect_color;
         m_draw->drawRectBySize(b.pos, b.size, color);
         m_draw->drawStringInBox(b.text, b.pos, b.size, text_color);
-        */
+
         glm::vec3 color = b.selected?button_outer_select_color:button_outer_unselect_color;
         m_draw->fillFadeRectBySize(b.pos, b.size, color, button_inner_color, button_fading_speed);
         m_draw->drawStringInBox(b.text, b.pos, b.size, text_color);
+        */
+        glm::vec3 color = b.selected?button_outer_select_color:button_outer_unselect_color;
+        m_draw->drawButton(b.text, b.pos, b.size, color, button_inner_color, text_color, with_max_size);
     }
 }
 

@@ -16,6 +16,8 @@ constexpr glm::vec2 medium_button_size = {4.0, 0.5};
 constexpr float small_gap = 0.05f;
 constexpr float normal_gap = 0.1f;
 
+constexpr float max_button_text_size = 0.004f;
+
 // Mode selection
 constexpr glm::vec2 mode_select_buttons_topleft = {0.1, config::CAMERA_VIEW_HEIGHT - 0.1};
 
