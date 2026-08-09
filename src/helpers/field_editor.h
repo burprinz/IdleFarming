@@ -3,6 +3,72 @@
 //
 // Created by luisb on 26.07.2026.
 //
+    inline void plant_tile(Registry* m_registry, entt::entity field_id, entt::entity plant_id) noexcept{
+        FarmField &f = m_registry->ecs.get<FarmField>(field_id);
+
+        if (f.is_empty) {
+            // Plant if field is empty and left click pressed
+            f.is_empty = false;
+            f.plant = plant_id;
+            f.grow = 0.0;
+            f.harvestable = false;
+            Plant p = m_registry->ecs.get<Plant>(plant_id);
+            if (p.has_inventory) {
+                Inventory inv;
+                inv.size = BigNumber(p.inventory_size);
+                inv.amount = BigNumber(0);
+                m_registry->ecs.emplace<Inventory>(field_id, inv);
+            }
+        }
+    }
+
+    inline void harvest_tile(Registry* m_registry, entt::entity field_id) noexcept {
+        FarmField &f = m_registry->ecs.get<FarmField>(field_id);
+
+        if (!f.is_empty) {
+            Plant p = m_registry->ecs.get<Plant>(f.plant);
+            BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
+            // Try to harvest
+            if (p.has_inventory) {
+                // Machine -> Add inventory am to stash and remove plant and inv
+                Inventory inv = m_registry->ecs.get<Inventory>(field_id);
+                am += inv.amount;
+                m_registry->ecs.remove<Inventory>(field_id);
+                f.is_empty = true;
+            } else if (f.harvestable) {
+                // No Machine -> Add amount to stash and remove plant
+                am += p.min_collect;
+                f.harvestable = false;
+                f.is_empty = true;
+            }
+        }
+    }
+
+    inline void collect_tile(Registry* m_registry, entt::entity field_id, bool helper) noexcept {
+        FarmField &f = m_registry->ecs.get<FarmField>(field_id);
+
+        if (!f.is_empty) {
+            Plant p = m_registry->ecs.get<Plant>(f.plant);
+            BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
+            // Try to collect
+            if (p.has_inventory && m_registry->ecs.all_of<Inventory>(field_id)) {
+                // Machine -> Collect inventory and keep everything
+                Inventory &inv = m_registry->ecs.get<Inventory>(field_id);
+                // Wenn (nicht Helper) oder (Helper mit vollen Inv)
+                if (!helper || inv.amount == inv.size) {
+                    am += inv.amount;
+                    inv.amount = BigNumber(0);
+                }
+            } else if (f.harvestable) {
+                // No Machine -> Collect and reset growtime
+                am += p.min_collect;
+                f.harvestable = false;
+                f.grow = p.growTime;
+            }
+        }
+    }
+
+
 
     inline void plant_with_radius(Registry* m_registry, std::vector<std::vector<entt::entity>> field, entt::entity p_id, size_t x, size_t y, int r) noexcept {
 
@@ -12,24 +78,7 @@
         for (size_t y_pos = y_start; y_pos < std::min<size_t>(y+r+1, field.size()); y_pos++) {
             for (size_t x_pos = x_start; x_pos < std::min<size_t>(x+r+1, field[y_pos].size()); x_pos++) {
                 entt::entity fieldID = field[y_pos][x_pos];
-
-                FarmField &f = m_registry->ecs.get<FarmField>(fieldID);
-
-                if (f.is_empty) {
-                    // Plant if field is empty and left click pressed
-                    f.is_empty = false;
-                    f.plant = p_id;
-                    f.grow = 0.0;
-                    f.harvestable = false;
-                    Plant p = m_registry->ecs.get<Plant>(p_id);
-                    if (p.has_inventory) {
-                        Inventory inv;
-                        inv.size = BigNumber(p.inventory_size);
-                        inv.amount = BigNumber(0);
-                        m_registry->ecs.emplace<Inventory>(fieldID, inv);
-                    }
-                }
-
+                plant_tile(m_registry, fieldID, p_id);
             }
         }
 
@@ -43,29 +92,10 @@
         for (size_t y_pos = y_start; y_pos < std::min<size_t>(y+r+1, field.size()); y_pos++) {
             for (size_t x_pos = x_start; x_pos < std::min<size_t>(x+r+1, field[y_pos].size()); x_pos++) {
                 entt::entity fieldID = field[y_pos][x_pos];
-                FarmField &f = m_registry->ecs.get<FarmField>(fieldID);
-
-                if (!f.is_empty) {
-                    Plant p = m_registry->ecs.get<Plant>(f.plant);
-                    BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
-                    // Try to harvest
-                    if (p.has_inventory) {
-                        // Machine -> Add inventory am to stash and remove plant and inv
-                        Inventory inv = m_registry->ecs.get<Inventory>(fieldID);
-                        am += inv.amount;
-                        m_registry->ecs.remove<Inventory>(fieldID);
-                        f.is_empty = true;
-                    } else if (f.harvestable) {
-                        // No Machine -> Add amount to stash and remove plant
-                        am += p.min_collect;
-                        f.harvestable = false;
-                        f.is_empty = true;
-                    }
-                }
+                harvest_tile(m_registry, fieldID);
             }
         }
     }
-
 
     inline void collect_with_radius(Registry* m_registry, std::vector<std::vector<entt::entity>> field, size_t x, size_t y, int r) noexcept {
         // Gets called for Machine or Regrowable
@@ -75,25 +105,7 @@
         for (size_t y_pos = y_start; y_pos < std::min<size_t>(y+r+1, field.size()); y_pos++) {
             for (size_t x_pos = x_start; x_pos < std::min<size_t>(x+r+1, field[y_pos].size()); x_pos++) {
                 entt::entity fieldID = field[y_pos][x_pos];
-
-                FarmField &f = m_registry->ecs.get<FarmField>(fieldID);
-
-                if (!f.is_empty) {
-                    Plant p = m_registry->ecs.get<Plant>(f.plant);
-                    BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
-                    // Try to collect
-                    if (p.has_inventory) {
-                        // Machine -> Collect inventory and keep everything
-                        Inventory &inv = m_registry->ecs.get<Inventory>(fieldID);
-                        am += inv.amount;
-                        inv.amount = BigNumber(0);
-                    } else if (f.harvestable) {
-                        // No Machine -> Collect and reset growtime
-                        am += p.min_collect;
-                        f.harvestable = false;
-                        f.grow = p.growTime;
-                    }
-                }
+                collect_tile(m_registry, fieldID, false);
             }
         }
     }

@@ -2,36 +2,36 @@
     "list": [
         {
             "amount": {
-                "base": 3.069999933242798,
+                "base": 6.3699999332428,
                 "exp": 2
             },
             "name": "iron"
         },
         {
             "amount": {
-                "base": 0.0,
-                "exp": 0
+                "base": 2.7000000000000015,
+                "exp": 1
             },
             "name": "apple"
         },
         {
             "amount": {
-                "base": 5.0,
+                "base": 8.0,
                 "exp": 0
             },
             "name": "tulips"
         },
         {
             "amount": {
-                "base": 5.0,
-                "exp": 0
+                "base": 3.300000000000002,
+                "exp": 1
             },
             "name": "dandelion"
         },
         {
             "amount": {
-                "base": 5.0,
-                "exp": 0
+                "base": 7.399999976158132,
+                "exp": 1
             },
             "name": "daisy"
         },
@@ -72,7 +72,7 @@
         },
         {
             "amount": {
-                "base": 4.289999961853027,
+                "base": 7.739999771118127,
                 "exp": 2
             },
             "name": "carrot"

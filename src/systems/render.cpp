@@ -527,7 +527,6 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
             if (u.unlocked) {
                 // For helper only if unlocked
                 draw_color = b.selected||plant_id == current_selected ? button_outer_select_color : unselect_color;
-                std::cout<<b.selected<<std::endl;
                 text = i.display_name;
                 m_draw->fillFadeRectBySize(but_pos, b.size, draw_color, button_inner_color, button_fading_speed);
                 m_draw->drawStringInBox(text, but_pos, b.size, normal_color);

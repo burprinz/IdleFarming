@@ -6,6 +6,7 @@
 
 #include <iostream>
 
+#include "helpers/field_editor.h"
 #include "helpers/finder.h"
 #include "helpers/sizes.h"
 #include "helpers/util.h"
@@ -97,55 +98,18 @@ void HelperSystem::step(const float delta) noexcept {
 
         for (size_t i = 0; i < helper.working_area.size(); i++) {
             entt::entity field_id = helper.working_area[i];
-            FarmField &field = m_registry->ecs.get<FarmField>(field_id);
             entt::entity plant_id = helper.working_plants[i];
-            Plant &plant = m_registry->ecs.get<Plant>(plant_id);
 
             // HARVESTING
             if (f.plant_type == NORMAL_PLANT) {
                 // Normale Pflanze
-                if (!field.is_empty && field.harvestable) {
-                    BigNumber &am = m_registry->ecs.get<Amount>(plant_id).am;
-                    am += plant.min_collect;
-                    field.harvestable = false;
-                    field.is_empty = true;
-                }
+                harvest_tile(m_registry, field_id);
             } else {
-                // regrow/inv -> Collecten
-                BigNumber &am = m_registry->ecs.get<Amount>(plant_id).am;
-                // Try to collect
-                if (plant.has_inventory && m_registry->ecs.all_of<Inventory>(field_id)) {
-                    // Machine -> Collect inventory and keep everything
-                    Inventory &inv = m_registry->ecs.get<Inventory>(field_id);
-                    if (inv.amount == inv.size) {
-                        am += inv.amount;
-                        inv.amount = BigNumber(0);
-                    }
-                } else if (field.harvestable) {
-                    // No Machine -> Collect and reset growtime
-                    am += plant.min_collect;
-                    field.harvestable = false;
-                    field.grow = plant.growTime;
-                }
+                collect_tile(m_registry, field_id, true);
             }
-
-
 
             // PLANTING
-            if (field.is_empty) {
-                // Plant if field is empty and left click pressed
-                field.is_empty = false;
-                field.plant = plant_id;
-                field.grow = 0.0;
-                field.harvestable = false;
-                Plant p = m_registry->ecs.get<Plant>(plant_id);
-                if (p.has_inventory) {
-                    Inventory inv;
-                    inv.size = BigNumber(p.inventory_size);
-                    inv.amount = BigNumber(0);
-                    m_registry->ecs.emplace<Inventory>(field_id, inv);
-                }
-            }
+            plant_tile(m_registry, field_id, plant_id);
         }
 
     }
