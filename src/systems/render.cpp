@@ -148,6 +148,18 @@ void RenderSystem::drawField() noexcept {
             m_registry->current_selected_plant[m_registry->current_selected_field],
             true
         );
+
+        Texture helper_img = m_registry->ecs.get<TextureInformation>(helper_id).text;
+        pos = helper_config_topleft + glm::vec2{helper_config_size.x - helper_image_size.x - small_gap , -small_gap};
+        pos = calc_center(pos, helper_image_size);
+        m_draw->drawTexture(helper_img, pos, helper_image_size/2.0f);
+
+        FarmHelper helper = m_registry->ecs.get<FarmHelper>(helper_id);
+        glm::vec2 size = {helper_image_size.x, normal_button_size.y};
+        pos += glm::vec2{0, -helper_image_size.y/2.0f - small_gap - size.y/2.0f};
+        m_draw->drawRectBySize(pos, size, white);
+        std::string text = std::to_string(helper.working_area.size()) + "/" + std::to_string(helper.amount_fields) + " fields";
+        m_draw->drawStringInBox(text, pos, size, white);
     }
 }
 
