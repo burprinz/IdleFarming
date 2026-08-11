@@ -297,6 +297,7 @@ public:
      * Maps
      */
     std::map<std::string, entt::entity> item_entities;
+    std::map<std::string, entt::entity> tool_entities;
 
 
 private:

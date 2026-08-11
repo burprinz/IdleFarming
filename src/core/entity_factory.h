@@ -14,6 +14,7 @@
 #include "save.h"
 #include "../helpers/sizes.h"
 #include "helpers/finder.h"
+#include "helpers/util.h"
 
 class EntityFactory {
 public:
@@ -37,12 +38,13 @@ public:
 
         load_money();
         load_item_amounts();
-
+        load_tools();
     }
 
     inline void save_values() noexcept {
         save_money();
         save_item_amounts();
+        save_tools();
     }
 
 
@@ -254,6 +256,7 @@ private:
             m_registry->ecs.emplace<BuyAmount>(tool_id, buy_amount);
 
             m_registry->tool_order.push_back(tool_id);
+            m_registry->tool_entities[item.name] = tool_id;
         }
 
     }
@@ -305,7 +308,7 @@ private:
 
 
 
-    // TODO: Field, Helper, Boght Tools, Money
+    // TODO: Field, Helper, Boght Tools
 
     inline void save_money() noexcept {
         BigNumber money = m_registry->ecs.get<Amount>(m_registry->money()).am;
@@ -358,6 +361,37 @@ private:
             amount.am = am;
             entt::entity item_entity = m_registry->item_entities[name];
             m_registry->ecs.emplace_or_replace<Amount>(item_entity, amount);
+        }
+    }
+
+    inline void save_tools() noexcept {
+        nlohmann::json unlocked_tools = create_unlocked_tools_json(m_registry);
+        nlohmann::json activated_tools = create_activated_tools_json(m_registry);
+
+        nlohmann::json result = {{"unlocked", unlocked_tools}, {"activated", activated_tools}};
+        save(m_save_path + "tools.json", result);
+    }
+
+    inline void load_tools() noexcept {
+        std::string json_path = "/assets/data/save/tools.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading item amounts"<<std::endl;
+            return;
+        }
+
+        for (const auto& unlocked : json["unlocked"]) {
+            std::string name = unlocked.get<std::string>();
+            entt::entity id = m_registry->tool_entities[name];
+            Unlockable &u = m_registry->ecs.get<Unlockable>(id);
+            u.unlocked = true;
+        }
+
+        for (const auto& activated : json["activated"]) {
+            std::string name = activated.get<std::string>();
+            entt::entity id = m_registry->tool_entities[name];
+            activate_tool(m_registry, id);
         }
     }
 };

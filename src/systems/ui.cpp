@@ -276,15 +276,7 @@ void UISystem::initToolSmithButtons() noexcept {
             if (!unlocked) {
                 registry->trying_to_buy = tool_id;
             } else {
-                Tool t = registry->ecs.get<Tool>(tool_id);
-
-                if (t.usage == PLANTING) {
-                    registry->current_plant_tools[t.field_type] = tool_id;
-                } else if (t.usage == HARVESTING) {
-                    registry->current_harvest_tools[t.field_type] = tool_id;
-                } else if (t.usage == COLLECTING) {
-                    registry->current_collect_tools[t.field_type] = tool_id;
-                }
+                activate_tool(registry, tool_id);
             }
         };
 

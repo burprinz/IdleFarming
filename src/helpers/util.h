@@ -46,3 +46,15 @@ inline PolygonShape createConvexPolygon(std::vector<glm::vec2> points) {
 inline glm::vec2 calc_center(glm::vec2 top_left, glm::vec2 size) {
     return top_left + (glm::vec2{size.x, -size.y} / 2.0f);
 }
+
+inline void activate_tool(Registry* m_registry, entt::entity tool_id) {
+    Tool t = m_registry->ecs.get<Tool>(tool_id);
+
+    if (t.usage == PLANTING) {
+        m_registry->current_plant_tools[t.field_type] = tool_id;
+    } else if (t.usage == HARVESTING) {
+        m_registry->current_harvest_tools[t.field_type] = tool_id;
+    } else if (t.usage == COLLECTING) {
+        m_registry->current_collect_tools[t.field_type] = tool_id;
+    }
+}

@@ -212,23 +212,9 @@ void RenderSystem::drawToolsmith() noexcept {
                 if (u.unlocked) {
                     if (id_in_map(tool_id, m_registry->current_plant_tools) || id_in_map(tool_id, m_registry->current_harvest_tools)|| id_in_map(tool_id, m_registry->current_collect_tools)) {
                         // Unlocked and selected
-                        /*
-                        if (but.selected) {
-                            color = light_green;
-                        } else {
-                            color = green;
-                        }
-                        */
                         color = button_outer_select_color;
                     } else {
                         // Unlocked but not selected
-                        /*
-                        if (but.selected) {
-                            color = light_blue;
-                        } else {
-                            color = blue;
-                        }
-                        */
                         color = button_outer_activatable_color;
                     }
                 } else {
@@ -309,11 +295,6 @@ void RenderSystem::drawHelpers() noexcept {
 
     for (TextButton &b : m_ui->m_helper_buy_buttons) {
         if (b.visible) {
-            /*
-            glm::vec3 color = b.selected?b.select_color:b.unselect_color;
-            m_draw->drawRectBySize(b.pos, b.size, color);
-            m_draw->drawStringInBox(b.text, b.pos, b.size, black);
-             */
             glm::vec3 color = button_outer_unselect_color;
             if (m_registry->ecs.get<Unlockable>(b.id_label).unlocked) {
                 color = button_outer_select_color;
@@ -372,15 +353,6 @@ void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons, glm::v
 
 void RenderSystem::drawBasicTextButton(TextButton &b, glm::vec3 text_color, bool with_max_size) noexcept {
     if (b.visible) {
-        /*
-        glm::vec3 color = b.selected?b.select_color:b.unselect_color;
-        m_draw->drawRectBySize(b.pos, b.size, color);
-        m_draw->drawStringInBox(b.text, b.pos, b.size, text_color);
-
-        glm::vec3 color = b.selected?button_outer_select_color:button_outer_unselect_color;
-        m_draw->fillFadeRectBySize(b.pos, b.size, color, button_inner_color, button_fading_speed);
-        m_draw->drawStringInBox(b.text, b.pos, b.size, text_color);
-        */
         glm::vec3 color = b.selected?button_outer_select_color:button_outer_unselect_color;
         m_draw->drawButton(b.text, b.pos, b.size, color, button_inner_color, text_color, with_max_size);
     }

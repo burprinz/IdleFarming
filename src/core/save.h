@@ -27,3 +27,43 @@ inline nlohmann::json create_item_amount_json(Registry* m_registry, entt::entity
     });
 }
 
+inline nlohmann::json create_unlocked_tools_json(Registry* m_registry) {
+    std::vector<std::string> unlocked_tools;
+
+    for (entt::entity tool_id : m_registry->ecs.view<Tool>()) {
+        Unlockable u = m_registry->ecs.get<Unlockable>(tool_id);
+        if (u.unlocked) {
+            Item t = m_registry->ecs.get<Item>(tool_id);
+            unlocked_tools.push_back(t.name);
+        }
+    }
+
+    nlohmann::json j = unlocked_tools;
+    return j;
+}
+
+inline nlohmann::json create_activated_tools_json(Registry* m_registry) {
+    std::vector<std::string> activated_tools;
+
+    for (const auto& [key, tool_id] : m_registry->current_plant_tools) {
+        if (tool_id != entt::null) {
+            Item t = m_registry->ecs.get<Item>(tool_id);
+            activated_tools.push_back(t.name);
+        }
+    }
+    for (const auto& [key, tool_id] : m_registry->current_collect_tools) {
+        if (tool_id != entt::null) {
+            Item t = m_registry->ecs.get<Item>(tool_id);
+            activated_tools.push_back(t.name);
+        }
+    }
+    for (const auto& [key, tool_id] : m_registry->current_harvest_tools) {
+        if (tool_id != entt::null) {
+            Item t = m_registry->ecs.get<Item>(tool_id);
+            activated_tools.push_back(t.name);
+        }
+    }
+
+    nlohmann::json j = activated_tools;
+    return j;
+}
