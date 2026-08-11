@@ -314,7 +314,10 @@ void RenderSystem::drawHelpers() noexcept {
             m_draw->drawRectBySize(b.pos, b.size, color);
             m_draw->drawStringInBox(b.text, b.pos, b.size, black);
              */
-            glm::vec3 color = b.selected?button_outer_select_color:button_outer_unselect_color;
+            glm::vec3 color = button_outer_unselect_color;
+            if (m_registry->ecs.get<Unlockable>(b.id_label).unlocked) {
+                color = button_outer_select_color;
+            }
             m_draw->fillFadeRectBySize(b.pos, b.size, color, button_inner_color, button_fading_speed);
             m_draw->drawStringInBox(b.text, b.pos, b.size, button_text_color);
 

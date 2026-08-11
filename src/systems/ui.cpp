@@ -297,6 +297,8 @@ void UISystem::initToolSmithButtons() noexcept {
 void UISystem::initHelpersButton() noexcept {
     m_helper_buy_buttons.clear();
 
+    Registry* registry = m_registry;
+
     glm::vec2 top_left = normal_topleft;
     glm::vec2 size = medium_button_size;
     glm::vec2 center = calc_center(top_left, size);
@@ -310,9 +312,13 @@ void UISystem::initHelpersButton() noexcept {
         helperB.pos = center;
         helperB.size = size;
         helperB.id_label = helper_id;
-        helperB.on_click = [] {
-            // TODO
-            std::cout<<"TRYING TO BUY HELPER"<<std::endl;
+        helperB.on_click = [registry, helper_id] {
+            bool unlocked = registry->ecs.get<Unlockable>(helper_id).unlocked;
+
+
+            if (!unlocked) {
+                registry->trying_to_buy = helper_id;
+            }
         };
         m_helper_buy_buttons.push_back(helperB);
 
