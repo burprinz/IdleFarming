@@ -36,15 +36,20 @@ public:
         create_helpers();
 
 
+        long long time_diff = load_time_difference();
+        std::cout<<time_diff<<std::endl;
+
         load_money();
         load_item_amounts();
         load_tools();
     }
 
     inline void save_values() noexcept {
+        save_time();
         save_money();
         save_item_amounts();
         save_tools();
+        save_fields();
     }
 
 
@@ -308,7 +313,32 @@ private:
 
 
 
-    // TODO: Field, Helper, Boght Tools
+    // TODO: Field, Helper, Helper Config, AFK Bonus
+
+    inline void save_time() noexcept {
+        nlohmann::json j;
+        j["time"] = get_current_timestamp();
+        save(m_save_path + "save_time.json", j);
+
+    }
+
+    inline long long load_time_difference() noexcept {
+        long long start_time = load_time();
+        long long current_time = get_current_timestamp();
+        return current_time - start_time;
+    }
+
+    inline long long load_time() noexcept {
+        std::string json_path = "/assets/data/save/save_time.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading money"<<std::endl;
+            return -1;
+        }
+
+        return json["time"].get<long long>();
+    }
 
     inline void save_money() noexcept {
         BigNumber money = m_registry->ecs.get<Amount>(m_registry->money()).am;
@@ -393,5 +423,21 @@ private:
             entt::entity id = m_registry->tool_entities[name];
             activate_tool(m_registry, id);
         }
+    }
+
+    inline void save_fields() noexcept {
+
+        std::vector<nlohmann::json> fields;
+
+        for (size_t i = 0; i < m_registry->field_order.size(); i++) {
+            entt::entity field_id = m_registry->field_order[i];
+            fields.push_back(create_field_json(m_registry, i, field_id));
+        }
+
+        nlohmann::json result;
+        result["fields"] = fields;
+
+        save(m_save_path + "fields.json", result);
+
     }
 };

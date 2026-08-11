@@ -67,3 +67,43 @@ inline nlohmann::json create_activated_tools_json(Registry* m_registry) {
     nlohmann::json j = activated_tools;
     return j;
 }
+
+inline nlohmann::json create_field_json(Registry* m_registry, size_t i, entt::entity field_id) {
+    std::vector<nlohmann::json> plants;
+
+    Field f = m_registry->ecs.get<Field>(field_id);
+    std::string field_name = f.name;
+    std::vector<std::vector<entt::entity>> field_matrix = m_registry->plant_field_tiles[i];
+    for (size_t y = 0; y < field_matrix.size(); y++) {
+        std::vector<entt::entity> field_row = field_matrix[y];
+        for (size_t x = 0; x < field_row.size(); x++) {
+            entt::entity tile_id = field_row[x];
+            FarmField tile = m_registry->ecs.get<FarmField>(tile_id);
+            if (!tile.is_empty) {
+                nlohmann::json current_plant;
+                entt::entity plant_id = tile.plant;
+
+                Item item = m_registry->ecs.get<Item>(plant_id);
+
+                Plant plant = m_registry->ecs.get<Plant>(plant_id);
+
+                current_plant["plant_name"] = item.name;
+                current_plant["pos"] = {{"x", x}, {"y", y}};
+                current_plant["harvestable"] = tile.harvestable;
+                current_plant["current_growtime"] = tile.grow;
+
+                if (plant.has_inventory) {
+                    Inventory inv = m_registry->ecs.get<Inventory>(tile_id);
+                    current_plant["inventory"] = create_bignumber_json(inv.amount);
+                }
+
+
+                plants.push_back(current_plant);
+            }
+        }
+    }
+
+    nlohmann::json j;
+    j[field_name] = plants;
+    return j;
+}

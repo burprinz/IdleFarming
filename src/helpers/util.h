@@ -1,5 +1,6 @@
 #pragma once
 
+#include <chrono>
 #include <common.h>
 
 #include "config.h"
@@ -57,4 +58,10 @@ inline void activate_tool(Registry* m_registry, entt::entity tool_id) {
     } else if (t.usage == COLLECTING) {
         m_registry->current_collect_tools[t.field_type] = tool_id;
     }
+}
+
+inline long long get_current_timestamp() {
+    return std::chrono::duration_cast<std::chrono::seconds>(
+        std::chrono::system_clock::now().time_since_epoch()
+    ).count();
 }
