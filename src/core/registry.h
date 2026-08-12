@@ -298,6 +298,7 @@ public:
      */
     std::map<std::string, entt::entity> item_entities;
     std::map<std::string, entt::entity> tool_entities;
+    std::map<std::string, size_t> field_ids;
 
 
 private:

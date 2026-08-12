@@ -36,12 +36,13 @@ public:
         create_helpers();
 
 
-        long long time_diff = load_time_difference();
+        int time_diff = static_cast<int>(load_time_difference());
         std::cout<<time_diff<<std::endl;
 
         load_money();
         load_item_amounts();
         load_tools();
+        load_fields(time_diff);
     }
 
     inline void save_values() noexcept {
@@ -117,9 +118,6 @@ private:
 
             entt::entity id = m_registry->ecs.create();
 
-            // The field order for the field selection
-            m_registry->field_order.push_back(id);
-
             Field f;
             f.name = field_name;
             f.type = field_type;
@@ -135,6 +133,10 @@ private:
             m_registry->current_collect_tools[field_type] = entt::null;
             m_registry->tool_work_area_names[field_type] = "???";
             m_registry->field_helper[id] = entt::null;
+
+            // The field order for the field selection
+            m_registry->field_order.push_back(id);
+            m_registry->field_ids[f.name] = m_registry->field_order.size()-1;
         }
     }
 
@@ -440,4 +442,22 @@ private:
         save(m_save_path + "fields.json", result);
 
     }
+
+    inline void load_fields(int time_diff) noexcept {
+        std::string json_path = "/assets/data/save/fields.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading item amounts"<<std::endl;
+            return;
+        }
+
+        for (const auto& field_json : json["fields"]) {
+            std::string name = field_json["name"].get<std::string>();
+            nlohmann::json plant_list = field_json["plants"];
+            size_t field_id = m_registry->field_ids[name];
+            load_current_field_plants(m_registry, plant_list, field_id, time_diff);
+        }
+    }
+
 };

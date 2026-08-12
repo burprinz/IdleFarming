@@ -35,7 +35,7 @@
   },
   "has_inventory": true,
   "inventory_size": {
-    "base": 4.0,
+    "base": 4000.0,
     "exp": 0
   }
 }

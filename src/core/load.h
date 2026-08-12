@@ -8,6 +8,7 @@
  */
 
 
+#include "helpers/field_editor.h"
 #include "helpers/finder.h"
 #include "helpers/sizes.h"
 /**
@@ -99,4 +100,37 @@ inline TextureInformation create_helper_texture(std::string name) {
         info.text = Texture::init(getTexturePath("symbols/notfound.png"));
     }
     return info;
+}
+
+inline void load_current_field_plants(Registry* m_registry, nlohmann::json plant_list, size_t field_idx, int time_diff) {
+    std::vector<std::vector<entt::entity>> &field_tiles = m_registry->plant_field_tiles[field_idx];
+
+    for (const auto& json : plant_list) {
+        std::string plant_name = json["plant_name"].get<std::string>();
+        size_t x = json["pos"]["x"].get<size_t>();
+        size_t y = json["pos"]["y"].get<size_t>();
+        bool harvestable = json["harvestable"].get<bool>();
+        float current_grow = json["current_growtime"].get<float>();
+
+        entt::entity plant_id = m_registry->item_entities[plant_name];
+        entt::entity field_id = field_tiles[y][x];
+
+        Plant plant = m_registry->ecs.get<Plant>(plant_id);
+        FarmField &field = m_registry->ecs.get<FarmField>(field_id);
+
+        field.harvestable = harvestable;
+        field.grow = current_grow;
+        field.is_empty = false;
+        field.plant = plant_id;
+
+        if (plant.has_inventory) {
+            Inventory inv;
+            inv.size = plant.inventory_size;
+            inv.amount = extract_bignumber(json["inventory"]);
+
+            m_registry->ecs.emplace<Inventory>(field_id, inv);
+        }
+
+        apply_growtime(m_registry, field_id, time_diff);
+    }
 }

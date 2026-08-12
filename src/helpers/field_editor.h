@@ -109,3 +109,46 @@
             }
         }
     }
+
+    inline void apply_growtime(Registry* m_registry, entt::entity field_id, float delta) noexcept {
+        FarmField &f = m_registry->ecs.get<FarmField>(field_id);
+        Plant p = m_registry->ecs.get<Plant>(f.plant);
+
+        if (!f.is_regrowable_field) {
+            // Flower growth
+            if (f.grow < p.growTime) {
+                f.grow += delta;
+            } else {
+                f.grow = p.growTime;
+                f.harvestable = true;
+            }
+        } else {
+            // Tree / Machine growth
+            float grow_time = p.growTime + p.regrowTime;
+            f.grow += delta;
+
+            if (f.grow >= grow_time) {
+                if (!p.has_inventory) {
+                    f.grow = grow_time;
+                    f.harvestable = true;
+                } else {
+                    Inventory &inv = m_registry->ecs.get<Inventory>(field_id);
+
+                    int cycles = 0;
+                    while (f.grow >= grow_time && inv.amount < inv.size) {
+                        f.grow -= p.regrowTime;
+                        cycles++;
+                    }
+
+                    inv.amount += p.min_collect * cycles;
+                    if (inv.amount > inv.size) {
+                        inv.amount = inv.size;
+                    }
+
+                    if (f.grow < p.growTime) {
+                        f.grow = p.growTime;
+                    }
+                }
+            }
+        }
+    }

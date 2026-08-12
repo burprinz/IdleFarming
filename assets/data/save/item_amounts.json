@@ -2,22 +2,22 @@
     "list": [
         {
             "amount": {
-                "base": 2.669999599456787,
-                "exp": 2
+                "base": 1.369279999532701,
+                "exp": 5
             },
             "name": "iron"
         },
         {
             "amount": {
-                "base": 2.700000047683716,
-                "exp": 1
+                "base": 1.1399999999999995,
+                "exp": 2
             },
             "name": "apple"
         },
         {
             "amount": {
-                "base": 8.0,
-                "exp": 0
+                "base": 6.199999809265137,
+                "exp": 1
             },
             "name": "tulips"
         },

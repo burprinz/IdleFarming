@@ -36,37 +36,7 @@ void FieldSystem::step(const float delta) noexcept {
     for (entt::entity fID : m_registry->ecs.view<FarmField>()) {
         FarmField &f = m_registry->ecs.get<FarmField>(fID);
         if (!f.is_empty && !f.harvestable) {
-            Plant p = m_registry->ecs.get<Plant>(f.plant);
-
-            if (!f.is_regrowable_field) {
-                // Flower growth
-                if (f.grow < p.growTime) {
-                    f.grow += delta;
-                } else {
-                    f.grow = p.growTime;
-                    f.harvestable = true;
-                }
-            } else {
-                // Tree / Machine growth
-                float grow_time = p.growTime + p.regrowTime;
-                if (f.grow < grow_time) {
-                    f.grow += delta;
-                } else {
-                    if (!p.has_inventory) {
-                        f.grow = grow_time;
-                        f.harvestable = true;
-                    } else {
-                        Inventory &inv = m_registry->ecs.get<Inventory>(fID);
-                        inv.amount = inv.amount + p.min_collect;
-                        if (inv.amount > inv.size) {
-                            inv.amount = inv.size;
-                        }
-                        f.grow = p.growTime;
-                    }
-                }
-            }
-
-
+            apply_growtime(m_registry, fID, delta);
         }
     }
 

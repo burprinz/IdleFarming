@@ -104,6 +104,8 @@ inline nlohmann::json create_field_json(Registry* m_registry, size_t i, entt::en
     }
 
     nlohmann::json j;
-    j[field_name] = plants;
+    j["name"] =  field_name;
+    j["plants"] = plants;
+
     return j;
 }
