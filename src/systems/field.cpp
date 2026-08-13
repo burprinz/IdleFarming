@@ -35,7 +35,7 @@ void FieldSystem::step(const float delta) noexcept {
     // Update every cell if not empty
     for (entt::entity fID : m_registry->ecs.view<FarmField>()) {
         FarmField &f = m_registry->ecs.get<FarmField>(fID);
-        if (!f.is_empty && !f.harvestable) {
+        if (!f.is_empty && !f.harvestable && !f.helper_active) {
             apply_growtime(m_registry, fID, delta);
         }
     }

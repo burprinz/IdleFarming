@@ -134,3 +134,44 @@ inline void load_current_field_plants(Registry* m_registry, nlohmann::json plant
         apply_growtime(m_registry, field_id, time_diff);
     }
 }
+
+inline void load_current_helpers(Registry* m_registry, nlohmann::json helper_json, int time_diff) noexcept {
+
+    std::string name = helper_json["helper_name"].get<std::string>();
+    entt::entity helper_id = m_registry->helper_entities[name];
+    FarmHelper &helper = m_registry->ecs.get<FarmHelper>(helper_id);
+
+    Unlockable &u = m_registry->ecs.get<Unlockable>(helper_id);
+    u.unlocked = true;
+
+
+    Field f = m_registry->ecs.get<Field>(helper.field);
+    size_t i = f.list_id;
+
+    std::cout<<"6"<<std::endl;
+
+    for (const auto& json : helper_json["working_area"]) {
+        std::string plant_name = json["plant_name"].get<std::string>();
+        size_t x = json["pos"]["x"].get<size_t>();
+        size_t y = json["pos"]["y"].get<size_t>();
+        float current_grow = json["current_growtime"].get<float>();
+        entt::entity plant_id = m_registry->item_entities[plant_name];
+        entt::entity field_id = m_registry->plant_field_tiles[i][y][x];
+        Plant plant = m_registry->ecs.get<Plant>(plant_id);
+        FarmField &field = m_registry->ecs.get<FarmField>(field_id);
+        field.grow = current_grow;
+        field.is_empty = false;
+        field.plant = plant_id;
+        field.helper_active = true;
+        if (plant.has_inventory) {
+            Inventory inv;
+            inv.size = plant.inventory_size;
+            inv.amount = extract_bignumber(json["inventory"]);
+
+            m_registry->ecs.emplace<Inventory>(field_id, inv);
+        }
+        helper.working_area.push_back(field_id);
+        helper.working_plants.push_back(plant_id);
+        apply_helper_growtime(m_registry, field_id, time_diff);
+    }
+}

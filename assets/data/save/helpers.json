@@ -1,0 +1,384 @@
+{
+    "helpers": [
+        {
+            "helper_name": "Milim",
+            "working_area": [
+                {
+                    "current_growtime": 0.48938918113708496,
+                    "inventory": {
+                        "base": 3.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.3392730951309204,
+                    "inventory": {
+                        "base": 3.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.27230238914489746,
+                    "inventory": {
+                        "base": 3.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.17243361473083496,
+                    "inventory": {
+                        "base": 3.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.10576784610748291,
+                    "inventory": {
+                        "base": 3.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.07204592227935791,
+                    "inventory": {
+                        "base": 3.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.03910219669342041,
+                    "inventory": {
+                        "base": 3.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.9724061489105225,
+                    "inventory": {
+                        "base": 2.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.8724915981292725,
+                    "inventory": {
+                        "base": 2.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.5726563930511475,
+                    "inventory": {
+                        "base": 2.0,
+                        "exp": 0
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 14
+                    }
+                }
+            ]
+        },
+        {
+            "helper_name": "Hinata",
+            "working_area": [
+                {
+                    "current_growtime": 12.760618209838867,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 12.69398307800293,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 12.64356803894043,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 12.627058029174805,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 12.593687057495117,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 12.543621063232422,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 12.510068893432617,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 12.460113525390625,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 12.426633834838867,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 12.37697982788086,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 14
+                    }
+                }
+            ]
+        },
+        {
+            "helper_name": "Maria",
+            "working_area": [
+                {
+                    "current_growtime": 1.1894316673278809,
+                    "plant_name": "daisy",
+                    "pos": {
+                        "x": 0,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.8227324485778809,
+                    "plant_name": "daisy",
+                    "pos": {
+                        "x": 1,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.5560696125030518,
+                    "plant_name": "daisy",
+                    "pos": {
+                        "x": 2,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.0227293968200684,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 0.30605602264404297,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 4.75609827041626,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 13.422760009765625,
+                    "plant_name": "tulips",
+                    "pos": {
+                        "x": 0,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 13.172832489013672,
+                    "plant_name": "tulips",
+                    "pos": {
+                        "x": 1,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 12.922794342041016,
+                    "plant_name": "tulips",
+                    "pos": {
+                        "x": 2,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 0.8060240745544434,
+                    "plant_name": "daisy",
+                    "pos": {
+                        "x": 3,
+                        "y": 14
+                    }
+                }
+            ]
+        },
+        {
+            "helper_name": "Alice",
+            "working_area": [
+                {
+                    "current_growtime": 0.9321379661560059,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.8652434349060059,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 0.7985930442810059,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 0.748544454574585,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 0.5486085414886475,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 0.44851040840148926,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 0.34839749336242676,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 0.08179640769958496,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 2.231698513031006,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 2.014901638031006,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 5
+                    }
+                }
+            ]
+        }
+    ]
+}

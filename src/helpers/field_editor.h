@@ -152,3 +152,56 @@
             }
         }
     }
+
+    inline void apply_helper_growtime(Registry* m_registry, entt::entity field_id, float delta) noexcept {
+        FarmField &f = m_registry->ecs.get<FarmField>(field_id);
+        Plant p = m_registry->ecs.get<Plant>(f.plant);
+        BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
+        if (!f.is_regrowable_field) {
+            float total = f.grow + delta;
+            int cycles = static_cast<int>(total / p.growTime);
+            float remaining = total - cycles * p.growTime;
+            if (cycles > 0) {
+                am += p.min_collect * cycles;
+            }
+            f.grow = remaining;
+            f.harvestable = false;
+        } else {
+            float rem_delta = delta;
+            if (f.grow < p.growTime) {
+                float def = p.growTime - f.grow;
+                if (rem_delta < def) {
+                    f.grow += rem_delta;
+                    return;
+                }
+                rem_delta -= def;
+                f.grow = p.growTime;
+            }
+            if (!p.has_inventory) {
+                float progress = f.grow - p.growTime;
+                float total_regrow = progress + rem_delta;
+                int cycles = static_cast<int>(total_regrow / p.regrowTime);
+                float rem = total_regrow - cycles * p.regrowTime;
+                if (cycles > 0) {
+                    am += p.min_collect * cycles;
+                }
+                f.grow = p.growTime + rem;
+                f.harvestable = false;
+            } else {
+                Inventory &inv = m_registry->ecs.get<Inventory>(field_id);
+                float progress = f.grow - p.growTime;
+                float total_regrow = progress + rem_delta;
+                int cycles = static_cast<int>(total_regrow / p.regrowTime);
+                float remainder = total_regrow - cycles * p.regrowTime;
+                for (int i = 0; i < cycles; ++i) {
+                    inv.amount += p.min_collect;
+                    if (inv.amount >= inv.size) {
+                        am += inv.size;
+                        inv.amount = BigNumber(0);
+                    }
+                }
+                f.grow = p.growTime + remainder;
+                f.harvestable = false;
+            }
+        }
+    }

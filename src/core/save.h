@@ -79,7 +79,7 @@ inline nlohmann::json create_field_json(Registry* m_registry, size_t i, entt::en
         for (size_t x = 0; x < field_row.size(); x++) {
             entt::entity tile_id = field_row[x];
             FarmField tile = m_registry->ecs.get<FarmField>(tile_id);
-            if (!tile.is_empty) {
+            if (!tile.is_empty && !tile.helper_active) {
                 nlohmann::json current_plant;
                 entt::entity plant_id = tile.plant;
 
@@ -108,4 +108,37 @@ inline nlohmann::json create_field_json(Registry* m_registry, size_t i, entt::en
     j["plants"] = plants;
 
     return j;
+}
+
+inline nlohmann::json create_helper_json(Registry* m_registry, entt::entity helper_id) {
+    nlohmann::json result;
+    std::vector<nlohmann::json> working_area;
+
+    FarmHelper helper = m_registry->ecs.get<FarmHelper>(helper_id);
+    for (size_t i = 0; i < helper.working_area.size(); i++) {
+        nlohmann::json field_info;
+
+        entt::entity working_plant_entity = helper.working_plants[i];
+        entt::entity working_cell_entity = helper.working_area[i];
+
+        FarmField cell = m_registry->ecs.get<FarmField>(working_cell_entity);
+        Item item = m_registry->ecs.get<Item>(working_plant_entity);
+        Plant plant = m_registry->ecs.get<Plant>(working_plant_entity);
+
+        field_info["pos"] = {{"x", cell.x}, {"y", cell.y}};
+        field_info["plant_name"] = item.name;
+        field_info["current_growtime"] = cell.grow;
+
+        if (plant.has_inventory) {
+            Inventory inv = m_registry->ecs.get<Inventory>(working_cell_entity);
+            field_info["inventory"] = create_bignumber_json(inv.amount);
+        }
+
+        working_area.push_back(field_info);
+    }
+
+    result["helper_name"] = helper.name;
+    result["working_area"] = working_area;
+
+    return result;
 }

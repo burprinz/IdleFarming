@@ -56,7 +56,7 @@ bool EntityFactory::read(const std::string& path, nlohmann::json* json_link) noe
 }
 
 bool EntityFactory::save(const std::string &path, const nlohmann::json json) noexcept {
-    std::string full_path = getBasePath() + path;
+    std::string full_path = getBasePath() + save_path + path;
 
     std::ofstream datei(full_path, std::ios::trunc);
     if (!datei.is_open()) {

@@ -71,6 +71,7 @@ void HelperSystem::step(const float delta) noexcept {
                         f.helper_active = true;
                         helper.working_area.push_back(fieldID);
                         helper.working_plants.push_back(plant_id);
+                        plant_tile(m_registry, fieldID, plant_id);
                 }
 
                 // Right Click -> Try to remove
@@ -98,6 +99,9 @@ void HelperSystem::step(const float delta) noexcept {
 
         for (size_t i = 0; i < helper.working_area.size(); i++) {
             entt::entity field_id = helper.working_area[i];
+
+            apply_helper_growtime(m_registry, field_id, delta);
+            /**
             entt::entity plant_id = helper.working_plants[i];
 
             // HARVESTING
@@ -110,10 +114,9 @@ void HelperSystem::step(const float delta) noexcept {
 
             // PLANTING
             plant_tile(m_registry, field_id, plant_id);
+            */
         }
 
     }
 
 }
-
-// TODO: Use Same field with helper offset for marked.

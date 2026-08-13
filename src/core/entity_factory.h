@@ -14,6 +14,7 @@
 #include "save.h"
 #include "../helpers/sizes.h"
 #include "helpers/finder.h"
+#include "helpers/paths.h"
 #include "helpers/util.h"
 
 class EntityFactory {
@@ -43,6 +44,7 @@ public:
         load_item_amounts();
         load_tools();
         load_fields(time_diff);
+        load_helpers(time_diff);
     }
 
     inline void save_values() noexcept {
@@ -51,6 +53,7 @@ public:
         save_item_amounts();
         save_tools();
         save_fields();
+        save_helpers();
     }
 
 
@@ -58,8 +61,7 @@ private:
     Registry* m_registry;
     Window* m_window;
 
-    std::string m_texture_base_path = getBasePath() + "/assets/textures/";
-    std::string m_save_path = "/assets/data/save/";
+    std::string texture_path = getBasePath() + "/assets/textures/";
 
     nlohmann::json m_json;
 
@@ -122,7 +124,7 @@ private:
             f.name = field_name;
             f.type = field_type;
             f.plant_type = plant_type;
-            f.list_id = m_registry->field_order.size() - 1;
+            f.list_id = m_registry->field_order.size();
 
             load_field_plants(&f, is_tree, has_inv);
 
@@ -187,6 +189,8 @@ private:
                 entt::entity fID = m_registry->ecs.create();
 
                 FarmField f;
+                f.x = x;
+                f.y = y;
                 f.unlocked = true;
                 f.is_regrowable_field = is_regrowable;
                 m_registry->ecs.emplace<FarmField>(fID, f);
@@ -310,17 +314,18 @@ private:
 
         TextureInformation texture = create_helper_texture(helper.name);
         m_registry->ecs.emplace<TextureInformation>(helper_id, texture);
+
+        m_registry->helper_entities[helper.name] = helper_id;
     }
 
 
 
 
-    // TODO: Field, Helper, Helper Config, AFK Bonus
 
     inline void save_time() noexcept {
         nlohmann::json j;
         j["time"] = get_current_timestamp();
-        save(m_save_path + "save_time.json", j);
+        save("save_time.json", j);
 
     }
 
@@ -331,7 +336,7 @@ private:
     }
 
     inline long long load_time() noexcept {
-        std::string json_path = "/assets/data/save/save_time.json";
+        std::string json_path = save_path + "save_time.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
         if (!loaded) {
@@ -345,11 +350,11 @@ private:
     inline void save_money() noexcept {
         BigNumber money = m_registry->ecs.get<Amount>(m_registry->money()).am;
         nlohmann::json result = {{"money", create_bignumber_json(money)}};
-        save(m_save_path + "money.json", result);
+        save("money.json", result);
     }
 
     inline void load_money() noexcept {
-        std::string json_path = "/assets/data/save/money.json";
+        std::string json_path = save_path + "money.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
         if (!loaded) {
@@ -374,11 +379,11 @@ private:
         nlohmann::json results = nlohmann::json::object({
             {"list", item_list}
         });
-        save(m_save_path + "item_amounts.json", results);
+        save("item_amounts.json", results);
     }
 
     inline void load_item_amounts() noexcept {
-        std::string json_path = "/assets/data/save/item_amounts.json";
+        std::string json_path = save_path + "item_amounts.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
         if (!loaded) {
@@ -401,11 +406,11 @@ private:
         nlohmann::json activated_tools = create_activated_tools_json(m_registry);
 
         nlohmann::json result = {{"unlocked", unlocked_tools}, {"activated", activated_tools}};
-        save(m_save_path + "tools.json", result);
+        save("tools.json", result);
     }
 
     inline void load_tools() noexcept {
-        std::string json_path = "/assets/data/save/tools.json";
+        std::string json_path = save_path + "tools.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
         if (!loaded) {
@@ -439,12 +444,12 @@ private:
         nlohmann::json result;
         result["fields"] = fields;
 
-        save(m_save_path + "fields.json", result);
+        save("fields.json", result);
 
     }
 
     inline void load_fields(int time_diff) noexcept {
-        std::string json_path = "/assets/data/save/fields.json";
+        std::string json_path = save_path + "fields.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
         if (!loaded) {
@@ -460,4 +465,32 @@ private:
         }
     }
 
+    inline void save_helpers() noexcept {
+        std::vector<nlohmann::json> helpers;
+
+        for (entt::entity id : m_registry->ecs.view<FarmHelper>()) {
+            if (m_registry->ecs.get<Unlockable>(id).unlocked) {
+                helpers.push_back(create_helper_json(m_registry, id));
+            }
+        }
+
+        nlohmann::json result;
+        result["helpers"] = helpers;
+
+        save("helpers.json", result);
+    }
+
+    inline void load_helpers(int time_diff) noexcept {
+        std::string json_path = save_path + "helpers.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading item amounts"<<std::endl;
+            return;
+        }
+
+        for (const auto& helper : json["helpers"]) {
+            load_current_helpers(m_registry, helper, time_diff);
+        }
+    }
 };

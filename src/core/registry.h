@@ -95,6 +95,11 @@ struct Field {
 };
 
 struct FarmField {
+    // Pos
+    size_t x = -1;
+    size_t y = -1;
+
+    // Stats
     bool is_empty = true;
     bool marked = false;
     bool unlocked = false;
@@ -298,8 +303,8 @@ public:
      */
     std::map<std::string, entt::entity> item_entities;
     std::map<std::string, entt::entity> tool_entities;
+    std::map<std::string, entt::entity> helper_entities;
     std::map<std::string, size_t> field_ids;
-
 
 private:
 
