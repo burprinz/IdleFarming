@@ -37,6 +37,10 @@ void UnlockSystem::step(const float delta) noexcept {
         if (bought) {
             Unlockable &u = m_registry->ecs.get<Unlockable>(m_registry->trying_to_buy);
             u.unlocked = true;
+
+            if (m_registry->ecs.all_of<FarmHelper>(m_registry->trying_to_buy)) {
+                m_registry->ecs.get<FarmHelper>(m_registry->trying_to_buy).level += 1;
+            }
         }
 
         m_registry->trying_to_buy = entt::null;

@@ -315,27 +315,27 @@ void RenderSystem::drawHelpers() noexcept {
                 m_draw->drawStringInBox(text, pos, size, {0, 0, 0});
 
                 Unlockable &u = m_registry->ecs.get<Unlockable>(b.id_label);
-
-                if (!u.unlocked) {
-                    pos.y -= size.y + small_gap;
-                    size = {helper_image_size.x, small_button_size.y};
-                    text = "Price";
-                    m_draw->drawStringInBox(text, pos, size, black);
-
-                    pos.y -= size.y + small_gap;
-                    float box_h = pos.y;
-                    size = {helper_image_size.x, box_h};
-                    pos.y = box_h / 2.0f + small_gap;
-                    m_draw->drawRectBySize(pos, size, black);
-
-                    BuyAmount am = m_registry->ecs.get<BuyAmount>(b.id_label);
-                    std::vector<std::string> prices;
-                    for (size_t i = 0; i < am.item_ids.size(); i++) {
-                        prices.push_back(am.amounts[i].toString() + "x " + m_registry->ecs.get<Item>(am.item_ids[i]).display_name);
-                    }
-                    m_draw->drawLinesInBox(prices, pos, size, black);
-
+                text = "Buy price";
+                if (u.unlocked) {
+                    text = "Upgrade price";
                 }
+                pos.y -= size.y + small_gap;
+                size = {helper_image_size.x, small_button_size.y};
+                m_draw->drawStringInBox(text, pos, size, black);
+
+                pos.y -= size.y + small_gap;
+                float box_h = pos.y;
+                size = {helper_image_size.x, box_h};
+                pos.y = box_h / 2.0f + small_gap;
+                m_draw->drawRectBySize(pos, size, black);
+
+                BuyAmount am = m_registry->ecs.get<BuyAmount>(b.id_label);
+                am = add_multiplicator(am, calc_double_multiplicator(1, helper.level));
+                std::vector<std::string> prices;
+                for (size_t i = 0; i < am.item_ids.size(); i++) {
+                    prices.push_back(am.amounts[i].toString() + "x " + m_registry->ecs.get<Item>(am.item_ids[i]).display_name);
+                }
+                m_draw->drawLinesInBox(prices, pos, size, black);
             }
         }
     }

@@ -138,6 +138,7 @@ inline nlohmann::json create_helper_json(Registry* m_registry, entt::entity help
     }
 
     result["helper_name"] = helper.name;
+    result["level"] = helper.level;
     result["working_area"] = working_area;
 
     return result;

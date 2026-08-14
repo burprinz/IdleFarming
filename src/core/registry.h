@@ -133,6 +133,8 @@ struct FarmHelper {
     std::string name;
     int amount_fields = 10; // How many Fields the Farmer can handle
 
+    int level = 0; // Level -> Cost for upgrade = BuyPrice * (2^level)
+
     entt::entity field; // The ID of the field the person is working on
 
     std::vector<entt::entity> working_area; // Selected Working Fields

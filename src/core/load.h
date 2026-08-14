@@ -140,6 +140,7 @@ inline void load_current_helpers(Registry* m_registry, nlohmann::json helper_jso
     std::string name = helper_json["helper_name"].get<std::string>();
     entt::entity helper_id = m_registry->helper_entities[name];
     FarmHelper &helper = m_registry->ecs.get<FarmHelper>(helper_id);
+    helper.level = helper_json["level"].get<int>();
 
     Unlockable &u = m_registry->ecs.get<Unlockable>(helper_id);
     u.unlocked = true;
