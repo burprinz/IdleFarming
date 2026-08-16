@@ -497,7 +497,7 @@ void Draw::drawStringInBox(std::string text, glm::vec2 pos, glm::vec2 size, glm:
     drawString(text, pos, scale, color);
 }
 
-void Draw::drawLinesInBox(std::vector<std::string> lines, glm::vec2 pos, glm::vec2 size, glm::vec3 color) noexcept {
+void Draw::drawLinesInBox(std::vector<std::string> lines, glm::vec2 pos, glm::vec2 size, glm::vec3 color, float max_size) noexcept {
     if (lines.empty()) {
         return;
     }
@@ -510,6 +510,10 @@ void Draw::drawLinesInBox(std::vector<std::string> lines, glm::vec2 pos, glm::ve
     float line_gap = avg_height * 0.3f;
 
     float scale = getOptimalScalingForMultipleLines(lines, line_gap, size * 0.9f);
+
+    if (max_size != -1) {
+        scale = std::min(scale, max_size);
+    }
 
     std::vector<float> heights;
     heights.reserve(lines.size());

@@ -183,9 +183,9 @@ private:
     inline void create_field(std::vector<std::vector<entt::entity>> &tiles, bool is_regrowable) noexcept {
         tiles.clear();
 
-        for (int y = 0; y < 15; y++) {
+        for (int y = 0; y < normal_filed_height; y++) {
             std::vector<entt::entity> row;
-            for (int x = 0; x < 10; x++) {
+            for (int x = 0; x < normal_field_width; x++) {
                 entt::entity fID = m_registry->ecs.create();
 
                 FarmField f;

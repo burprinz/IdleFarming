@@ -39,7 +39,9 @@ void UnlockSystem::step(const float delta) noexcept {
             u.unlocked = true;
 
             if (m_registry->ecs.all_of<FarmHelper>(m_registry->trying_to_buy)) {
-                m_registry->ecs.get<FarmHelper>(m_registry->trying_to_buy).level += 1;
+                FarmHelper &helper = m_registry->ecs.get<FarmHelper>(m_registry->trying_to_buy);
+                helper.level += 1;
+                helper.amount_fields = 10 + helper.level*5;
             }
         }
 

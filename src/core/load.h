@@ -141,6 +141,7 @@ inline void load_current_helpers(Registry* m_registry, nlohmann::json helper_jso
     entt::entity helper_id = m_registry->helper_entities[name];
     FarmHelper &helper = m_registry->ecs.get<FarmHelper>(helper_id);
     helper.level = helper_json["level"].get<int>();
+    helper.amount_fields = 10 + helper.level*5;
 
     Unlockable &u = m_registry->ecs.get<Unlockable>(helper_id);
     u.unlocked = true;

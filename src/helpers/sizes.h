@@ -7,6 +7,8 @@
 constexpr glm::vec2 base_icon_size = {32, 32};
 constexpr glm::vec2 base_helper_size = {300, 600};
 
+constexpr int normal_field_width = 10;
+constexpr int normal_filed_height = 15;
 
 // Normal Sizes
 constexpr glm::vec2 normal_topleft = {0.1, config::CAMERA_VIEW_HEIGHT-0.7};
@@ -17,6 +19,7 @@ constexpr float small_gap = 0.05f;
 constexpr float normal_gap = 0.1f;
 
 constexpr float max_button_text_size = 0.004f;
+constexpr float normal_text_box_size = 0.009f;
 
 // Mode selection
 constexpr glm::vec2 mode_select_buttons_topleft = {0.1, config::CAMERA_VIEW_HEIGHT - 0.1};

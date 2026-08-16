@@ -314,13 +314,19 @@ void RenderSystem::drawHelpers() noexcept {
                 std::string text = "Works on " + field.display_name;
                 m_draw->drawStringInBox(text, pos, size, {0, 0, 0});
 
+                pos.y -= size.y;
+                text = "Level " + std::to_string(helper.level)
+                + " (" + std::to_string(helper.amount_fields) + " / " + std::to_string((normal_filed_height*normal_field_width)) + ")";
+                size = {helper_image_size.x, small_button_size.y};
+                m_draw->drawStringInBox(text, pos, size, black);
+
+                pos.y  -= size.y;
+
                 Unlockable &u = m_registry->ecs.get<Unlockable>(b.id_label);
                 text = "Buy price";
                 if (u.unlocked) {
                     text = "Upgrade price";
-                }
-                pos.y -= size.y + small_gap;
-                size = {helper_image_size.x, small_button_size.y};
+                }size = {helper_image_size.x, small_button_size.y};
                 m_draw->drawStringInBox(text, pos, size, black);
 
                 pos.y -= size.y + small_gap;
@@ -335,7 +341,7 @@ void RenderSystem::drawHelpers() noexcept {
                 for (size_t i = 0; i < am.item_ids.size(); i++) {
                     prices.push_back(am.amounts[i].toString() + "x " + m_registry->ecs.get<Item>(am.item_ids[i]).display_name);
                 }
-                m_draw->drawLinesInBox(prices, pos, size, black);
+                m_draw->drawLinesInBox(prices, pos, size, black, normal_text_box_size);
             }
         }
     }
