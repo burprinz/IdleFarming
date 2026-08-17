@@ -6,7 +6,7 @@
     inline void plant_tile(Registry* m_registry, entt::entity field_id, entt::entity plant_id) noexcept{
         FarmField &f = m_registry->ecs.get<FarmField>(field_id);
 
-        if (f.is_empty) {
+        if (f.is_empty && !f.helper_active) {
             // Plant if field is empty and left click pressed
             f.is_empty = false;
             f.plant = plant_id;
@@ -25,7 +25,7 @@
     inline void harvest_tile(Registry* m_registry, entt::entity field_id) noexcept {
         FarmField &f = m_registry->ecs.get<FarmField>(field_id);
 
-        if (!f.is_empty) {
+        if (!f.is_empty && !f.helper_active) {
             Plant p = m_registry->ecs.get<Plant>(f.plant);
             BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
             // Try to harvest
@@ -47,7 +47,7 @@
     inline void collect_tile(Registry* m_registry, entt::entity field_id, bool helper) noexcept {
         FarmField &f = m_registry->ecs.get<FarmField>(field_id);
 
-        if (!f.is_empty) {
+        if (!f.is_empty && !f.helper_active) {
             Plant p = m_registry->ecs.get<Plant>(f.plant);
             BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
             // Try to collect
@@ -112,41 +112,43 @@
 
     inline void apply_growtime(Registry* m_registry, entt::entity field_id, float delta) noexcept {
         FarmField &f = m_registry->ecs.get<FarmField>(field_id);
-        Plant p = m_registry->ecs.get<Plant>(f.plant);
+        if (!f.is_empty && f.plant != entt::null) {
+            Plant p = m_registry->ecs.get<Plant>(f.plant);
 
-        if (!f.is_regrowable_field) {
-            // Flower growth
-            if (f.grow < p.growTime) {
-                f.grow += delta;
-            } else {
-                f.grow = p.growTime;
-                f.harvestable = true;
-            }
-        } else {
-            // Tree / Machine growth
-            float grow_time = p.growTime + p.regrowTime;
-            f.grow += delta;
-
-            if (f.grow >= grow_time) {
-                if (!p.has_inventory) {
-                    f.grow = grow_time;
-                    f.harvestable = true;
+            if (!f.is_regrowable_field) {
+                // Flower growth
+                if (f.grow < p.growTime) {
+                    f.grow += delta;
                 } else {
-                    Inventory &inv = m_registry->ecs.get<Inventory>(field_id);
+                    f.grow = p.growTime;
+                    f.harvestable = true;
+                }
+            } else {
+                // Tree / Machine growth
+                float grow_time = p.growTime + p.regrowTime;
+                f.grow += delta;
 
-                    int cycles = 0;
-                    while (f.grow >= grow_time && inv.amount < inv.size) {
-                        f.grow -= p.regrowTime;
-                        cycles++;
-                    }
+                if (f.grow >= grow_time) {
+                    if (!p.has_inventory) {
+                        f.grow = grow_time;
+                        f.harvestable = true;
+                    } else {
+                        Inventory &inv = m_registry->ecs.get<Inventory>(field_id);
 
-                    inv.amount += p.min_collect * cycles;
-                    if (inv.amount > inv.size) {
-                        inv.amount = inv.size;
-                    }
+                        int cycles = 0;
+                        while (f.grow >= grow_time && inv.amount < inv.size) {
+                            f.grow -= p.regrowTime;
+                            cycles++;
+                        }
 
-                    if (f.grow < p.growTime) {
-                        f.grow = p.growTime;
+                        inv.amount += p.min_collect * cycles;
+                        if (inv.amount > inv.size) {
+                            inv.amount = inv.size;
+                        }
+
+                        if (f.grow < p.growTime) {
+                            f.grow = p.growTime;
+                        }
                     }
                 }
             }
@@ -155,7 +157,8 @@
 
     inline void apply_helper_growtime(Registry* m_registry, entt::entity field_id, float delta) noexcept {
         FarmField &f = m_registry->ecs.get<FarmField>(field_id);
-        Plant p = m_registry->ecs.get<Plant>(f.plant);
+        if (!f.is_empty && f.plant != entt::null) {
+            Plant p = m_registry->ecs.get<Plant>(f.plant);
         BigNumber &am = m_registry->ecs.get<Amount>(f.plant).am;
         if (!f.is_regrowable_field) {
             float total = f.grow + delta;
@@ -203,5 +206,6 @@
                 f.grow = p.growTime + remainder;
                 f.harvestable = false;
             }
+        }
         }
     }

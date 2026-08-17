@@ -40,6 +40,7 @@ public:
         int time_diff = static_cast<int>(load_time_difference());
         std::cout<<time_diff<<std::endl;
 
+        load_unlocked_plants();
         load_money();
         load_item_amounts();
         load_tools();
@@ -49,6 +50,7 @@ public:
 
     inline void save_values() noexcept {
         save_time();
+        save_unlocked_plants();
         save_money();
         save_item_amounts();
         save_tools();
@@ -491,6 +493,36 @@ private:
 
         for (const auto& helper : json["helpers"]) {
             load_current_helpers(m_registry, helper, time_diff);
+        }
+    }
+
+    inline void save_unlocked_plants() noexcept {
+        nlohmann::json result;
+
+        std::vector<std::string> unlocked_plants;
+        for (entt::entity id : m_registry->ecs.view<Plant>()) {
+            if (m_registry->ecs.get<Unlockable>(id).unlocked) {
+                unlocked_plants.push_back(m_registry->ecs.get<Item>(id).name);
+            }
+        }
+
+        result["plants"] = unlocked_plants;
+        save("unlocked_plants.json", result);
+    }
+
+    inline void load_unlocked_plants() noexcept {
+        std::string json_path = save_path + "unlocked_plants.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading item amounts"<<std::endl;
+            return;
+        }
+
+        for (const auto& plant : json["plants"]) {
+            entt::entity id = m_registry->item_entities[plant.get<std::string>()];
+            Unlockable &u = m_registry->ecs.get<Unlockable>(id);
+            u.unlocked = true;
         }
     }
 };

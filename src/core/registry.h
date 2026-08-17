@@ -103,8 +103,8 @@ struct FarmField {
     bool is_empty = true;
     bool marked = false;
     bool unlocked = false;
-    entt::entity plant;
-    float grow;
+    entt::entity plant = entt::null;
+    float grow = 0.0f;
     bool harvestable = false;
 
     // Unique for trees
