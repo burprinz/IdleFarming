@@ -150,8 +150,6 @@ inline void load_current_helpers(Registry* m_registry, nlohmann::json helper_jso
     Field f = m_registry->ecs.get<Field>(helper.field);
     size_t i = f.list_id;
 
-    std::cout<<"6"<<std::endl;
-
     for (const auto& json : helper_json["working_area"]) {
         std::string plant_name = json["plant_name"].get<std::string>();
         size_t x = json["pos"]["x"].get<size_t>();
