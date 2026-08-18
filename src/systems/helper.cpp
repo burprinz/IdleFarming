@@ -68,7 +68,7 @@ void HelperSystem::step(const float delta) noexcept {
                     && helper.working_area.size() < static_cast<size_t>(helper.amount_fields)
                     && plant_id != entt::null
                     && !is_in_list(helper.working_area, fieldID)) {
-                        plant_tile(m_registry, fieldID, plant_id);
+                        plant_tile(m_registry, fieldID, plant_id, true);
                         f.helper_active = true;
                         helper.working_area.push_back(fieldID);
                         helper.working_plants.push_back(plant_id);

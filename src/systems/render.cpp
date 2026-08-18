@@ -315,33 +315,40 @@ void RenderSystem::drawHelpers() noexcept {
                 m_draw->drawStringInBox(text, pos, size, {0, 0, 0});
 
                 pos.y -= size.y;
-                text = "Level " + std::to_string(helper.level)
-                + " (" + std::to_string(helper.amount_fields) + " / " + std::to_string((normal_filed_height*normal_field_width)) + ")";
+                text = "Level " + std::to_string(helper.level) + " (";
+                if (!helper.max_reached) {
+                    text += std::to_string(helper.amount_fields) + " / " + std::to_string((normal_filed_height*normal_field_width));
+                } else {
+                    text += "MAX";
+                }
+                text += + ")";
                 size = {helper_image_size.x, small_button_size.y};
                 m_draw->drawStringInBox(text, pos, size, black);
 
                 pos.y  -= size.y;
 
-                Unlockable &u = m_registry->ecs.get<Unlockable>(b.id_label);
-                text = "Buy price";
-                if (u.unlocked) {
-                    text = "Upgrade price";
-                }size = {helper_image_size.x, small_button_size.y};
-                m_draw->drawStringInBox(text, pos, size, black);
+                if (!helper.max_reached) {
+                    Unlockable &u = m_registry->ecs.get<Unlockable>(b.id_label);
+                    text = "Buy price";
+                    if (u.unlocked) {
+                        text = "Upgrade price";
+                    }size = {helper_image_size.x, small_button_size.y};
+                    m_draw->drawStringInBox(text, pos, size, black);
 
-                pos.y -= size.y + small_gap;
-                float box_h = pos.y;
-                size = {helper_image_size.x, box_h};
-                pos.y = box_h / 2.0f + small_gap;
-                m_draw->drawRectBySize(pos, size, black);
+                    pos.y -= size.y + small_gap;
+                    float box_h = pos.y;
+                    size = {helper_image_size.x, box_h};
+                    pos.y = box_h / 2.0f + small_gap;
+                    m_draw->drawRectBySize(pos, size, black);
 
-                BuyAmount am = m_registry->ecs.get<BuyAmount>(b.id_label);
-                am = add_multiplicator(am, calc_double_multiplicator(1, helper.level));
-                std::vector<std::string> prices;
-                for (size_t i = 0; i < am.item_ids.size(); i++) {
-                    prices.push_back(am.amounts[i].toString() + "x " + m_registry->ecs.get<Item>(am.item_ids[i]).display_name);
+                    BuyAmount am = m_registry->ecs.get<BuyAmount>(b.id_label);
+                    am = add_multiplicator(am, calc_double_multiplicator(1, helper.level));
+                    std::vector<std::string> prices;
+                    for (size_t i = 0; i < am.item_ids.size(); i++) {
+                        prices.push_back(am.amounts[i].toString() + "x " + m_registry->ecs.get<Item>(am.item_ids[i]).display_name);
+                    }
+                    m_draw->drawLinesInBox(prices, pos, size, black, normal_text_box_size);
                 }
-                m_draw->drawLinesInBox(prices, pos, size, black, normal_text_box_size);
             }
         }
     }

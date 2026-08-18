@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "ui.h"
+#include "helpers/sizes.h"
 #include "helpers/transaction.h"
 
 UnlockSystem UnlockSystem::init(Window *window, Registry *registry, UISystem* ui) noexcept {
@@ -42,6 +43,10 @@ void UnlockSystem::step(const float delta) noexcept {
                 FarmHelper &helper = m_registry->ecs.get<FarmHelper>(m_registry->trying_to_buy);
                 helper.level += 1;
                 helper.amount_fields = 10 + helper.level*5;
+                if (helper.amount_fields >= normal_field_amount) {
+                    helper.max_reached = true;
+                    helper.amount_fields = normal_field_amount;
+                }
             }
         }
 

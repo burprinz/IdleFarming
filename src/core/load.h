@@ -142,6 +142,10 @@ inline void load_current_helpers(Registry* m_registry, nlohmann::json helper_jso
     FarmHelper &helper = m_registry->ecs.get<FarmHelper>(helper_id);
     helper.level = helper_json["level"].get<int>();
     helper.amount_fields = 10 + helper.level*5;
+    if (helper.amount_fields >= normal_field_amount) {
+        helper.max_reached = true;
+        helper.amount_fields = normal_field_amount;
+    }
 
     Unlockable &u = m_registry->ecs.get<Unlockable>(helper_id);
     u.unlocked = true;

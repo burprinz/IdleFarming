@@ -307,7 +307,11 @@ void UISystem::initHelpersButton() noexcept {
         helperB.on_click = [registry, helper_id] {
             bool unlocked = registry->ecs.get<Unlockable>(helper_id).unlocked;
             (void) unlocked;
-            registry->trying_to_buy = helper_id;
+
+            bool max_reached = registry->ecs.get<FarmHelper>(helper_id).max_reached;
+            if (!max_reached) {
+                registry->trying_to_buy = helper_id;
+            }
         };
         m_helper_buy_buttons.push_back(helperB);
 

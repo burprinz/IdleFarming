@@ -3,10 +3,10 @@
 //
 // Created by luisb on 26.07.2026.
 //
-    inline void plant_tile(Registry* m_registry, entt::entity field_id, entt::entity plant_id) noexcept{
+    inline void plant_tile(Registry* m_registry, entt::entity field_id, entt::entity plant_id, bool override=false) noexcept{
         FarmField &f = m_registry->ecs.get<FarmField>(field_id);
 
-        if (f.is_empty && !f.helper_active) {
+        if (override || (f.is_empty && !f.helper_active)) {
             // Plant if field is empty and left click pressed
             f.is_empty = false;
             f.plant = plant_id;
@@ -17,7 +17,7 @@
                 Inventory inv;
                 inv.size = BigNumber(p.inventory_size);
                 inv.amount = BigNumber(0);
-                m_registry->ecs.emplace<Inventory>(field_id, inv);
+                m_registry->ecs.emplace_or_replace<Inventory>(field_id, inv);
             }
         }
     }
@@ -78,7 +78,7 @@
         for (size_t y_pos = y_start; y_pos < std::min<size_t>(y+r+1, field.size()); y_pos++) {
             for (size_t x_pos = x_start; x_pos < std::min<size_t>(x+r+1, field[y_pos].size()); x_pos++) {
                 entt::entity fieldID = field[y_pos][x_pos];
-                plant_tile(m_registry, fieldID, p_id);
+                plant_tile(m_registry, fieldID, p_id, false);
             }
         }
 

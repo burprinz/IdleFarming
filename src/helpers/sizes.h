@@ -9,6 +9,7 @@ constexpr glm::vec2 base_helper_size = {300, 600};
 
 constexpr int normal_field_width = 10;
 constexpr int normal_filed_height = 15;
+constexpr int normal_field_amount = normal_field_width * normal_filed_height;
 
 // Normal Sizes
 constexpr glm::vec2 normal_topleft = {0.1, config::CAMERA_VIEW_HEIGHT-0.7};
