@@ -152,6 +152,8 @@ void Application::reset() noexcept {
 	// reset all game state
 	m_registry->ecs.clear();
 
+	StatsManager::instance().init();
+
 	// reset bools
 	m_registry->debug_mode = false;
 

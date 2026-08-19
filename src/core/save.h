@@ -5,6 +5,7 @@
 #include <entt/entt.hpp>
 #include <nlohmann/adl_serializer.hpp>
 #include "registry.h"
+#include "stats.h"
 
 
 inline nlohmann::json create_bignumber_json(BigNumber num) {
@@ -141,5 +142,20 @@ inline nlohmann::json create_helper_json(Registry* m_registry, entt::entity help
     result["level"] = helper.level;
     result["working_area"] = working_area;
 
+    return result;
+}
+
+inline nlohmann::json create_stats_json() noexcept {
+    std::vector<nlohmann::json> stats;
+
+    for (const auto& [name, value] : StatsManager::instance().get_map()) {
+        nlohmann::json j;
+        j["name"] = name;
+        j["value"] = value;
+        stats.push_back(j);
+    }
+
+    nlohmann::json result;
+    result["stats"] = stats;
     return result;
 }

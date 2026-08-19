@@ -40,6 +40,7 @@ public:
         int time_diff = static_cast<int>(load_time_difference());
         std::cout<<time_diff<<std::endl;
 
+        load_stats();
         load_unlocked_plants();
         load_money();
         load_item_amounts();
@@ -56,6 +57,7 @@ public:
         save_tools();
         save_fields();
         save_helpers();
+        save_stats();
     }
 
 
@@ -524,5 +526,21 @@ private:
             Unlockable &u = m_registry->ecs.get<Unlockable>(id);
             u.unlocked = true;
         }
+    }
+
+    inline void save_stats() noexcept {
+        nlohmann::json result = create_stats_json();
+        save("stats.json", result);
+    }
+
+    inline void load_stats() noexcept {
+        std::string json_path = save_path + "stats.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading stats"<<std::endl;
+            return;
+        }
+        load_current_stats(json);
     }
 };

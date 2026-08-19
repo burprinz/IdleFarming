@@ -1,0 +1,28 @@
+{
+    "stats": [
+        {
+            "name": "auto_harvested",
+            "value": 390
+        },
+        {
+            "name": "auto_planted",
+            "value": 390
+        },
+        {
+            "name": "items_sold",
+            "value": 0
+        },
+        {
+            "name": "manual_harvested",
+            "value": 0
+        },
+        {
+            "name": "manual_planted",
+            "value": 0
+        },
+        {
+            "name": "tools_bought",
+            "value": 0
+        }
+    ]
+}

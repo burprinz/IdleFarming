@@ -166,6 +166,7 @@ add_executable(${PROJECT_NAME}
 		src/systems/helper.h
 		src/core/save.h
 		src/core/load.h
+		src/core/stats.h
 )
 
 

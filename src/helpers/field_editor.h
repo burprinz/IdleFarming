@@ -1,4 +1,5 @@
 #pragma once
+#include "core/stats.h"
 
 //
 // Created by luisb on 26.07.2026.
@@ -19,7 +20,14 @@
                 inv.amount = BigNumber(0);
                 m_registry->ecs.emplace_or_replace<Inventory>(field_id, inv);
             }
+            if (override) {
+                StatsManager::instance().higher("auto_planted");
+            } else {
+                StatsManager::instance().higher("manual_planted");
+            }
         }
+
+
     }
 
     inline void harvest_tile(Registry* m_registry, entt::entity field_id) noexcept {
@@ -35,11 +43,13 @@
                 am += inv.amount;
                 m_registry->ecs.remove<Inventory>(field_id);
                 f.is_empty = true;
+                StatsManager::instance().higher("manual_harvested");
             } else if (f.harvestable) {
                 // No Machine -> Add amount to stash and remove plant
                 am += p.min_collect;
                 f.harvestable = false;
                 f.is_empty = true;
+                StatsManager::instance().higher("manual_harvested");
             }
         }
     }
@@ -166,6 +176,8 @@
             float remaining = total - cycles * p.growTime;
             if (cycles > 0) {
                 am += p.min_collect * cycles;
+                StatsManager::instance().higher("auto_harvested", cycles);
+                StatsManager::instance().higher("auto_planted", cycles);
             }
             f.grow = remaining;
             f.harvestable = false;
@@ -187,6 +199,8 @@
                 float rem = total_regrow - cycles * p.regrowTime;
                 if (cycles > 0) {
                     am += p.min_collect * cycles;
+                    StatsManager::instance().higher("auto_harvested", cycles);
+                    StatsManager::instance().higher("auto_planted", cycles);
                 }
                 f.grow = p.growTime + rem;
                 f.harvestable = false;
@@ -201,6 +215,8 @@
                     if (inv.amount >= inv.size) {
                         am += inv.size;
                         inv.amount = BigNumber(0);
+                        StatsManager::instance().higher("auto_harvested");
+                        StatsManager::instance().higher("auto_planted");
                     }
                 }
                 f.grow = p.growTime + remainder;
