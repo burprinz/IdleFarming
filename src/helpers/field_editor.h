@@ -64,16 +64,18 @@
             if (p.has_inventory && m_registry->ecs.all_of<Inventory>(field_id)) {
                 // Machine -> Collect inventory and keep everything
                 Inventory &inv = m_registry->ecs.get<Inventory>(field_id);
-                // Wenn (nicht Helper) oder (Helper mit vollen Inv)
-                if (!helper || inv.amount == inv.size) {
+                // Wenn nicht Helper
+                if (!helper) {
                     am += inv.amount;
                     inv.amount = BigNumber(0);
+                    StatsManager::instance().higher("manual_collected");
                 }
             } else if (f.harvestable) {
                 // No Machine -> Collect and reset growtime
                 am += p.min_collect;
                 f.harvestable = false;
                 f.grow = p.growTime;
+                StatsManager::instance().higher("manual_collected");
             }
         }
     }
@@ -199,8 +201,7 @@
                 float rem = total_regrow - cycles * p.regrowTime;
                 if (cycles > 0) {
                     am += p.min_collect * cycles;
-                    StatsManager::instance().higher("auto_harvested", cycles);
-                    StatsManager::instance().higher("auto_planted", cycles);
+                    StatsManager::instance().higher("auto_collected", cycles);
                 }
                 f.grow = p.growTime + rem;
                 f.harvestable = false;
@@ -215,8 +216,7 @@
                     if (inv.amount >= inv.size) {
                         am += inv.size;
                         inv.amount = BigNumber(0);
-                        StatsManager::instance().higher("auto_harvested");
-                        StatsManager::instance().higher("auto_planted");
+                        StatsManager::instance().higher("auto_collected");
                     }
                 }
                 f.grow = p.growTime + remainder;

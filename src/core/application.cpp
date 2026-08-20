@@ -154,6 +154,7 @@ void Application::reset() noexcept {
 
 	StatsManager::instance().init();
 
+
 	// reset bools
 	m_registry->debug_mode = false;
 
@@ -167,6 +168,12 @@ void Application::reset() noexcept {
 	 * Load Base Values
 	 */
 	m_entity_factory.loadBaseValues();
+
+
+	/**
+	 * Make tests
+	 */
+	//tests();
 
 	/**
 	 * Reset UI

@@ -20,15 +20,17 @@ public:
         stats["auto_planted"] = 0;
         stats["manual_harvested"] = 0;
         stats["auto_harvested"] = 0;
+        stats["manual_collected"] = 0;
+        stats["auto_collected"] = 0;
         stats["tools_bought"] = 0; // TODO
         stats["items_sold"] = 0; // TODO
     }
 
-    inline void set(std::string name, int value) {
+    inline void set(std::string name, BigNumber value) {
         stats[name] = value;
     }
 
-    inline int get(std::string name) {
+    inline BigNumber get(std::string name) {
         auto i = stats.find(name);
         return i != stats.end() ? i->second : 0;
     }
@@ -37,13 +39,13 @@ public:
         stats[name] += value;
     }
 
-    inline std::map<std::string, int> get_map() {
+    inline std::map<std::string, BigNumber> get_map() {
         return stats;
     }
 
 
 private:
 
-    std::map<std::string, int> stats;
+    std::map<std::string, BigNumber> stats;
 
 };

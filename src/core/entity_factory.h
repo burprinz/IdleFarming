@@ -38,7 +38,7 @@ public:
 
 
         int time_diff = static_cast<int>(load_time_difference());
-        std::cout<<time_diff<<std::endl;
+        std::cout<<"Offline progress time: "<<time_diff<<"s"<<std::endl;
 
         load_stats();
         load_unlocked_plants();
@@ -345,7 +345,7 @@ private:
         bool loaded = read(json_path, &json);
         if (!loaded) {
             std::cout<<"Error loading money"<<std::endl;
-            return -1;
+            return get_current_timestamp();
         }
 
         return json["time"].get<long long>();

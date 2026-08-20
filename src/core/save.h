@@ -151,7 +151,7 @@ inline nlohmann::json create_stats_json() noexcept {
     for (const auto& [name, value] : StatsManager::instance().get_map()) {
         nlohmann::json j;
         j["name"] = name;
-        j["value"] = value;
+        j["value"] = create_bignumber_json(value);
         stats.push_back(j);
     }
 

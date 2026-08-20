@@ -55,4 +55,49 @@ class Application {
 		void onMouseClickCallback(GLFWwindow* window, int button, int action, int mods) noexcept;
         void onResizeCallback(GLFWwindow* window, int width, int height) noexcept;
 
+
+		inline void tests() noexcept {
+			test_offline_stats_progress();
+		}
+
+		inline void test_offline_stats_progress() noexcept {
+			std::cout<<"TEST START -------- Offline Progress Stats Test"<<std::endl;
+			BigNumber prev_plant = StatsManager::instance().get("auto_planted");
+			BigNumber prev_harvest = StatsManager::instance().get("auto_harvested");
+			BigNumber prev_collect = StatsManager::instance().get("auto_collected");
+			StatsManager::instance().set("auto_planted", 0);
+			StatsManager::instance().set("auto_harvested", 0);
+			StatsManager::instance().set("auto_collected", 0);
+
+			std::cout<<"1) Values:"<<
+				" auto_planted="<<StatsManager::instance().get("auto_planted").toString()<<
+				" auto_harvested="<<StatsManager::instance().get("auto_harvested").toString()<<
+					" auto_collected="<<StatsManager::instance().get("auto_collected").toString()<<std::endl;
+
+			std::cout<<"2) Applying 100sec Helper Growtime for Single apple"<<std::endl;
+			entt::entity fieldID = m_registry->plant_field_tiles[2][0][0];
+			entt::entity plantID = m_registry->item_entities["apple"];
+			entt::entity helperID = m_registry->helper_entities["Hinata"];
+
+			FarmField &f = m_registry->ecs.get<FarmField>(fieldID);
+			FarmHelper &helper = m_registry->ecs.get<FarmHelper>(helperID);
+			plant_tile(m_registry, fieldID, plantID, true);
+			f.helper_active = true;
+			helper.working_area.push_back(fieldID);
+			helper.working_plants.push_back(plantID);
+			apply_helper_growtime(m_registry, fieldID, 100);
+
+			std::cout<<"3) Values:"<<
+				" auto_planted="<<StatsManager::instance().get("auto_planted").toString()<<
+				" auto_harvested="<<StatsManager::instance().get("auto_harvested").toString()<<
+					" auto_collected="<<StatsManager::instance().get("auto_collected").toString()<<std::endl;
+
+
+			StatsManager::instance().set("auto_planted", prev_plant);
+			StatsManager::instance().set("auto_harvested", prev_harvest);
+			StatsManager::instance().set("auto_collected", prev_collect);
+			std::cout<<"TEST END -------- Offline Progress Stats Test"<<std::endl;
+		}
+
+
 };

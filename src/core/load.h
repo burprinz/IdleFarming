@@ -183,6 +183,6 @@ inline void load_current_helpers(Registry* m_registry, nlohmann::json helper_jso
 
 inline void load_current_stats(nlohmann::json json) noexcept {
     for (nlohmann::json stat : json["stats"]) {
-        StatsManager::instance().set(stat["name"].get<std::string>(), stat["value"].get<int>());
+        StatsManager::instance().set(stat["name"].get<std::string>(), extract_bignumber(stat["value"]));
     }
 }
