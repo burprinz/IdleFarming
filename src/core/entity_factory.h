@@ -36,6 +36,8 @@ public:
 
         create_helpers();
 
+        create_achievements();
+
 
         int time_diff = static_cast<int>(load_time_difference());
         std::cout<<"Offline progress time: "<<time_diff<<"s"<<std::endl;
@@ -322,8 +324,50 @@ private:
         m_registry->helper_entities[helper.name] = helper_id;
     }
 
+    inline void create_achievements() {
+        std::string json_path = "/assets/data/basevalues/achievement_types.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading Achievement type List"<<std::endl;
+            return;
+        }
 
+        for (const auto& type : json["types"]) {
+            create_achievement_type(type.get<std::string>());
+        }
+    }
 
+    inline void create_achievement_type(std::string name) {
+        std::string json_path = "/assets/data/basevalues/achievements/"+name+".json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading Achievement type List"<<std::endl;
+            return;
+        }
+
+        std::string base_name = json["name"].get<std::string>();
+        std::string pre_desc = json["desc_pre"].get<std::string>();
+        std::string post_desc = json["desc_post"].get<std::string>();
+        std::vector<std::string> needed_stat_types = json["counting_stats"].get<std::vector<std::string>>();
+        int c = 1;
+        for (const auto& amount : json["amounts"]) {
+            BigNumber am = extract_bignumber(amount);
+
+            Achievement a;
+            a.name = base_name + " " + create_roman_num(c);
+            a.description = pre_desc + " " + am.toString() + " " + post_desc;
+            a.amount = am;
+            a.needed_stat_types = needed_stat_types;
+            a.done = false;
+
+            entt::entity id = m_registry->ecs.create();
+            m_registry->ecs.emplace<Achievement>(id, a);
+
+            c += 1;
+        }
+    }
 
 
     inline void save_time() noexcept {

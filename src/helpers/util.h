@@ -65,3 +65,23 @@ inline long long get_current_timestamp() {
         std::chrono::system_clock::now().time_since_epoch()
     ).count();
 }
+
+inline std::string create_roman_num(int num) {
+
+    if (num == 0) {
+        return "";
+    }
+
+    const int values[] = {10, 9, 5, 4, 1};
+    const std::string symbols[] = {"X", "IX", "V", "IV", "I"};
+
+    std::string result;
+    for (int i = 0; i < 5; ++i) {
+        while (num >= values[i]) {
+            num -= values[i];
+            result += symbols[i];
+        }
+    }
+
+    return result;
+}

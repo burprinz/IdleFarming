@@ -108,7 +108,7 @@
             "name": "cave_machines",
             "plants": [
                 {
-                    "current_growtime": 771.3783569335938,
+                    "current_growtime": 73736.59375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,

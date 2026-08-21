@@ -195,7 +195,7 @@ struct Achievement {
     std::string name = "???";
     std::string description = "Do ...";
     std::vector<std::string> needed_stat_types;
-    std::vector<BigNumber> needed_stat_amounts;
+    BigNumber amount;
     bool done = false;
 };
 

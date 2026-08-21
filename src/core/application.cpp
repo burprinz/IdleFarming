@@ -175,6 +175,10 @@ void Application::reset() noexcept {
 	 */
 	//tests();
 
+	for (entt::entity id : m_registry->ecs.view<Achievement>()) {
+		std::cout<<m_registry->ecs.get<Achievement>(id).description;
+	}
+
 	/**
 	 * Reset UI
 	 */
