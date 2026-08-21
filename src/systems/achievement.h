@@ -1,3 +1,4 @@
+#pragma once
 //
 // Created by luisb on 21.08.2026.
 //
@@ -7,6 +8,9 @@
 
 class AchievementSystem {
     public:
+    AchievementSystem() = default;
+    ~AchievementSystem() = default;
+
     static AchievementSystem init(Window* window, Registry* registry) noexcept;
     void deinit() noexcept;
 

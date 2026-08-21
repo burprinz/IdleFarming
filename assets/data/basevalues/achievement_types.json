@@ -1,5 +1,6 @@
 {
   "types": [
-    "manual_farm"
+    "manual_farm",
+    "auto_farm"
   ]
 }

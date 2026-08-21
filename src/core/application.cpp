@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "../helpers/config.h"
+#include "systems/achievement.h"
 #include "utils/BigNumber.h"
 
 static void glfwErrorCallback(int error, const char* description) {
@@ -73,6 +74,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_field = FieldSystem::init(self.m_window, self.m_registry);
 	self.m_helper = HelperSystem::init(self.m_window, self.m_registry);
 	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_achievement = AchievementSystem::init(self.m_window, self.m_registry);
 
 	return self;
 }
@@ -84,6 +86,7 @@ void Application::deinit() noexcept {
 	m_field.deinit();
 	m_helper.deinit();
 	m_unlock.deinit();
+	m_achievement.deinit();
 
 	m_draw->deinit();
 
@@ -134,6 +137,8 @@ void Application::run() noexcept {
 		m_field.step(delta_time);
 
 		m_helper.step(delta_time);
+
+		m_achievement.step(delta_time);
 
 		m_camera.step(delta_time);
 
@@ -196,6 +201,7 @@ void Application::reset() noexcept {
 	m_render.reset();
 	m_camera.reset();
 	m_unlock.reset();
+	m_achievement.reset();
 }
 
 void Application::changeWindow() noexcept {

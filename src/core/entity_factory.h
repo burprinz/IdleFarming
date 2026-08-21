@@ -47,6 +47,7 @@ public:
         load_money();
         load_item_amounts();
         load_tools();
+        load_done_achievements();
         load_fields(time_diff);
         load_helpers(time_diff);
     }
@@ -60,6 +61,7 @@ public:
         save_fields();
         save_helpers();
         save_stats();
+        save_done_achievements();
     }
 
 
@@ -365,6 +367,7 @@ private:
             entt::entity id = m_registry->ecs.create();
             m_registry->ecs.emplace<Achievement>(id, a);
 
+            m_registry->achievement_entities[a.name] = id;
             c += 1;
         }
     }
@@ -586,5 +589,32 @@ private:
             return;
         }
         load_current_stats(json);
+    }
+
+    inline void save_done_achievements() noexcept {
+        std::vector<std::string> done;
+        for (entt::entity id : m_registry->ecs.view<Achievement>()) {
+            Achievement a = m_registry->ecs.get<Achievement>(id);
+            if (a.done) {
+                done.push_back(a.name);
+            }
+        }
+        nlohmann::json result;
+        result["done"] = done;
+        save("done_achievements.json", result);
+    }
+
+    inline void load_done_achievements() noexcept {
+        std::string json_path = save_path + "done_achievements.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading done achievements"<<std::endl;
+            return;
+        }
+
+        for (const auto& name : json["done"]) {
+            m_registry->ecs.get<Achievement>(m_registry->achievement_entities[name.get<std::string>()]).done = true;
+        }
     }
 };

@@ -1,0 +1,26 @@
+{
+  "name": "Auto Farmer",
+  "desc_pre": "Let helpers plant",
+  "desc_post": "plants",
+  "counting_stats": [
+    "auto_planted"
+  ],
+  "amounts": [
+    {
+      "base": 1.0,
+      "exp": 2
+    },
+    {
+      "base": 1.0,
+      "exp": 4
+    },
+    {
+      "base": 1.0,
+      "exp": 8
+    },
+    {
+      "base": 1.0,
+      "exp": 16
+    }
+  ]
+}

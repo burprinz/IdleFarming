@@ -2,90 +2,1891 @@
     "fields": [
         {
             "name": "plants",
-            "plants": []
+            "plants": [
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 12.0,
+                    "harvestable": true,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 10
+                    }
+                }
+            ]
         },
         {
             "name": "flowers",
             "plants": [
                 {
-                    "current_growtime": 100.0,
+                    "current_growtime": 5.0,
                     "harvestable": true,
-                    "plant_name": "tulips",
+                    "plant_name": "dandelion",
                     "pos": {
                         "x": 0,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 100.0,
+                    "current_growtime": 5.0,
                     "harvestable": true,
-                    "plant_name": "tulips",
+                    "plant_name": "dandelion",
                     "pos": {
                         "x": 1,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 100.0,
+                    "current_growtime": 5.0,
                     "harvestable": true,
-                    "plant_name": "tulips",
+                    "plant_name": "dandelion",
                     "pos": {
                         "x": 2,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 100.0,
+                    "current_growtime": 5.0,
                     "harvestable": true,
-                    "plant_name": "tulips",
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 6,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 7,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 8,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 9,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
                     "pos": {
                         "x": 0,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 100.0,
+                    "current_growtime": 5.0,
                     "harvestable": true,
-                    "plant_name": "tulips",
+                    "plant_name": "dandelion",
                     "pos": {
                         "x": 1,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 100.0,
+                    "current_growtime": 5.0,
                     "harvestable": true,
-                    "plant_name": "tulips",
+                    "plant_name": "dandelion",
                     "pos": {
                         "x": 2,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 100.0,
+                    "current_growtime": 5.0,
                     "harvestable": true,
-                    "plant_name": "tulips",
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 6,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 7,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 8,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 9,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
                     "pos": {
                         "x": 0,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 100.0,
+                    "current_growtime": 5.0,
                     "harvestable": true,
-                    "plant_name": "tulips",
+                    "plant_name": "dandelion",
                     "pos": {
                         "x": 1,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 100.0,
+                    "current_growtime": 5.0,
                     "harvestable": true,
-                    "plant_name": "tulips",
+                    "plant_name": "dandelion",
                     "pos": {
                         "x": 2,
                         "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 6,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 7,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 8,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 9,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 6,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 7,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 8,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 9,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 6,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 7,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 8,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 9,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 6,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 7,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 8,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 9,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 6,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 7,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 8,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 9,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 0,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 1,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 2,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 3,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 4,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 5.0,
+                    "harvestable": true,
+                    "plant_name": "dandelion",
+                    "pos": {
+                        "x": 5,
+                        "y": 11
                     }
                 }
             ]
@@ -101,6 +1902,888 @@
                         "x": 0,
                         "y": 0
                     }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 0,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 1,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 2,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 3,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 4,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 5,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 6,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 7,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 8,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 20.0,
+                    "harvestable": true,
+                    "plant_name": "apple",
+                    "pos": {
+                        "x": 9,
+                        "y": 9
+                    }
                 }
             ]
         },
@@ -108,7 +2791,7 @@
             "name": "cave_machines",
             "plants": [
                 {
-                    "current_growtime": 73736.59375,
+                    "current_growtime": 117511.9453125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -118,6 +2801,1293 @@
                     "pos": {
                         "x": 0,
                         "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.859090805053711,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.876062393188477,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.892423629760742,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.90949821472168,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.925748825073242,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.925748825073242,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.942655563354492,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.942655563354492,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.942655563354492,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 0
+                    }
+                },
+                {
+                    "current_growtime": 10.859090805053711,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.859090805053711,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.876062393188477,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.892423629760742,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.90949821472168,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.925748825073242,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.925748825073242,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.942655563354492,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.958944320678711,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.958944320678711,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 1
+                    }
+                },
+                {
+                    "current_growtime": 10.592737197875977,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 10.592737197875977,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 10.592737197875977,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 10.559392929077148,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 10.90949821472168,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 10.925748825073242,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 10.925748825073242,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 10.942655563354492,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 11.159406661987305,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 11.159406661987305,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 2
+                    }
+                },
+                {
+                    "current_growtime": 11.309259414672852,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.309259414672852,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.292802810668945,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.27601432800293,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.24278450012207,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.22599983215332,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.209554672241211,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.192811965942383,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.176198959350586,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.159406661987305,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 3
+                    }
+                },
+                {
+                    "current_growtime": 11.526056289672852,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.542718887329102,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.542718887329102,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.558942794799805,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.576089859008789,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.576089859008789,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.59266471862793,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.609212875366211,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.609212875366211,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.609212875366211,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 4
+                    }
+                },
+                {
+                    "current_growtime": 11.526056289672852,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 11.542718887329102,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 11.542718887329102,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 11.558942794799805,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 11.576089859008789,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 11.576089859008789,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 11.59266471862793,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 11.609212875366211,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 11.625631332397461,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 11.625631332397461,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 5
+                    }
+                },
+                {
+                    "current_growtime": 12.159246444702148,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.159246444702148,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 11.542718887329102,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 11.558942794799805,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 11.576089859008789,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.309366226196289,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.359579086303711,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.409666061401367,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.409666061401367,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.409666061401367,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 6
+                    }
+                },
+                {
+                    "current_growtime": 12.225744247436523,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.242731094360352,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.275873184204102,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.29271125793457,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.29271125793457,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.309366226196289,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.359579086303711,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.409666061401367,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.409666061401367,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.409666061401367,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 7
+                    }
+                },
+                {
+                    "current_growtime": 12.225744247436523,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.242731094360352,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.275873184204102,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.29271125793457,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.29271125793457,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.309366226196289,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.359579086303711,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.409666061401367,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.409666061401367,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.409666061401367,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 12.225744247436523,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 0,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.242731094360352,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 1,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.275873184204102,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 2,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.29271125793457,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 3,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.29271125793457,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 4,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 12.29271125793457,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 5,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 11.876008987426758,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 6,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 11.859167098999023,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 7,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 11.842195510864258,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 8,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 11.842195510864258,
+                    "harvestable": false,
+                    "inventory": {
+                        "base": 1.0,
+                        "exp": 2
+                    },
+                    "plant_name": "iron",
+                    "pos": {
+                        "x": 9,
+                        "y": 9
                     }
                 }
             ]
