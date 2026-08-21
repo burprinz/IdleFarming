@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "ui.h"
+#include "core/stats.h"
 #include "helpers/sizes.h"
 #include "helpers/transaction.h"
 
@@ -47,6 +48,8 @@ void UnlockSystem::step(const float delta) noexcept {
                     helper.max_reached = true;
                     helper.amount_fields = normal_field_amount;
                 }
+            } else if (m_registry->ecs.all_of<Tool>(m_registry->trying_to_buy)) {
+                StatsManager::instance().higher("tools_bought", 1);
             }
         }
 

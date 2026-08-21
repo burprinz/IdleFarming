@@ -6,6 +6,7 @@
 
 #include "../helpers/sizes.h"
 #include "../helpers/util.h"
+#include "core/stats.h"
 #include "helpers/finder.h"
 #include "helpers/transaction.h"
 
@@ -223,6 +224,7 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
             if (success) {
                 BigNumber &amount = registry->ecs.get<Amount>(plant_id).am;
                 amount = amount + registry->market_multiplier;
+                StatsManager::instance().higher("items_bought", registry->market_multiplier);
             }
         };
         currentB.push_back(buyB);
@@ -243,6 +245,7 @@ void UISystem::initMarketplaceTradeButtons() noexcept {
                 price = price * multiplier;
                 money = money + price;
                 amount = amount - multiplier;
+                StatsManager::instance().higher("items_sold", multiplier);
             }
         };
         currentB.push_back(sellB);

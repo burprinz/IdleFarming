@@ -21,9 +21,9 @@
                 m_registry->ecs.emplace_or_replace<Inventory>(field_id, inv);
             }
             if (override) {
-                StatsManager::instance().higher("auto_planted");
+                StatsManager::instance().higher("auto_planted", 1);
             } else {
-                StatsManager::instance().higher("manual_planted");
+                StatsManager::instance().higher("manual_planted", 1);
             }
         }
 
@@ -43,13 +43,13 @@
                 am += inv.amount;
                 m_registry->ecs.remove<Inventory>(field_id);
                 f.is_empty = true;
-                StatsManager::instance().higher("manual_harvested");
+                StatsManager::instance().higher("manual_harvested", 1);
             } else if (f.harvestable) {
                 // No Machine -> Add amount to stash and remove plant
                 am += p.min_collect;
                 f.harvestable = false;
                 f.is_empty = true;
-                StatsManager::instance().higher("manual_harvested");
+                StatsManager::instance().higher("manual_harvested", 1);
             }
         }
     }
@@ -68,14 +68,14 @@
                 if (!helper) {
                     am += inv.amount;
                     inv.amount = BigNumber(0);
-                    StatsManager::instance().higher("manual_collected");
+                    StatsManager::instance().higher("manual_collected", 1);
                 }
             } else if (f.harvestable) {
                 // No Machine -> Collect and reset growtime
                 am += p.min_collect;
                 f.harvestable = false;
                 f.grow = p.growTime;
-                StatsManager::instance().higher("manual_collected");
+                StatsManager::instance().higher("manual_collected", 1);
             }
         }
     }
@@ -216,7 +216,7 @@
                     if (inv.amount >= inv.size) {
                         am += inv.size;
                         inv.amount = BigNumber(0);
-                        StatsManager::instance().higher("auto_collected");
+                        StatsManager::instance().higher("auto_collected", 1);
                     }
                 }
                 f.grow = p.growTime + remainder;

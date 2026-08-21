@@ -191,6 +191,14 @@ struct Tool {
     int radius; // Working radius
 };
 
+struct Achievement {
+    std::string name = "???";
+    std::string description = "Do ...";
+    std::vector<std::string> needed_stat_types;
+    std::vector<BigNumber> needed_stat_amounts;
+    bool done = false;
+};
+
 struct BuyAmount {
     std::vector<entt::entity> item_ids;
     std::vector<BigNumber> amounts;
