@@ -1,6 +1,7 @@
 {
   "types": [
     "manual_farm",
-    "auto_farm"
+    "auto_farm",
+    "tools_bought"
   ]
 }

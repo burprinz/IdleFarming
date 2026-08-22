@@ -1,0 +1,26 @@
+{
+  "name": "Tools Bought",
+  "desc_pre": "Buy",
+  "desc_post": "tools",
+  "counting_stats": [
+    "tools_bought"
+  ],
+  "amounts": [
+    {
+      "base": 1.0,
+      "exp": 0
+    },
+    {
+      "base": 2.0,
+      "exp":0
+    },
+    {
+      "base": 4.0,
+      "exp": 0
+    },
+    {
+      "base": 8.0,
+      "exp": 0
+    }
+  ]
+}
