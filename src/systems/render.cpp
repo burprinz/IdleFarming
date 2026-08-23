@@ -358,6 +358,10 @@ void RenderSystem::drawHelpers() noexcept {
 }
 
 void RenderSystem::drawAchievements() noexcept {
+    glm::vec2 mousePos = m_window->getMousePosition();
+
+    bool found = false;
+
     for (entt::entity id : m_registry->ecs.view<Achievement>()) {
         Achievement a = m_registry->ecs.get<Achievement>(id);
         glm::vec2 pos = m_registry->ecs.get<Position>(id).pos;
@@ -368,6 +372,15 @@ void RenderSystem::drawAchievements() noexcept {
         }
         m_draw->drawRectBySize(pos, size, color);
         m_draw->drawStringInBox(a.name, pos, size, color);
+
+        if (!found && point_in_rect(mousePos, pos, size)) {
+            found = true;
+            std::string text = a.description;
+            glm::vec2 popup_size = {3.0, 0.5};
+            glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
+            drawPopup(text, popup_pos, popup_size, white);
+        }
+
     }
 }
 
