@@ -76,6 +76,17 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(helpersButton);
 
+    pos.x += size.x + normal_gap;
+
+    TextButton achievementsButton;
+    achievementsButton.pos = pos;
+    achievementsButton.size = size;
+    achievementsButton.text = "Achievements";
+    achievementsButton.on_click = [registry] {
+        registry->change_window(ACHIEVEMENTS);
+    };
+    m_window_buttons.push_back(achievementsButton);
+
 }
 
 void UISystem::initFieldButton() noexcept {

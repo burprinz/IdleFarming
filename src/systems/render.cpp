@@ -75,6 +75,8 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         drawToolsmith();
     } else if (m_registry->window() == HELPERS) {
         drawHelpers();
+    } else if (m_registry->window() == ACHIEVEMENTS) {
+        drawAchievements();
     }
 }
 
@@ -355,6 +357,19 @@ void RenderSystem::drawHelpers() noexcept {
 
 }
 
+void RenderSystem::drawAchievements() noexcept {
+    for (entt::entity id : m_registry->ecs.view<Achievement>()) {
+        Achievement a = m_registry->ecs.get<Achievement>(id);
+        glm::vec2 pos = m_registry->ecs.get<Position>(id).pos;
+        glm::vec2 size = m_registry->ecs.get<Dimension>(id).dim;
+        glm::vec3 color = red;
+        if (a.done) {
+            color = green;
+        }
+        m_draw->drawRectBySize(pos, size, color);
+        m_draw->drawStringInBox(a.name, pos, size, color);
+    }
+}
 
 
 

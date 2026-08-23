@@ -17,6 +17,9 @@ class AchievementSystem {
     void step(const float delta) noexcept;
     void reset() noexcept;
 
+    void init_achievement_hover() noexcept;
+    void update_achievements() noexcept;
+
 private:
 
     Registry* m_registry;

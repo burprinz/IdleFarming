@@ -29,6 +29,7 @@ class RenderSystem {
 		void drawMarketplace() noexcept;
 		void drawToolsmith() noexcept;
 		void drawHelpers() noexcept;
+		void drawAchievements() noexcept;
 
 		void drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color, bool with_max_size) noexcept;
 		void drawBasicTextButton(TextButton &b, glm::vec3 text_color, bool with_max_size) noexcept;

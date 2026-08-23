@@ -335,6 +335,8 @@ private:
             return;
         }
 
+        m_registry->achievements_order.clear();
+
         for (const auto& type : json["types"]) {
             create_achievement_type(type.get<std::string>());
         }
@@ -368,6 +370,7 @@ private:
             m_registry->ecs.emplace<Achievement>(id, a);
 
             m_registry->achievement_entities[a.name] = id;
+            m_registry->achievements_order.push_back(id);
             c += 1;
         }
     }

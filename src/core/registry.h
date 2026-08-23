@@ -14,6 +14,7 @@ constexpr int FIELDS = 0;
 constexpr int MARKETPLACE = 1;
 constexpr int TOOLSMITH = 2;
 constexpr int HELPERS = 3;
+constexpr int ACHIEVEMENTS = 4;
 
 /**
  * Field State
@@ -302,6 +303,11 @@ public:
      */
     std::vector<entt::entity> helpers_order;
     std::map<entt::entity, entt::entity> field_helper; // FieldID, HelperID
+
+    /**
+     * Achievements
+     */
+    std::vector<entt::entity> achievements_order;
 
     /**
      * Buying

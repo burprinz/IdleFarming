@@ -180,10 +180,6 @@ void Application::reset() noexcept {
 	 */
 	//tests();
 
-	for (entt::entity id : m_registry->ecs.view<Achievement>()) {
-		std::cout<<m_registry->ecs.get<Achievement>(id).description;
-	}
-
 	/**
 	 * Reset UI
 	 */
@@ -193,6 +189,8 @@ void Application::reset() noexcept {
 	m_ui->initMarketplaceTradeButtons();
 	m_ui->initToolSmithButtons();
 	m_ui->initHelpersButton();
+
+	m_achievement.init_achievement_hover();
 
 	// Reset Field
 	m_registry->field_mode = FIELD_FARMING;
