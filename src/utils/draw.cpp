@@ -685,6 +685,83 @@ void Draw::drawTexture(Texture& texture, glm::vec2 position, glm::vec2 scale) no
     glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, 1);
 }
 
+void Draw::drawPopup(std::string text, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color) noexcept {
+    float angle = 10.0;
+
+    fillRoundRect(pos, size, angle, black, 0.75f);
+    drawStringInBox(text, pos, size, text_color);
+    drawRoundRect(pos, size, angle, black);
+}
+
+void Draw::drawPopupAtMouse(std::string text, glm::vec3 text_color, float text_size) noexcept {
+    float w = getStringWidth(text, text_size)+0.1;
+    float h = getStringHeight(text, text_size)+0.1;
+    glm::vec2 size = {w, h};
+    glm::vec2 pos = getPopupPositionForMouse(size);
+    drawPopup(text, pos, size, text_color);
+}
+
+void Draw::drawMultilinePopupAtMouse(std::string title, std::vector<std::string> lines, bool with_title, glm::vec3 text_color, float text_size) noexcept {
+    float title_scale = text_size;
+    float line_scale = with_title?text_size*(2.0f/3.0f):text_size;
+
+    std::vector<std::pair<std::string, float>> entries;
+    if (with_title) {
+        entries.emplace_back(title, title_scale);
+    }
+    for (const std::string& line : lines) {
+        entries.emplace_back(line, line_scale);
+    }
+
+    if (entries.empty()) return;
+
+    float avg_height = 0.0f;
+    for (const auto& entry : entries) {
+        avg_height += getStringHeight(entry.first, entry.second);
+    }
+    avg_height /= static_cast<float>(entries.size());
+    float line_gap = avg_height * 0.3f;
+
+    float max_width = 0.0f;
+    float total_height = 0.0f;
+    std::vector<float> heights;
+    heights.reserve(entries.size());
+
+    for (size_t i = 0; i < entries.size(); ++i) {
+        float w = getStringWidth(entries[i].first, entries[i].second);
+        float h = getStringHeight(entries[i].first, entries[i].second);
+
+        max_width = std::max(w, max_width);
+        heights.push_back(h);
+        total_height += h;
+
+        if (i < entries.size()-1) {
+            total_height += line_gap;
+        }
+    }
+
+    glm::vec2 size = {max_width + 0.1f, total_height+0.1f};
+    glm::vec2 pos = getPopupPositionForMouse(size);
+
+    float angle = std::min(size.x, size.y) * 0.15f;
+
+    fillRoundRect(pos, size, angle, black, 0.75f);
+
+    float cursor_y = pos.y + total_height / 2.0f;
+    for (size_t i = 0; i < entries.size(); i++) {
+        cursor_y -= heights[i] / 2.0f;
+        drawString(entries[i].first, {pos.x, cursor_y}, entries[i].second, text_color);
+        cursor_y -= heights[i] / 2.0f;
+
+        if (i < entries.size() - 1) {
+            cursor_y -= line_gap;
+        }
+    }
+
+    drawRoundRect(pos, size, angle, black);
+}
+
+
 
 glm::mat4 Draw::getViewMatrix() noexcept {
     return glm::lookAt(glm::vec3(0, 0, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
@@ -717,4 +794,5 @@ void Draw::onResizeCallback(GLFWwindow *, int width, int height) noexcept {
     m_intermediate_framebuffer.deinit();
     m_intermediate_framebuffer = Framebuffer::init({(GLsizei) size.x, (GLsizei) size.y, 1, true});
 }
+
 

@@ -6,6 +6,7 @@
 
 #include "../helpers/colors.h"
 #include "../helpers/sizes.h"
+#include "core/stats.h"
 #include "helpers/finder.h"
 #include "helpers/transaction.h"
 #include "utils/BigNumber.h"
@@ -376,9 +377,18 @@ void RenderSystem::drawAchievements() noexcept {
         if (!found && point_in_rect(mousePos, pos, size)) {
             found = true;
             std::string text = a.description;
+            BigNumber current_am = BigNumber(0);
+            for (std::string stat : a.needed_stat_types) {
+                current_am = current_am + StatsManager::instance().get(stat);
+            }
+            std::string progress_text = current_am.toString() + " / " + a.amount.toString();
+            m_draw->drawMultilinePopupAtMouse(text, {progress_text}, true);
+            //m_draw->drawPopupAtMouse(text);
+            /**
             glm::vec2 popup_size = {3.0, 0.5};
             glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
             drawPopup(text, popup_pos, popup_size, white);
+            */
         }
 
     }
@@ -487,9 +497,10 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
         if (field_inv_id != entt::null) {
             Inventory inv = m_registry->ecs.get<Inventory>(field_inv_id);
             std::string text = inv.amount.toString() + " / " + inv.size.toString();
-            glm::vec2 popup_size = {1.0, 0.5};
-            glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
-            drawPopup(text, popup_pos, popup_size, white);
+            //glm::vec2 popup_size = {1.0, 0.5};
+            //glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
+            //drawPopup(text, popup_pos, popup_size, white);
+            m_draw->drawPopupAtMouse(text);
         }
     }
 
@@ -566,39 +577,17 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
 
         // Draw Price popup if not unlocked and selected
         if (!for_helper && !u.unlocked && b.selected) {
+            /**
             glm::vec2 popup_size = {1.0, 0.5};
             glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
-            glm::vec3 text_color = has_enough_money?green:red;
+
             drawPopup(u.price.toString(), popup_pos, popup_size, text_color);
+            */
+            glm::vec3 text_color = has_enough_money?green:red;
+            m_draw->drawPopupAtMouse(u.price.toString(), text_color);
         }
     }
 }
 
-glm::vec2 RenderSystem::getPopupPositionForMouse(glm::vec2 popup_size) noexcept {
-    glm::vec2 mouse_pos = m_window->getMousePosition();
 
-    glm::vec2 result = {0, 0};
 
-    if (mouse_pos.x + popup_size.x > config::CAMERA_VIEW_WIDTH) {
-        result.x = mouse_pos.x - popup_size.x / 2.0f;
-    } else {
-        result.x = mouse_pos.x + popup_size.x / 2.0f;
-    }
-
-    if (mouse_pos.y + popup_size.y > config::CAMERA_VIEW_HEIGHT) {
-        result.y = mouse_pos.y - popup_size.y / 2.0f;
-    } else {
-        result.y = mouse_pos.y + popup_size.y / 2.0f;
-    }
-
-    return result;
-}
-
-void RenderSystem::drawPopup(std::string msg, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color) noexcept {
-    float angle = 10.0;
-
-    m_draw->fillRoundRect(pos, size, angle, black, 0.75f);
-    m_draw->drawStringInBox(msg, pos, size, text_color);
-    m_draw->drawRoundRect(pos, size, angle, black);
-
-}

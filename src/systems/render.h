@@ -36,8 +36,8 @@ class RenderSystem {
 
 		void drawCurrentField(std::vector<std::vector<entt::entity>> &field_ids, glm::vec3 color, std::vector<TextButton> &buttons, entt::entity current_selected, bool for_helper) noexcept;
 
-		glm::vec2 getPopupPositionForMouse(glm::vec2 popup_size) noexcept;
-		void drawPopup(std::string msg, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color=white) noexcept;
+		//glm::vec2 getPopupPositionForMouse(glm::vec2 popup_size) noexcept;
+		//void drawPopup(std::string msg, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color=white) noexcept;
 
 
 		inline void drawLockInBlackQuad(glm::vec2 pos, glm::vec2 size, bool open_lock) {
@@ -51,5 +51,6 @@ class RenderSystem {
 			}
 			m_draw->drawTexture(lock_text, pos, glm::vec2{size.y, size.y} / 2.2f);
 		}
+
 
 };

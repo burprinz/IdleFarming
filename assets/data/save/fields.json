@@ -2,989 +2,7 @@
     "fields": [
         {
             "name": "plants",
-            "plants": [
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 10
-                    }
-                }
-            ]
+            "plants": []
         },
         {
             "name": "flowers",
@@ -2800,11 +1818,11 @@
             "name": "cave_machines",
             "plants": [
                 {
-                    "current_growtime": 0.08301734924316406,
+                    "current_growtime": 2844.368408203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2813,11 +1831,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.20801734924316406,
+                    "current_growtime": 2844.493408203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2826,11 +1844,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.22289657592773438,
+                    "current_growtime": 2844.509033203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2839,11 +1857,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.23732948303222656,
+                    "current_growtime": 2844.524658203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2852,11 +1870,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2514839172363281,
+                    "current_growtime": 2844.536376953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2865,11 +1883,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.266082763671875,
+                    "current_growtime": 2844.552001953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2878,11 +1896,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.26551246643066406,
+                    "current_growtime": 2844.552001953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2891,11 +1909,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2631416320800781,
+                    "current_growtime": 2844.548095703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2904,11 +1922,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2642498016357422,
+                    "current_growtime": 2844.552001953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2917,11 +1935,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2642498016357422,
+                    "current_growtime": 2844.552001953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2930,11 +1948,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.21450042724609375,
+                    "current_growtime": 2844.501220703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2943,11 +1961,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.21450042724609375,
+                    "current_growtime": 2844.501220703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2956,11 +1974,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.22289657592773438,
+                    "current_growtime": 2844.509033203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2969,11 +1987,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.23732948303222656,
+                    "current_growtime": 2844.524658203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2982,11 +2000,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2514839172363281,
+                    "current_growtime": 2844.536376953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -2995,11 +2013,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.266082763671875,
+                    "current_growtime": 2844.552001953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3008,11 +2026,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.26551246643066406,
+                    "current_growtime": 2844.552001953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3021,11 +2039,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.27918052673339844,
+                    "current_growtime": 2844.563720703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3034,11 +2052,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.29374122619628906,
+                    "current_growtime": 2844.579345703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3047,11 +2065,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.29131126403808594,
+                    "current_growtime": 2844.579345703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3060,11 +2078,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9541530609130859,
+                    "current_growtime": 2845.239501953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3073,11 +2091,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9563007354736328,
+                    "current_growtime": 2845.243408203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3086,11 +2104,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9573631286621094,
+                    "current_growtime": 2845.243408203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3099,11 +2117,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9268856048583984,
+                    "current_growtime": 2845.212158203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3112,11 +2130,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2729663848876953,
+                    "current_growtime": 2844.559814453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3125,11 +2143,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.28961944580078125,
+                    "current_growtime": 2844.575439453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3138,11 +2156,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.29053497314453125,
+                    "current_growtime": 2844.575439453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3151,11 +2169,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.3073139190673828,
+                    "current_growtime": 2844.594970703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3164,11 +2182,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5269584655761719,
+                    "current_growtime": 2844.813720703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3177,11 +2195,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5269584655761719,
+                    "current_growtime": 2844.813720703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3190,11 +2208,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6729030609130859,
+                    "current_growtime": 2844.958251953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3203,11 +2221,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6750507354736328,
+                    "current_growtime": 2844.962158203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3216,11 +2234,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6604881286621094,
+                    "current_growtime": 2844.946533203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3229,11 +2247,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6456356048583984,
+                    "current_growtime": 2844.930908203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3242,11 +2260,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6167163848876953,
+                    "current_growtime": 2844.903564453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3255,11 +2273,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5864944458007813,
+                    "current_growtime": 2844.872314453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3268,11 +2286,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5717849731445313,
+                    "current_growtime": 2844.856689453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3281,11 +2299,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5573139190673828,
+                    "current_growtime": 2844.844970703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3294,11 +2312,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5425834655761719,
+                    "current_growtime": 2844.829345703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3307,11 +2325,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5269584655761719,
+                    "current_growtime": 2844.813720703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.2000000000000002,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3320,11 +2338,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9287948608398438,
+                    "current_growtime": 2845.216064453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3333,11 +2351,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9444198608398438,
+                    "current_growtime": 2845.231689453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3346,11 +2364,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9444198608398438,
+                    "current_growtime": 2845.231689453125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3359,11 +2377,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9588775634765625,
+                    "current_growtime": 2845.243408203125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3372,11 +2390,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9712448120117188,
+                    "current_growtime": 2845.259033203125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3385,11 +2403,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9692173004150391,
+                    "current_growtime": 2845.255126953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3398,11 +2416,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9839324951171875,
+                    "current_growtime": 2845.270751953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3411,11 +2429,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9983005523681641,
+                    "current_growtime": 2844.286376953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3424,11 +2442,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9964122772216797,
+                    "current_growtime": 2845.282470703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3437,11 +2455,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9953708648681641,
+                    "current_growtime": 2845.282470703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3450,11 +2468,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9342937469482422,
+                    "current_growtime": 2845.219970703125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3463,11 +2481,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9499187469482422,
+                    "current_growtime": 2845.235595703125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3476,11 +2494,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9456558227539063,
+                    "current_growtime": 2845.231689453125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3489,11 +2507,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9588775634765625,
+                    "current_growtime": 2845.243408203125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3502,11 +2520,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9712448120117188,
+                    "current_growtime": 2845.259033203125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3515,11 +2533,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9692173004150391,
+                    "current_growtime": 2845.255126953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3528,11 +2546,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9839324951171875,
+                    "current_growtime": 2845.270751953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3541,11 +2559,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9983005523681641,
+                    "current_growtime": 2844.286376953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3554,11 +2572,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.012037277221679688,
+                    "current_growtime": 2844.298095703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3567,11 +2585,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.010995864868164063,
+                    "current_growtime": 2844.298095703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3580,11 +2598,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5728492736816406,
+                    "current_growtime": 2844.860595703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3593,11 +2611,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5741939544677734,
+                    "current_growtime": 2844.860595703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3606,11 +2624,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.967071533203125,
+                    "current_growtime": 2845.255126953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3619,11 +2637,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.985015869140625,
+                    "current_growtime": 2845.270751953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3632,11 +2650,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.002910614013671875,
+                    "current_growtime": 2844.290283203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3645,11 +2663,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7392711639404297,
+                    "current_growtime": 2845.024658203125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3658,11 +2676,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7879791259765625,
+                    "current_growtime": 2845.075439453125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3671,11 +2689,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8390331268310547,
+                    "current_growtime": 2845.126220703125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3684,11 +2702,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8429660797119141,
+                    "current_growtime": 2845.130126953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3697,11 +2715,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8429660797119141,
+                    "current_growtime": 2845.130126953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3710,11 +2728,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6353492736816406,
+                    "current_growtime": 2844.923095703125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3723,11 +2741,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6679439544677734,
+                    "current_growtime": 2844.954345703125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3736,11 +2754,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.701446533203125,
+                    "current_growtime": 2844.989501953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3749,11 +2767,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.719390869140625,
+                    "current_growtime": 2845.005126953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3762,11 +2780,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7216606140136719,
+                    "current_growtime": 2845.009033203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3775,11 +2793,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7392711639404297,
+                    "current_growtime": 2845.024658203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3788,11 +2806,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7879791259765625,
+                    "current_growtime": 2845.075439453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3801,11 +2819,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8390331268310547,
+                    "current_growtime": 2845.126220703125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3814,11 +2832,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8429660797119141,
+                    "current_growtime": 2845.130126953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3827,11 +2845,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8429660797119141,
+                    "current_growtime": 2845.130126953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3840,11 +2858,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6353492736816406,
+                    "current_growtime": 2844.923095703125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3853,11 +2871,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6679439544677734,
+                    "current_growtime": 2844.954345703125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3866,11 +2884,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.701446533203125,
+                    "current_growtime": 2844.989501953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3879,11 +2897,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.719390869140625,
+                    "current_growtime": 2845.005126953125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3892,11 +2910,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7216606140136719,
+                    "current_growtime": 2845.009033203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3905,11 +2923,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7392711639404297,
+                    "current_growtime": 2845.024658203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3918,11 +2936,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7879791259765625,
+                    "current_growtime": 2845.075439453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.3000000000000003,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3931,11 +2949,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8390331268310547,
+                    "current_growtime": 2845.126220703125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3944,11 +2962,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8429660797119141,
+                    "current_growtime": 2845.130126953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3957,11 +2975,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8429660797119141,
+                    "current_growtime": 2845.130126953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
-                        "exp": 1
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -3970,7 +2988,7 @@
                     }
                 },
                 {
-                    "current_growtime": 184152.921875,
+                    "current_growtime": 246524.53125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3983,7 +3001,7 @@
                     }
                 },
                 {
-                    "current_growtime": 184152.953125,
+                    "current_growtime": 246524.5625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3996,11 +3014,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5669155120849609,
+                    "current_growtime": 2844.852783203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -4009,11 +3027,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5825405120849609,
+                    "current_growtime": 2844.868408203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -4022,11 +3040,11 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5825405120849609,
+                    "current_growtime": 2844.868408203125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.1,
-                        "exp": 1
+                        "base": 1.0,
+                        "exp": 2
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -4035,7 +3053,7 @@
                     }
                 },
                 {
-                    "current_growtime": 184153.0,
+                    "current_growtime": 246524.609375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -4048,7 +3066,7 @@
                     }
                 },
                 {
-                    "current_growtime": 184152.578125,
+                    "current_growtime": 246524.1875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -4061,7 +3079,7 @@
                     }
                 },
                 {
-                    "current_growtime": 184152.5625,
+                    "current_growtime": 246524.171875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -4074,7 +3092,7 @@
                     }
                 },
                 {
-                    "current_growtime": 11.122987747192383,
+                    "current_growtime": 62383.42578125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -4087,7 +3105,7 @@
                     }
                 },
                 {
-                    "current_growtime": 11.122987747192383,
+                    "current_growtime": 62383.42578125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,

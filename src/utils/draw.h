@@ -80,6 +80,10 @@ public:
     void drawLinesInBox(std::vector<std::string> lines, glm::vec2 pos, glm::vec2 size, glm::vec3 color, float max_size = -1.0f) noexcept;
     void drawRainbowString(std::string text, glm::vec2 pos, float scale, std::vector<glm::vec3> colors, std::vector<int> color_ids) noexcept;
     void drawCharacter(Character ch, glm::vec2 position, float scale) noexcept;
+    void drawPopup(std::string text, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color=white) noexcept;
+    void drawPopupAtMouse(std::string text, glm::vec3 text_color=white, float text_size=normal_popup_text_size) noexcept;
+    void drawMultilinePopupAtMouse(std::string title, std::vector<std::string> lines, bool with_title, glm::vec3 text_color=white, float text_size=normal_popup_text_size) noexcept;
+
     float getOptimalScalingForMultipleLines(std::vector<std::string> lines, float line_gap, glm::vec2 size) noexcept;
     float getOptimalScaling(std::string text, glm::vec2 size) noexcept;
     float getStringWidth(std::string text, float scale) noexcept;
@@ -100,9 +104,30 @@ public:
     /*
      * Helpers
      */
+    inline glm::vec2 getPopupPositionForMouse(glm::vec2 popup_size) noexcept {
+        glm::vec2 mouse_pos = m_window->getMousePosition();
+
+        glm::vec2 result = {0, 0};
+
+        if (mouse_pos.x + popup_size.x > config::CAMERA_VIEW_WIDTH) {
+            result.x = mouse_pos.x - popup_size.x / 2.0f;
+        } else {
+            result.x = mouse_pos.x + popup_size.x / 2.0f;
+        }
+
+        if (mouse_pos.y + popup_size.y > config::CAMERA_VIEW_HEIGHT) {
+            result.y = mouse_pos.y - popup_size.y / 2.0f;
+        } else {
+            result.y = mouse_pos.y + popup_size.y / 2.0f;
+        }
+
+        return result;
+    }
+
     glm::mat4 getViewMatrix() noexcept;
 
     void onResizeCallback(GLFWwindow* window, int width, int height) noexcept;
+
 
 private:
     Window* m_window;
