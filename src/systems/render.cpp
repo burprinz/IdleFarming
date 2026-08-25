@@ -376,13 +376,46 @@ void RenderSystem::drawAchievements() noexcept {
 
         if (!found && point_in_rect(mousePos, pos, size)) {
             found = true;
-            std::string text = a.description;
+            //std::string text = a.description;
+            //m_draw->drawMultilinePopupAtMouse(text, {progress_text}, true);
+
             BigNumber current_am = BigNumber(0);
             for (std::string stat : a.needed_stat_types) {
                 current_am = current_am + StatsManager::instance().get(stat);
             }
             std::string progress_text = current_am.toString() + " / " + a.amount.toString();
-            m_draw->drawMultilinePopupAtMouse(text, {progress_text}, true);
+
+            float title_text_size = normal_popup_text_size;
+            float desc_text_size = normal_popup_text_size * (3.0f/4.0f);
+
+            float width = m_draw->getStringWidth(a.description, title_text_size) + 2*small_gap;
+            glm::vec2 popup_title = {width, m_draw->getStringHeight(a.description, normal_popup_text_size)};
+            glm::vec2 popup_desc = {width, m_draw->getStringHeight(progress_text, desc_text_size)};
+            glm::vec2 popup_prog = {width-0.5, 0.15};
+
+            glm::vec2 popup_size = {width, small_gap*4 + popup_title.y + popup_desc.y + popup_prog.y};
+
+            glm::vec2 popup_pos = m_draw->getPopupPositionForMouse(popup_size);
+            m_draw->fillRoundRect(popup_pos, popup_size, 0.1, black, 0.75f);
+
+            glm::vec2 top_left = popup_pos + glm::vec2{-popup_size.x / 2.0f, popup_size.y / 2.0f - small_gap};
+            glm::vec2 center = calc_center(top_left, popup_title);
+            m_draw->drawStringInBox(a.description, center, popup_title, white, title_text_size);
+
+            center += glm::vec2{0, -popup_title.y/2.0f - popup_desc.y/2.0f - small_gap};
+            m_draw->drawStringInBox(progress_text, center, popup_desc, white, desc_text_size);
+
+            center += glm::vec2{0, -popup_desc.y/2.0f - popup_prog.y/2.0f - small_gap};
+            glm::vec2 progress_center = center;
+
+            top_left = center - glm::vec2{popup_prog.x/2.0f, -popup_prog.y/2.0f};
+            float percentage = a.done?1.0f:current_am.percentageOf(a.amount);
+            size = {popup_prog.x * percentage, popup_prog.y};
+            center = calc_center(top_left, size);
+            m_draw->fillRectBySize(center, size, green, 1.0f);
+
+            m_draw->drawRectBySize(progress_center, popup_prog, white);
+
             //m_draw->drawPopupAtMouse(text);
             /**
             glm::vec2 popup_size = {3.0, 0.5};

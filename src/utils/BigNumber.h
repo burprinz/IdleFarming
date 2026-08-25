@@ -102,6 +102,16 @@ public:
         }
     }
 
+    float percentageOf(const BigNumber& large) const {
+        if (large.base == 0.0) {
+            return 0.0f;
+        }
+
+        float baseRatio = static_cast<float>(this->base / large.base);
+        int expDiff = this->exponent - large.exponent;
+        return baseRatio * std::pow(10.0, expDiff);
+    }
+
 private:
 
 
