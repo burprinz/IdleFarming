@@ -365,14 +365,15 @@ void RenderSystem::drawAchievements() noexcept {
 
     for (entt::entity id : m_registry->ecs.view<Achievement>()) {
         Achievement a = m_registry->ecs.get<Achievement>(id);
+        Texture text = m_registry->ecs.get<TextureInformation>(id).text;
         glm::vec2 pos = m_registry->ecs.get<Position>(id).pos;
         glm::vec2 size = m_registry->ecs.get<Dimension>(id).dim;
         glm::vec3 color = red;
         if (a.done) {
             color = green;
         }
+        m_draw->drawTexture(text, pos, size/2.0f);
         m_draw->drawRectBySize(pos, size, color);
-        m_draw->drawStringInBox(a.name, pos, size, color);
 
         if (!found && point_in_rect(mousePos, pos, size)) {
             found = true;
@@ -415,13 +416,6 @@ void RenderSystem::drawAchievements() noexcept {
             m_draw->fillRectBySize(center, size, green, 1.0f);
 
             m_draw->drawRectBySize(progress_center, popup_prog, white);
-
-            //m_draw->drawPopupAtMouse(text);
-            /**
-            glm::vec2 popup_size = {3.0, 0.5};
-            glm::vec2 popup_pos = getPopupPositionForMouse(popup_size);
-            drawPopup(text, popup_pos, popup_size, white);
-            */
         }
 
     }

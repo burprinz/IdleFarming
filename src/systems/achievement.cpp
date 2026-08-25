@@ -11,10 +11,11 @@
 #include "helpers/util.h"
 
 
-AchievementSystem AchievementSystem::init(Window *window, Registry *registry) noexcept {
+AchievementSystem AchievementSystem::init(Window *window, Registry *registry, UISystem* m_ui) noexcept {
     AchievementSystem self;
     self.m_registry = registry;
     self.m_window = window;
+    self.m_ui = m_ui;
     return self;
 }
 

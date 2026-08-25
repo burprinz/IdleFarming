@@ -92,6 +92,17 @@ inline TextureInformation create_symbol(std::string name) {
     return info;
 }
 
+inline TextureInformation create_achievement_texture(std::string name) {
+    TextureInformation info;
+    std::string text_path = getTexturePath("achievements/" + name + ".png");
+    if (std::filesystem::exists(text_path)) {
+        info.text = Texture::init(text_path);
+    } else {
+        info.text = Texture::init(getTexturePath("symbols/notfound.png"));
+    }
+    return info;
+}
+
 inline TextureInformation create_helper_texture(std::string name) {
     TextureInformation info;
     std::string text_path = getTexturePath("helpers/" + name + ".png");

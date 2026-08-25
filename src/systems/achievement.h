@@ -3,6 +3,7 @@
 // Created by luisb on 21.08.2026.
 //
 
+#include "ui.h"
 #include "window.h"
 #include "core/registry.h"
 
@@ -11,7 +12,7 @@ class AchievementSystem {
     AchievementSystem() = default;
     ~AchievementSystem() = default;
 
-    static AchievementSystem init(Window* window, Registry* registry) noexcept;
+    static AchievementSystem init(Window* window, Registry* registry, UISystem* m_ui) noexcept;
     void deinit() noexcept;
 
     void step(const float delta) noexcept;
@@ -24,4 +25,5 @@ private:
 
     Registry* m_registry;
     Window* m_window;
+    UISystem* m_ui;
 };

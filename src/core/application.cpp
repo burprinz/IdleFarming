@@ -74,7 +74,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_field = FieldSystem::init(self.m_window, self.m_registry);
 	self.m_helper = HelperSystem::init(self.m_window, self.m_registry);
 	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry, self.m_ui);
-	self.m_achievement = AchievementSystem::init(self.m_window, self.m_registry);
+	self.m_achievement = AchievementSystem::init(self.m_window, self.m_registry, self.m_ui);
 
 	return self;
 }

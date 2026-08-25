@@ -404,7 +404,6 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
     }
 }
 
-
 void UISystem::step(const float delta) noexcept {
     (void) delta;
 

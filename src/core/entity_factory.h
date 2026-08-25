@@ -351,6 +351,8 @@ private:
             return;
         }
 
+        TextureInformation texture = create_achievement_texture(name);
+
         std::string base_name = json["name"].get<std::string>();
         std::string pre_desc = json["desc_pre"].get<std::string>();
         std::string post_desc = json["desc_post"].get<std::string>();
@@ -368,6 +370,7 @@ private:
 
             entt::entity id = m_registry->ecs.create();
             m_registry->ecs.emplace<Achievement>(id, a);
+            m_registry->ecs.emplace<TextureInformation>(id, texture);
 
             m_registry->achievement_entities[a.name] = id;
             m_registry->achievements_order.push_back(id);

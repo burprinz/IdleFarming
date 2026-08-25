@@ -2737,7 +2737,7 @@
             "name": "cave_machines",
             "plants": [
                 {
-                    "current_growtime": 71964.53125,
+                    "current_growtime": 73637.8359375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2750,7 +2750,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.65625,
+                    "current_growtime": 73637.9609375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2763,7 +2763,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.671875,
+                    "current_growtime": 73637.9765625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2776,7 +2776,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.6875,
+                    "current_growtime": 73637.9921875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2789,7 +2789,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.6953125,
+                    "current_growtime": 73638.0,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2802,7 +2802,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.7109375,
+                    "current_growtime": 73638.015625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2815,7 +2815,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.7109375,
+                    "current_growtime": 73638.015625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2828,7 +2828,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.703125,
+                    "current_growtime": 73638.0078125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2841,7 +2841,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.7109375,
+                    "current_growtime": 73638.015625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2854,7 +2854,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.7109375,
+                    "current_growtime": 73638.015625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2867,7 +2867,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.65625,
+                    "current_growtime": 73637.9609375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2880,7 +2880,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.65625,
+                    "current_growtime": 73637.9609375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2893,7 +2893,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.671875,
+                    "current_growtime": 73637.9765625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2906,7 +2906,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.6875,
+                    "current_growtime": 73637.9921875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2919,7 +2919,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.6953125,
+                    "current_growtime": 73638.0,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2932,7 +2932,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.7109375,
+                    "current_growtime": 73638.015625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2945,7 +2945,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.7109375,
+                    "current_growtime": 73638.015625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2958,7 +2958,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.71875,
+                    "current_growtime": 73638.0234375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2971,7 +2971,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.734375,
+                    "current_growtime": 73638.0390625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2984,7 +2984,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.734375,
+                    "current_growtime": 73638.0390625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2997,7 +2997,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.3984375,
+                    "current_growtime": 73638.703125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3010,7 +3010,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.40625,
+                    "current_growtime": 73638.7109375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3023,7 +3023,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.40625,
+                    "current_growtime": 73638.7109375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3036,7 +3036,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.375,
+                    "current_growtime": 73638.6796875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3049,7 +3049,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.71875,
+                    "current_growtime": 73638.0234375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3062,7 +3062,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.734375,
+                    "current_growtime": 73638.0390625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3075,7 +3075,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.734375,
+                    "current_growtime": 73638.0390625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3088,7 +3088,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.75,
+                    "current_growtime": 73638.0546875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3101,7 +3101,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.96875,
+                    "current_growtime": 73638.2734375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3114,7 +3114,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.96875,
+                    "current_growtime": 73638.2734375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3127,7 +3127,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.1171875,
+                    "current_growtime": 73638.421875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3140,7 +3140,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.125,
+                    "current_growtime": 73638.4296875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3153,7 +3153,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.109375,
+                    "current_growtime": 73638.4140625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3166,7 +3166,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.09375,
+                    "current_growtime": 73638.3984375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3179,7 +3179,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.0625,
+                    "current_growtime": 73638.3671875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3192,7 +3192,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.03125,
+                    "current_growtime": 73638.3359375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3205,7 +3205,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.015625,
+                    "current_growtime": 73638.3203125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3218,7 +3218,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.0,
+                    "current_growtime": 73638.3046875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3231,7 +3231,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.984375,
+                    "current_growtime": 73638.2890625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3244,7 +3244,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.96875,
+                    "current_growtime": 73638.2734375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3257,7 +3257,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.375,
+                    "current_growtime": 73638.6796875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3270,7 +3270,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.390625,
+                    "current_growtime": 73638.6953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3283,7 +3283,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.390625,
+                    "current_growtime": 73638.6953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3296,7 +3296,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.40625,
+                    "current_growtime": 73638.7109375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3309,7 +3309,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.421875,
+                    "current_growtime": 73638.7265625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3322,7 +3322,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.4140625,
+                    "current_growtime": 73638.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3335,7 +3335,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.4296875,
+                    "current_growtime": 73638.734375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3348,7 +3348,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.4453125,
+                    "current_growtime": 73637.75,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3361,7 +3361,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.4375,
+                    "current_growtime": 73638.7421875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3374,7 +3374,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.4375,
+                    "current_growtime": 73638.7421875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3387,7 +3387,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.375,
+                    "current_growtime": 73638.6796875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3400,7 +3400,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.390625,
+                    "current_growtime": 73638.6953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3413,7 +3413,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.390625,
+                    "current_growtime": 73638.6953125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3426,7 +3426,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.40625,
+                    "current_growtime": 73638.7109375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3439,7 +3439,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.421875,
+                    "current_growtime": 73638.7265625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3452,7 +3452,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.4140625,
+                    "current_growtime": 73638.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3465,7 +3465,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.4296875,
+                    "current_growtime": 73638.734375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3478,7 +3478,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.4453125,
+                    "current_growtime": 73637.75,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3491,7 +3491,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.453125,
+                    "current_growtime": 73637.7578125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3504,7 +3504,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.453125,
+                    "current_growtime": 73637.7578125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3517,7 +3517,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.015625,
+                    "current_growtime": 73638.3203125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3530,7 +3530,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.015625,
+                    "current_growtime": 73638.3203125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3543,7 +3543,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.4140625,
+                    "current_growtime": 73638.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3556,7 +3556,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.4296875,
+                    "current_growtime": 73638.734375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3569,7 +3569,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71964.453125,
+                    "current_growtime": 73637.7578125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3582,7 +3582,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.1875,
+                    "current_growtime": 73638.4921875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3595,7 +3595,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.234375,
+                    "current_growtime": 73638.5390625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3608,7 +3608,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.28125,
+                    "current_growtime": 73638.5859375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3621,7 +3621,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.2890625,
+                    "current_growtime": 73638.59375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3634,7 +3634,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.2890625,
+                    "current_growtime": 73638.59375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3647,7 +3647,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.078125,
+                    "current_growtime": 73638.3828125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3660,7 +3660,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.109375,
+                    "current_growtime": 73638.4140625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3673,7 +3673,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.1484375,
+                    "current_growtime": 73638.453125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3686,7 +3686,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.1640625,
+                    "current_growtime": 73638.46875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3699,7 +3699,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.171875,
+                    "current_growtime": 73638.4765625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3712,7 +3712,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.1875,
+                    "current_growtime": 73638.4921875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3725,7 +3725,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.234375,
+                    "current_growtime": 73638.5390625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3738,7 +3738,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.28125,
+                    "current_growtime": 73638.5859375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3751,7 +3751,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.2890625,
+                    "current_growtime": 73638.59375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3764,7 +3764,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.2890625,
+                    "current_growtime": 73638.59375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3777,7 +3777,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.078125,
+                    "current_growtime": 73638.3828125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3790,7 +3790,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.109375,
+                    "current_growtime": 73638.4140625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3803,7 +3803,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.1484375,
+                    "current_growtime": 73638.453125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3816,7 +3816,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.1640625,
+                    "current_growtime": 73638.46875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3829,7 +3829,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.171875,
+                    "current_growtime": 73638.4765625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3842,7 +3842,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.1875,
+                    "current_growtime": 73638.4921875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3855,7 +3855,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.234375,
+                    "current_growtime": 73638.5390625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3868,7 +3868,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.28125,
+                    "current_growtime": 73638.5859375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3881,7 +3881,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.2890625,
+                    "current_growtime": 73638.59375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3894,7 +3894,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.2890625,
+                    "current_growtime": 73638.59375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3907,7 +3907,7 @@
                     }
                 },
                 {
-                    "current_growtime": 316179.3125,
+                    "current_growtime": 317862.03125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3920,7 +3920,7 @@
                     }
                 },
                 {
-                    "current_growtime": 316179.375,
+                    "current_growtime": 317862.09375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3933,7 +3933,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.015625,
+                    "current_growtime": 73638.3203125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3946,7 +3946,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.03125,
+                    "current_growtime": 73638.3359375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3959,7 +3959,7 @@
                     }
                 },
                 {
-                    "current_growtime": 71965.03125,
+                    "current_growtime": 73638.3359375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3972,7 +3972,7 @@
                     }
                 },
                 {
-                    "current_growtime": 316179.4375,
+                    "current_growtime": 317862.15625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3985,7 +3985,7 @@
                     }
                 },
                 {
-                    "current_growtime": 316179.0,
+                    "current_growtime": 317861.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3998,7 +3998,7 @@
                     }
                 },
                 {
-                    "current_growtime": 316179.0,
+                    "current_growtime": 317861.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -4011,7 +4011,7 @@
                     }
                 },
                 {
-                    "current_growtime": 131503.609375,
+                    "current_growtime": 133176.921875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -4024,7 +4024,7 @@
                     }
                 },
                 {
-                    "current_growtime": 131503.609375,
+                    "current_growtime": 133176.921875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
