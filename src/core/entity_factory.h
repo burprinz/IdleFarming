@@ -38,6 +38,8 @@ public:
 
         create_achievements();
 
+        create_playing_cards();
+
 
         int time_diff = static_cast<int>(load_time_difference());
         std::cout<<"Offline progress time: "<<time_diff<<"s"<<std::endl;
@@ -377,6 +379,29 @@ private:
             c += 1;
         }
     }
+
+    inline void create_playing_cards() {
+        std::string json_path = "/assets/data/basevalues/card_types.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading Field List"<<std::endl;
+        }
+
+        for (const auto& type : json["types"]) {
+            for (const auto& num : json["nums"]) {
+                std::string card_name = type.get<std::string>() + "_" + num.get<std::string>();
+
+                TextureInformation texture = create_card_texture(card_name);
+                (void) texture;
+
+                int value = get_card_value(num);
+                std::cout<<card_name<<" "<<value<<std::endl;
+            }
+        }
+    }
+
+
 
 
     inline void save_time() noexcept {

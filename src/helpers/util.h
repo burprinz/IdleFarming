@@ -85,3 +85,13 @@ inline std::string create_roman_num(int num) {
 
     return result;
 }
+
+inline int get_card_value(std::string name) {
+    if (name == "J" || name == "K" || name == "Q") {
+        return 10;
+    } else if (name == "A") {
+        return 11;
+    } else {
+        return std::atoi(name.c_str());
+    }
+}

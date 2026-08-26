@@ -69,50 +69,37 @@ inline std::string getTexturePath(std::string relative_path) noexcept {
     return getBasePath() + "/assets/textures/" + relative_path;
 }
 
-inline TextureInformation create_icon(std::string name) noexcept {
+inline TextureInformation create_texture(std::string path) {
     TextureInformation info;
-    std::string text_path = getTexturePath("icons/" + name + ".png");
+    std::string text_path = getTexturePath(path);
     if (std::filesystem::exists(text_path)) {
         info.text = Texture::init(text_path);
     } else {
-        info.text = Texture::init(getTexturePath("icons/notfound.png"));
+        info.text = Texture::init(getTexturePath("symbols/notfound.png"));
     }
-    info.base_size = base_icon_size;
     return info;
+}
+
+inline TextureInformation create_icon(std::string name) noexcept {
+    return create_texture("icons/" + name + ".png");
 }
 
 inline TextureInformation create_symbol(std::string name) {
-    TextureInformation info;
-    std::string text_path = getTexturePath("symbols/" + name + ".png");
-    if (std::filesystem::exists(text_path)) {
-        info.text = Texture::init(text_path);
-    } else {
-        info.text = Texture::init(getTexturePath("symbols/notfound.png"));
-    }
-    return info;
+    return create_texture("symbols/" + name + ".png");
 }
 
 inline TextureInformation create_achievement_texture(std::string name) {
-    TextureInformation info;
-    std::string text_path = getTexturePath("achievements/" + name + ".png");
-    if (std::filesystem::exists(text_path)) {
-        info.text = Texture::init(text_path);
-    } else {
-        info.text = Texture::init(getTexturePath("symbols/notfound.png"));
-    }
-    return info;
+    return create_texture("achievements/" + name + ".png");
 }
 
 inline TextureInformation create_helper_texture(std::string name) {
-    TextureInformation info;
-    std::string text_path = getTexturePath("helpers/" + name + ".png");
-    if (std::filesystem::exists(text_path)) {
-        info.text = Texture::init(text_path);
-    } else {
-        info.text = Texture::init(getTexturePath("symbols/notfound.png"));
-    }
-    return info;
+    return create_texture("helpers/" + name + ".png");
 }
+
+inline TextureInformation create_card_texture(std::string name) {
+    return create_texture("cards/card_" + name + ".png");
+}
+
 
 inline void load_current_field_plants(Registry* m_registry, nlohmann::json plant_list, size_t field_idx, int time_diff) {
     std::vector<std::vector<entt::entity>> &field_tiles = m_registry->plant_field_tiles[field_idx];
