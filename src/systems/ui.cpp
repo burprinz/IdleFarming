@@ -14,15 +14,31 @@ UISystem UISystem::init(Window *window, Registry *registry) noexcept {
     UISystem self;
     self.m_registry = registry;
     self.m_window = window;
-
-    self.initWindowSwitchButtons();
-    self.initFieldButton();
-    self.initMarketplaceTradeButtons();
-    self.initToolSmithButtons();
-    self.initHelpersButton();
-
     return self;
 }
+
+void UISystem::initBaseButtons() noexcept {
+    message_popup_close_buttons.clear();
+
+    TextButton singleMessageCLose;
+    singleMessageCLose.text = "Close";
+    singleMessageCLose.pos = message_popup_close_button_center;
+    singleMessageCLose.size = message_popup_close_button_size;
+    singleMessageCLose.on_click = [this] {
+        this->closeCurrentMessagePopup();
+    };
+    message_popup_close_buttons.push_back(singleMessageCLose);
+
+    TextButton allMessageClose;
+    allMessageClose.text = "Close all (0)";
+    allMessageClose.pos = message_popup_close_all_button_center;
+    allMessageClose.size = message_popup_close_button_size;
+    allMessageClose.on_click = [this] {
+        this->cloaseAllMessagePopups();
+    };
+    message_popup_close_buttons.push_back(allMessageClose);
+}
+
 
 void UISystem::initWindowSwitchButtons() noexcept {
 
@@ -346,7 +362,14 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
     (void) (button + action + mods);
     if (action == GLFW_PRESS) {
         if (button == GLFW_MOUSE_BUTTON_1) {
-            bool found = check_text_button_list(m_window_buttons);
+            bool found = false;
+            if (messagePopupAvailable()) {
+                found = check_text_button_list(message_popup_close_buttons);
+                if (found) {
+                    return;
+                }
+            }
+            found = check_text_button_list(m_window_buttons);
             if (found) {
                 return;
             }
@@ -409,6 +432,12 @@ void UISystem::step(const float delta) noexcept {
 
     glm::vec2 mousePos = m_window->getMousePosition();
     bool selection_found = false;
+
+    // Popup Buttons
+    if (messagePopupAvailable()) {
+        updateMessagePopupButtons();
+        selection_found = update_text_button_list(message_popup_close_buttons, mousePos, selection_found, false);
+    }
 
     // Window switch buttons
     selection_found = update_text_button_list(m_window_buttons, mousePos, selection_found, false);

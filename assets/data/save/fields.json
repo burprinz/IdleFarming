@@ -2,926 +2,7 @@
     "fields": [
         {
             "name": "plants",
-            "plants": [
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 0
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 1
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 7,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 8,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 9,
-                        "y": 8
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 9
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 0,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 1,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 2,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 3,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 4,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 5,
-                        "y": 10
-                    }
-                },
-                {
-                    "current_growtime": 5.0,
-                    "harvestable": true,
-                    "plant_name": "carrot",
-                    "pos": {
-                        "x": 6,
-                        "y": 10
-                    }
-                }
-            ]
+            "plants": []
         },
         {
             "name": "flowers",
@@ -2737,7 +1818,7 @@
             "name": "cave_machines",
             "plants": [
                 {
-                    "current_growtime": 73637.8359375,
+                    "current_growtime": 156933.5625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2750,7 +1831,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.9609375,
+                    "current_growtime": 156933.6875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2763,7 +1844,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.9765625,
+                    "current_growtime": 156933.6875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2776,7 +1857,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.9921875,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2789,7 +1870,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2802,7 +1883,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.015625,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2815,7 +1896,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.015625,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2828,7 +1909,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0078125,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2841,7 +1922,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.015625,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2854,7 +1935,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.015625,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2867,7 +1948,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.9609375,
+                    "current_growtime": 156933.6875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2880,7 +1961,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.9609375,
+                    "current_growtime": 156933.6875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2893,7 +1974,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.9765625,
+                    "current_growtime": 156933.6875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2906,7 +1987,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.9921875,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2919,7 +2000,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2932,7 +2013,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.015625,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2945,7 +2026,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.015625,
+                    "current_growtime": 156933.71875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2958,7 +2039,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0234375,
+                    "current_growtime": 156933.75,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2971,7 +2052,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0390625,
+                    "current_growtime": 156933.75,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2984,7 +2065,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0390625,
+                    "current_growtime": 156933.75,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -2997,7 +2078,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.703125,
+                    "current_growtime": 156934.40625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3010,7 +2091,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.7109375,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3023,7 +2104,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.7109375,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3036,7 +2117,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.6796875,
+                    "current_growtime": 156934.40625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3049,7 +2130,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0234375,
+                    "current_growtime": 156933.75,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3062,7 +2143,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0390625,
+                    "current_growtime": 156933.75,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3075,7 +2156,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0390625,
+                    "current_growtime": 156933.75,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3088,7 +2169,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.0546875,
+                    "current_growtime": 156933.78125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3101,7 +2182,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.2734375,
+                    "current_growtime": 156934.0,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3114,7 +2195,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.2734375,
+                    "current_growtime": 156934.0,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3127,7 +2208,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.421875,
+                    "current_growtime": 156934.125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3140,7 +2221,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.4296875,
+                    "current_growtime": 156934.15625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3153,7 +2234,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.4140625,
+                    "current_growtime": 156934.125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3166,7 +2247,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3984375,
+                    "current_growtime": 156934.125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3179,7 +2260,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3671875,
+                    "current_growtime": 156934.09375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3192,7 +2273,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3359375,
+                    "current_growtime": 156934.0625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3205,7 +2286,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3203125,
+                    "current_growtime": 156934.03125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3218,7 +2299,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3046875,
+                    "current_growtime": 156934.03125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3231,7 +2312,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.2890625,
+                    "current_growtime": 156934.0,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3244,7 +2325,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.2734375,
+                    "current_growtime": 156934.0,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3257,7 +2338,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.6796875,
+                    "current_growtime": 156934.40625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3270,7 +2351,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.6953125,
+                    "current_growtime": 156934.40625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3283,7 +2364,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.6953125,
+                    "current_growtime": 156934.40625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3296,7 +2377,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.7109375,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3309,7 +2390,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.7265625,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3322,7 +2403,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.71875,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3335,7 +2416,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.734375,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3348,7 +2429,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.75,
+                    "current_growtime": 156933.46875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3361,7 +2442,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.7421875,
+                    "current_growtime": 156934.46875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3374,7 +2455,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.7421875,
+                    "current_growtime": 156934.46875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3387,7 +2468,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.6796875,
+                    "current_growtime": 156934.40625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3400,7 +2481,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.6953125,
+                    "current_growtime": 156934.40625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3413,7 +2494,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.6953125,
+                    "current_growtime": 156934.40625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3426,7 +2507,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.7109375,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3439,7 +2520,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.7265625,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3452,7 +2533,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.71875,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3465,7 +2546,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.734375,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3478,7 +2559,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.75,
+                    "current_growtime": 156933.46875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3491,7 +2572,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.7578125,
+                    "current_growtime": 156933.46875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3504,7 +2585,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.7578125,
+                    "current_growtime": 156933.46875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3517,7 +2598,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3203125,
+                    "current_growtime": 156934.03125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3530,7 +2611,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3203125,
+                    "current_growtime": 156934.03125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3543,7 +2624,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.71875,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3556,7 +2637,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.734375,
+                    "current_growtime": 156934.4375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3569,7 +2650,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73637.7578125,
+                    "current_growtime": 156933.46875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3582,7 +2663,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.4921875,
+                    "current_growtime": 156934.21875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3595,7 +2676,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.5390625,
+                    "current_growtime": 156934.25,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3608,7 +2689,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.5859375,
+                    "current_growtime": 156934.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3621,7 +2702,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.59375,
+                    "current_growtime": 156934.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3634,7 +2715,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.59375,
+                    "current_growtime": 156934.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3647,7 +2728,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3828125,
+                    "current_growtime": 156934.09375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3660,7 +2741,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.4140625,
+                    "current_growtime": 156934.125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3673,7 +2754,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.453125,
+                    "current_growtime": 156934.15625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3686,7 +2767,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.46875,
+                    "current_growtime": 156934.1875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3699,7 +2780,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.4765625,
+                    "current_growtime": 156934.1875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3712,7 +2793,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.4921875,
+                    "current_growtime": 156934.21875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3725,7 +2806,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.5390625,
+                    "current_growtime": 156934.25,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3738,7 +2819,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.5859375,
+                    "current_growtime": 156934.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3751,7 +2832,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.59375,
+                    "current_growtime": 156934.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3764,7 +2845,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.59375,
+                    "current_growtime": 156934.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3777,7 +2858,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3828125,
+                    "current_growtime": 156934.09375,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3790,7 +2871,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.4140625,
+                    "current_growtime": 156934.125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3803,7 +2884,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.453125,
+                    "current_growtime": 156934.15625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3816,7 +2897,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.46875,
+                    "current_growtime": 156934.1875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3829,7 +2910,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.4765625,
+                    "current_growtime": 156934.1875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3842,7 +2923,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.4921875,
+                    "current_growtime": 156934.21875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3855,7 +2936,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.5390625,
+                    "current_growtime": 156934.25,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3868,7 +2949,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.5859375,
+                    "current_growtime": 156934.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3881,7 +2962,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.59375,
+                    "current_growtime": 156934.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3894,7 +2975,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.59375,
+                    "current_growtime": 156934.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3907,7 +2988,7 @@
                     }
                 },
                 {
-                    "current_growtime": 317862.03125,
+                    "current_growtime": 401627.625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3920,7 +3001,7 @@
                     }
                 },
                 {
-                    "current_growtime": 317862.09375,
+                    "current_growtime": 401627.6875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3933,7 +3014,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3203125,
+                    "current_growtime": 156934.03125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3946,7 +3027,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3359375,
+                    "current_growtime": 156934.0625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3959,7 +3040,7 @@
                     }
                 },
                 {
-                    "current_growtime": 73638.3359375,
+                    "current_growtime": 156934.0625,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3972,7 +3053,7 @@
                     }
                 },
                 {
-                    "current_growtime": 317862.15625,
+                    "current_growtime": 401627.75,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3985,7 +3066,7 @@
                     }
                 },
                 {
-                    "current_growtime": 317861.71875,
+                    "current_growtime": 401627.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -3998,7 +3079,7 @@
                     }
                 },
                 {
-                    "current_growtime": 317861.71875,
+                    "current_growtime": 401627.3125,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -4011,7 +3092,7 @@
                     }
                 },
                 {
-                    "current_growtime": 133176.921875,
+                    "current_growtime": 216472.921875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,
@@ -4024,7 +3105,7 @@
                     }
                 },
                 {
-                    "current_growtime": 133176.921875,
+                    "current_growtime": 216472.921875,
                     "harvestable": false,
                     "inventory": {
                         "base": 1.0,

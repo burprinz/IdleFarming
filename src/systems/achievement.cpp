@@ -56,7 +56,7 @@ void AchievementSystem::step(const float delta) noexcept {
 
 
 void AchievementSystem::update_achievements() noexcept {
-    for (entt::entity a_id : m_registry->ecs.view<Achievement>()) {
+    for (entt::entity a_id : m_registry->achievements_order) {
         Achievement &a = m_registry->ecs.get<Achievement>(a_id);
         if (!a.done) {
             BigNumber amount = BigNumber(0);
@@ -65,6 +65,7 @@ void AchievementSystem::update_achievements() noexcept {
             }
             if (amount >= a.amount) {
                 a.done = true;
+                m_ui->addPopupMessage("Achievement unlocked", a.name);
             }
         }
     }

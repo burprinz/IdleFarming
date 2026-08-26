@@ -47,15 +47,11 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         TextButton but = wButtons[i];
         glm::vec3 color;
         if (std::cmp_equal(i, m_registry->window())) {
-            //color = selected;
             color = button_outer_select_color;
         } else {
-            //color = but.selected?but.select_color:but.unselect_color;
             color = but.selected?button_outer_select_color:button_outer_unselect_color;
         }
 
-        //m_draw->drawRectBySize(but.pos, but.size, color);
-        //m_draw->drawStringInBox(but.text, but.pos, but.size, black);
         m_draw->fillFadeRectBySize(but.pos, but.size, color, button_inner_color, button_fading_speed);
         m_draw->drawStringInBox(but.text, but.pos, but.size, button_text_color, max_button_text_size);
 
@@ -68,6 +64,9 @@ void RenderSystem::step(const float /*delta*/) noexcept {
     std::string text = "Money: " + money.toString();
     m_draw->drawStringInBox(text, {config::CAMERA_VIEW_WIDTH-1.0, config::CAMERA_VIEW_HEIGHT-0.25}, {2.0, 0.5}, black);
 
+    /**
+     * Draw Mode
+     */
     if (m_registry->window() == FIELDS) {
         drawField();
     } else if (m_registry->window() == MARKETPLACE) {
@@ -79,6 +78,15 @@ void RenderSystem::step(const float /*delta*/) noexcept {
     } else if (m_registry->window() == ACHIEVEMENTS) {
         drawAchievements();
     }
+
+    /**
+     * Draw popup if available
+     */
+    if (m_ui->messagePopupAvailable()) {
+        MessagePopup* popup = m_ui->getCurrentMessagePopup();
+        drawPopup(popup->title, popup->text);
+    }
+
 }
 
 void RenderSystem::drawField() noexcept {
@@ -377,8 +385,6 @@ void RenderSystem::drawAchievements() noexcept {
 
         if (!found && point_in_rect(mousePos, pos, size)) {
             found = true;
-            //std::string text = a.description;
-            //m_draw->drawMultilinePopupAtMouse(text, {progress_text}, true);
 
             BigNumber current_am = BigNumber(0);
             for (std::string stat : a.needed_stat_types) {

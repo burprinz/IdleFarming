@@ -52,5 +52,16 @@ class RenderSystem {
 			m_draw->drawTexture(lock_text, pos, glm::vec2{size.y, size.y} / 2.2f);
 		}
 
+	inline void drawPopup(std::string title, std::string description) noexcept {
+			m_draw->fillRoundRect(message_popup_center, message_popup_size,0.01f, black, 1.0f);
+			m_draw->drawStringInBox(title, message_popup_title_center, message_popup_title_size, white);
+			float x = message_popup_title_center.x - message_popup_title_size.x / 2.0f + normal_gap;
+			float y = message_popup_title_center.y - message_popup_title_size.y / 2.0f + small_gap;
+			m_draw->drawLine({x, y}, {x+message_popup_title_size.x-2*normal_gap, y}, white);
+			m_draw->drawStringInBox(description, message_popup_description_center, message_popup_description_size, white);
+			drawBasicTextButtons(m_ui->message_popup_close_buttons, white, true);
+			m_draw->drawRoundRect(message_popup_center, message_popup_size, 0.01f, white);
+	}
+
 
 };

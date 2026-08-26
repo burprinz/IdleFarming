@@ -67,8 +67,13 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_entity_factory = EntityFactory::init(self.m_window, self.m_registry);
 
 	self.m_world = WorldSystem::init(self.m_window, self.m_registry, self.m_audio_engine);
+	
 	self.m_ui = new UISystem;
 	*self.m_ui = UISystem::init(self.m_window, self.m_registry);
+	self.m_ui->initWindowSwitchButtons();
+	self.m_ui->initBaseButtons();
+	self.m_ui->initButtons();
+
 	self.m_render = RenderSystem::init(self.m_window, self.m_registry, self.m_ui, self.m_draw);
 	self.m_camera = CameraSystem::init(self.m_registry);
 	self.m_field = FieldSystem::init(self.m_window, self.m_registry);
@@ -183,12 +188,9 @@ void Application::reset() noexcept {
 	/**
 	 * Reset UI
 	 */
-	m_registry->current_market_category = get_item_category_by_name(m_registry, "flowers");
+	m_registry->current_market_category = get_item_category_by_name(m_registry, "all");
 	m_ui->reset();
-	m_ui->initFieldButton();
-	m_ui->initMarketplaceTradeButtons();
-	m_ui->initToolSmithButtons();
-	m_ui->initHelpersButton();
+	m_ui->initButtons();
 
 	m_achievement.init_achievement_hover();
 

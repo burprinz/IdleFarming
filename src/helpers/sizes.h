@@ -1,4 +1,5 @@
 #pragma once
+#include "util.h"
 //
 // Created by luisb on 25.06.2026.
 //
@@ -18,6 +19,9 @@ constexpr glm::vec2 normal_button_size = {1.0, 0.5};
 constexpr glm::vec2 medium_button_size = {4.0, 0.5};
 constexpr float small_gap = 0.05f;
 constexpr float normal_gap = 0.1f;
+
+constexpr float small_text_box_height = 0.3f;
+constexpr float normal_text_box_height = 0.5f;
 
 constexpr float max_button_text_size = 0.004f;
 constexpr float normal_text_box_size = 0.009f;
@@ -53,3 +57,24 @@ constexpr glm::vec2 helper_image_center = helper_image_topleft + glm::vec2{helpe
 // Achievements
 constexpr glm::vec2 achievement_icon_size = {0.7, 0.7};
 constexpr int achievement_am_width = 16;
+
+// Message Popup
+constexpr float message_popup_w = 3.0f;
+constexpr glm::vec2 message_popup_title_size = {message_popup_w - small_gap*2, normal_text_box_height};
+constexpr glm::vec2 message_popup_description_size = {message_popup_w - small_gap*2, small_text_box_height};
+constexpr glm::vec2 message_popup_close_button_size = {message_popup_w - small_gap*2, 0.5};
+constexpr float message_popup_h = message_popup_title_size.y + message_popup_description_size.y + message_popup_close_button_size.y*2 + small_gap*5;
+
+constexpr glm::vec2 message_popup_size = {message_popup_w, message_popup_h};
+constexpr glm::vec2 message_popup_topleft = {config::CAMERA_VIEW_WIDTH - normal_gap - message_popup_size.x, message_popup_size.y + normal_gap};
+
+
+constexpr glm::vec2 message_popup_title_center = {message_popup_topleft.x + small_gap + message_popup_title_size.x/2.0f, message_popup_topleft.y - small_gap - message_popup_title_size.y/2.0f};
+constexpr glm::vec2 message_popup_description_center =
+    message_popup_title_center - glm::vec2{0.0f, message_popup_title_size.y/2.0f + small_gap + message_popup_description_size.y/2.0f};
+constexpr glm::vec2 message_popup_close_all_button_center =
+    message_popup_topleft + glm::vec2{message_popup_size.x / 2.0f, -message_popup_size.y + small_gap + message_popup_close_button_size.y / 2.0f};
+constexpr glm::vec2 message_popup_close_button_center =
+    message_popup_topleft + glm::vec2{message_popup_size.x / 2.0f, -message_popup_size.y + small_gap + message_popup_close_button_size.y + small_gap + message_popup_close_button_size.y/2.0f};
+
+constexpr glm::vec2 message_popup_center = message_popup_topleft + (glm::vec2{message_popup_size.x, -message_popup_size.y} / 2.0f);

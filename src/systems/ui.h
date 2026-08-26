@@ -24,6 +24,11 @@ struct TextButton {
     bool visible = true;
 };
 
+struct MessagePopup {
+    std::string title = "Title";
+    std::string text = "Message";
+};
+
 
 class UISystem {
 public:
@@ -35,8 +40,20 @@ public:
     void step(const float delta) noexcept;
     void reset() noexcept;
 
+    inline void initButtons() noexcept {
+        initFieldButton();
+        initMarketplaceTradeButtons();
+        initToolSmithButtons();
+        initHelpersButton();
+    }
+
     void onMouseClickCallback(GLFWwindow* window, int button, int action, int mods) noexcept;
 
+    void initBaseButtons() noexcept;
+    inline void updateMessagePopupButtons() noexcept {
+        message_popup_close_buttons[1].text = "Close all (" + std::to_string(m_message_popups.size()) + ")";
+    }
+    std::vector<TextButton> message_popup_close_buttons;
 
     void initWindowSwitchButtons() noexcept;
     std::vector<TextButton> m_window_buttons;
@@ -58,14 +75,35 @@ public:
     void initHelpersButton() noexcept;
     std::vector<TextButton> m_helper_buy_buttons;
 
+    inline void addPopupMessage(std::string title, std::string text) {
+        MessagePopup msg;
+        msg.title = title;
+        msg.text = text;
+        m_message_popups.push_back(msg);
+    };
+    inline bool messagePopupAvailable() {
+        return m_message_popups.size() > 0;
+    }
+    inline void cloaseAllMessagePopups() {
+        m_message_popups.clear();
+    }
+    inline void closeCurrentMessagePopup() {
+        m_message_popups.erase(m_message_popups.begin());
+    }
+    inline MessagePopup* getCurrentMessagePopup() {
+        return &m_message_popups[0];
+    }
 
     void update_button_states() noexcept;
+
+
 
 
 private:
     Registry* m_registry;
     Window* m_window;
 
+    std::vector<MessagePopup> m_message_popups;
 
     void initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept;
 
