@@ -95,3 +95,16 @@ inline int get_card_value(std::string name) {
         return std::atoi(name.c_str());
     }
 }
+
+inline int get_card_symbol(std::string name) {
+    if (name == "clubs") {
+        return CLUBS;
+    } else if (name == "diamonds") {
+        return DIAMONDS;
+    } else if (name == "spades") {
+        return SPADES;
+    } else if (name == "hearts") {
+        return HEARTS;
+    }
+    return -1;
+}

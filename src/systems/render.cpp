@@ -77,6 +77,8 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         drawHelpers();
     } else if (m_registry->window() == ACHIEVEMENTS) {
         drawAchievements();
+    } else if (m_registry->window() == GAMBLING) {
+        drawGambling();
     }
 
     /**
@@ -427,6 +429,25 @@ void RenderSystem::drawAchievements() noexcept {
     }
 }
 
+void RenderSystem::drawGambling() noexcept {
+    glm::vec2 card_pos = normal_topleft;
+    glm::vec2 card_size = {1.0f, 1.0f};
+    card_pos = calc_center(card_pos, card_size);
+
+    int x = 0;
+    int y = 0;
+    for (entt::entity card_id : m_registry->card_list) {
+        Texture card_text = m_registry->ecs.get<TextureInformation>(card_id).text;
+        glm::vec2 pos = card_pos + glm::vec2{x*(card_size.x + 0.05), -y*(card_size.y + 0.05)};
+        m_draw->drawTexture(card_text, pos, card_size/2.0f);
+
+        x += 1;
+        if (x > 13) {
+            x = 0;
+            y += 1;
+        }
+    }
+}
 
 
 void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color, bool with_max_size) noexcept {
@@ -621,6 +642,5 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity>> &fiel
         }
     }
 }
-
 
 

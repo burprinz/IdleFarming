@@ -103,6 +103,17 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(achievementsButton);
 
+    pos.x += size.x + normal_gap;
+
+    TextButton gableButton;
+    gableButton.pos = pos;
+    gableButton.size = size;
+    gableButton.text = "Gamble";
+    gableButton.on_click = [registry] {
+        registry->change_window(GAMBLING);
+    };
+    m_window_buttons.push_back(gableButton);
+
 }
 
 void UISystem::initFieldButton() noexcept {

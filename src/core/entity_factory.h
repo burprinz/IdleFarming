@@ -389,14 +389,23 @@ private:
         }
 
         for (const auto& type : json["types"]) {
+            int symbol = get_card_symbol(type.get<std::string>());
             for (const auto& num : json["nums"]) {
+                entt::entity card_id = m_registry->ecs.create();
+
                 std::string card_name = type.get<std::string>() + "_" + num.get<std::string>();
 
                 TextureInformation texture = create_card_texture(card_name);
-                (void) texture;
+                m_registry->ecs.emplace<TextureInformation>(card_id, texture);
 
-                int value = get_card_value(num);
-                std::cout<<card_name<<" "<<value<<std::endl;
+                PlayingCard card;
+                card.name = card_name;
+                card.symbol = symbol;
+                card.value = get_card_value(num);
+                m_registry->ecs.emplace<PlayingCard>(card_id, card);
+
+                m_registry->playing_cards[card_name] = card_id;
+                m_registry->card_list.push_back(card_id);
             }
         }
     }

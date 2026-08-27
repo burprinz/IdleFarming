@@ -15,6 +15,7 @@ constexpr int MARKETPLACE = 1;
 constexpr int TOOLSMITH = 2;
 constexpr int HELPERS = 3;
 constexpr int ACHIEVEMENTS = 4;
+constexpr int GAMBLING = 5;
 
 /**
  * Field State
@@ -41,6 +42,13 @@ constexpr int PLANTING = 0;
 constexpr int HARVESTING = 1;
 constexpr int COLLECTING = 2;
 
+/**
+ * Card Types
+ */
+constexpr int CLUBS = 0;
+constexpr int DIAMONDS = 1;
+constexpr int HEARTS = 2;
+constexpr int SPADES = 3;
 
 struct Viewport {
     glm::uvec2 m_origin;
@@ -143,6 +151,15 @@ struct FarmHelper {
     std::vector<entt::entity> working_plants; // Wanted Plants for selected Fields
 };
 
+
+/**
+ * Gamble
+ */
+struct PlayingCard {
+    std::string name;
+    int symbol = -1;
+    int value = -1;
+};
 
 
 struct Color {
@@ -304,6 +321,13 @@ public:
     std::vector<entt::entity> helpers_order;
     std::map<entt::entity, entt::entity> field_helper; // FieldID, HelperID
 
+
+    /**
+     * Gamble
+     */
+    entt::entity back_card;
+    std::vector<entt::entity> card_list;
+
     /**
      * Achievements
      */
@@ -318,12 +342,12 @@ public:
     /**
      * Maps
      */
-    std::map<std::string, entt::entity> item_entities;
-    std::map<std::string, entt::entity> tool_entities;
-    std::map<std::string, entt::entity> helper_entities;
-    std::map<std::string, entt::entity> achievement_entities;
-    std::map<std::string, size_t> field_ids;
-
+    std::unordered_map<std::string, entt::entity> item_entities;
+    std::unordered_map<std::string, entt::entity> tool_entities;
+    std::unordered_map<std::string, entt::entity> helper_entities;
+    std::unordered_map<std::string, entt::entity> achievement_entities;
+    std::unordered_map<std::string, size_t> field_ids;
+    std::unordered_map<std::string, entt::entity> playing_cards;
 
 private:
 
