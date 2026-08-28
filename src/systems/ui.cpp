@@ -405,8 +405,39 @@ void UISystem::initGambleButtons() noexcept {
     m_blackjack_bet_buttons.push_back(multiplicatorB);
 
     float x_middle = config::CAMERA_VIEW_WIDTH / 2.0f;
-    (void) x_middle;
-    // TODO Unten Mitte bet; links weniger, rechts mehr button; ganz links multiplikator (1,10,100,1000)
+
+    top_left = {x_middle-normal_button_size.x*1.5f - normal_gap, normal_gap + normal_button_size.y};
+    size = normal_button_size;
+    center = calc_center(top_left, size);
+
+    TextButton betLower;
+    betLower.text = "Lower";
+    betLower.pos = center;
+    betLower.size = size;
+    betLower.on_click = [registry] {
+        registry->bet_amount -= registry->bet_multiplicator;
+        if (registry->bet_amount < 0) {
+            registry->bet_amount = 0;
+        }
+    };
+    m_blackjack_bet_buttons.push_back(betLower);
+
+    top_left = {x_middle+normal_button_size.x*0.5f + normal_gap, normal_gap + normal_button_size.y};
+    size = normal_button_size;
+    center = calc_center(top_left, size);
+
+    TextButton betHigher;
+    betHigher.text = "Higher";
+    betHigher.pos = center;
+    betHigher.size = size;
+    betHigher.on_click = [registry] {
+        registry->bet_amount += registry->bet_multiplicator;
+        if (registry->bet_amount > registry->max_bet_amount) {
+            registry->bet_amount = registry->max_bet_amount;
+        }
+    };
+    m_blackjack_bet_buttons.push_back(betHigher);
+
 }
 
 

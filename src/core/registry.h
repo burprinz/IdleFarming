@@ -339,6 +339,8 @@ public:
     int gamble_mode = -1;
     int gamble_stage = -1;
     int bet_multiplicator = 1;
+    int bet_amount = 0;
+    int max_bet_amount = 10000;
 
     /**
      * Achievements

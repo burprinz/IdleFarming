@@ -461,6 +461,9 @@ void RenderSystem::drawGambling() noexcept {
 void RenderSystem::drawBlackjack() noexcept {
     if (m_registry->gamble_stage == BLACKJACK_BETTING) {
         drawBasicTextButtons(m_ui->m_blackjack_bet_buttons, button_text_color, true);
+        glm::vec2 betting_pos = {config::CAMERA_VIEW_WIDTH / 2.0f, normal_button_size.y / 2.0 + normal_gap};
+        m_draw->drawRectBySize(betting_pos, normal_button_size, black);
+        m_draw->drawStringInBox(std::to_string(m_registry->bet_amount), betting_pos, normal_button_size, black);
     }
 }
 
