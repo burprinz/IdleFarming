@@ -430,6 +430,14 @@ void RenderSystem::drawAchievements() noexcept {
 }
 
 void RenderSystem::drawGambling() noexcept {
+
+    drawBasicTextButtons(m_ui->m_gamble_mode_select_buttons, button_text_color, true);
+
+    if (m_registry->gamble_mode == BLACKJACK) {
+        drawBlackjack();
+    }
+
+    /*
     glm::vec2 card_pos = normal_topleft;
     glm::vec2 card_size = {1.0f, 1.0f};
     card_pos = calc_center(card_pos, card_size);
@@ -447,7 +455,15 @@ void RenderSystem::drawGambling() noexcept {
             y += 1;
         }
     }
+    */
 }
+
+void RenderSystem::drawBlackjack() noexcept {
+    if (m_registry->gamble_stage == BLACKJACK_BETTING) {
+        drawBasicTextButtons(m_ui->m_blackjack_bet_buttons, button_text_color, true);
+    }
+}
+
 
 
 void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color, bool with_max_size) noexcept {

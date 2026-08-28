@@ -169,6 +169,8 @@ add_executable(${PROJECT_NAME}
 		src/core/stats.h
 		src/systems/achievement.cpp
 		src/systems/achievement.h
+		src/systems/gamble.cpp
+		src/systems/gamble.h
 )
 
 

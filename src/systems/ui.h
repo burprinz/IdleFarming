@@ -45,6 +45,7 @@ public:
         initMarketplaceTradeButtons();
         initToolSmithButtons();
         initHelpersButton();
+        initGambleButtons();
     }
 
     void onMouseClickCallback(GLFWwindow* window, int button, int action, int mods) noexcept;
@@ -74,6 +75,10 @@ public:
 
     void initHelpersButton() noexcept;
     std::vector<TextButton> m_helper_buy_buttons;
+
+    void initGambleButtons() noexcept;
+    std::vector<TextButton> m_gamble_mode_select_buttons;
+    std::vector<TextButton> m_blackjack_bet_buttons;
 
     inline void addPopupMessage(std::string title, std::string text) {
         MessagePopup msg;

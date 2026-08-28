@@ -50,6 +50,15 @@ constexpr int DIAMONDS = 1;
 constexpr int HEARTS = 2;
 constexpr int SPADES = 3;
 
+/**
+ * Gamble Modes
+ */
+constexpr int BLACKJACK = 0;
+
+constexpr int BLACKJACK_BETTING = 0;
+constexpr int BLACKJACK_TAKING = 1;
+constexpr int BLACKJACK_FOLD = 2;
+
 struct Viewport {
     glm::uvec2 m_origin;
     glm::uvec2 m_size;
@@ -327,6 +336,9 @@ public:
      */
     entt::entity back_card;
     std::vector<entt::entity> card_list;
+    int gamble_mode = -1;
+    int gamble_stage = -1;
+    int bet_multiplicator = 1;
 
     /**
      * Achievements

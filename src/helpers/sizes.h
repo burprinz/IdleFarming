@@ -16,6 +16,7 @@ constexpr int normal_field_amount = normal_field_width * normal_filed_height;
 constexpr glm::vec2 normal_topleft = {0.1, config::CAMERA_VIEW_HEIGHT-0.7};
 constexpr glm::vec2 small_button_size = {0.5, 0.25};
 constexpr glm::vec2 normal_button_size = {1.0, 0.5};
+constexpr glm::vec2 normal_long_button_size = {2.0, 0.5};
 constexpr glm::vec2 medium_button_size = {4.0, 0.5};
 constexpr float small_gap = 0.05f;
 constexpr float normal_gap = 0.1f;
@@ -57,6 +58,10 @@ constexpr glm::vec2 helper_image_center = helper_image_topleft + glm::vec2{helpe
 // Achievements
 constexpr glm::vec2 achievement_icon_size = {0.7, 0.7};
 constexpr int achievement_am_width = 16;
+
+// Gambling
+
+
 
 // Message Popup
 constexpr float message_popup_w = 3.0f;

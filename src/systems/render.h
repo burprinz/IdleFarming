@@ -32,6 +32,9 @@ class RenderSystem {
 		void drawAchievements() noexcept;
 		void drawGambling() noexcept;
 
+
+		void drawBlackjack() noexcept;
+
 		void drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color, bool with_max_size) noexcept;
 		void drawBasicTextButton(TextButton &b, glm::vec3 text_color, bool with_max_size) noexcept;
 

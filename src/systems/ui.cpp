@@ -4,6 +4,8 @@
 
 #include "ui.h"
 
+#include <bits/regex_constants.h>
+
 #include "../helpers/sizes.h"
 #include "../helpers/util.h"
 #include "core/stats.h"
@@ -360,6 +362,56 @@ void UISystem::initHelpersButton() noexcept {
     }
 }
 
+void UISystem::initGambleButtons() noexcept {
+    m_gamble_mode_select_buttons.clear();
+    m_blackjack_bet_buttons.clear();
+    Registry* registry = m_registry;
+
+    glm::vec2 top_left = field_cell_topleft;
+    glm::vec2 size = normal_button_size;
+    glm::vec2 center = calc_center(top_left, size);
+
+    TextButton blackjackB;
+    blackjackB.text = "Blackjack";
+    blackjackB.pos = center;
+    blackjackB.size = size;
+    blackjackB.on_click = [registry] {
+        if (registry->gamble_mode != BLACKJACK) {
+            registry->gamble_stage = BLACKJACK_BETTING;
+        }
+        registry->gamble_mode = BLACKJACK;
+    };
+    m_gamble_mode_select_buttons.push_back(blackjackB);
+
+    size = normal_long_button_size;
+    top_left = {normal_gap, normal_gap + normal_button_size.y};
+    center = calc_center(top_left, size);
+
+    size_t idx = m_blackjack_bet_buttons.size();
+    TextButton multiplicatorB;
+    multiplicatorB.text = "Bet Amount (1)";
+    multiplicatorB.pos = center;
+    multiplicatorB.size = size;
+    multiplicatorB.on_click = [registry, this, idx] {
+        int current_mult = registry->bet_multiplicator;
+        int next_mult = current_mult*10;
+        if (next_mult > 1000) {
+            next_mult = 1;
+        }
+        registry->bet_multiplicator = next_mult;
+        this->m_blackjack_bet_buttons[idx].text = "Bet Amount (" + std::to_string(registry->bet_multiplicator) + ")";
+    };
+    m_registry->bet_multiplicator = 1;
+    m_blackjack_bet_buttons.push_back(multiplicatorB);
+
+    float x_middle = config::CAMERA_VIEW_WIDTH / 2.0f;
+    (void) x_middle;
+    // TODO Unten Mitte bet; links weniger, rechts mehr button; ganz links multiplikator (1,10,100,1000)
+}
+
+
+
+
 void UISystem::deinit() noexcept {
 
 }
@@ -433,6 +485,20 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                 if (found) {
                     return;
                 }
+            } else if (m_registry->window() == GAMBLING) {
+                found = check_text_button_list(m_gamble_mode_select_buttons);
+                if (found) {
+                    return;
+                }
+
+                if (m_registry->gamble_mode == BLACKJACK) {
+                    if (m_registry->gamble_stage == BLACKJACK_BETTING) {
+                        found = check_text_button_list(m_blackjack_bet_buttons);
+                        if (found) {
+                            return;
+                        }
+                    }
+                }
             }
         }
     }
@@ -498,6 +564,14 @@ void UISystem::step(const float delta) noexcept {
 
         (void) selection_found;
 
+    } else if (m_registry->window() == GAMBLING) {
+        selection_found = update_text_button_list(m_gamble_mode_select_buttons, mousePos, selection_found, false);
+
+        if (m_registry->gamble_mode == BLACKJACK) {
+            if (m_registry->gamble_stage == BLACKJACK_BETTING) {
+                selection_found = update_text_button_list(m_blackjack_bet_buttons, mousePos, selection_found, false);
+            }
+        }
     }
 }
 
