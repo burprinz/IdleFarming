@@ -419,7 +419,7 @@ void UISystem::initGambleButtons() noexcept {
         if (registry->bet_amount < 0) {
             registry->bet_amount = 0;
         }
-        print_list(create_chip_list(registry, registry->bet_amount), "Chips");
+        registry->bet_chips = create_chip_list(registry, registry->bet_amount);
     };
     m_blackjack_bet_buttons.push_back(betLower);
 
@@ -436,7 +436,7 @@ void UISystem::initGambleButtons() noexcept {
         if (registry->bet_amount > registry->max_bet_amount) {
             registry->bet_amount = registry->max_bet_amount;
         }
-        print_list(create_chip_list(registry, registry->bet_amount), "Chips");
+        registry->bet_chips = create_chip_list(registry, registry->bet_amount);
     };
     m_blackjack_bet_buttons.push_back(betHigher);
 

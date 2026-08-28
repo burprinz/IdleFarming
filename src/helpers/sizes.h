@@ -60,7 +60,8 @@ constexpr glm::vec2 achievement_icon_size = {0.7, 0.7};
 constexpr int achievement_am_width = 16;
 
 // Gambling
-
+constexpr glm::vec2 chip_size = {0.5, 0.5};
+constexpr glm::vec2 chip_row_start = {config::CAMERA_VIEW_WIDTH/2.0f - chip_size.x - normal_gap, normal_button_size.y + normal_gap*2 + chip_size.y/2.0};
 
 
 // Message Popup
