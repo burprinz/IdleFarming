@@ -336,11 +336,13 @@ public:
      */
     entt::entity back_card;
     std::vector<entt::entity> card_list;
+    std::vector<int> chip_list;
     int gamble_mode = -1;
     int gamble_stage = -1;
     int bet_multiplicator = 1;
     int bet_amount = 0;
     int max_bet_amount = 10000;
+    std::vector<int> bet_chips;
 
     /**
      * Achievements
@@ -362,6 +364,7 @@ public:
     std::unordered_map<std::string, entt::entity> achievement_entities;
     std::unordered_map<std::string, size_t> field_ids;
     std::unordered_map<std::string, entt::entity> playing_cards;
+    std::unordered_map<int, entt::entity> poker_chips;
 
 private:
 

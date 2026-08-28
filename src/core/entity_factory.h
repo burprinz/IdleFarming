@@ -39,6 +39,7 @@ public:
         create_achievements();
 
         create_playing_cards();
+        create_poker_chips();
 
 
         int time_diff = static_cast<int>(load_time_difference());
@@ -410,7 +411,23 @@ private:
         }
     }
 
+    inline void create_poker_chips() {
+        std::string json_path = "/assets/data/basevalues/poker_chips.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading Field List"<<std::endl;
+        }
 
+        for (const auto& chips : json["chips"]) {
+            entt::entity id = m_registry->ecs.create();
+            int value = chips.get<int>();
+            TextureInformation texture = create_chip_texture(value);
+            m_registry->ecs.emplace<TextureInformation>(id, texture);
+            m_registry->poker_chips[value] = id;
+            m_registry->chip_list.push_back(value);
+        }
+    }
 
 
     inline void save_time() noexcept {

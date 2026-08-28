@@ -437,7 +437,7 @@ void RenderSystem::drawGambling() noexcept {
         drawBlackjack();
     }
 
-    /*
+
     glm::vec2 card_pos = normal_topleft;
     glm::vec2 card_size = {1.0f, 1.0f};
     card_pos = calc_center(card_pos, card_size);
@@ -455,7 +455,7 @@ void RenderSystem::drawGambling() noexcept {
             y += 1;
         }
     }
-    */
+
 }
 
 void RenderSystem::drawBlackjack() noexcept {

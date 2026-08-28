@@ -2,7 +2,7 @@
 
 #include <chrono>
 #include <common.h>
-
+#include <iostream>
 #include "config.h"
 #include "../core/registry.h"
 #include "window.h"
@@ -107,4 +107,33 @@ inline int get_card_symbol(std::string name) {
         return HEARTS;
     }
     return -1;
+}
+
+inline std::vector<int> create_chip_list(Registry* m_registry, int bet) {
+    int remaining = bet;
+    std::vector<int> result;
+
+    for (auto i = m_registry->chip_list.rbegin(); i != m_registry->chip_list.rend(); ++i) {
+        if (remaining == 0) {
+            break;
+        }
+        int current_chip_value = *i;
+        while (remaining >= current_chip_value) {
+            result.push_back(current_chip_value);
+            remaining -= current_chip_value;
+        }
+    }
+    return result;
+}
+
+template <typename T>
+inline void print_list(std::vector<T> list, std::string name="list") {
+    std::cout<<name<<"=[";
+    for (size_t i = 0; i < list.size(); i++) {
+        std::cout<<list[i];
+        if (i != list.size()-1) {
+            std::cout<<", ";
+        }
+    }
+    std::cout<<"]"<<std::endl;
 }

@@ -100,6 +100,10 @@ inline TextureInformation create_card_texture(std::string name) {
     return create_texture("cards/card_" + name + ".png");
 }
 
+inline TextureInformation create_chip_texture(int value) {
+    return create_texture("poker_chips/" + std::to_string(value) + ".png");
+
+}
 
 inline void load_current_field_plants(Registry* m_registry, nlohmann::json plant_list, size_t field_idx, int time_diff) {
     std::vector<std::vector<entt::entity>> &field_tiles = m_registry->plant_field_tiles[field_idx];

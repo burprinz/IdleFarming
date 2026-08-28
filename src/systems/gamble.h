@@ -19,6 +19,7 @@ private:
     Window* m_window;
 
 
+
     void blackjackStep(const float delta);
 
 };
