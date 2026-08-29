@@ -334,9 +334,11 @@ public:
     /**
      * Gamble
      */
+    entt::entity chips;
     entt::entity back_card;
     std::vector<entt::entity> card_list;
     std::vector<int> chip_list;
+
     int gamble_mode = -1;
     int gamble_stage = -1;
     int bet_multiplicator = 1;

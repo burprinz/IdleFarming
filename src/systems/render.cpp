@@ -7,6 +7,9 @@
 #include "../helpers/colors.h"
 #include "../helpers/sizes.h"
 #include "core/stats.h"
+#include "glm/vec2.hpp"
+#include "glm/vec3.hpp"
+#include "glm/detail/func_packing_simd.inl"
 #include "helpers/finder.h"
 #include "helpers/transaction.h"
 #include "utils/BigNumber.h"
@@ -438,23 +441,7 @@ void RenderSystem::drawGambling() noexcept {
     }
 
 
-    glm::vec2 card_pos = normal_topleft;
-    glm::vec2 card_size = {1.0f, 1.0f};
-    card_pos = calc_center(card_pos, card_size);
 
-    glm::vec2 chip_pos = chip_row_start;
-    int x = 0;
-    int y = 0;
-    for (int i : m_registry->bet_chips) {
-        glm::vec2 pos = chip_pos + glm::vec2{x*(chip_size.x+normal_gap), y*(chip_size.y+normal_gap)};
-        m_draw->drawTexture(m_registry->ecs.get<TextureInformation>(m_registry->poker_chips[i]).text, pos, chip_size/2.0f);
-
-        x += 1;
-        if (x >= 3) {
-            x = 0;
-            y += 1;
-        }
-    }
 
     /*
     int x = 0;
@@ -476,9 +463,30 @@ void RenderSystem::drawGambling() noexcept {
 void RenderSystem::drawBlackjack() noexcept {
     if (m_registry->gamble_stage == BLACKJACK_BETTING) {
         drawBasicTextButtons(m_ui->m_blackjack_bet_buttons, button_text_color, true);
+
+        /*
         glm::vec2 betting_pos = {config::CAMERA_VIEW_WIDTH / 2.0f, normal_button_size.y / 2.0 + normal_gap};
         m_draw->drawRectBySize(betting_pos, normal_button_size, black);
         m_draw->drawStringInBox(std::to_string(m_registry->bet_amount), betting_pos, normal_button_size, black);
+        */
+    }
+
+    glm::vec2 card_pos = normal_topleft;
+    glm::vec2 card_size = {1.0f, 1.0f};
+    card_pos = calc_center(card_pos, card_size);
+
+    glm::vec2 chip_pos = m_registry->ecs.get<Position>(m_registry->chips).pos;
+    int x = 0;
+    int y = 0;
+    for (int i : m_registry->bet_chips) {
+        glm::vec2 pos = chip_pos + glm::vec2{x*(chip_size.x+normal_gap), y*(chip_size.y+normal_gap)};
+        m_draw->drawTexture(m_registry->ecs.get<TextureInformation>(m_registry->poker_chips[i]).text, pos, chip_size/2.0f);
+
+        x += 1;
+        if (x >= 3) {
+            x = 0;
+            y += 1;
+        }
     }
 }
 

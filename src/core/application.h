@@ -13,6 +13,7 @@
 #include "systems/unlock.h"
 #include "core/entity_factory.h"
 #include "systems/achievement.h"
+#include "systems/gamble.h"
 #include "systems/helper.h"
 
 
@@ -42,6 +43,8 @@ class Application {
 
 		UnlockSystem m_unlock;
 		AchievementSystem m_achievement;
+
+		GambleSystem m_gamble;
 
 		EntityFactory m_entity_factory;
 

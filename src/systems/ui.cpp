@@ -377,6 +377,7 @@ void UISystem::initGambleButtons() noexcept {
     blackjackB.size = size;
     blackjackB.on_click = [registry] {
         if (registry->gamble_mode != BLACKJACK) {
+            registry->ecs.get<Position>(registry->chips).pos = chip_row_start;
             registry->gamble_stage = BLACKJACK_BETTING;
         }
         registry->gamble_mode = BLACKJACK;
@@ -405,6 +406,20 @@ void UISystem::initGambleButtons() noexcept {
     m_blackjack_bet_buttons.push_back(multiplicatorB);
 
     float x_middle = config::CAMERA_VIEW_WIDTH / 2.0f;
+
+    size = normal_button_size;
+    center = {config::CAMERA_VIEW_WIDTH / 2.0f, normal_button_size.y / 2.0 + normal_gap};
+    TextButton placeBet;
+    placeBet.text = "Place Bet";
+    placeBet.pos = center;
+    placeBet.size = size;
+    placeBet.on_click = [registry] {
+        if (registry->bet_amount > 0) {
+            registry->ecs.get<Position>(registry->chips).pos = chip_row_start;
+            registry->gamble_stage = BLACKJACK_TAKING;
+        }
+    };
+    m_blackjack_bet_buttons.push_back(placeBet);
 
     top_left = {x_middle-normal_button_size.x*1.5f - normal_gap, normal_gap + normal_button_size.y};
     size = normal_button_size;

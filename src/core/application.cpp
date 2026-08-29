@@ -80,6 +80,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_helper = HelperSystem::init(self.m_window, self.m_registry);
 	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_achievement = AchievementSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_gamble = GambleSystem::init(self.m_window, self.m_registry);
 
 	return self;
 }
@@ -92,6 +93,7 @@ void Application::deinit() noexcept {
 	m_helper.deinit();
 	m_unlock.deinit();
 	m_achievement.deinit();
+	m_gamble.deinit();
 
 	m_draw->deinit();
 
@@ -145,6 +147,8 @@ void Application::run() noexcept {
 
 		m_achievement.step(delta_time);
 
+		m_gamble.step(delta_time);
+
 		m_camera.step(delta_time);
 
 		m_draw->start();
@@ -170,6 +174,9 @@ void Application::reset() noexcept {
 
 	entt::entity money = m_registry->create_money();
 	m_registry->ecs.emplace<Amount>(money);
+
+	m_registry->chips = m_registry->ecs.create();
+	m_registry->ecs.emplace<Position>(m_registry->chips);
 
 	// Reset world before factory
 	m_world.reset();

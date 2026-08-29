@@ -18,7 +18,12 @@ private:
     Registry* m_registry;
     Window* m_window;
 
-
+    bool animation_done = false;
+    bool animation_decelerating = false;
+    float animation_pos = 0.0f;
+    float animation_vel = 0.0f;
+    float animation_acc = 33.5f; // 1s = 4.45
+    float animation_min_vel = 0.4f; // 1s = 0.3
 
     void blackjackStep(const float delta);
 
