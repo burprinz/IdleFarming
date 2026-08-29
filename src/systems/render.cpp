@@ -444,6 +444,11 @@ void RenderSystem::drawGambling() noexcept {
 
 
     /*
+
+    glm::vec2 card_pos = normal_topleft;
+    glm::vec2 card_size = {1.0f, 1.0f};
+    card_pos = calc_center(card_pos, card_size);
+
     int x = 0;
     int y = 0;
     for (entt::entity card_id : m_registry->card_list) {
@@ -471,9 +476,20 @@ void RenderSystem::drawBlackjack() noexcept {
         */
     }
 
-    glm::vec2 card_pos = normal_topleft;
-    glm::vec2 card_size = {1.0f, 1.0f};
-    card_pos = calc_center(card_pos, card_size);
+    for (entt::entity card_id : m_registry->player_cards) {
+        Texture t = m_registry->ecs.get<TextureInformation>(card_id).text;
+        glm::vec2 pos = m_registry->ecs.get<Position>(card_id).pos;
+        glm::vec2 size = card_size/2.0f;
+        m_draw->drawTexture(t, pos, size);
+    }
+    for (entt::entity card_id : m_registry->dealer_cards) {
+        Texture t = m_registry->ecs.get<TextureInformation>(card_id).text;
+        glm::vec2 pos = m_registry->ecs.get<Position>(card_id).pos;
+        glm::vec2 size = card_size/2.0f;
+        m_draw->drawTexture(t, pos, size);
+    }
+
+
 
     glm::vec2 chip_pos = m_registry->ecs.get<Position>(m_registry->chips).pos;
     int x = 0;

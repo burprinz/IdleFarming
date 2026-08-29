@@ -168,6 +168,7 @@ struct PlayingCard {
     std::string name;
     int symbol = -1;
     int value = -1;
+    bool hidden = false;
 };
 
 
@@ -345,6 +346,13 @@ public:
     int bet_amount = 0;
     int max_bet_amount = 10000;
     std::vector<int> bet_chips;
+    bool can_click = true;
+
+    // Blackjack
+    std::vector<entt::entity> player_cards;
+    std::vector<entt::entity> dealer_cards;
+    int player_value = 0;
+    int dealer_value = 0;
 
     /**
      * Achievements

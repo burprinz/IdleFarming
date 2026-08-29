@@ -405,6 +405,8 @@ private:
                 card.value = get_card_value(num);
                 m_registry->ecs.emplace<PlayingCard>(card_id, card);
 
+                m_registry->ecs.emplace<Position>(card_id);
+
                 m_registry->playing_cards[card_name] = card_id;
                 m_registry->card_list.push_back(card_id);
             }

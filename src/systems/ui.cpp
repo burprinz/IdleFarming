@@ -379,6 +379,7 @@ void UISystem::initGambleButtons() noexcept {
         if (registry->gamble_mode != BLACKJACK) {
             registry->ecs.get<Position>(registry->chips).pos = chip_row_start;
             registry->gamble_stage = BLACKJACK_BETTING;
+            registry->can_click = true;
         }
         registry->gamble_mode = BLACKJACK;
     };
@@ -417,6 +418,7 @@ void UISystem::initGambleButtons() noexcept {
         if (registry->bet_amount > 0) {
             registry->ecs.get<Position>(registry->chips).pos = chip_row_start;
             registry->gamble_stage = BLACKJACK_TAKING;
+            registry->can_click = false;
         }
     };
     m_blackjack_bet_buttons.push_back(placeBet);
