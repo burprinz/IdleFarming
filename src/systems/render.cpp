@@ -469,11 +469,46 @@ void RenderSystem::drawBlackjack() noexcept {
     if (m_registry->gamble_stage == BLACKJACK_BETTING) {
         drawBasicTextButtons(m_ui->m_blackjack_bet_buttons, button_text_color, true);
 
+        bool bet_found = false;
+        for (TextButton but : m_ui->m_blackjack_bet_buttons) {
+            if (!bet_found && but.text == "Place Bet") {
+                bet_found = true;
+                if (BigNumber(m_registry->bet_amount) > m_registry->ecs.get<Amount>(m_registry->money()).am) {
+                    glm::vec3 color = gray;
+                    m_draw->drawButton(but.text, but.pos, but.size, color, button_inner_color, white, true);
+                } else {
+                    drawBasicTextButton(but, white, true);
+                }
+            } else {
+                drawBasicTextButton(but, white, true);
+            }
+        }
+
         /*
         glm::vec2 betting_pos = {config::CAMERA_VIEW_WIDTH / 2.0f, normal_button_size.y / 2.0 + normal_gap};
         m_draw->drawRectBySize(betting_pos, normal_button_size, black);
         m_draw->drawStringInBox(std::to_string(m_registry->bet_amount), betting_pos, normal_button_size, black);
         */
+    } else if (m_registry->gamble_stage == BLACKJACK_TAKING) {
+
+        if (m_registry->can_click) {
+            bool double_down_found = false;
+            for (TextButton but : m_ui->m_blackjack_play_buttons) {
+                if (!double_down_found && but.text == "Double Down") {
+                    double_down_found = true;
+                    int doubled_bet = m_registry->bet_amount*2;
+                    if (m_registry->player_cards.size() != 2 || BigNumber(doubled_bet) > m_registry->ecs.get<Amount>(m_registry->money()).am) {
+                        glm::vec3 color = gray;
+                        m_draw->drawButton(but.text, but.pos, but.size, color, button_inner_color, white, true);
+                    } else {
+                        drawBasicTextButton(but, white, true);
+                    }
+                } else {
+                    drawBasicTextButton(but, white, true);
+                }
+            }
+        }
+
     }
 
     for (entt::entity card_id : m_registry->player_cards) {
@@ -483,10 +518,14 @@ void RenderSystem::drawBlackjack() noexcept {
         m_draw->drawTexture(t, pos, size);
     }
     for (entt::entity card_id : m_registry->dealer_cards) {
-        Texture t = m_registry->ecs.get<TextureInformation>(card_id).text;
+        Texture t = !m_registry->ecs.get<PlayingCard>(card_id).hidden
+            ? m_registry->ecs.get<TextureInformation>(card_id).text
+            : m_registry->ecs.get<TextureInformation>(m_registry->back_card).text;
         glm::vec2 pos = m_registry->ecs.get<Position>(card_id).pos;
         glm::vec2 size = card_size/2.0f;
+
         m_draw->drawTexture(t, pos, size);
+
     }
 
 

@@ -365,6 +365,8 @@ void UISystem::initHelpersButton() noexcept {
 void UISystem::initGambleButtons() noexcept {
     m_gamble_mode_select_buttons.clear();
     m_blackjack_bet_buttons.clear();
+    m_blackjack_play_buttons.clear();
+
     Registry* registry = m_registry;
 
     glm::vec2 top_left = field_cell_topleft;
@@ -415,7 +417,7 @@ void UISystem::initGambleButtons() noexcept {
     placeBet.pos = center;
     placeBet.size = size;
     placeBet.on_click = [registry] {
-        if (registry->bet_amount > 0) {
+        if (registry->bet_amount > 0 && BigNumber(registry->bet_amount) <= registry->ecs.get<Amount>(registry->money()).am) {
             registry->ecs.get<Position>(registry->chips).pos = chip_row_start;
             registry->gamble_stage = BLACKJACK_TAKING;
             registry->can_click = false;
@@ -457,6 +459,47 @@ void UISystem::initGambleButtons() noexcept {
     };
     m_blackjack_bet_buttons.push_back(betHigher);
 
+    size = normal_button_size;
+    center = {config::CAMERA_VIEW_WIDTH / 2.0f, normal_button_size.y / 2.0 + normal_gap};
+    TextButton double_down;
+    double_down.text = "Double Down";
+    double_down.pos = center;
+    double_down.size = size;
+    double_down.on_click = [registry] {
+        int doubled_bet = registry->bet_amount*2;
+        if (registry->player_cards.size() == 2 && BigNumber(doubled_bet) <= registry->ecs.get<Amount>(registry->money()).am) {
+            registry->bet_amount = doubled_bet;
+            registry->bet_chips = create_chip_list(registry, registry->bet_amount);
+            registry->blackjack_action = BLACKJACK_DOUBLE_DOWN;
+        }
+    };
+    m_blackjack_play_buttons.push_back(double_down);
+
+    top_left = {x_middle-normal_button_size.x*1.5f - normal_gap, normal_gap + normal_button_size.y};
+    size = normal_button_size;
+    center = calc_center(top_left, size);
+    TextButton hit;
+    hit.text = "Hit";
+    hit.pos = center;
+    hit.size = size;
+    hit.on_click = [registry] {
+        registry->blackjack_action = BLACKJACK_HIT;
+    };
+    m_blackjack_play_buttons.push_back(hit);
+
+
+    top_left = {x_middle+normal_button_size.x*0.5f + normal_gap, normal_gap + normal_button_size.y};
+    size = normal_button_size;
+    center = calc_center(top_left, size);
+    TextButton stand;
+    stand.text = "Stand";
+    stand.pos = center;
+    stand.size = size;
+    stand.on_click = [registry] {
+        registry->blackjack_action = BLACKJACK_STAND;
+    };
+    m_blackjack_play_buttons.push_back(stand);
+
 }
 
 
@@ -471,7 +514,8 @@ void UISystem::reset() noexcept {
 }
 
 void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, int mods) noexcept {
-    (void) window;
+    if (m_registry->can_click) {
+        (void) window;
     (void) (button + action + mods);
     if (action == GLFW_PRESS) {
         if (button == GLFW_MOUSE_BUTTON_1) {
@@ -547,10 +591,16 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                         if (found) {
                             return;
                         }
+                    } else if (m_registry->gamble_stage == BLACKJACK_TAKING) {
+                        found = check_text_button_list(m_blackjack_play_buttons);
+                        if (found) {
+                            return;
+                        }
                     }
                 }
             }
         }
+    }
     }
 }
 
@@ -620,6 +670,8 @@ void UISystem::step(const float delta) noexcept {
         if (m_registry->gamble_mode == BLACKJACK) {
             if (m_registry->gamble_stage == BLACKJACK_BETTING) {
                 selection_found = update_text_button_list(m_blackjack_bet_buttons, mousePos, selection_found, false);
+            } else if (m_registry->gamble_stage == BLACKJACK_TAKING) {
+                selection_found = update_text_button_list(m_blackjack_play_buttons, mousePos, selection_found, false);
             }
         }
     }

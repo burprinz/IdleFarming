@@ -58,6 +58,12 @@ constexpr int BLACKJACK = 0;
 constexpr int BLACKJACK_BETTING = 0;
 constexpr int BLACKJACK_TAKING = 1;
 constexpr int BLACKJACK_FOLD = 2;
+constexpr int BLACKJACK_OVER = 3;
+
+constexpr int BLACKJACK_NOTHING = 0;
+constexpr int BLACKJACK_HIT = 1;
+constexpr int BLACKJACK_DOUBLE_DOWN = 2;
+constexpr int BLACKJACK_STAND = 3;
 
 struct Viewport {
     glm::uvec2 m_origin;
@@ -347,6 +353,7 @@ public:
     int max_bet_amount = 10000;
     std::vector<int> bet_chips;
     bool can_click = true;
+    int blackjack_action = BLACKJACK_NOTHING;
 
     // Blackjack
     std::vector<entt::entity> player_cards;

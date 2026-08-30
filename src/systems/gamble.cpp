@@ -29,25 +29,20 @@ void GambleSystem::step(const float delta) noexcept {
 
 void GambleSystem::blackjackStep(const float delta) {
 
-    std::cout<<"Player)";
-    for (entt::entity card: m_registry->player_cards) {
-        std::cout<<" "<<m_registry->ecs.get<PlayingCard>(card).name;
-    }
-    std::cout<<std::endl;
-    std::cout<<"Dealer)";
-    for (entt::entity card: m_registry->dealer_cards) {
-        std::cout<<" "<<m_registry->ecs.get<PlayingCard>(card).name;
-    }
-    std::cout<<std::endl;
-
     if (m_registry->gamble_stage == BLACKJACK_BETTING) {
         chips_moved = false;
+        round_over_printed = false;
+        m_registry->player_cards.clear();
+        m_registry->dealer_cards.clear();
+        m_registry->player_value = 0;
+        m_registry->dealer_value = 0;
         reset_animation();
     } else if (m_registry->gamble_stage == BLACKJACK_TAKING) {
 
+        m_registry->can_click = false;
+
         if (!chips_moved) {
             if (step_animation_curve(delta)) {
-                // Start with card austeilung
                 glm::vec2 &pos = m_registry->ecs.get<Position>(m_registry->chips).pos;
                 pos = chip_row_left;
                 chips_moved = true;
@@ -63,25 +58,10 @@ void GambleSystem::blackjackStep(const float delta) {
 
             if (current_card_animations.empty()) {
                 bool for_player = start_player_cards_drawn <= start_dealer_cards_drawn;
-                current_wave_for_player = for_player;
-
                 std::vector<entt::entity> &hand = for_player ? m_registry->player_cards : m_registry->dealer_cards;
                 float row_y = for_player ? player_card_hand_y : dealer_card_hand_y;
 
-                int old_count = static_cast<int>(hand.size());
-                std::vector<glm::vec2> old_positions = compute_hand_positions(old_count, row_y);
-                std::vector<glm::vec2> new_positions = compute_hand_positions(old_count + 1, row_y);
-
-                for (int i = 0; i < old_count; i++) {
-                    current_card_animations.push_back({hand[i], old_positions[i], new_positions[i]});
-                }
-
-                entt::entity new_card = draw_card();
-                hand.push_back(new_card);
-                m_registry->ecs.get<Position>(new_card).pos = card_deck_pos;
-                current_card_animations.push_back({new_card, card_deck_pos, new_positions[old_count]});
-
-                reset_animation();
+                draw_card_animated(hand, row_y, for_player);
             }
 
             bool done = step_animation_curve(delta);
@@ -104,8 +84,103 @@ void GambleSystem::blackjackStep(const float delta) {
 
                 current_card_animations.clear();
                 reset_animation();
+
+                if (start_dealer_cards_drawn == 2) {
+                    // Startkarten komplett -> Werte berechnen und auf Naturals pruefen
+                    m_registry->player_value = calculate_blackjack_hand(m_registry, m_registry->player_cards);
+                    m_registry->dealer_value = calculate_blackjack_hand(m_registry, m_registry->dealer_cards);
+
+                    bool player_blackjack = m_registry->player_value == 21;
+                    bool dealer_blackjack = m_registry->dealer_value == 21;
+
+                    if (player_blackjack || dealer_blackjack) {
+                        end_round();
+                    }
+                }
+            }
+
+        } else if (!current_card_animations.empty()) {
+            // Eine einzelne Hit-, Double-Down- oder Dealer-Karte fliegt noch rein
+            bool done = step_animation_curve(delta);
+
+            for (CardAnimation &anim : current_card_animations) {
+                glm::vec2 &pos = m_registry->ecs.get<Position>(anim.card).pos;
+                if (done) {
+                    pos = anim.end;
+                } else {
+                    pos = anim.start + (anim.end - anim.start) * animation_pos;
+                }
+            }
+
+            if (done) {
+                current_card_animations.clear();
+                reset_animation();
+
+                if (drawing_for_dealer) {
+                    drawing_for_dealer = false;
+                    m_registry->dealer_value = calculate_blackjack_hand(m_registry, m_registry->dealer_cards);
+
+                    if (m_registry->dealer_value > 21) {
+                        end_round(); // Dealer bust -> Player gewinnt
+                    }
+                    // sonst: naechster Frame prueft erneut, ob Dealer weiterziehen muss
+                } else {
+                    m_registry->player_value = calculate_blackjack_hand(m_registry, m_registry->player_cards);
+
+                    if (m_registry->player_value > 21) {
+                        end_round(); // Player bust -> Dealer gewinnt
+                    } else if (pending_blackjack_action == BLACKJACK_DOUBLE_DOWN) {
+                        m_registry->blackjack_action = BLACKJACK_STAND;
+                    } else if (m_registry->player_value == 21) {
+                        // Kein Grund mehr, weiterzuziehen
+                        m_registry->blackjack_action = BLACKJACK_STAND;
+                    } else {
+                        m_registry->blackjack_action = BLACKJACK_NOTHING;
+                    }
+                    pending_blackjack_action = BLACKJACK_NOTHING;
+                }
+            }
+
+        } else {
+            // Betting Done; Player and Dealer got 2 cards, keine Animation aktiv
+            if (m_registry->blackjack_action == BLACKJACK_HIT || m_registry->blackjack_action == BLACKJACK_DOUBLE_DOWN) {
+
+                pending_blackjack_action = m_registry->blackjack_action;
+                draw_card_animated(m_registry->player_cards, player_card_hand_y, true);
+
+            } else if (m_registry->blackjack_action == BLACKJACK_STAND) {
+
+                if (m_registry->dealer_value < 17) {
+                    drawing_for_dealer = true;
+                    draw_card_animated(m_registry->dealer_cards, dealer_card_hand_y, false);
+                } else {
+                    end_round();
+                }
+
+            } else {
+                m_registry->can_click = true;
             }
         }
+    } else if (m_registry->gamble_stage == BLACKJACK_OVER) {
+
+        m_registry->can_click = true;
+
+        BigNumber amount = BigNumber(m_registry->bet_amount);
+        BigNumber &am = m_registry->ecs.get<Amount>(m_registry->money()).am;
+        if (round_winner == "Player") {
+            am += amount;
+        } else if (round_winner == "Dealer") {
+            am = am - amount;
+        }
+
+        std::cout << round_winner << std::endl;
+        reset_blackjack();
+
+        // TODO: Win/Lose screen am ende; Erste Dealer Karte am Anfang von Stand aufdecken
+
+
+    } else {
+        m_registry->can_click = true;
     }
 
     (void) delta;

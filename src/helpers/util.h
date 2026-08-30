@@ -137,3 +137,23 @@ inline void print_list(std::vector<T> list, std::string name="list") {
     }
     std::cout<<"]"<<std::endl;
 }
+
+inline int calculate_blackjack_hand(Registry* registry, std::vector<entt::entity> cards) {
+
+    int result = 0;
+    int am_aces = 0;
+    for (entt::entity card_id : cards) {
+        PlayingCard card = registry->ecs.get<PlayingCard>(card_id);
+        result += card.value;
+        if (card.value == 11) {
+            am_aces += 1;
+        }
+    }
+
+    while (result > 21 && am_aces > 0) {
+        result -= 10;
+        am_aces--;
+    }
+
+    return result;
+}

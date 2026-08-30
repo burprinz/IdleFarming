@@ -14,7 +14,7 @@ constexpr glm::vec3 light_blue = {0.42, 0.42, 1};
 
 constexpr glm::vec3 black = {0, 0, 0};
 constexpr glm::vec3 white = {1, 1, 1};
-
+constexpr glm::vec3 gray = {0.5, 0.5, 0.5};
 
 constexpr glm::vec3 selected = {0.2, 1.0, 0.2};
 

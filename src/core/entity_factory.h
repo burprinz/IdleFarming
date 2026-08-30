@@ -411,6 +411,11 @@ private:
                 m_registry->card_list.push_back(card_id);
             }
         }
+
+        entt::entity back_card_id = m_registry->ecs.create();
+        TextureInformation back_text = create_card_texture("back");
+        m_registry->ecs.emplace<TextureInformation>(back_card_id, back_text);
+        m_registry->back_card = back_card_id;
     }
 
     inline void create_poker_chips() {
