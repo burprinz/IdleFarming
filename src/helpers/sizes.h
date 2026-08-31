@@ -65,7 +65,9 @@ constexpr int achievement_am_width = 16;
 constexpr glm::vec2 chip_size = {0.5, 0.5};
 constexpr glm::vec2 chip_row_start = {config::CAMERA_VIEW_WIDTH/2.0f - chip_size.x - normal_gap, normal_button_size.y + normal_gap*2 + chip_size.y/2.0};
 constexpr glm::vec2 chip_row_left = {normal_gap + chip_size.x/2.0, normal_gap + chip_size.y/2.0};
+constexpr glm::vec2 chip_row_top_right = {config::CAMERA_VIEW_WIDTH - normal_gap, config::CAMERA_VIEW_HEIGHT - normal_gap};
 constexpr glm::vec2 chip_path = chip_row_left - chip_row_start;
+constexpr glm::vec2 chip_path_two = chip_row_top_right - chip_row_left;
 
 constexpr glm::vec2 card_size = {1.0f, 1.0f};
 constexpr glm::vec2 card_deck_pos = {config::CAMERA_VIEW_WIDTH - small_gap - card_size.x/2.0f, config::CAMERA_VIEW_HEIGHT / 2.0f};

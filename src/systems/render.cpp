@@ -508,7 +508,8 @@ void RenderSystem::drawBlackjack() noexcept {
                 }
             }
         }
-
+    } else if (m_registry->gamble_stage == BLACKJACK_END_SCREEN) {
+        drawBasicTextButtons(m_ui->m_blackjack_end_buttons, white, true);
     }
 
     for (entt::entity card_id : m_registry->player_cards) {
@@ -533,9 +534,15 @@ void RenderSystem::drawBlackjack() noexcept {
     glm::vec2 chip_pos = m_registry->ecs.get<Position>(m_registry->chips).pos;
     int x = 0;
     int y = 0;
+
+    glm::vec2 size = chip_size;
+    if (m_registry->gamble_stage == BLACKJACK_OVER) {
+        size *= (1.0f - m_registry->animation_value);
+    }
     for (int i : m_registry->bet_chips) {
-        glm::vec2 pos = chip_pos + glm::vec2{x*(chip_size.x+normal_gap), y*(chip_size.y+normal_gap)};
-        m_draw->drawTexture(m_registry->ecs.get<TextureInformation>(m_registry->poker_chips[i]).text, pos, chip_size/2.0f);
+        glm::vec2 pos = chip_pos + glm::vec2{x*(size.x+normal_gap), y*(size.y+normal_gap)};
+
+        m_draw->drawTexture(m_registry->ecs.get<TextureInformation>(m_registry->poker_chips[i]).text, pos, size/2.0f);
 
         x += 1;
         if (x >= 3) {

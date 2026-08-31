@@ -366,6 +366,7 @@ void UISystem::initGambleButtons() noexcept {
     m_gamble_mode_select_buttons.clear();
     m_blackjack_bet_buttons.clear();
     m_blackjack_play_buttons.clear();
+    m_blackjack_end_buttons.clear();
 
     Registry* registry = m_registry;
 
@@ -409,6 +410,7 @@ void UISystem::initGambleButtons() noexcept {
     m_blackjack_bet_buttons.push_back(multiplicatorB);
 
     float x_middle = config::CAMERA_VIEW_WIDTH / 2.0f;
+    float y_middle = config::CAMERA_VIEW_HEIGHT / 2.0f;
 
     size = normal_button_size;
     center = {config::CAMERA_VIEW_WIDTH / 2.0f, normal_button_size.y / 2.0 + normal_gap};
@@ -499,6 +501,17 @@ void UISystem::initGambleButtons() noexcept {
         registry->blackjack_action = BLACKJACK_STAND;
     };
     m_blackjack_play_buttons.push_back(stand);
+
+    size = normal_button_size;
+    center = {x_middle, y_middle - small_gap - size.y/2.0f};
+    TextButton endGame;
+    endGame.text = "End Round";
+    endGame.pos = center;
+    endGame.size = size;
+    endGame.on_click = [registry] {
+        registry->gamble_stage = BLACKJACK_OVER;
+    };
+    m_blackjack_end_buttons.push_back(endGame);
 
 }
 
@@ -596,6 +609,11 @@ void UISystem::onMouseClickCallback(GLFWwindow *window, int button, int action, 
                         if (found) {
                             return;
                         }
+                    } else if (m_registry->gamble_stage == BLACKJACK_END_SCREEN) {
+                        found = check_text_button_list(m_blackjack_end_buttons);
+                        if (found) {
+                            return;
+                        }
                     }
                 }
             }
@@ -672,6 +690,8 @@ void UISystem::step(const float delta) noexcept {
                 selection_found = update_text_button_list(m_blackjack_bet_buttons, mousePos, selection_found, false);
             } else if (m_registry->gamble_stage == BLACKJACK_TAKING) {
                 selection_found = update_text_button_list(m_blackjack_play_buttons, mousePos, selection_found, false);
+            } else if (m_registry->gamble_stage == BLACKJACK_END_SCREEN) {
+                selection_found = update_text_button_list(m_blackjack_end_buttons, mousePos, selection_found, false);
             }
         }
     }

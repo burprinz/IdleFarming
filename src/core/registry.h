@@ -58,7 +58,9 @@ constexpr int BLACKJACK = 0;
 constexpr int BLACKJACK_BETTING = 0;
 constexpr int BLACKJACK_TAKING = 1;
 constexpr int BLACKJACK_FOLD = 2;
-constexpr int BLACKJACK_OVER = 3;
+constexpr int BLACKJACK_END_SCREEN = 3;
+constexpr int BLACKJACK_OVER = 4;
+
 
 constexpr int BLACKJACK_NOTHING = 0;
 constexpr int BLACKJACK_HIT = 1;
@@ -341,10 +343,14 @@ public:
     /**
      * Gamble
      */
+
+    float animation_value = 0.0f;
+
     entt::entity chips;
     entt::entity back_card;
     std::vector<entt::entity> card_list;
     std::vector<int> chip_list;
+    std::string winner_name = "???";
 
     int gamble_mode = -1;
     int gamble_stage = -1;

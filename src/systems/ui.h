@@ -80,6 +80,7 @@ public:
     std::vector<TextButton> m_gamble_mode_select_buttons;
     std::vector<TextButton> m_blackjack_bet_buttons;
     std::vector<TextButton> m_blackjack_play_buttons;
+    std::vector<TextButton> m_blackjack_end_buttons;
 
     inline void addPopupMessage(std::string title, std::string text) {
         MessagePopup msg;

@@ -42,6 +42,7 @@ void GambleSystem::blackjackStep(const float delta) {
         m_registry->can_click = false;
 
         if (!chips_moved) {
+            // 1. Move Chips to Bot left
             if (step_animation_curve(delta)) {
                 glm::vec2 &pos = m_registry->ecs.get<Position>(m_registry->chips).pos;
                 pos = chip_row_left;
@@ -55,7 +56,7 @@ void GambleSystem::blackjackStep(const float delta) {
                 pos = chip_row_start + chip_path * animation_pos;
             }
         } else if (start_dealer_cards_drawn < 2) {
-
+            // 2. Draw 2 cards for dealer and player
             if (current_card_animations.empty()) {
                 bool for_player = start_player_cards_drawn <= start_dealer_cards_drawn;
                 std::vector<entt::entity> &hand = for_player ? m_registry->player_cards : m_registry->dealer_cards;
@@ -155,31 +156,52 @@ void GambleSystem::blackjackStep(const float delta) {
                     draw_card_animated(m_registry->dealer_cards, dealer_card_hand_y, false);
                 } else {
                     end_round();
+                    std::cout<<"Blackjack Winner) "<<round_winner<<std::endl;
                 }
 
             } else {
                 m_registry->can_click = true;
             }
         }
-    } else if (m_registry->gamble_stage == BLACKJACK_OVER) {
+    } else if (m_registry->gamble_stage == BLACKJACK_END_SCREEN) {
 
         m_registry->can_click = true;
-
-        BigNumber amount = BigNumber(m_registry->bet_amount);
-        BigNumber &am = m_registry->ecs.get<Amount>(m_registry->money()).am;
-        if (round_winner == "Player") {
-            am += amount;
-        } else if (round_winner == "Dealer") {
-            am = am - amount;
-        }
-
-        std::cout << round_winner << std::endl;
-        reset_blackjack();
+        m_registry->winner_name = round_winner;
+        entt::entity first_dealer_card_id = m_registry->dealer_cards[0];
+        PlayingCard &card = m_registry->ecs.get<PlayingCard>(first_dealer_card_id);
+        card.hidden = false;
+        reset_animation();
 
         // TODO: Win/Lose screen am ende; Erste Dealer Karte am Anfang von Stand aufdecken
 
 
-    } else {
+    } else if (m_registry->gamble_stage == BLACKJACK_OVER) {
+
+
+        if (round_winner == "Player") {
+            if (step_animation_curve(delta)) {
+                glm::vec2 &pos = m_registry->ecs.get<Position>(m_registry->chips).pos;
+                pos = chip_row_top_right;
+                BigNumber amount = BigNumber(m_registry->bet_amount);
+                BigNumber &am = m_registry->ecs.get<Amount>(m_registry->money()).am;
+                am += amount;
+                reset_animation();
+                reset_blackjack();
+            } else {
+                glm::vec2 &pos = m_registry->ecs.get<Position>(m_registry->chips).pos;
+                pos = chip_row_left + chip_path_two * animation_pos;
+            }
+        } else {
+            if (round_winner == "Dealer") {
+                BigNumber amount = BigNumber(m_registry->bet_amount);
+                BigNumber &am = m_registry->ecs.get<Amount>(m_registry->money()).am;
+                am = am - amount;
+            }
+            reset_animation();
+            reset_blackjack();
+        }
+
+    }else {
         m_registry->can_click = true;
     }
 
