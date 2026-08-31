@@ -171,6 +171,8 @@ add_executable(${PROJECT_NAME}
 		src/systems/achievement.h
 		src/systems/gamble.cpp
 		src/systems/gamble.h
+		src/systems/skilltree.cpp
+		src/systems/skilltree.h
 )
 
 

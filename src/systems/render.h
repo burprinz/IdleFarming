@@ -31,7 +31,7 @@ class RenderSystem {
 		void drawHelpers() noexcept;
 		void drawAchievements() noexcept;
 		void drawGambling() noexcept;
-
+		void drawSkilltree() noexcept;
 
 		void drawBlackjack() noexcept;
 

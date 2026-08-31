@@ -116,6 +116,17 @@ void UISystem::initWindowSwitchButtons() noexcept {
     };
     m_window_buttons.push_back(gableButton);
 
+    pos.x += size.x + normal_gap;
+
+    TextButton skilltreeButton;
+    skilltreeButton.pos = pos;
+    skilltreeButton.size = size;
+    skilltreeButton.text = "Skilltree";
+    skilltreeButton.on_click = [registry] {
+        registry->change_window(SKILLTREE);
+    };
+    m_window_buttons.push_back(skilltreeButton);
+
 }
 
 void UISystem::initFieldButton() noexcept {

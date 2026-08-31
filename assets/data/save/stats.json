@@ -3,35 +3,35 @@
         {
             "name": "auto_collected",
             "value": {
-                "base": 2.4040493439179054,
+                "base": 2.5898986803283908,
                 "exp": 6
             }
         },
         {
             "name": "auto_harvested",
             "value": {
-                "base": 6.895711291778712,
+                "base": 7.4287078946228355,
                 "exp": 6
             }
         },
         {
             "name": "auto_planted",
             "value": {
-                "base": 6.895711291778712,
+                "base": 7.4287078946228355,
                 "exp": 6
             }
         },
         {
             "name": "items_bought",
             "value": {
-                "base": 0.0,
+                "base": 5.0,
                 "exp": 0
             }
         },
         {
             "name": "items_sold",
             "value": {
-                "base": 1.809999942779541,
+                "base": 6.049999713897705,
                 "exp": 2
             }
         },

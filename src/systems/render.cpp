@@ -82,6 +82,8 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         drawAchievements();
     } else if (m_registry->window() == GAMBLING) {
         drawGambling();
+    } else if (m_registry->window() == SKILLTREE) {
+        drawSkilltree();
     }
 
     /**
@@ -552,6 +554,13 @@ void RenderSystem::drawBlackjack() noexcept {
     }
 }
 
+void RenderSystem::drawSkilltree() noexcept {
+
+    glm::vec2 pos = {config::CAMERA_VIEW_WIDTH/2.0f, config::CAMERA_VIEW_HEIGHT/2.0f};
+    pos = pos + m_registry->skilltree_pos_offset;
+    m_draw->fillCircle(pos, 0.5f, white, 1.0f);
+
+}
 
 
 void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color, bool with_max_size) noexcept {

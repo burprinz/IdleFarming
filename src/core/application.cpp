@@ -81,6 +81,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_achievement = AchievementSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_gamble = GambleSystem::init(self.m_window, self.m_registry);
+	self.m_skilltree = SkilltreeSystem::init(self.m_window, self.m_registry);
 
 	return self;
 }
@@ -94,6 +95,7 @@ void Application::deinit() noexcept {
 	m_unlock.deinit();
 	m_achievement.deinit();
 	m_gamble.deinit();
+	m_skilltree.deinit();
 
 	m_draw->deinit();
 
@@ -149,6 +151,8 @@ void Application::run() noexcept {
 
 		m_gamble.step(delta_time);
 
+		m_skilltree.step(delta_time);
+
 		m_camera.step(delta_time);
 
 		m_draw->start();
@@ -167,7 +171,6 @@ void Application::reset() noexcept {
 	m_registry->ecs.clear();
 
 	StatsManager::instance().init();
-
 
 	// reset bools
 	m_registry->debug_mode = false;

@@ -16,6 +16,7 @@ constexpr int TOOLSMITH = 2;
 constexpr int HELPERS = 3;
 constexpr int ACHIEVEMENTS = 4;
 constexpr int GAMBLING = 5;
+constexpr int SKILLTREE = 6;
 
 /**
  * Field State
@@ -371,6 +372,12 @@ public:
      * Achievements
      */
     std::vector<entt::entity> achievements_order;
+
+    /**
+     * Skilltree
+     */
+    glm::vec2 skilltree_pos_offset = {0.f, 0.f};
+
 
     /**
      * Buying

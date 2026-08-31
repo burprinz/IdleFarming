@@ -15,6 +15,7 @@
 #include "systems/achievement.h"
 #include "systems/gamble.h"
 #include "systems/helper.h"
+#include "systems/skilltree.h"
 
 
 class Application {
@@ -45,6 +46,7 @@ class Application {
 		AchievementSystem m_achievement;
 
 		GambleSystem m_gamble;
+		SkilltreeSystem m_skilltree;
 
 		EntityFactory m_entity_factory;
 
