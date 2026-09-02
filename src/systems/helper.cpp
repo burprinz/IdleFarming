@@ -12,10 +12,11 @@
 #include "helpers/util.h"
 
 
-HelperSystem HelperSystem::init(Window *window, Registry *registry) noexcept {
+HelperSystem HelperSystem::init(Window *window, Registry *registry, UISystem* ui) noexcept {
     HelperSystem self;
     self.m_registry = registry;
     self.m_window = window;
+    self.m_ui = ui;
     return self;
 }
 
@@ -24,7 +25,45 @@ void HelperSystem::deinit() noexcept {
 }
 
 void HelperSystem::reset() noexcept {
+    initButtons();
+}
 
+bool HelperSystem::left_click() noexcept {
+    return m_ui->check_text_button_list(m_ui->m_helper_buy_buttons);
+}
+
+
+void HelperSystem::initButtons() noexcept {
+    m_ui->m_helper_buy_buttons.clear();
+
+    Registry *registry = m_registry;
+
+    glm::vec2 top_left = normal_topleft;
+    glm::vec2 size = medium_button_size;
+    glm::vec2 center = calc_center(top_left, size);
+
+    for (entt::entity helper_id: m_registry->helpers_order) {
+        FarmHelper fm = m_registry->ecs.get<FarmHelper>(helper_id);
+
+        TextButton helperB;
+
+        helperB.text = fm.name;
+        helperB.pos = center;
+        helperB.size = size;
+        helperB.id_label = helper_id;
+        helperB.on_click = [registry, helper_id] {
+            bool unlocked = registry->ecs.get<Unlockable>(helper_id).unlocked;
+            (void) unlocked;
+
+            bool max_reached = registry->ecs.get<FarmHelper>(helper_id).max_reached;
+            if (!max_reached) {
+                registry->trying_to_buy = helper_id;
+            }
+        };
+        m_ui->m_helper_buy_buttons.push_back(helperB);
+
+        center.y -= size.y + normal_gap;
+    }
 }
 
 void HelperSystem::step(const float delta) noexcept {

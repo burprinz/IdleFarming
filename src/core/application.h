@@ -15,7 +15,9 @@
 #include "systems/achievement.h"
 #include "systems/gamble.h"
 #include "systems/helper.h"
+#include "systems/marketplace.h"
 #include "systems/skilltree.h"
+#include "systems/toolsmith.h"
 
 
 class Application {
@@ -40,6 +42,9 @@ class Application {
 		RenderSystem m_render;
 
 		FieldSystem m_field;
+		ToolSystem m_tools;
+		MarketSystem m_market;
+
 		HelperSystem m_helper;
 
 		UnlockSystem m_unlock;

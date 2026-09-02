@@ -41,14 +41,9 @@ public:
     void reset() noexcept;
 
     inline void initButtons() noexcept {
-        initFieldButton();
-        initMarketplaceTradeButtons();
-        initToolSmithButtons();
-        initHelpersButton();
-        initGambleButtons();
     }
 
-    void onMouseClickCallback(GLFWwindow* window, int button, int action, int mods) noexcept;
+    void left_click() noexcept;
 
     void initBaseButtons() noexcept;
     inline void updateMessagePopupButtons() noexcept {
@@ -59,24 +54,18 @@ public:
     void initWindowSwitchButtons() noexcept;
     std::vector<TextButton> m_window_buttons;
 
-    void initFieldButton() noexcept;
     std::vector<TextButton> m_field_mode_buttons;
     std::vector<std::vector<TextButton>> m_field_plant_select_buttons;
     std::vector<std::vector<TextButton>> m_field_helper_buttons;
     std::vector<TextButton> m_field_helper_config_buttons;
-    //std::vector<std::vector<TextButton>> m_field_helper_plant_select_buttons;
 
-    void initMarketplaceTradeButtons() noexcept;
     std::vector<TextButton> m_market_category_buttons;
     std::vector<std::vector<TextButton>> m_market_trade_buttons;
 
-    void initToolSmithButtons() noexcept;
     std::vector<TextButton> m_toolsmith_buy_buttons;
 
-    void initHelpersButton() noexcept;
     std::vector<TextButton> m_helper_buy_buttons;
 
-    void initGambleButtons() noexcept;
     std::vector<TextButton> m_gamble_mode_select_buttons;
     std::vector<TextButton> m_blackjack_bet_buttons;
     std::vector<TextButton> m_blackjack_play_buttons;
@@ -104,16 +93,6 @@ public:
     void update_button_states() noexcept;
 
 
-
-
-private:
-    Registry* m_registry;
-    Window* m_window;
-
-    std::vector<MessagePopup> m_message_popups;
-
-    void initPlantLikePlantSelection(std::vector<entt::entity> order, entt::entity &last_selected, entt::entity &current_selected, std::vector<TextButton> &buttons) noexcept;
-
     inline bool check_text_button_list(std::vector<TextButton> &buttons) noexcept {
         for (TextButton &b : buttons) {
             if (b.selected && b.visible) {
@@ -124,7 +103,15 @@ private:
         return false;
     }
 
-    inline bool update_text_button_list(std::vector<TextButton> &buttons, glm::vec2 mouse_pos, bool selection_found, bool need_unlock, glm::vec2 offset={0,0}) noexcept {
+private:
+    Registry* m_registry;
+    Window* m_window;
+
+    std::vector<MessagePopup> m_message_popups;
+
+    bool selection_found = false;
+
+    inline bool update_text_button_list(std::vector<TextButton> &buttons, glm::vec2 mouse_pos, bool need_unlock, glm::vec2 offset={0,0}) noexcept {
         for (TextButton &b : buttons) {
             if (need_unlock) {
                 Unlockable u = m_registry->ecs.get<Unlockable>(b.id_label);

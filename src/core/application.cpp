@@ -76,11 +76,13 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 
 	self.m_render = RenderSystem::init(self.m_window, self.m_registry, self.m_ui, self.m_draw);
 	self.m_camera = CameraSystem::init(self.m_registry);
-	self.m_field = FieldSystem::init(self.m_window, self.m_registry);
-	self.m_helper = HelperSystem::init(self.m_window, self.m_registry);
+	self.m_field = FieldSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_tools = ToolSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_market = MarketSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_helper = HelperSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_achievement = AchievementSystem::init(self.m_window, self.m_registry, self.m_ui);
-	self.m_gamble = GambleSystem::init(self.m_window, self.m_registry);
+	self.m_gamble = GambleSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_skilltree = SkilltreeSystem::init(self.m_window, self.m_registry);
 
 	return self;
@@ -91,6 +93,8 @@ void Application::deinit() noexcept {
 	m_render.deinit();
 	m_audio_engine->deinit();
 	m_field.deinit();
+	m_market.deinit();
+	m_tools.deinit();
 	m_helper.deinit();
 	m_unlock.deinit();
 	m_achievement.deinit();
@@ -137,13 +141,16 @@ void Application::run() noexcept {
 		delta_time = time - last_time;
 		last_time = time;
 
-		m_ui->step(delta_time);
 
 		m_unlock.step(delta_time);
 
 		m_world.step(delta_time);
 
 		m_field.step(delta_time);
+
+		m_market.step(delta_time);
+
+		m_tools.step(delta_time);
 
 		m_helper.step(delta_time);
 
@@ -152,6 +159,8 @@ void Application::run() noexcept {
 		m_gamble.step(delta_time);
 
 		m_skilltree.step(delta_time);
+
+		m_ui->step(delta_time);
 
 		m_camera.step(delta_time);
 
@@ -195,10 +204,15 @@ void Application::reset() noexcept {
 	 */
 	//tests();
 
+	m_field.reset();
+	m_market.reset();
+	m_tools.reset();
+	m_helper.reset();
+	m_gamble.reset();
+
 	/**
 	 * Reset UI
 	 */
-	m_registry->current_market_category = get_item_category_by_name(m_registry, "all");
 	m_ui->reset();
 	m_ui->initButtons();
 
@@ -234,5 +248,28 @@ void Application::onResizeCallback(GLFWwindow* window, int width, int height) no
 }
 
 void Application::onMouseClickCallback(GLFWwindow *window, int button, int action, int mods) noexcept {
-	m_ui->onMouseClickCallback(window, button, action, mods);
+	(void) window;
+	(void) mods;
+
+	if (m_registry->can_click && action == GLFW_PRESS && button == GLFW_MOUSE_BUTTON_1) {
+		// Left Click
+		bool click_found = false;
+		if (m_registry->window() == FIELDS) {
+			click_found = m_field.left_click();
+		} else if (m_registry->window() == MARKETPLACE) {
+			click_found = m_market.left_click();
+		} else if (m_registry->window() == TOOLSMITH) {
+			click_found = m_tools.left_click();
+		} else if (m_registry->window() == HELPERS) {
+			click_found = m_helper.left_click();
+		} else if (m_registry->window() == GAMBLING) {
+			click_found = m_gamble.left_click();
+		}
+
+		if (!click_found) {
+			m_ui->left_click();
+		}
+	}
+
+
 }

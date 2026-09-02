@@ -173,6 +173,11 @@ add_executable(${PROJECT_NAME}
 		src/systems/gamble.h
 		src/systems/skilltree.cpp
 		src/systems/skilltree.h
+		src/systems/marketplace.cpp
+		src/systems/marketplace.cpp
+		src/systems/marketplace.h
+		src/systems/toolsmith.cpp
+		src/systems/toolsmith.h
 )
 
 
