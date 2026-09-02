@@ -83,7 +83,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_achievement = AchievementSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_gamble = GambleSystem::init(self.m_window, self.m_registry, self.m_ui);
-	self.m_skilltree = SkilltreeSystem::init(self.m_window, self.m_registry);
+	self.m_skilltree = SkilltreeSystem::init(self.m_window, self.m_registry, self.m_ui);
 
 	return self;
 }
@@ -209,6 +209,7 @@ void Application::reset() noexcept {
 	m_tools.reset();
 	m_helper.reset();
 	m_gamble.reset();
+	m_skilltree.reset();
 
 	/**
 	 * Reset UI
@@ -264,6 +265,8 @@ void Application::onMouseClickCallback(GLFWwindow *window, int button, int actio
 			click_found = m_helper.left_click();
 		} else if (m_registry->window() == GAMBLING) {
 			click_found = m_gamble.left_click();
+		} else if (m_registry->window() == SKILLTREE) {
+			click_found = m_skilltree.left_click();
 		}
 
 		if (!click_found) {

@@ -215,6 +215,8 @@ void UISystem::step(const float delta) noexcept {
                 selection_found = update_text_button_list(m_blackjack_end_buttons, mousePos, false);
             }
         }
+    } else if (m_registry->window() == SKILLTREE) {
+        selection_found = update_text_button_list(m_skilltree_buttons, mousePos, false, m_registry->skilltree_pos_offset);
     }
 }
 

@@ -74,6 +74,9 @@ constexpr glm::vec2 card_deck_pos = {config::CAMERA_VIEW_WIDTH - small_gap - car
 constexpr float player_card_hand_y = 3.0f;
 constexpr float dealer_card_hand_y = 6.0f;
 
+// Skilltree
+constexpr glm::vec2 skill_button_size = {1.0, 1.5};
+
 // Message Popup
 constexpr float message_popup_w = 3.0f;
 constexpr glm::vec2 message_popup_title_size = {message_popup_w - small_gap*2, normal_text_box_height};

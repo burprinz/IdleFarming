@@ -71,6 +71,8 @@ public:
     std::vector<TextButton> m_blackjack_play_buttons;
     std::vector<TextButton> m_blackjack_end_buttons;
 
+    std::vector<TextButton> m_skilltree_buttons;
+
     inline void addPopupMessage(std::string title, std::string text) {
         MessagePopup msg;
         msg.title = title;

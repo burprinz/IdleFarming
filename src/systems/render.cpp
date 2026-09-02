@@ -556,9 +556,13 @@ void RenderSystem::drawBlackjack() noexcept {
 
 void RenderSystem::drawSkilltree() noexcept {
 
-    glm::vec2 pos = {config::CAMERA_VIEW_WIDTH/2.0f, config::CAMERA_VIEW_HEIGHT/2.0f};
-    pos = pos + m_registry->skilltree_pos_offset;
-    m_draw->fillCircle(pos, 0.5f, white, 1.0f);
+    glm::vec2 offset = m_registry->skilltree_pos_offset;
+
+    for (TextButton but : m_ui->m_skilltree_buttons) {
+        glm::vec2 pos = but.pos + offset;
+        glm::vec3 color = but.selected?green:red;
+        m_draw->fillFadeRectBySize(pos, but.size, color, black, button_fading_speed);
+    }
 
 }
 
