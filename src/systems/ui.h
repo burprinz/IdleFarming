@@ -20,7 +20,6 @@ struct TextButton {
     glm::vec3 lock_color = green;
     std::function<void()> on_click;
     bool selected = false;
-    bool color_locked = false;
     bool visible = true;
 };
 

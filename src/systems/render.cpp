@@ -99,7 +99,14 @@ void RenderSystem::step(const float /*delta*/) noexcept {
 void RenderSystem::drawField() noexcept {
 
     // Draw Field Selection
-    drawBasicTextButtons(m_ui->m_field_mode_buttons, button_text_color, true);
+    for (TextButton &b : m_ui->m_field_mode_buttons) {
+        entt::entity id = b.id_label;
+        if (m_registry->ecs.get<Unlockable>(id).unlocked) {
+            drawBasicTextButton(b, button_text_color, true);
+        } else {
+            drawLockInBlackQuad(b.pos, b.size, false);
+        }
+    }
 
     // Draw Field
     drawCurrentField(
@@ -443,8 +450,6 @@ void RenderSystem::drawGambling() noexcept {
     }
 
 
-
-
     /*
 
     glm::vec2 card_pos = normal_topleft;
@@ -559,8 +564,9 @@ void RenderSystem::drawSkilltree() noexcept {
     glm::vec2 offset = m_registry->skilltree_pos_offset;
 
     for (TextButton but : m_ui->m_skilltree_buttons) {
+        Unlockable u = m_registry->ecs.get<Unlockable>(but.id_label);
         glm::vec2 pos = but.pos + offset;
-        glm::vec3 color = but.selected?green:red;
+        glm::vec3 color = but.selected||u.unlocked?green:red;
         m_draw->fillFadeRectBySize(pos, but.size, color, black, button_fading_speed);
     }
 

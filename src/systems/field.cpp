@@ -73,7 +73,13 @@ void FieldSystem::initButtons() noexcept {
         fieldB.text = f.display_name;
         fieldB.pos = center;
         fieldB.size = select_button_size;
+        fieldB.id_label = field_entity;
         fieldB.on_click = [registry, field_id, field_entity] {
+            Unlockable u = registry->ecs.get<Unlockable>(field_entity);
+            if (!u.unlocked) {
+                return;
+            }
+
             if (registry->field_mode == FIELD_FARMING) {
                 registry->current_selected_field = field_id;
             } else if (registry->field_mode == FIELD_HELPER_CONFIGURATION) {

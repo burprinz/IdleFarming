@@ -164,7 +164,7 @@ void UISystem::step(const float delta) noexcept {
 
     if (m_registry->window() == FIELDS) {
         // Field buttons
-        selection_found = update_text_button_list(m_field_mode_buttons, mousePos, false);
+        selection_found = update_text_button_list(m_field_mode_buttons, mousePos, true);
 
         if (m_registry->field_mode == FIELD_FARMING) {
             // Planting / Harvesting

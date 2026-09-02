@@ -113,6 +113,7 @@ private:
             std::cout<<"Error loading Field List"<<std::endl;
         }
 
+        bool first = true;
         for (auto& field : fields_json["fields"]) {
             std::string field_name = field["name"].get<std::string>();
             std::string field_type = field["type"].get<std::string>();
@@ -137,9 +138,15 @@ private:
             f.plant_type = plant_type;
             f.list_id = m_registry->field_order.size();
 
+            Unlockable u;
+            u.unlocked = first;
+            first = false;
+
             load_field_plants(&f, is_tree, has_inv);
 
             m_registry->ecs.emplace<Field>(id, f);
+            m_registry->ecs.emplace<Unlockable>(id, u);
+
 
             m_registry->current_plant_tools[field_type] = entt::null;
             m_registry->current_harvest_tools[field_type] = entt::null;

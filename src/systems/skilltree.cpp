@@ -25,14 +25,24 @@ void SkilltreeSystem::reset() noexcept {
 void SkilltreeSystem::init_buttons() noexcept {
     m_ui->m_skilltree_buttons.clear();
 
-    TextButton unlock_plants_field;
-    unlock_plants_field.text = "Unlock Plants Field";
-    unlock_plants_field.pos = {config::CAMERA_VIEW_WIDTH/2.0f, config::CAMERA_VIEW_HEIGHT/2.0f};
-    unlock_plants_field.size = skill_button_size;
-    unlock_plants_field.on_click = [] {
+    Registry *registry = m_registry;
 
+    TextButton unlock_flower_field;
+    entt::entity field_entity = m_registry->field_order[m_registry->field_ids["flowers"]];
+
+    std::cout<<m_registry->ecs.get<Field>(field_entity).name<<std::endl;
+
+    unlock_flower_field.text = "Unlock Flower Field";
+    unlock_flower_field.pos = {config::CAMERA_VIEW_WIDTH/2.0f, config::CAMERA_VIEW_HEIGHT/2.0f};
+    unlock_flower_field.size = skill_button_size;
+    unlock_flower_field.id_label = field_entity;
+    unlock_flower_field.on_click = [registry, field_entity] {
+        Unlockable &u = registry->ecs.get<Unlockable>(field_entity);
+        if (!u.unlocked) {
+            u.unlocked = true;
+        }
     };
-    m_ui->m_skilltree_buttons.push_back(unlock_plants_field);
+    m_ui->m_skilltree_buttons.push_back(unlock_flower_field);
 }
 
 

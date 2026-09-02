@@ -18,7 +18,568 @@
         {
             "helper_name": "Alice",
             "level": 28,
-            "working_area": []
+            "working_area": [
+                {
+                    "current_growtime": 1.2369422912597656,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 9,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.1866493225097656,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 8,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.1367530822753906,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 7,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.1197547912597656,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 6,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.0865516662597656,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 5,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.0695228576660156,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 4,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.0533790588378906,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 3,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.0367774963378906,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 2,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.0034523010253906,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 1,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 0.9700965881347656,
+                    "plant_name": "carrot",
+                    "pos": {
+                        "x": 0,
+                        "y": 14
+                    }
+                },
+                {
+                    "current_growtime": 1.870366096496582,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 9,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 1.720097541809082,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 8,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 1.686772346496582,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 7,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 1.669987678527832,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 6,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 1.653416633605957,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 5,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 1.636754035949707,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 3,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 1.619999885559082,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 2,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 1.6033673286437988,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 1,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 1.570042610168457,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 0,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 0.987004280090332,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 4,
+                        "y": 13
+                    }
+                },
+                {
+                    "current_growtime": 3.619694709777832,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 9,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 3.552647590637207,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 8,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 3.5029044151306152,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 7,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 3.3367362022399902,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 6,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 3.3199515342712402,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 5,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 3.3033499717712402,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 4,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 3.2697501182556152,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 0,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 2.9534659385681152,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 1,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 2.9368338584899902,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 2,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 2.919987678527832,
+                    "plant_name": "cucumber",
+                    "pos": {
+                        "x": 3,
+                        "y": 12
+                    }
+                },
+                {
+                    "current_growtime": 4.386966705322266,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 9,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 4.303348541259766,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 8,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 4.269809722900391,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 7,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 4.253269195556641,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 6,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 4.136417388916016,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 5,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 4.120121002197266,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 3,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 4.102695465087891,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 2,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 4.069980621337891,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 1,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 4.036716461181641,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 0,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 3.5867042541503906,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 4,
+                        "y": 11
+                    }
+                },
+                {
+                    "current_growtime": 3.0200233459472656,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 9,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 3.0034828186035156,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 8,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 2.9699440002441406,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 7,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 2.9200172424316406,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 6,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 2.8534278869628906,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 5,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 2.8197975158691406,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 4,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 2.7698707580566406,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 3,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 2.7535133361816406,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 2,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 2.7199134826660156,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 1,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 2.636601448059082,
+                    "plant_name": "tomato",
+                    "pos": {
+                        "x": 0,
+                        "y": 10
+                    }
+                },
+                {
+                    "current_growtime": 2.386876106262207,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 2.2524166107177734,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 2.219794273376465,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 2.2034053802490234,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 2.186652183532715,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 2.15329647064209,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 2.11667537689209,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 2.086371421813965,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 2.05087947845459,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 2.019843101501465,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 9
+                    }
+                },
+                {
+                    "current_growtime": 1.6700201034545898,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 0,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 1.6364812850952148,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 1,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 1.5683984756469727,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 2,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 1.5366897583007813,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 3,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 1.5033950805664063,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 4,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 1.4867324829101563,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 5,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 1.4534673690795898,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 6,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 1.4367132186889648,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 7,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 1.4200515747070313,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 8,
+                        "y": 8
+                    }
+                },
+                {
+                    "current_growtime": 1.4034500122070313,
+                    "plant_name": "corn",
+                    "pos": {
+                        "x": 9,
+                        "y": 8
+                    }
+                }
+            ]
         }
     ]
 }
