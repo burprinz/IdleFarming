@@ -140,7 +140,7 @@ private:
 
             Unlockable u;
             u.unlocked = first;
-            first = false;
+            first = true;//TODO FALSE
 
             load_field_plants(&f, is_tree, has_inv);
 

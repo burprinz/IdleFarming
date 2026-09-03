@@ -1,7 +1,8 @@
 {
   "name": "Trees",
   "plants":[
-    "apple"
+    "apple",
+    "cherry"
   ],
   "color": {
     "r": 0.82,
