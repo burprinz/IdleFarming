@@ -3,7 +3,8 @@
   "plants":[
     "apple",
     "cherry",
-    "orange"
+    "orange",
+    "lemon"
   ],
   "color": {
     "r": 0.82,

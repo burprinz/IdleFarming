@@ -1,0 +1,36 @@
+{
+  "name": "Lemon",
+  "id_name": "lemon",
+  "categories": [
+    "all",
+    "eatable"
+  ],
+  "color": {
+    "r": 0.9,
+    "g": 0.56,
+    "b": 0.11
+  },
+  "growtime": 25,
+  "regrowtime": 22,
+  "collect_amount": {
+    "min": 1,
+    "max": 3
+  },
+  "price": {
+    "buy": {
+      "base": 3.0,
+      "exp": 0
+    },
+    "sell": {
+      "base": 1.0,
+      "exp": 0
+    }
+  },
+  "unlock": {
+    "unlocked": false,
+    "price": {
+      "base": 5000.0,
+      "exp": 0
+    }
+  }
+}
