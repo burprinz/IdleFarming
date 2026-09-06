@@ -37,7 +37,7 @@ public:
     /*
      * Geometry
      */
-    void drawLine(glm::vec2 start, glm::vec2 end, glm::vec3 color) noexcept;
+    void drawLine(glm::vec2 start, glm::vec2 end, glm::vec3 color, float thickness=0.02f) noexcept;
 
     void drawRectBySize(glm::vec2 center, glm::vec2 size, glm::vec3 color) noexcept;
     void drawRect(glm::vec2 topleft, glm::vec2 topright,glm::vec2 bottomleft, glm::vec2 bottomright, glm::vec3 color) noexcept;

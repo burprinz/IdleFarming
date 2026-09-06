@@ -236,6 +236,13 @@ struct Achievement {
     bool done = false;
 };
 
+struct Skill {
+    std::string name = "???";
+    std::string description = "Unlocks ...";
+    entt::entity parent = entt::null;
+    glm::vec2 pos;
+};
+
 struct BuyAmount {
     std::vector<entt::entity> item_ids;
     std::vector<BigNumber> amounts;

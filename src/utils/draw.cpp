@@ -5,8 +5,11 @@
 #include "draw.h"
 
 #include <iostream>
+#include <GL/gl3w.h>
 
 #include "../helpers/config.h"
+#include "glm/vec3.hpp"
+#include "glm/ext/quaternion_geometric.hpp"
 
 Draw *Draw::init(Window* window, Registry* registry) noexcept {
     Draw *self = new Draw;
@@ -219,7 +222,14 @@ void Draw::finish() noexcept {
 }
 
 
-void Draw::drawLine(glm::vec2 start, glm::vec2 end, glm::vec3 color) noexcept {
+void Draw::drawLine(glm::vec2 start, glm::vec2 end, glm::vec3 color, float thickness) noexcept {
+
+    glm::vec2 direction = glm::normalize(end - start);
+    glm::vec2 perp = glm::vec2(-direction.y, direction.x) * (thickness * 0.5f);
+
+    fillRect(end + perp, end - perp, start + perp, start - perp, color, 1.0f);
+
+    /*
     glBindVertexArray(m_line_vao);
     glm::vec2 points[2] = {start, end};
 
@@ -233,6 +243,7 @@ void Draw::drawLine(glm::vec2 start, glm::vec2 end, glm::vec3 color) noexcept {
 
     glLineWidth(1);
     glDrawArrays(GL_LINES, 0, 2);
+    */
 }
 
 void Draw::fillRect(glm::vec2 topleft, glm::vec2 topright,glm::vec2 bottomleft, glm::vec2 bottomright, glm::vec3 color, float opacity) noexcept {

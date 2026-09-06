@@ -26,23 +26,39 @@ void SkilltreeSystem::init_buttons() noexcept {
     m_ui->m_skilltree_buttons.clear();
 
     Registry *registry = m_registry;
+    (void) registry;
 
-    TextButton unlock_flower_field;
-    entt::entity field_entity = m_registry->field_order[m_registry->field_ids["flowers"]];
+    glm::vec2 center = {config::CAMERA_VIEW_WIDTH/2.0f, config::CAMERA_VIEW_HEIGHT/2.0f};
 
-    std::cout<<m_registry->ecs.get<Field>(field_entity).name<<std::endl;
+    entt::entity flower_entity = m_registry->field_order[m_registry->field_ids["flowers"]];
+    Unlockable &field_unlock = m_registry->ecs.get<Unlockable>(flower_entity);
+    entt::entity unlock_flower_field_id = create_skill(center,
+                "Flowers",
+                "Unlocks Flower Field",
+                [&field_unlock] {
+                    field_unlock.unlocked = true;
+                });
 
-    unlock_flower_field.text = "Unlock Flower Field";
-    unlock_flower_field.pos = {config::CAMERA_VIEW_WIDTH/2.0f, config::CAMERA_VIEW_HEIGHT/2.0f};
-    unlock_flower_field.size = skill_button_size;
-    unlock_flower_field.id_label = field_entity;
-    unlock_flower_field.on_click = [registry, field_entity] {
-        Unlockable &u = registry->ecs.get<Unlockable>(field_entity);
-        if (!u.unlocked) {
-            u.unlocked = true;
-        }
-    };
-    m_ui->m_skilltree_buttons.push_back(unlock_flower_field);
+    entt::entity tree_entity = m_registry->field_order[m_registry->field_ids["trees"]];
+    Unlockable &tree_unlock = m_registry->ecs.get<Unlockable>(tree_entity);
+    entt::entity unlock_tree_field_id = create_skill(center + glm::vec2{3, 0},
+                "Trees",
+                "Unlocks Tree Field",
+                [&tree_unlock] {
+                    tree_unlock.unlocked = true;
+                }, unlock_flower_field_id);
+
+
+    entt::entity cave_entity = m_registry->field_order[m_registry->field_ids["cave_machines"]];
+    Unlockable &cave_unlock = m_registry->ecs.get<Unlockable>(cave_entity);
+    entt::entity unlock_cave_field_id = create_skill(center + glm::vec2{6, 2},
+                "Cave",
+                "Unlocks Cave Machines",
+                [&cave_unlock] {
+                    cave_unlock.unlocked = true;
+                }, unlock_tree_field_id);
+
+    (void) unlock_cave_field_id;
 }
 
 

@@ -5,6 +5,7 @@
 #include "ui.h"
 #include "window.h"
 #include "core/registry.h"
+#include "helpers/sizes.h"
 
 class SkilltreeSystem {
 public:
@@ -27,5 +28,44 @@ private:
     bool right_click_pressed = false;
     glm::vec2 origin_mouse = {0.0, 0.0};
     glm::vec2 old_offset = {0.0, 0.0};
+
+    inline entt::entity create_skill(glm::vec2 pos, std::string name, std::string description, std::function<void()> check_func, entt::entity parent=entt::null) noexcept {
+
+        Registry *registry = m_registry;
+
+        entt::entity id = m_registry->ecs.create();
+        Skill skill;
+        skill.name = name;
+        skill.description = description;
+        skill.parent = parent;
+        skill.pos = pos;
+        m_registry->ecs.emplace<Skill>(id, skill);
+
+        Unlockable skill_unlock;
+        skill_unlock.unlocked = false;
+        m_registry->ecs.emplace<Unlockable>(id, skill_unlock);
+
+        TextButton skill_button;
+        skill_button.pos = pos;
+        skill_button.size = skill_button_size;
+        skill_button.id_label = id;
+        skill_button.on_click = [registry, id, check_func, parent] {
+            if (parent != entt::null) {
+                Unlockable parent_unlock = registry->ecs.get<Unlockable>(parent);
+                if (!parent_unlock.unlocked) {
+                    return;
+                }
+            }
+
+            Unlockable &skill_unlock = registry->ecs.get<Unlockable>(id);
+            if (!skill_unlock.unlocked) {
+                skill_unlock.unlocked = true;
+                check_func();
+            }
+        };
+        m_ui->m_skilltree_buttons.push_back(skill_button);
+
+        return id;
+    }
 
 };

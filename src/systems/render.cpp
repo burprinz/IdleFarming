@@ -564,9 +564,29 @@ void RenderSystem::drawSkilltree() noexcept {
     glm::vec2 offset = m_registry->skilltree_pos_offset;
 
     for (TextButton but : m_ui->m_skilltree_buttons) {
+        entt::entity child_id = but.id_label;
+        Skill s = m_registry->ecs.get<Skill>(child_id);
+        entt::entity parent_id = s.parent;
+        if (parent_id != entt::null) {
+            glm::vec2 child_pos = m_registry->ecs.get<Skill>(child_id).pos + offset;
+            glm::vec2 parent_pos = m_registry->ecs.get<Skill>(parent_id).pos + offset;
+            glm::vec3 color = m_registry->ecs.get<Unlockable>(child_id).unlocked&&m_registry->ecs.get<Unlockable>(parent_id).unlocked
+                            ?green:black;
+            m_draw->drawLine(child_pos, parent_pos, color, 0.1);
+        }
+    }
+
+    for (TextButton but : m_ui->m_skilltree_buttons) {
+        bool parent_unlocked = true;
+        Skill s = m_registry->ecs.get<Skill>(but.id_label);
+        if (s.parent != entt::null) {
+            parent_unlocked = m_registry->ecs.get<Unlockable>(s.parent).unlocked;
+        }
+
+
         Unlockable u = m_registry->ecs.get<Unlockable>(but.id_label);
         glm::vec2 pos = but.pos + offset;
-        glm::vec3 color = but.selected||u.unlocked?green:red;
+        glm::vec3 color = parent_unlocked&&(but.selected||u.unlocked)?green:red;
         m_draw->fillFadeRectBySize(pos, but.size, color, black, button_fading_speed);
     }
 
