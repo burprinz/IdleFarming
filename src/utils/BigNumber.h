@@ -65,11 +65,13 @@ public:
         return *this;
     }
 
-
+    double asDouble() {
+        return base * std::pow(10, exponent);
+    }
 
     std::string toString() {
         if (exponent < 4) {
-            double val = base * pow(10, exponent);
+            double val = asDouble();
             return std::format("{:.0f}", val);
         }
         return std::format("{:.2f}e{}", base, exponent);

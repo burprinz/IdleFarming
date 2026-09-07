@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "multiplier.h"
 #include "../helpers/config.h"
 #include "systems/achievement.h"
 #include "utils/BigNumber.h"
@@ -180,6 +181,7 @@ void Application::reset() noexcept {
 	m_registry->ecs.clear();
 
 	StatsManager::instance().init();
+	Multiplier::instance().init();
 
 	// reset bools
 	m_registry->debug_mode = false;

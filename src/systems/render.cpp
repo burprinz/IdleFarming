@@ -583,11 +583,29 @@ void RenderSystem::drawSkilltree() noexcept {
             parent_unlocked = m_registry->ecs.get<Unlockable>(s.parent).unlocked;
         }
 
+        Texture text;
+        if (m_registry->ecs.any_of<TextureInformation>(but.id_label)) {
+            text = m_registry->ecs.get<TextureInformation>(but.id_label).text;
+        } else {
+            text = m_registry->ecs.get<TextureInformation>(m_registry->not_found_texture).text;
+        }
+
+        float progress = static_cast<float>(s.level) / s.max_level;
+        float text_s = but.size.x/2.0f;
+        float progress_h = but.size.y - text_s*2;
 
         Unlockable u = m_registry->ecs.get<Unlockable>(but.id_label);
         glm::vec2 pos = but.pos + offset;
+        glm::vec2 top_center = pos + glm::vec2{0, but.size.y/2.0f};
         glm::vec3 color = parent_unlocked&&(but.selected||u.unlocked)?green:red;
-        m_draw->fillFadeRectBySize(pos, but.size, color, black, button_fading_speed);
+        m_draw->drawTexture(text, top_center - glm::vec2{0, text_s}, glm::vec2{text_s, text_s});
+
+        glm::vec2 progress_center = top_center - glm::vec2{0, text_s*2 + progress_h/2.0f};
+        glm::vec2 progress_size = {but.size.x, progress_h};
+        m_draw->drawProgressBar(progress_center, progress_size, progress, light_blue, gray);
+        m_draw->drawStringInBox(std::to_string(s.level) + "/" + std::to_string(s.max_level), progress_center, progress_size, black, max_button_text_size);
+
+        m_draw->drawFadeRectBySize(pos, but.size, color, button_fading_speed);
     }
 
 }

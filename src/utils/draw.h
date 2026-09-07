@@ -10,6 +10,7 @@
 
 #include "window.h"
 #include "freetype/freetype.h"
+#include "glm/vec3.hpp"
 #include "helpers/colors.h"
 #include "helpers/sizes.h"
 
@@ -58,6 +59,7 @@ public:
     //TODO void drawPolygon(glm::vec2 position, glm::vec2 scale, PolygonShape polygon, glm::vec3 color) noexcept;
     void fillPolygon(glm::vec2 position, glm::vec2 scale, PolygonShape polygon, glm::vec3 color) noexcept;
 
+    void drawProgressBar(glm::vec2 center, glm::vec2 size, float progress, glm::vec3 bar_color, glm::vec3 background_color) noexcept;
 
     /*
      * Forms

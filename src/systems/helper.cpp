@@ -6,6 +6,7 @@
 
 #include <iostream>
 
+#include "core/multiplier.h"
 #include "helpers/field_editor.h"
 #include "helpers/finder.h"
 #include "helpers/sizes.h"
@@ -133,11 +134,12 @@ void HelperSystem::step(const float delta) noexcept {
     for (entt::entity h_id : m_registry->ecs.view<FarmHelper>()) {
         FarmHelper helper = m_registry->ecs.get<FarmHelper>(h_id);
         Field f = m_registry->ecs.get<Field>(helper.field);
+        float growspeed = delta * Multiplier::instance().get_stat(f.growth_multiplier);
 
         for (size_t i = 0; i < helper.working_area.size(); i++) {
             entt::entity field_id = helper.working_area[i];
 
-            apply_helper_growtime(m_registry, field_id, delta);
+            apply_helper_growtime(m_registry, field_id, growspeed);
             /**
             entt::entity plant_id = helper.working_plants[i];
 

@@ -3,22 +3,22 @@
         {
             "name": "auto_collected",
             "value": {
-                "base": 3.552158811615012,
-                "exp": 6
+                "base": 2.8337392842089044,
+                "exp": 7
             }
         },
         {
             "name": "auto_harvested",
             "value": {
-                "base": 1.4008966503967466,
-                "exp": 7
+                "base": 1.8801687003745382,
+                "exp": 9
             }
         },
         {
             "name": "auto_planted",
             "value": {
-                "base": 1.4009172736038389,
-                "exp": 7
+                "base": 1.8801689387931173,
+                "exp": 9
             }
         },
         {
@@ -31,29 +31,29 @@
         {
             "name": "items_sold",
             "value": {
-                "base": 1.3279999494552612,
+                "base": 1.3499999046325684,
                 "exp": 3
             }
         },
         {
             "name": "manual_collected",
             "value": {
-                "base": 8.680000305175781,
-                "exp": 2
+                "base": 1.196000099182129,
+                "exp": 3
             }
         },
         {
             "name": "manual_harvested",
             "value": {
-                "base": 5.510000228881836,
-                "exp": 2
+                "base": 1.0284000038146832,
+                "exp": 4
             }
         },
         {
             "name": "manual_planted",
             "value": {
-                "base": 3.8299996852874756,
-                "exp": 2
+                "base": 1.0100000011443968,
+                "exp": 4
             }
         },
         {

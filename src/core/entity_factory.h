@@ -137,12 +137,13 @@ private:
             f.type = field_type;
             f.plant_type = plant_type;
             f.list_id = m_registry->field_order.size();
+            f.growth_multiplier = "full_" + f.name + "_growth";
 
             Unlockable u;
             u.unlocked = first;
             first = false;//TODO FALSE
 
-            load_field_plants(&f, is_tree, has_inv);
+            load_field_plants(&f, is_tree, has_inv, id);
 
             m_registry->ecs.emplace<Field>(id, f);
             m_registry->ecs.emplace<Unlockable>(id, u);
@@ -160,7 +161,7 @@ private:
         }
     }
 
-    inline void load_field_plants(Field *f, bool is_tree, bool has_inv) noexcept {
+    inline void load_field_plants(Field *f, bool is_tree, bool has_inv, entt::entity parent_id) noexcept {
         std::string json_path = "/assets/data/basevalues/field_infos/" + f->name + ".json";
         nlohmann::json plant_list_json;
         bool loaded = read(json_path, &plant_list_json);
@@ -194,11 +195,11 @@ private:
         m_registry->current_selected_plant.push_back(entt::null);
 
         std::vector<std::vector<entt::entity>> field_tiles;
-        create_field(field_tiles, is_tree || has_inv);
+        create_field(field_tiles, is_tree || has_inv, parent_id);
         m_registry->plant_field_tiles.push_back(field_tiles);
     }
 
-    inline void create_field(std::vector<std::vector<entt::entity>> &tiles, bool is_regrowable) noexcept {
+    inline void create_field(std::vector<std::vector<entt::entity>> &tiles, bool is_regrowable, entt::entity parent_field_id) noexcept {
         tiles.clear();
 
         for (int y = 0; y < normal_filed_height; y++) {
@@ -211,6 +212,7 @@ private:
                 f.y = y;
                 f.unlocked = true;
                 f.is_regrowable_field = is_regrowable;
+                f.parent_field = parent_field_id;
                 m_registry->ecs.emplace<FarmField>(fID, f);
 
                 glm::vec2 pos = {0.5 + x*field_size, 0.5 + y*field_size};

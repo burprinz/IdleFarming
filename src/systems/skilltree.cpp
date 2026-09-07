@@ -4,6 +4,7 @@
 
 #include "skilltree.h"
 
+#include "core/multiplier.h"
 #include "helpers/sizes.h"
 
 SkilltreeSystem SkilltreeSystem::init(Window *window, Registry *registry, UISystem *ui) noexcept {
@@ -37,7 +38,7 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "Unlocks Flower Field",
                 [&field_unlock] {
                     field_unlock.unlocked = true;
-                });
+                }, 1);
 
     entt::entity tree_entity = m_registry->field_order[m_registry->field_ids["trees"]];
     Unlockable &tree_unlock = m_registry->ecs.get<Unlockable>(tree_entity);
@@ -46,7 +47,7 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "Unlocks Tree Field",
                 [&tree_unlock] {
                     tree_unlock.unlocked = true;
-                }, unlock_flower_field_id);
+                }, 1, unlock_flower_field_id);
 
 
     entt::entity cave_entity = m_registry->field_order[m_registry->field_ids["cave_machines"]];
@@ -56,9 +57,17 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "Unlocks Cave Machines",
                 [&cave_unlock] {
                     cave_unlock.unlocked = true;
-                }, unlock_tree_field_id);
+                }, 1, unlock_tree_field_id);
+
+    entt::entity grow_speed_id = create_skill(center + glm::vec2{-3, 0},
+                "Grow Speed",
+                "Grow Speed multiplier + 1",
+                [] {
+                    Multiplier::instance().higher("skilltree_overall_growth", 1000);
+                }, 10, unlock_flower_field_id);
 
     (void) unlock_cave_field_id;
+    (void) grow_speed_id;
 }
 
 

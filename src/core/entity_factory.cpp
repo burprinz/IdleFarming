@@ -146,6 +146,10 @@ void EntityFactory::load_symbols() noexcept {
     TextureInformation unlock = create_symbol("lock_unlocked");
     m_registry->ecs.emplace<TextureInformation>(m_registry->lock_unlocked_texture, unlock);
 
+    m_registry->not_found_texture = m_registry->ecs.create();
+    TextureInformation not_found = create_symbol("notfound");
+    m_registry->ecs.emplace<TextureInformation>(m_registry->not_found_texture, not_found);
+
 }
 
 

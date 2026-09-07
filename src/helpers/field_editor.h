@@ -210,7 +210,31 @@
                 float progress = f.grow - p.growTime;
                 float total_regrow = progress + rem_delta;
                 int cycles = static_cast<int>(total_regrow / p.regrowTime);
+                if (cycles < 0) cycles = 0;
                 float remainder = total_regrow - cycles * p.regrowTime;
+                if (cycles > 0) {
+                    BigNumber n = (inv.size - inv.amount);
+                    double needed = n.asDouble();
+                    double min_collect_d = p.min_collect;
+                    double size_d = inv.size.asDouble();
+
+                    long long steps_to_first_fill =
+                        (needed <= 0.0) ? 0 : static_cast<long long>(std::ceil(needed / min_collect_d));
+
+                    if (cycles < steps_to_first_fill) {
+                        inv.amount += p.min_collect * static_cast<double>(cycles);
+                    } else {
+                        long long steps_per_fill = static_cast<long long>(std::ceil(size_d / min_collect_d));
+                        long long remaining      = cycles - steps_to_first_fill;
+                        long long fills          = 1 + (steps_per_fill > 0 ? remaining / steps_per_fill : 0);
+                        long long leftover_steps = steps_per_fill > 0 ? remaining % steps_per_fill : 0;
+
+                        am += inv.size * static_cast<double>(fills);
+                        inv.amount = p.min_collect * static_cast<double>(leftover_steps);
+                        StatsManager::instance().higher("auto_collected", static_cast<int>(fills));
+                    }
+                }
+                /*
                 for (int i = 0; i < cycles; ++i) {
                     inv.amount += p.min_collect;
                     if (inv.amount >= inv.size) {
@@ -218,7 +242,7 @@
                         inv.amount = BigNumber(0);
                         StatsManager::instance().higher("auto_collected", 1);
                     }
-                }
+                }*/
                 f.grow = p.growTime + remainder;
                 f.harvestable = false;
             }

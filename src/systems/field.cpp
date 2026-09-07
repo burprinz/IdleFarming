@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "../helpers/util.h"
+#include "core/multiplier.h"
 #include "helpers/field_editor.h"
 #include "helpers/sizes.h"
 
@@ -165,8 +166,10 @@ void FieldSystem::step(const float delta) noexcept {
     // Update every cell if not empty
     for (entt::entity fID : m_registry->ecs.view<FarmField>()) {
         FarmField &f = m_registry->ecs.get<FarmField>(fID);
+        Field field = m_registry->ecs.get<Field>(f.parent_field);
+        float growspeed = delta * Multiplier::instance().get_stat(field.growth_multiplier);
         if (!f.is_empty && !f.harvestable && !f.helper_active) {
-            apply_growtime(m_registry, fID, delta);
+            apply_growtime(m_registry, fID, growspeed);
         }
     }
 

@@ -807,4 +807,14 @@ void Draw::onResizeCallback(GLFWwindow *, int width, int height) noexcept {
     m_intermediate_framebuffer = Framebuffer::init({(GLsizei) size.x, (GLsizei) size.y, 1, true});
 }
 
+void Draw::drawProgressBar(glm::vec2 center, glm::vec2 size, float progress, glm::vec3 bar_color, glm::vec3 background_color) noexcept {
+    glm::vec2 top_left = center + glm:: vec2{-size.x, size.y}/2.0f;
+    float progress_w = size.x * progress;
+    float remaining_w = size.x - progress_w;
+
+    fillRectBySize( glm::vec2{top_left.x + progress_w/2.0f, center.y}, glm::vec2{progress_w, size.y}, bar_color, 1.0f);
+    fillRectBySize(glm::vec2{top_left.x + progress_w + remaining_w/2.0f, center.y}, glm::vec2{remaining_w, size.y}, background_color, 1.0f);
+}
+
+
 

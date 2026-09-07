@@ -117,6 +117,7 @@ struct Field {
     std::string name; // ID Name; unique for every field
     std::string display_name; // Name for buttons
     std::string type; // Normal field, tree field, normal cave,...
+    std::string growth_multiplier; //full_plants_growth,...
     int plant_type = 0; // Normal, Collect, Inventory
     size_t list_id; // The id for the farmfields
 };
@@ -126,12 +127,14 @@ struct FarmField {
     size_t x = -1;
     size_t y = -1;
 
+    entt::entity parent_field;
+
     // Stats
     bool is_empty = true;
     bool marked = false;
     bool unlocked = false;
     entt::entity plant = entt::null;
-    float grow = 0.0f;
+    float grow = 0;
     bool harvestable = false;
 
     // Unique for trees
@@ -241,6 +244,8 @@ struct Skill {
     std::string description = "Unlocks ...";
     entt::entity parent = entt::null;
     glm::vec2 pos;
+    int level = 0;
+    int max_level = 1;
 };
 
 struct BuyAmount {
@@ -310,6 +315,7 @@ public:
      */
     entt::entity lock_locked_texture;
     entt::entity lock_unlocked_texture;
+    entt::entity not_found_texture;
 
     /**
      * Farm

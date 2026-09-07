@@ -29,7 +29,7 @@ private:
     glm::vec2 origin_mouse = {0.0, 0.0};
     glm::vec2 old_offset = {0.0, 0.0};
 
-    inline entt::entity create_skill(glm::vec2 pos, std::string name, std::string description, std::function<void()> check_func, entt::entity parent=entt::null) noexcept {
+    inline entt::entity create_skill(glm::vec2 pos, std::string name, std::string description, std::function<void()> check_func, int levels, entt::entity parent=entt::null) noexcept {
 
         Registry *registry = m_registry;
 
@@ -39,6 +39,8 @@ private:
         skill.description = description;
         skill.parent = parent;
         skill.pos = pos;
+        skill.level = 0;
+        skill.max_level = levels;
         m_registry->ecs.emplace<Skill>(id, skill);
 
         Unlockable skill_unlock;
@@ -57,11 +59,17 @@ private:
                 }
             }
 
-            Unlockable &skill_unlock = registry->ecs.get<Unlockable>(id);
-            if (!skill_unlock.unlocked) {
-                skill_unlock.unlocked = true;
+            Skill &s = registry->ecs.get<Skill>(id);
+            if (s.level < s.max_level) {
+                s.level++;
                 check_func();
+
+                if (s.level == s.max_level) {
+                    Unlockable &skill_unlock = registry->ecs.get<Unlockable>(id);
+                    skill_unlock.unlocked = true;
+                }
             }
+
         };
         m_ui->m_skilltree_buttons.push_back(skill_button);
 
