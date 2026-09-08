@@ -33,12 +33,20 @@ void SkilltreeSystem::init_buttons() noexcept {
 
     entt::entity flower_entity = m_registry->field_order[m_registry->field_ids["flowers"]];
     Unlockable &field_unlock = m_registry->ecs.get<Unlockable>(flower_entity);
-    entt::entity unlock_flower_field_id = create_skill(center,
+    entt::entity unlock_flower_field_id = entt::null;
+    unlock_flower_field_id = create_skill(center,
                 "Flowers",
                 "Unlocks Flower Field",
                 [&field_unlock] {
                     field_unlock.unlocked = true;
                 }, 1);
+
+    entt::entity flower_speed_id = create_skill(center + glm::vec2{0, 2},
+                "Flowers Grow Speed",
+                "Flowers Grow Speed multiplier + 0.2",
+                [] {
+                    Multiplier::instance().higher("skilltree_flowers_growth", 0.2);
+                }, 10, unlock_flower_field_id);
 
     entt::entity tree_entity = m_registry->field_order[m_registry->field_ids["trees"]];
     Unlockable &tree_unlock = m_registry->ecs.get<Unlockable>(tree_entity);
@@ -49,25 +57,48 @@ void SkilltreeSystem::init_buttons() noexcept {
                     tree_unlock.unlocked = true;
                 }, 1, unlock_flower_field_id);
 
+    entt::entity tree_speed_id = create_skill(center + glm::vec2{3, 2},
+            "Trees Grow Speed",
+            "Trees Grow Speed multiplier + 0.2",
+            [] {
+                Multiplier::instance().higher("skilltree_trees_growth", 0.2);
+            }, 10, unlock_tree_field_id);
 
     entt::entity cave_entity = m_registry->field_order[m_registry->field_ids["cave_machines"]];
     Unlockable &cave_unlock = m_registry->ecs.get<Unlockable>(cave_entity);
-    entt::entity unlock_cave_field_id = create_skill(center + glm::vec2{6, 2},
+    entt::entity unlock_cave_field_id = create_skill(center + glm::vec2{6, 0},
                 "Cave",
                 "Unlocks Cave Machines",
                 [&cave_unlock] {
                     cave_unlock.unlocked = true;
                 }, 1, unlock_tree_field_id);
 
+    entt::entity cave_speed_id = create_skill(center + glm::vec2{6, 2},
+            "Caves Grow Speed",
+            "Caves Grow Speed multiplier + 0.2",
+            [] {
+                Multiplier::instance().higher("skilltree_cave_machines_growth", 0.2);
+            }, 10, unlock_cave_field_id);
+
     entt::entity grow_speed_id = create_skill(center + glm::vec2{-3, 0},
                 "Grow Speed",
-                "Grow Speed multiplier + 1",
+                "Grow Speed multiplier + 0.1",
                 [] {
-                    Multiplier::instance().higher("skilltree_overall_growth", 1000);
-                }, 10, unlock_flower_field_id);
+                    Multiplier::instance().higher("skilltree_overall_growth", 0.1);
+                }, 10);
 
-    (void) unlock_cave_field_id;
-    (void) grow_speed_id;
+    entt::entity plants_speed_id = create_skill(center + glm::vec2{-3, 2},
+                "Plants Grow Speed",
+                "Plants Grow Speed multiplier + 0.2",
+                [] {
+                    Multiplier::instance().higher("skilltree_plants_growth", 0.2);
+                }, 10, grow_speed_id);
+
+
+    (void)flower_speed_id;
+    (void)tree_speed_id;
+    (void)cave_speed_id;
+    (void)plants_speed_id;
 }
 
 

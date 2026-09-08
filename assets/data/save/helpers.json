@@ -5,9 +5,9 @@
             "level": 28,
             "working_area": [
                 {
-                    "current_growtime": 0.2060546875,
+                    "current_growtime": 0.9784300327301025,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -17,10 +17,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.1435546875,
+                    "current_growtime": 0.9159301519393921,
                     "inventory": {
-                        "base": 2.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -29,9 +29,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0810546875,
+                    "current_growtime": 0.8533693552017212,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -41,9 +41,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0810546875,
+                    "current_growtime": 0.8533693552017212,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -53,9 +53,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0498046875,
+                    "current_growtime": 0.8221194744110107,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -65,9 +65,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0185546875,
+                    "current_growtime": 0.7909311056137085,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -77,9 +77,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0185546875,
+                    "current_growtime": 0.7909311056137085,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -89,10 +89,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9873046875,
+                    "current_growtime": 0.7596811056137085,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -101,10 +101,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9560546875,
+                    "current_growtime": 0.7284311056137085,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -113,9 +113,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7685546875,
+                    "current_growtime": 0.540930986404419,
                     "inventory": {
-                        "base": 6.7,
+                        "base": 3.200000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -125,9 +125,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7373046875,
+                    "current_growtime": 0.509680986404419,
                     "inventory": {
-                        "base": 6.7,
+                        "base": 3.200000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -137,9 +137,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7373046875,
+                    "current_growtime": 0.509680986404419,
                     "inventory": {
-                        "base": 6.7,
+                        "base": 3.200000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -149,10 +149,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7060546875,
+                    "current_growtime": 0.47843098640441895,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -161,10 +161,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7060546875,
+                    "current_growtime": 0.47843098640441895,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -173,10 +173,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6748046875,
+                    "current_growtime": 0.44711995124816895,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -185,10 +185,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6748046875,
+                    "current_growtime": 0.44711995124816895,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -197,10 +197,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6435546875,
+                    "current_growtime": 0.41593050956726074,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -209,10 +209,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.6435546875,
+                    "current_growtime": 0.41593050956726074,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -221,9 +221,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.3935546875,
+                    "current_growtime": 0.16593003273010254,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.400000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -233,10 +233,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2998046875,
+                    "current_growtime": 0.07217979431152344,
                     "inventory": {
-                        "base": 2.0,
-                        "exp": 0
+                        "base": 6.799999999999994,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -245,10 +245,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2685546875,
+                    "current_growtime": 0.04093027114868164,
                     "inventory": {
-                        "base": 2.0,
-                        "exp": 0
+                        "base": 6.799999999999994,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -257,10 +257,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2373046875,
+                    "current_growtime": 0.00968027114868164,
                     "inventory": {
-                        "base": 2.0,
-                        "exp": 0
+                        "base": 6.799999999999994,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -269,9 +269,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0498046875,
+                    "current_growtime": 0.8221194744110107,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -281,9 +281,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0185546875,
+                    "current_growtime": 0.7909311056137085,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -293,9 +293,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5498046875,
+                    "current_growtime": 0.3221195936203003,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.500000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -305,9 +305,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.4873046875,
+                    "current_growtime": 0.2596796751022339,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.400000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -317,10 +317,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2998046875,
+                    "current_growtime": 0.07217979431152344,
                     "inventory": {
-                        "base": 2.0,
-                        "exp": 0
+                        "base": 6.799999999999994,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -329,10 +329,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2998046875,
+                    "current_growtime": 0.07217979431152344,
                     "inventory": {
-                        "base": 2.0,
-                        "exp": 0
+                        "base": 6.799999999999994,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -341,9 +341,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0810546875,
+                    "current_growtime": 0.8533693552017212,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -353,9 +353,9 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0498046875,
+                    "current_growtime": 0.8221194744110107,
                     "inventory": {
-                        "base": 6.8,
+                        "base": 3.300000000000002,
                         "exp": 1
                     },
                     "plant_name": "iron",
@@ -365,10 +365,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7998046875,
+                    "current_growtime": 0.5721802711486816,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 0
+                        "base": 6.699999999999993,
+                        "exp": 1
                     },
                     "plant_name": "iron",
                     "pos": {
@@ -383,7 +383,7 @@
             "level": 28,
             "working_area": [
                 {
-                    "current_growtime": 17.4385986328125,
+                    "current_growtime": 11.255474090576172,
                     "plant_name": "apple",
                     "pos": {
                         "x": 9,
@@ -391,7 +391,7 @@
                     }
                 },
                 {
-                    "current_growtime": 17.3878173828125,
+                    "current_growtime": 11.208602905273438,
                     "plant_name": "apple",
                     "pos": {
                         "x": 8,
@@ -399,7 +399,7 @@
                     }
                 },
                 {
-                    "current_growtime": 17.3526611328125,
+                    "current_growtime": 11.177349090576172,
                     "plant_name": "apple",
                     "pos": {
                         "x": 7,
@@ -407,7 +407,7 @@
                     }
                 },
                 {
-                    "current_growtime": 17.3018798828125,
+                    "current_growtime": 11.114849090576172,
                     "plant_name": "apple",
                     "pos": {
                         "x": 6,
@@ -415,7 +415,7 @@
                     }
                 },
                 {
-                    "current_growtime": 17.2706298828125,
+                    "current_growtime": 11.083602905273438,
                     "plant_name": "apple",
                     "pos": {
                         "x": 5,
@@ -423,7 +423,7 @@
                     }
                 },
                 {
-                    "current_growtime": 17.2203369140625,
+                    "current_growtime": 11.036731719970703,
                     "plant_name": "apple",
                     "pos": {
                         "x": 4,
@@ -431,7 +431,7 @@
                     }
                 },
                 {
-                    "current_growtime": 17.1885986328125,
+                    "current_growtime": 11.005481719970703,
                     "plant_name": "apple",
                     "pos": {
                         "x": 3,
@@ -439,7 +439,7 @@
                     }
                 },
                 {
-                    "current_growtime": 17.1690673828125,
+                    "current_growtime": 10.989856719970703,
                     "plant_name": "apple",
                     "pos": {
                         "x": 2,
@@ -447,7 +447,7 @@
                     }
                 },
                 {
-                    "current_growtime": 17.1378173828125,
+                    "current_growtime": 10.958606719970703,
                     "plant_name": "apple",
                     "pos": {
                         "x": 1,
@@ -455,7 +455,7 @@
                     }
                 },
                 {
-                    "current_growtime": 17.1026611328125,
+                    "current_growtime": 10.927360534667969,
                     "plant_name": "apple",
                     "pos": {
                         "x": 0,
@@ -463,7 +463,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.91943359375,
+                    "current_growtime": 24.7398681640625,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 0,
@@ -471,7 +471,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.82177734375,
+                    "current_growtime": 24.6461181640625,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 1,
@@ -479,7 +479,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.78662109375,
+                    "current_growtime": 24.599239349365234,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 2,
@@ -487,7 +487,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.77099609375,
+                    "current_growtime": 24.583614349365234,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 3,
@@ -495,7 +495,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.75537109375,
+                    "current_growtime": 24.567989349365234,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 4,
@@ -503,7 +503,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.72021484375,
+                    "current_growtime": 24.53673553466797,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 5,
@@ -511,7 +511,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.68896484375,
+                    "current_growtime": 24.50548553466797,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 6,
@@ -519,7 +519,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.65380859375,
+                    "current_growtime": 24.474239349365234,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 7,
@@ -527,7 +527,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.63818359375,
+                    "current_growtime": 24.4586181640625,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 8,
@@ -535,7 +535,7 @@
                     }
                 },
                 {
-                    "current_growtime": 15.60302734375,
+                    "current_growtime": 24.42736053466797,
                     "plant_name": "cherry",
                     "pos": {
                         "x": 9,
@@ -543,7 +543,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.48583984375,
+                    "current_growtime": 38.30237579345703,
                     "plant_name": "orange",
                     "pos": {
                         "x": 0,
@@ -551,7 +551,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.35302734375,
+                    "current_growtime": 38.1773681640625,
                     "plant_name": "orange",
                     "pos": {
                         "x": 1,
@@ -559,7 +559,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.28662109375,
+                    "current_growtime": 38.09923553466797,
                     "plant_name": "orange",
                     "pos": {
                         "x": 2,
@@ -567,7 +567,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.2552490234375,
+                    "current_growtime": 38.06798553466797,
                     "plant_name": "orange",
                     "pos": {
                         "x": 3,
@@ -575,7 +575,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.2357177734375,
+                    "current_growtime": 38.05237579345703,
                     "plant_name": "orange",
                     "pos": {
                         "x": 4,
@@ -583,7 +583,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.2200927734375,
+                    "current_growtime": 38.0367431640625,
                     "plant_name": "orange",
                     "pos": {
                         "x": 5,
@@ -591,7 +591,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.2044677734375,
+                    "current_growtime": 38.0211181640625,
                     "plant_name": "orange",
                     "pos": {
                         "x": 6,
@@ -599,7 +599,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.16943359375,
+                    "current_growtime": 37.98987579345703,
                     "plant_name": "orange",
                     "pos": {
                         "x": 7,
@@ -607,7 +607,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.13818359375,
+                    "current_growtime": 37.95862579345703,
                     "plant_name": "orange",
                     "pos": {
                         "x": 8,
@@ -615,7 +615,7 @@
                     }
                 },
                 {
-                    "current_growtime": 24.10302734375,
+                    "current_growtime": 37.92737579345703,
                     "plant_name": "orange",
                     "pos": {
                         "x": 9,
@@ -623,7 +623,7 @@
                     }
                 },
                 {
-                    "current_growtime": 39.0836181640625,
+                    "current_growtime": 32.896141052246094,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 0,
@@ -631,7 +631,7 @@
                     }
                 },
                 {
-                    "current_growtime": 38.9859619140625,
+                    "current_growtime": 32.802406311035156,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 1,
@@ -639,7 +639,7 @@
                     }
                 },
                 {
-                    "current_growtime": 38.9547119140625,
+                    "current_growtime": 32.771156311035156,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 3,
@@ -647,7 +647,7 @@
                     }
                 },
                 {
-                    "current_growtime": 38.9390869140625,
+                    "current_growtime": 32.755531311035156,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 4,
@@ -655,7 +655,7 @@
                     }
                 },
                 {
-                    "current_growtime": 38.9195556640625,
+                    "current_growtime": 32.739906311035156,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 6,
@@ -663,7 +663,7 @@
                     }
                 },
                 {
-                    "current_growtime": 38.9039306640625,
+                    "current_growtime": 32.724281311035156,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 7,
@@ -671,7 +671,7 @@
                     }
                 },
                 {
-                    "current_growtime": 38.8687744140625,
+                    "current_growtime": 32.69304656982422,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 8,
@@ -679,7 +679,7 @@
                     }
                 },
                 {
-                    "current_growtime": 38.8218994140625,
+                    "current_growtime": 32.64617156982422,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 9,
@@ -687,7 +687,7 @@
                     }
                 },
                 {
-                    "current_growtime": 38.47021484375,
+                    "current_growtime": 32.286781311035156,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 5,
@@ -695,7 +695,7 @@
                     }
                 },
                 {
-                    "current_growtime": 38.33740234375,
+                    "current_growtime": 32.161781311035156,
                     "plant_name": "lemon",
                     "pos": {
                         "x": 2,
@@ -709,7 +709,7 @@
             "level": 28,
             "working_area": [
                 {
-                    "current_growtime": 2.998779296875,
+                    "current_growtime": 1.0815072059631348,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 8,
@@ -717,7 +717,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.901123046875,
+                    "current_growtime": 0.9877581596374512,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 9,
@@ -725,7 +725,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.748779296875,
+                    "current_growtime": 0.8315081596374512,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 8,
@@ -733,7 +733,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.717529296875,
+                    "current_growtime": 0.8002581596374512,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 7,
@@ -741,7 +741,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.701904296875,
+                    "current_growtime": 0.7846331596374512,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 7,
@@ -749,7 +749,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.682373046875,
+                    "current_growtime": 0.7690081596374512,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 6,
@@ -757,7 +757,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.666748046875,
+                    "current_growtime": 0.753382682800293,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 5,
@@ -765,7 +765,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.651123046875,
+                    "current_growtime": 0.737757682800293,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 4,
@@ -773,7 +773,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.631591796875,
+                    "current_growtime": 0.7065072059631348,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 3,
@@ -781,7 +781,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.600341796875,
+                    "current_growtime": 0.6752572059631348,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 2,
@@ -789,7 +789,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.483154296875,
+                    "current_growtime": 0.5658822059631348,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 4,
@@ -797,7 +797,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.467529296875,
+                    "current_growtime": 0.5502572059631348,
                     "plant_name": "daisy",
                     "pos": {
                         "x": 5,
@@ -805,7 +805,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.768310546875,
+                    "current_growtime": 1.8471331596374512,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 9,
@@ -813,7 +813,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.748779296875,
+                    "current_growtime": 1.8315086364746094,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 9,
@@ -821,7 +821,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.733154296875,
+                    "current_growtime": 1.815882682800293,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 8,
@@ -829,7 +829,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.701904296875,
+                    "current_growtime": 1.7846331596374512,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 5,
@@ -837,7 +837,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.682373046875,
+                    "current_growtime": 1.7690095901489258,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 4,
@@ -845,7 +845,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.666748046875,
+                    "current_growtime": 1.7534451484680176,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 3,
@@ -853,7 +853,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.651123046875,
+                    "current_growtime": 1.7378196716308594,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 1,
@@ -861,7 +861,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.615966796875,
+                    "current_growtime": 1.6909446716308594,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 0,
@@ -869,7 +869,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.483154296875,
+                    "current_growtime": 1.5659456253051758,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 0,
@@ -877,7 +877,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.451904296875,
+                    "current_growtime": 1.5346941947937012,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 1,
@@ -885,7 +885,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.432373046875,
+                    "current_growtime": 1.5190081596374512,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 2,
@@ -893,7 +893,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.365966796875,
+                    "current_growtime": 1.440882682800293,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 7,
@@ -901,7 +901,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.350341796875,
+                    "current_growtime": 1.4252581596374512,
                     "plant_name": "dandelion",
                     "pos": {
                         "x": 8,
@@ -909,7 +909,7 @@
                     }
                 },
                 {
-                    "current_growtime": 55.0186767578125,
+                    "current_growtime": 80.09759521484375,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 7,
@@ -917,7 +917,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.9991455078125,
+                    "current_growtime": 80.08197021484375,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 5,
@@ -925,7 +925,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.9835205078125,
+                    "current_growtime": 80.06634521484375,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 4,
@@ -933,7 +933,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.9678955078125,
+                    "current_growtime": 80.05072021484375,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 2,
@@ -941,7 +941,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.768798828125,
+                    "current_growtime": 79.84761810302734,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 6,
@@ -949,7 +949,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.616455078125,
+                    "current_growtime": 79.69137573242188,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 6,
@@ -957,7 +957,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.585205078125,
+                    "current_growtime": 79.66012573242188,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 2,
@@ -965,7 +965,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.569580078125,
+                    "current_growtime": 79.64450073242188,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 1,
@@ -973,7 +973,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.417236328125,
+                    "current_growtime": 79.5038833618164,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 3,
@@ -981,7 +981,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.1827392578125,
+                    "current_growtime": 79.26951599121094,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 3,
@@ -989,7 +989,7 @@
                     }
                 },
                 {
-                    "current_growtime": 54.1514892578125,
+                    "current_growtime": 79.23826599121094,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 0,
@@ -997,7 +997,7 @@
                     }
                 },
                 {
-                    "current_growtime": 53.9678955078125,
+                    "current_growtime": 79.05079650878906,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 9,
@@ -1005,7 +1005,7 @@
                     }
                 },
                 {
-                    "current_growtime": 53.5855712890625,
+                    "current_growtime": 78.6601791381836,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 8,
@@ -1013,7 +1013,7 @@
                     }
                 },
                 {
-                    "current_growtime": 53.566162109375,
+                    "current_growtime": 78.6445541381836,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 9,
@@ -1021,7 +1021,7 @@
                     }
                 },
                 {
-                    "current_growtime": 53.4178466796875,
+                    "current_growtime": 78.50391387939453,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 0,
@@ -1029,7 +1029,7 @@
                     }
                 },
                 {
-                    "current_growtime": 53.202392578125,
+                    "current_growtime": 78.28517150878906,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 6,
@@ -1037,7 +1037,7 @@
                     }
                 },
                 {
-                    "current_growtime": 53.0499267578125,
+                    "current_growtime": 78.1289291381836,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 7,
@@ -1045,7 +1045,7 @@
                     }
                 },
                 {
-                    "current_growtime": 52.999267578125,
+                    "current_growtime": 78.0820541381836,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 2,
@@ -1053,7 +1053,7 @@
                     }
                 },
                 {
-                    "current_growtime": 52.983642578125,
+                    "current_growtime": 78.0664291381836,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 1,
@@ -1061,7 +1061,7 @@
                     }
                 },
                 {
-                    "current_growtime": 52.835693359375,
+                    "current_growtime": 77.91018676757813,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 3,
@@ -1069,7 +1069,7 @@
                     }
                 },
                 {
-                    "current_growtime": 52.816162109375,
+                    "current_growtime": 77.89456176757813,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 5,
@@ -1077,7 +1077,7 @@
                     }
                 },
                 {
-                    "current_growtime": 52.800537109375,
+                    "current_growtime": 77.87893676757813,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 6,
@@ -1085,7 +1085,7 @@
                     }
                 },
                 {
-                    "current_growtime": 52.6522216796875,
+                    "current_growtime": 77.73831176757813,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 4,
@@ -1093,7 +1093,7 @@
                     }
                 },
                 {
-                    "current_growtime": 52.601318359375,
+                    "current_growtime": 77.67581939697266,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 0,
@@ -1101,7 +1101,7 @@
                     }
                 },
                 {
-                    "current_growtime": 52.468505859375,
+                    "current_growtime": 77.55084228515625,
                     "plant_name": "tulips",
                     "pos": {
                         "x": 1,
@@ -1115,7 +1115,7 @@
             "level": 28,
             "working_area": [
                 {
-                    "current_growtime": 0.1123046875,
+                    "current_growtime": 2.6216001510620117,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 9,
@@ -1123,7 +1123,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0498046875,
+                    "current_growtime": 2.559098720550537,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 8,
@@ -1131,7 +1131,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0185546875,
+                    "current_growtime": 2.527848243713379,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 7,
@@ -1139,7 +1139,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.9873046875,
+                    "current_growtime": 2.496598243713379,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 6,
@@ -1147,7 +1147,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.9560546875,
+                    "current_growtime": 2.4653468132019043,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 5,
@@ -1155,7 +1155,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.9248046875,
+                    "current_growtime": 2.4340972900390625,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 4,
@@ -1163,7 +1163,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.9248046875,
+                    "current_growtime": 2.4340972900390625,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 3,
@@ -1171,7 +1171,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.8935546875,
+                    "current_growtime": 2.4028477668762207,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 2,
@@ -1179,7 +1179,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.8623046875,
+                    "current_growtime": 2.3715968132019043,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 1,
@@ -1187,7 +1187,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.8310546875,
+                    "current_growtime": 2.3403491973876953,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 0,
@@ -1195,7 +1195,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.7373046875,
+                    "current_growtime": 0.24660062789916992,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 9,
@@ -1203,7 +1203,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.5810546875,
+                    "current_growtime": 0.09035015106201172,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 8,
@@ -1211,7 +1211,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.5498046875,
+                    "current_growtime": 0.05910062789916992,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 7,
@@ -1219,7 +1219,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.5498046875,
+                    "current_growtime": 0.05910062789916992,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 6,
@@ -1227,7 +1227,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.5185546875,
+                    "current_growtime": 0.027851104736328125,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 5,
@@ -1235,7 +1235,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.5185546875,
+                    "current_growtime": 0.027851104736328125,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 3,
@@ -1243,7 +1243,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.4873046875,
+                    "current_growtime": 3.996601104736328,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 2,
@@ -1251,7 +1251,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.4560546875,
+                    "current_growtime": 3.96535062789917,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 1,
@@ -1259,7 +1259,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.4248046875,
+                    "current_growtime": 3.9341001510620117,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 0,
@@ -1267,7 +1267,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.8623046875,
+                    "current_growtime": 3.3716001510620117,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 4,
@@ -1275,7 +1275,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.4873046875,
+                    "current_growtime": 1.99660062789917,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 9,
@@ -1283,7 +1283,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.4248046875,
+                    "current_growtime": 1.9341011047363281,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 8,
@@ -1291,7 +1291,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.3623046875,
+                    "current_growtime": 1.8716001510620117,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 7,
@@ -1299,7 +1299,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.2060546875,
+                    "current_growtime": 1.7153496742248535,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 6,
@@ -1307,7 +1307,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.1748046875,
+                    "current_growtime": 1.6841011047363281,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 5,
@@ -1315,7 +1315,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.1748046875,
+                    "current_growtime": 1.6841011047363281,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 4,
@@ -1323,7 +1323,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.1435546875,
+                    "current_growtime": 1.6528511047363281,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 0,
@@ -1331,7 +1331,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8310546875,
+                    "current_growtime": 1.3403528928756714,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 1,
@@ -1339,7 +1339,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7998046875,
+                    "current_growtime": 1.3091009855270386,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 2,
@@ -1347,7 +1347,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.7998046875,
+                    "current_growtime": 1.3091009855270386,
                     "plant_name": "cucumber",
                     "pos": {
                         "x": 3,
@@ -1355,7 +1355,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2685546875,
+                    "current_growtime": 4.777853488922119,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 9,
@@ -1363,7 +1363,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.1748046875,
+                    "current_growtime": 4.684103488922119,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 8,
@@ -1371,7 +1371,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.1435546875,
+                    "current_growtime": 4.652853965759277,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 7,
@@ -1379,7 +1379,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.1123046875,
+                    "current_growtime": 4.621603488922119,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 6,
@@ -1387,7 +1387,7 @@
                     }
                 },
                 {
-                    "current_growtime": 6.9873046875,
+                    "current_growtime": 4.496602535247803,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 5,
@@ -1395,7 +1395,7 @@
                     }
                 },
                 {
-                    "current_growtime": 6.9873046875,
+                    "current_growtime": 4.496602535247803,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 3,
@@ -1403,7 +1403,7 @@
                     }
                 },
                 {
-                    "current_growtime": 6.9560546875,
+                    "current_growtime": 4.465352535247803,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 2,
@@ -1411,7 +1411,7 @@
                     }
                 },
                 {
-                    "current_growtime": 6.9248046875,
+                    "current_growtime": 4.4341020584106445,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 1,
@@ -1419,7 +1419,7 @@
                     }
                 },
                 {
-                    "current_growtime": 6.8935546875,
+                    "current_growtime": 4.402852535247803,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 0,
@@ -1427,7 +1427,7 @@
                     }
                 },
                 {
-                    "current_growtime": 6.4560546875,
+                    "current_growtime": 3.965353012084961,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 4,
@@ -1435,7 +1435,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.8935546875,
+                    "current_growtime": 3.4028496742248535,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 9,
@@ -1443,7 +1443,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.8623046875,
+                    "current_growtime": 3.371598720550537,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 8,
@@ -1451,7 +1451,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.8310546875,
+                    "current_growtime": 3.340348720550537,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 7,
@@ -1459,7 +1459,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.7998046875,
+                    "current_growtime": 3.3090977668762207,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 6,
@@ -1467,7 +1467,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.7060546875,
+                    "current_growtime": 3.2153472900390625,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 5,
@@ -1475,7 +1475,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.6748046875,
+                    "current_growtime": 3.1840968132019043,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 4,
@@ -1483,7 +1483,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.6435546875,
+                    "current_growtime": 3.1528468132019043,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 3,
@@ -1491,7 +1491,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.6123046875,
+                    "current_growtime": 3.1215977668762207,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 2,
@@ -1499,7 +1499,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.5810546875,
+                    "current_growtime": 3.090348720550537,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 1,
@@ -1507,7 +1507,7 @@
                     }
                 },
                 {
-                    "current_growtime": 5.4873046875,
+                    "current_growtime": 2.996598243713379,
                     "plant_name": "tomato",
                     "pos": {
                         "x": 0,
@@ -1515,7 +1515,7 @@
                     }
                 },
                 {
-                    "current_growtime": 8.2685546875,
+                    "current_growtime": 8.77784538269043,
                     "plant_name": "corn",
                     "pos": {
                         "x": 9,
@@ -1523,7 +1523,7 @@
                     }
                 },
                 {
-                    "current_growtime": 8.1123046875,
+                    "current_growtime": 8.62159538269043,
                     "plant_name": "corn",
                     "pos": {
                         "x": 8,
@@ -1531,7 +1531,7 @@
                     }
                 },
                 {
-                    "current_growtime": 8.0810546875,
+                    "current_growtime": 8.59034538269043,
                     "plant_name": "corn",
                     "pos": {
                         "x": 7,
@@ -1539,7 +1539,7 @@
                     }
                 },
                 {
-                    "current_growtime": 8.0810546875,
+                    "current_growtime": 8.59034538269043,
                     "plant_name": "corn",
                     "pos": {
                         "x": 6,
@@ -1547,7 +1547,7 @@
                     }
                 },
                 {
-                    "current_growtime": 8.0498046875,
+                    "current_growtime": 8.559096336364746,
                     "plant_name": "corn",
                     "pos": {
                         "x": 5,
@@ -1555,7 +1555,7 @@
                     }
                 },
                 {
-                    "current_growtime": 8.0185546875,
+                    "current_growtime": 8.527846336364746,
                     "plant_name": "corn",
                     "pos": {
                         "x": 4,
@@ -1563,7 +1563,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.9873046875,
+                    "current_growtime": 8.496597290039063,
                     "plant_name": "corn",
                     "pos": {
                         "x": 3,
@@ -1571,7 +1571,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.9560546875,
+                    "current_growtime": 8.465347290039063,
                     "plant_name": "corn",
                     "pos": {
                         "x": 2,
@@ -1579,7 +1579,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.9248046875,
+                    "current_growtime": 8.434097290039063,
                     "plant_name": "corn",
                     "pos": {
                         "x": 1,
@@ -1587,7 +1587,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.8935546875,
+                    "current_growtime": 8.402846336364746,
                     "plant_name": "corn",
                     "pos": {
                         "x": 0,
@@ -1595,7 +1595,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.5498046875,
+                    "current_growtime": 8.059093475341797,
                     "plant_name": "corn",
                     "pos": {
                         "x": 0,
@@ -1603,7 +1603,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.4873046875,
+                    "current_growtime": 7.996593475341797,
                     "plant_name": "corn",
                     "pos": {
                         "x": 1,
@@ -1611,7 +1611,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.4248046875,
+                    "current_growtime": 7.934091567993164,
                     "plant_name": "corn",
                     "pos": {
                         "x": 2,
@@ -1619,7 +1619,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.3935546875,
+                    "current_growtime": 7.902840614318848,
                     "plant_name": "corn",
                     "pos": {
                         "x": 3,
@@ -1627,7 +1627,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.3623046875,
+                    "current_growtime": 7.871589660644531,
                     "plant_name": "corn",
                     "pos": {
                         "x": 4,
@@ -1635,7 +1635,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.3623046875,
+                    "current_growtime": 7.871589660644531,
                     "plant_name": "corn",
                     "pos": {
                         "x": 5,
@@ -1643,7 +1643,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.3310546875,
+                    "current_growtime": 7.840341567993164,
                     "plant_name": "corn",
                     "pos": {
                         "x": 6,
@@ -1651,7 +1651,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.2998046875,
+                    "current_growtime": 7.809090614318848,
                     "plant_name": "corn",
                     "pos": {
                         "x": 7,
@@ -1659,7 +1659,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.2998046875,
+                    "current_growtime": 7.809090614318848,
                     "plant_name": "corn",
                     "pos": {
                         "x": 8,
@@ -1667,7 +1667,7 @@
                     }
                 },
                 {
-                    "current_growtime": 7.2685546875,
+                    "current_growtime": 7.777840614318848,
                     "plant_name": "corn",
                     "pos": {
                         "x": 9,
@@ -1675,7 +1675,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8935546875,
+                    "current_growtime": 3.4028525352478027,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 9,
@@ -1683,7 +1683,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.6748046875,
+                    "current_growtime": 4.184101104736328,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 8,
@@ -1691,7 +1691,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.3310546875,
+                    "current_growtime": 0.8403491973876953,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 7,
@@ -1699,7 +1699,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.9248046875,
+                    "current_growtime": 4.43410062789917,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 6,
@@ -1707,7 +1707,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.7685546875,
+                    "current_growtime": 4.277851104736328,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 5,
@@ -1715,7 +1715,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.4248046875,
+                    "current_growtime": 1.9341001510620117,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 4,
@@ -1723,7 +1723,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.2373046875,
+                    "current_growtime": 3.7466020584106445,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 3,
@@ -1731,7 +1731,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2998046875,
+                    "current_growtime": 2.809098720550537,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 2,
@@ -1739,7 +1739,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.5185546875,
+                    "current_growtime": 1.0278491973876953,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 1,
@@ -1747,7 +1747,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8935546875,
+                    "current_growtime": 3.4028525352478027,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 0,
@@ -1755,7 +1755,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.9560546875,
+                    "current_growtime": 3.4653520584106445,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 0,
@@ -1763,7 +1763,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.4873046875,
+                    "current_growtime": 3.9966020584106445,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 1,
@@ -1771,7 +1771,7 @@
                     }
                 },
                 {
-                    "current_growtime": 1.6748046875,
+                    "current_growtime": 4.184101104736328,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 2,
@@ -1779,7 +1779,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.5185546875,
+                    "current_growtime": 2.0278491973876953,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 3,
@@ -1787,7 +1787,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.1435546875,
+                    "current_growtime": 4.652849197387695,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 4,
@@ -1795,7 +1795,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.4560546875,
+                    "current_growtime": 4.965349197387695,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 5,
@@ -1803,7 +1803,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.7685546875,
+                    "current_growtime": 1.277849555015564,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 6,
@@ -1811,7 +1811,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.4560546875,
+                    "current_growtime": 1.9653515815734863,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 7,
@@ -1819,7 +1819,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.3623046875,
+                    "current_growtime": 0.8715996742248535,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 8,
@@ -1827,7 +1827,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.1123046875,
+                    "current_growtime": 0.6216001510620117,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 9,
@@ -1835,7 +1835,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8310546875,
+                    "current_growtime": 3.340353012084961,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 9,
@@ -1843,7 +1843,7 @@
                     }
                 },
                 {
-                    "current_growtime": 4.4873046875,
+                    "current_growtime": 1.9965996742248535,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 8,
@@ -1851,7 +1851,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5498046875,
+                    "current_growtime": 3.0591015815734863,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 7,
@@ -1859,7 +1859,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.8623046875,
+                    "current_growtime": 3.371603012084961,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 6,
@@ -1867,7 +1867,7 @@
                     }
                 },
                 {
-                    "current_growtime": 3.7685546875,
+                    "current_growtime": 1.277849555015564,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 5,
@@ -1875,7 +1875,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.1123046875,
+                    "current_growtime": 4.621599197387695,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 4,
@@ -1883,7 +1883,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5810546875,
+                    "current_growtime": 3.090351104736328,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 3,
@@ -1891,7 +1891,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5810546875,
+                    "current_growtime": 3.090351104736328,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 2,
@@ -1899,7 +1899,7 @@
                     }
                 },
                 {
-                    "current_growtime": 2.7998046875,
+                    "current_growtime": 0.3090996742248535,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 1,
@@ -1907,7 +1907,7 @@
                     }
                 },
                 {
-                    "current_growtime": 0.2998046875,
+                    "current_growtime": 2.809098720550537,
                     "plant_name": "carrot",
                     "pos": {
                         "x": 0,

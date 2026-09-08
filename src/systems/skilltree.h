@@ -53,8 +53,9 @@ private:
         skill_button.id_label = id;
         skill_button.on_click = [registry, id, check_func, parent] {
             if (parent != entt::null) {
-                Unlockable parent_unlock = registry->ecs.get<Unlockable>(parent);
-                if (!parent_unlock.unlocked) {
+                Skill parent_skill = registry->ecs.get<Skill>(parent);
+                //Unlockable parent_unlock = registry->ecs.get<Unlockable>(parent);
+                if (parent_skill.level <= 0) {
                     return;
                 }
             }

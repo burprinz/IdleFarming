@@ -242,6 +242,7 @@ struct Achievement {
 struct Skill {
     std::string name = "???";
     std::string description = "Unlocks ...";
+    std::vector<std::string> display_lines;
     entt::entity parent = entt::null;
     glm::vec2 pos;
     int level = 0;

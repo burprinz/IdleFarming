@@ -28,6 +28,10 @@ public:
     }
 
     inline void recalculate() noexcept {
+        recalculate_full_growth();
+    }
+
+    inline void recalculate_full_growth() noexcept {
         multiplier["full_plants_growth"] = multiplier["skilltree_plants_growth"] * multiplier["skilltree_overall_growth"];
         multiplier["full_flowers_growth"] = multiplier["skilltree_flowers_growth"] * multiplier["skilltree_overall_growth"];
         multiplier["full_trees_growth"] = multiplier["skilltree_trees_growth"] * multiplier["skilltree_overall_growth"];
