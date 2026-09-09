@@ -41,6 +41,7 @@ public:
         create_playing_cards();
         create_poker_chips();
 
+        preload_skilltree_infos();
 
         int time_diff = static_cast<int>(load_time_difference());
         std::cout<<"Offline progress time: "<<time_diff<<"s"<<std::endl;
@@ -442,6 +443,25 @@ private:
             m_registry->ecs.emplace<TextureInformation>(id, texture);
             m_registry->poker_chips[value] = id;
             m_registry->chip_list.push_back(value);
+        }
+    }
+
+    inline void preload_skilltree_infos() {
+        std::string json_path = "/assets/data/basevalues/skilltree.json";
+        nlohmann::json json;
+        bool loaded = read(json_path, &json);
+        if (!loaded) {
+            std::cout<<"Error loading Field List"<<std::endl;
+        }
+
+        for (const auto& skill : json["skills"]) {
+            std::string name = skill["name"].get<std::string>();
+
+            entt::entity id = m_registry->ecs.create();
+            m_registry->skilltree_entities[name] = id;
+
+            TextureInformation text = create_skilltree_texture(name);
+            m_registry->ecs.emplace<TextureInformation>(id, text);
         }
     }
 

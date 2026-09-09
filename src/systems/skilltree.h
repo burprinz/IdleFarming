@@ -29,11 +29,18 @@ private:
     glm::vec2 origin_mouse = {0.0, 0.0};
     glm::vec2 old_offset = {0.0, 0.0};
 
-    inline entt::entity create_skill(glm::vec2 pos, std::string name, std::string description, std::function<void()> check_func, int levels, entt::entity parent=entt::null) noexcept {
+    inline entt::entity create_skill(glm::vec2 pos, std::string id_name, std::string name, std::string description, std::function<void()> check_func, int levels, entt::entity parent=entt::null) noexcept {
 
         Registry *registry = m_registry;
 
-        entt::entity id = m_registry->ecs.create();
+        entt::entity id;
+        if (m_registry->skilltree_entities.find(id_name) != m_registry->skilltree_entities.end()) {
+            id = m_registry->skilltree_entities[id_name];
+        } else {
+            id = m_registry->ecs.create();
+        }
+
+
         Skill skill;
         skill.name = name;
         skill.description = description;

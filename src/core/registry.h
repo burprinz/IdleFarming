@@ -409,6 +409,7 @@ public:
     std::unordered_map<std::string, size_t> field_ids;
     std::unordered_map<std::string, entt::entity> playing_cards;
     std::unordered_map<int, entt::entity> poker_chips;
+    std::unordered_map<std::string, entt::entity> skilltree_entities;
 
 private:
 

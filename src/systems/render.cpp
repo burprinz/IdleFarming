@@ -580,7 +580,7 @@ void RenderSystem::drawSkilltree() noexcept {
         bool parent_unlocked = true;
         Skill s = m_registry->ecs.get<Skill>(but.id_label);
         if (s.parent != entt::null) {
-            parent_unlocked = m_registry->ecs.get<Unlockable>(s.parent).unlocked;
+            parent_unlocked = m_registry->ecs.get<Skill>(s.parent).level > 0;
         }
 
         Texture text;

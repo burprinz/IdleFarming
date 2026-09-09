@@ -69,10 +69,14 @@ inline std::string getTexturePath(std::string relative_path) noexcept {
     return getBasePath() + "/assets/textures/" + relative_path;
 }
 
+inline bool does_file_exist(std::string path) {
+    return std::filesystem::exists(path);
+}
+
 inline TextureInformation create_texture(std::string path) {
     TextureInformation info;
     std::string text_path = getTexturePath(path);
-    if (std::filesystem::exists(text_path)) {
+    if (does_file_exist(text_path)) {
         info.text = Texture::init(text_path);
     } else {
         info.text = Texture::init(getTexturePath("symbols/notfound.png"));
@@ -102,6 +106,11 @@ inline TextureInformation create_card_texture(std::string name) {
 
 inline TextureInformation create_chip_texture(int value) {
     return create_texture("poker_chips/" + std::to_string(value) + ".png");
+
+}
+
+inline TextureInformation create_skilltree_texture(std::string name) {
+    return create_texture("skilltree/" + name + ".png");
 
 }
 
