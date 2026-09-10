@@ -3,8 +3,6 @@
 //
 
 #include "skilltree.h"
-
-#include "core/multiplier.h"
 #include "helpers/sizes.h"
 
 SkilltreeSystem SkilltreeSystem::init(Window *window, Registry *registry, UISystem *ui) noexcept {
@@ -38,6 +36,7 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "unlock_flower_field",
                 "Flowers",
                 "Unlocks Flower Field",
+                {},
                 [&field_unlock] {
                     field_unlock.unlocked = true;
                 }, 1);
@@ -47,6 +46,7 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "flower_speed_01",
                 "Flowers Grow Speed",
                 "Flowers Grow Speed multiplier + 0.2",
+                {"skilltree_flowers_growth"},
                 [] {
                     Multiplier::instance().higher("skilltree_flowers_growth", 0.2);
                 }, 10, unlock_flower_field_id);
@@ -57,7 +57,8 @@ void SkilltreeSystem::init_buttons() noexcept {
     entt::entity unlock_tree_field_id = create_skill(center + glm::vec2{3, 0},
                 "unlock_tree_field",
                 "Trees",
-                "Unlocks Tree Field",
+                {""},
+{},
                 [&tree_unlock] {
                     tree_unlock.unlocked = true;
                 }, 1, unlock_flower_field_id);
@@ -68,6 +69,7 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "tree_speed_01",
             "Trees Grow Speed",
             "Trees Grow Speed multiplier + 0.2",
+                {"skilltree_trees_growth"},
             [] {
                 Multiplier::instance().higher("skilltree_trees_growth", 0.2);
             }, 10, unlock_tree_field_id);
@@ -80,6 +82,7 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "unlock_cave_field",
                 "Cave",
                 "Unlocks Cave Machines",
+            {},
                 [&cave_unlock] {
                     cave_unlock.unlocked = true;
                 }, 1, unlock_tree_field_id);
@@ -90,6 +93,7 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "cave_speed_01",
             "Caves Grow Speed",
             "Caves Grow Speed multiplier + 0.2",
+{"skilltree_cave_machines_growth"},
             [] {
                 Multiplier::instance().higher("skilltree_cave_machines_growth", 0.2);
             }, 10, unlock_cave_field_id);
@@ -100,6 +104,7 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "grow_speed_01",
                 "Grow Speed",
                 "Grow Speed multiplier + 0.1",
+        {"skilltree_overall_growth"},
                 [] {
                     Multiplier::instance().higher("skilltree_overall_growth", 0.1);
                 }, 10);
@@ -110,6 +115,7 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "plants_speed_01",
                 "Plants Grow Speed",
                 "Plants Grow Speed multiplier + 0.2",
+                {"skilltree_plants_growth"},
                 [] {
                     Multiplier::instance().higher("skilltree_plants_growth", 0.2);
                 }, 10, grow_speed_01_id);

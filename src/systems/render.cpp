@@ -576,6 +576,7 @@ void RenderSystem::drawSkilltree() noexcept {
         }
     }
 
+    entt::entity popup_entity = entt::null;
     for (TextButton but : m_ui->m_skilltree_buttons) {
         bool parent_unlocked = true;
         Skill s = m_registry->ecs.get<Skill>(but.id_label);
@@ -606,6 +607,15 @@ void RenderSystem::drawSkilltree() noexcept {
         m_draw->drawStringInBox(std::to_string(s.level) + "/" + std::to_string(s.max_level), progress_center, progress_size, black, max_button_text_size);
 
         m_draw->drawFadeRectBySize(pos, but.size, color, button_fading_speed);
+
+        if (but.selected) {
+            popup_entity = but.id_label;
+        }
+    }
+
+    if (popup_entity != entt::null) {
+        Skill s = m_registry->ecs.get<Skill>(popup_entity);
+        m_draw->drawMultilinePopupAtMouse(s.name, s.display_lines, true, white, small_popup_text_size);
     }
 
 }

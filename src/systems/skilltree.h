@@ -4,6 +4,7 @@
 
 #include "ui.h"
 #include "window.h"
+#include "core/multiplier.h"
 #include "core/registry.h"
 #include "helpers/sizes.h"
 
@@ -29,7 +30,20 @@ private:
     glm::vec2 origin_mouse = {0.0, 0.0};
     glm::vec2 old_offset = {0.0, 0.0};
 
-    inline entt::entity create_skill(glm::vec2 pos, std::string id_name, std::string name, std::string description, std::function<void()> check_func, int levels, entt::entity parent=entt::null) noexcept {
+    inline std::vector<std::string> create_lines(std::string desc, std::vector<std::string> effects) {
+        std::vector<std::string> result;
+        result.push_back(desc);
+        if (effects.size() > 0 ) {
+            result.push_back("Current Effects)");
+            for (std::string effect : effects) {
+                result.push_back(effect + " x" + std::to_string(Multiplier::instance().get_stat(effect)));
+            }
+        }
+        return result;
+    }
+
+
+    inline entt::entity create_skill(glm::vec2 pos, std::string id_name, std::string name, std::string description, std::vector<std::string> effects, std::function<void()> check_func, int levels, entt::entity parent=entt::null) noexcept {
 
         Registry *registry = m_registry;
 
@@ -48,6 +62,7 @@ private:
         skill.pos = pos;
         skill.level = 0;
         skill.max_level = levels;
+        skill.display_lines = create_lines(description, effects);
         m_registry->ecs.emplace<Skill>(id, skill);
 
         Unlockable skill_unlock;
@@ -58,7 +73,7 @@ private:
         skill_button.pos = pos;
         skill_button.size = skill_button_size;
         skill_button.id_label = id;
-        skill_button.on_click = [registry, id, check_func, parent] {
+        skill_button.on_click = [this, registry, id, check_func, parent, description, effects] {
             if (parent != entt::null) {
                 Skill parent_skill = registry->ecs.get<Skill>(parent);
                 //Unlockable parent_unlock = registry->ecs.get<Unlockable>(parent);
@@ -71,6 +86,8 @@ private:
             if (s.level < s.max_level) {
                 s.level++;
                 check_func();
+                s.display_lines = create_lines(description, effects);
+
 
                 if (s.level == s.max_level) {
                     Unlockable &skill_unlock = registry->ecs.get<Unlockable>(id);

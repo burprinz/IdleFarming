@@ -29,6 +29,7 @@ constexpr float normal_text_box_height = 0.5f;
 constexpr float small_text_box_text_size = 0.002f;
 constexpr float max_button_text_size = 0.004f;
 constexpr float normal_text_box_size = 0.009f;
+constexpr float small_popup_text_size = 0.006f;
 constexpr float normal_popup_text_size = 0.008f;
 
 // Mode selection
