@@ -66,7 +66,7 @@ class Application {
         void onMouseCallback(GLFWwindow* window, int button, int action, int mods) noexcept;
 		void onMouseClickCallback(GLFWwindow* window, int button, int action, int mods) noexcept;
         void onResizeCallback(GLFWwindow* window, int width, int height) noexcept;
-
+		void onScrollCallback(GLFWwindow* window, double xoffset, double yoffset) noexcept;
 
 		inline void tests() noexcept {
 			test_offline_stats_progress();

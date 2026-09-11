@@ -17,6 +17,12 @@ Registry* Registry::init() noexcept {
 	self->keys.insert({"strg", false});
 	self->keys.insert({"mouse_left", false});
 	self->keys.insert({"mouse_right", false});
+	self->keys.insert({"vertical_scroll_up", false});
+	self->keys.insert({"vertical_scroll_down", false});
+	self->keys.insert({"horizontal_scroll_up", false});
+	self->keys.insert({"horizontal_scroll_down", false});
+
+
 
 	self->m_viewport.m_origin = glm::uvec2(0);
 	self->m_viewport.m_size   = glm::uvec2(0);
@@ -70,4 +76,18 @@ void Registry::on_mouse_callback(int key, int action) noexcept {
 			break;
 	}
 }
+
+void Registry::on_scroll_callback(float xOff, float yOff) {
+	if (yOff > 0) {
+		keys["vertical_scroll_up"] = true;
+	} else {
+		keys["vertical_scroll_down"] = true;
+	}
+	if (xOff > 1) {
+		keys["horizontal_scroll_up"] = true;
+	} else {
+		keys["horizontal_scroll_down"] = true;
+	}
+}
+
 

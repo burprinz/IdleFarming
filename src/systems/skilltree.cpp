@@ -57,8 +57,8 @@ void SkilltreeSystem::init_buttons() noexcept {
     entt::entity unlock_tree_field_id = create_skill(center + glm::vec2{3, 0},
                 "unlock_tree_field",
                 "Trees",
-                {""},
-{},
+                "Unlocks Tree Field",
+    {},
                 [&tree_unlock] {
                     tree_unlock.unlocked = true;
                 }, 1, unlock_flower_field_id);
@@ -131,10 +131,10 @@ bool SkilltreeSystem::left_click() noexcept {
 
 void SkilltreeSystem::step(const float delta) noexcept {
     (void) delta;
+    glm::vec2 mouse_pos = m_window->getMousePosition();
 
     if (m_registry->window() == SKILLTREE) {
         if (m_registry->keys["mouse_right"]) {
-            glm::vec2 mouse_pos = m_window->getMousePosition();
             if (!right_click_pressed) {
                 right_click_pressed = true;
                 origin_mouse = mouse_pos;
@@ -144,6 +144,28 @@ void SkilltreeSystem::step(const float delta) noexcept {
             m_registry->skilltree_pos_offset = old_offset + next_offset;
         } else {
             right_click_pressed = false;
+        }
+
+        if (m_registry->keys["vertical_scroll_up"]) {
+            glm::vec2 anchor = mouse_pos;
+            float old_zoom = m_registry->skilltree_zoom;
+            m_registry->skilltree_zoom += delta;
+            if (m_registry->skilltree_zoom > 1) {
+                m_registry->skilltree_zoom = 1;
+            }
+            float new_zoom = m_registry->skilltree_zoom;
+            glm::vec2 world_point = (anchor - m_registry->skilltree_pos_offset) / old_zoom;
+            m_registry->skilltree_pos_offset = anchor - world_point * new_zoom;
+        } else if (m_registry->keys["vertical_scroll_down"]) {
+            glm::vec2 anchor = mouse_pos;
+            float old_zoom = m_registry->skilltree_zoom;
+            m_registry->skilltree_zoom -= delta;
+            if (m_registry->skilltree_zoom < 0.1) {
+                m_registry->skilltree_zoom = 0.1;
+            }
+            float new_zoom = m_registry->skilltree_zoom;
+            glm::vec2 world_point = (anchor - m_registry->skilltree_pos_offset) / old_zoom;
+            m_registry->skilltree_pos_offset = anchor - world_point * new_zoom;
         }
     }
 

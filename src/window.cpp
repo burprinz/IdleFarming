@@ -37,11 +37,13 @@ std::optional<Window*> Window::init(const size_t width, const size_t height, con
 	glfwSetKeyCallback(self->handle(), Window::keyCallback);
     glfwSetMouseButtonCallback(self->handle(), Window::mouseCallback);
 	glfwSetFramebufferSizeCallback(self->handle(), Window::resizeCallback);
+	glfwSetScrollCallback(self->handle(), Window::scrollCallback);
 
 	self->setKeyCallback([](GLFWwindow*, int, int, int, int) -> void {});
     self->setMouseCallback([](GLFWwindow*, int, int, int) -> void {});
 	self->setMouseClickCallback([](GLFWwindow*, int, int, int) -> void {});
 	self->setResizeCallback([](GLFWwindow*, int, int) -> void {});
+	self->setScrollCallback([](GLFWwindow*, double, double) -> void {});
 
 	return self;
 }
@@ -73,5 +75,12 @@ void Window::resizeCallback(GLFWwindow* window, int width, int height) noexcept 
 	Window* win = (Window*)glfwGetWindowUserPointer(window);
 	win->m_window_extent = glm::uvec2(width, height);
 	win->m_resize_callback(window, width, height);
+}
+
+void Window::scrollCallback(GLFWwindow* window, double xoffset, double yoffset) noexcept {
+	Window* self = static_cast<Window*>(glfwGetWindowUserPointer(window));
+	if (self && self->m_scroll_callback) {
+		self->m_scroll_callback(window, xoffset, yoffset);
+	}
 }
 

@@ -216,7 +216,7 @@ void UISystem::step(const float delta) noexcept {
             }
         }
     } else if (m_registry->window() == SKILLTREE) {
-        selection_found = update_text_button_list(m_skilltree_buttons, mousePos, false, m_registry->skilltree_pos_offset);
+        selection_found = update_text_button_list(m_skilltree_buttons, mousePos, false, m_registry->skilltree_pos_offset, m_registry->skilltree_zoom);
     }
 }
 

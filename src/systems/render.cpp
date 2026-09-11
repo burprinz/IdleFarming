@@ -562,17 +562,18 @@ void RenderSystem::drawBlackjack() noexcept {
 void RenderSystem::drawSkilltree() noexcept {
 
     glm::vec2 offset = m_registry->skilltree_pos_offset;
+    float zoom = m_registry->skilltree_zoom;
 
     for (TextButton but : m_ui->m_skilltree_buttons) {
         entt::entity child_id = but.id_label;
         Skill s = m_registry->ecs.get<Skill>(child_id);
         entt::entity parent_id = s.parent;
         if (parent_id != entt::null) {
-            glm::vec2 child_pos = m_registry->ecs.get<Skill>(child_id).pos + offset;
-            glm::vec2 parent_pos = m_registry->ecs.get<Skill>(parent_id).pos + offset;
+            glm::vec2 child_pos = m_registry->ecs.get<Skill>(child_id).pos * zoom + offset;
+            glm::vec2 parent_pos = m_registry->ecs.get<Skill>(parent_id).pos * zoom + offset;
             glm::vec3 color = m_registry->ecs.get<Unlockable>(child_id).unlocked&&m_registry->ecs.get<Unlockable>(parent_id).unlocked
                             ?green:black;
-            m_draw->drawLine(child_pos, parent_pos, color, 0.1);
+            m_draw->drawLine(child_pos, parent_pos, color, 0.1f * zoom);
         }
     }
 
@@ -591,22 +592,28 @@ void RenderSystem::drawSkilltree() noexcept {
             text = m_registry->ecs.get<TextureInformation>(m_registry->not_found_texture).text;
         }
 
+        glm::vec2 size = but.size * zoom;
+
         float progress = static_cast<float>(s.level) / s.max_level;
-        float text_s = but.size.x/2.0f;
-        float progress_h = but.size.y - text_s*2;
+        float text_s = size.x/2.0f;
+        float progress_h = size.y - text_s*2;
 
         Unlockable u = m_registry->ecs.get<Unlockable>(but.id_label);
-        glm::vec2 pos = but.pos + offset;
-        glm::vec2 top_center = pos + glm::vec2{0, but.size.y/2.0f};
-        glm::vec3 color = parent_unlocked&&(but.selected||u.unlocked)?green:red;
+        glm::vec2 pos = but.pos * zoom + offset;
+        glm::vec2 top_center = pos + glm::vec2{0, size.y/2.0f};
+
+        glm::vec3 color = red;
+        if (parent_unlocked) {
+            color = (but.selected||u.unlocked) ? green : blue;
+        }
         m_draw->drawTexture(text, top_center - glm::vec2{0, text_s}, glm::vec2{text_s, text_s});
 
         glm::vec2 progress_center = top_center - glm::vec2{0, text_s*2 + progress_h/2.0f};
-        glm::vec2 progress_size = {but.size.x, progress_h};
+        glm::vec2 progress_size = {size.x, progress_h};
         m_draw->drawProgressBar(progress_center, progress_size, progress, light_blue, gray);
         m_draw->drawStringInBox(std::to_string(s.level) + "/" + std::to_string(s.max_level), progress_center, progress_size, black, max_button_text_size);
 
-        m_draw->drawFadeRectBySize(pos, but.size, color, button_fading_speed);
+        m_draw->drawFadeRectBySize(pos, size, color, button_fading_speed);
 
         if (but.selected) {
             popup_entity = but.id_label;
@@ -617,7 +624,6 @@ void RenderSystem::drawSkilltree() noexcept {
         Skill s = m_registry->ecs.get<Skill>(popup_entity);
         m_draw->drawMultilinePopupAtMouse(s.name, s.display_lines, true, white, small_popup_text_size);
     }
-
 }
 
 

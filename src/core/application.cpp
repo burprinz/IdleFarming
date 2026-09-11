@@ -128,7 +128,10 @@ void Application::run() noexcept {
 	m_window->setMouseClickCallback([&](GLFWwindow* window, int key, int action, int mods) -> void {
 		onMouseClickCallback(window, key, action, mods);
 	});
-	
+	m_window->setScrollCallback([&](GLFWwindow* window, double xoffset, double yoffset) -> void {
+		onScrollCallback(window, xoffset, yoffset);
+	});
+
 	float delta_time = 0;
 	float last_time = static_cast<float>(glfwGetTime());
 
@@ -170,6 +173,7 @@ void Application::run() noexcept {
 		m_draw->finish();
 
 		m_window->swapBuffers();
+		m_registry->reset_scroll_callback();
 	}
 
 	std::cout<<"Saving..."<<std::endl;
@@ -275,6 +279,8 @@ void Application::onMouseClickCallback(GLFWwindow *window, int button, int actio
 			m_ui->left_click();
 		}
 	}
+}
 
-
+void Application::onScrollCallback(GLFWwindow* /*window*/, double xoffset, double yoffset) noexcept {
+	m_registry->on_scroll_callback(static_cast<float>(xoffset), static_cast<float>(yoffset));
 }

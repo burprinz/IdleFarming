@@ -9,7 +9,7 @@
 		using ResizeFunction = std::function<void(GLFWwindow*, int, int)>;
 		using KeyFunction = std::function<void(GLFWwindow*, int, int, int, int)>;
         using MouseFunction = std::function<void(GLFWwindow*, int, int, int)>;
-
+ 		using ScrollCallback = std::function<void(GLFWwindow*, double, double)>;
 
         Window() = default;
 		~Window() = default;
@@ -29,7 +29,7 @@
         inline void setMouseCallback(MouseFunction mouse_function) noexcept { m_mouse_callback = mouse_function; }
 		inline void setResizeCallback(ResizeFunction resize_function) noexcept { m_resize_callback = resize_function; }
  		inline void setMouseClickCallback(MouseFunction mouse_function) noexcept { m_mouse_click_callback = mouse_function; }
-
+ 	inline void setScrollCallback(ScrollCallback cb) noexcept { m_scroll_callback = cb; }
 
 		inline glm::vec2 cursorPosition() const noexcept { return m_cursor_position; }
 		inline glm::uvec2 windowExtent() const noexcept { return m_window_extent; }
@@ -80,4 +80,6 @@
 		MouseFunction m_mouse_click_callback;
  		static void mouseClickCallback(GLFWwindow* window, int button, int action, int mods) noexcept;
 
+ 		ScrollCallback m_scroll_callback;
+ 		static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset) noexcept;
 };

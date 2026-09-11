@@ -112,8 +112,13 @@ private:
 
     bool selection_found = false;
 
-    inline bool update_text_button_list(std::vector<TextButton> &buttons, glm::vec2 mouse_pos, bool need_unlock, glm::vec2 offset={0,0}) noexcept {
+    inline bool update_text_button_list(std::vector<TextButton> &buttons, glm::vec2 mouse_pos, bool need_unlock, glm::vec2 offset={0,0}, float zoom = 1.0f) noexcept {
+        (void) zoom;
+
         for (TextButton &b : buttons) {
+            glm::vec2 pos = b.pos * zoom + offset;
+            glm::vec2 size = b.size * zoom;
+
             if (need_unlock) {
                 Unlockable u = m_registry->ecs.get<Unlockable>(b.id_label);
                 if (!u.unlocked) {
@@ -122,7 +127,7 @@ private:
                 }
             }
 
-            if (!selection_found && b.visible && point_in_rect(mouse_pos, b.pos+offset, b.size)) {
+            if (!selection_found && b.visible && point_in_rect(mouse_pos, pos, size)) {
                 b.selected = true;
                 selection_found = true;
             } else {

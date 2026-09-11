@@ -283,6 +283,13 @@ public:
 
     void on_key_callback(int key, int action) noexcept;
     void on_mouse_callback(int key, int action) noexcept;
+    void on_scroll_callback(float xOff, float yOff);
+    inline void reset_scroll_callback() noexcept {
+        keys["vertical_scroll_up"] = false;
+        keys["vertical_scroll_down"] = false;
+        keys["horizontal_scroll_up"] = false;
+        keys["horizontal_scroll_down"] = false;
+    }
 
     inline entt::entity money() noexcept { return m_money; }
 
@@ -392,6 +399,7 @@ public:
      * Skilltree
      */
     glm::vec2 skilltree_pos_offset = {0.f, 0.f};
+    float skilltree_zoom = 1.0f;
 
 
     /**
