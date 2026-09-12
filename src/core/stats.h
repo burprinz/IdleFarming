@@ -25,6 +25,8 @@ public:
         stats["tools_bought"] = 0;
         stats["items_bought"] = 0;
         stats["items_sold"] = 0;
+        stats["blackjack_win"] = 0;
+        stats["blackjack_lose"] = 0;
     }
 
     inline void set(std::string name, BigNumber value) {

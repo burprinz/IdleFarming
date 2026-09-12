@@ -6,6 +6,8 @@
 #include <complex>
 #include <format>
 
+#include "helpers/config.h"
+
 class BigNumber {
 public:
 
@@ -76,7 +78,7 @@ public:
         }
         return std::format("{:.2f}e{}", base, exponent);
     }
-
+/*
     void normalize() {
         if (base == 0.0) {
             exponent = 0;
@@ -101,6 +103,57 @@ public:
 
         if (negative) {
             base = -base;
+        }
+    }
+*/
+
+    void normalize() {
+        if (std::abs(base) < config::EPSILON) {
+            base = 0.0;
+            exponent = 0;
+            return;
+        }
+
+        bool negative = base < 0.0;
+        double absBase = std::abs(base);
+
+        int shift = static_cast<int>(std::floor(std::log10(absBase)));
+
+        base = absBase / std::pow(10.0, shift);
+        exponent += shift;
+
+        if (base >= 10.0) {
+            base /= 10.0;
+            exponent += 1;
+        } else if (base < 1.0) {
+            base *= 10.0;
+            exponent -= 1;
+        }
+
+        if (negative) {
+            base = -base;
+        }
+
+        if (exponent < 15) {
+            double asWhole = base * std::pow(10.0, exponent);
+            double rounded = std::round(asWhole);
+            if (std::abs(asWhole - rounded) < config::EPSILON * std::pow(10.0, exponent + 1)) {
+                if (rounded == 0.0) {
+                    base = 0.0;
+                    exponent = 0;
+                } else {
+                    base = rounded;
+                    exponent = 0;
+                    bool neg2 = base < 0.0;
+                    double ab2 = std::abs(base);
+                    if (ab2 != 0.0) {
+                        int shift2 = static_cast<int>(std::floor(std::log10(ab2)));
+                        base = ab2 / std::pow(10.0, shift2);
+                        exponent = shift2;
+                        if (neg2) base = -base;
+                    }
+                }
+            }
         }
     }
 

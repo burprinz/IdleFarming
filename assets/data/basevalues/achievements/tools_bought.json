@@ -2,6 +2,7 @@
   "name": "Tools Bought",
   "desc_pre": "Buy",
   "desc_post": "tools",
+  "with_stats": true,
   "counting_stats": [
     "tools_bought"
   ],

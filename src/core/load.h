@@ -76,6 +76,7 @@ inline bool does_file_exist(std::string path) {
 inline TextureInformation create_texture(std::string path) {
     TextureInformation info;
     std::string text_path = getTexturePath(path);
+    std::cout<<text_path<<std::endl;
     if (does_file_exist(text_path)) {
         info.text = Texture::init(text_path);
     } else {

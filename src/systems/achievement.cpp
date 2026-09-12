@@ -27,7 +27,7 @@ void AchievementSystem::init_achievement_hover() noexcept {
     int x = 0;
     int y = 0;
     for (entt::entity id : m_registry->achievements_order) {
-        glm::vec2 pos = base_pos + glm::vec2(x*(size.x+normal_gap), y*(size.y+normal_gap));
+        glm::vec2 pos = base_pos + glm::vec2(x*(size.x+normal_gap), -y*(size.y+normal_gap));
 
         m_registry->ecs.emplace<Position>(id, pos);
         m_registry->ecs.emplace<Dimension>(id, size);
@@ -58,7 +58,7 @@ void AchievementSystem::step(const float delta) noexcept {
 void AchievementSystem::update_achievements() noexcept {
     for (entt::entity a_id : m_registry->achievements_order) {
         Achievement &a = m_registry->ecs.get<Achievement>(a_id);
-        if (!a.done) {
+        if (!a.done && a.with_stats) {
             BigNumber amount = BigNumber(0);
             for (std::string stat : a.needed_stat_types) {
                 amount = amount + StatsManager::instance().get(stat);

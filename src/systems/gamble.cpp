@@ -4,6 +4,7 @@
 
 #include "gamble.h"
 
+#include "core/stats.h"
 #include "glm/vec2.hpp"
 #include "glm/detail/func_packing_simd.inl"
 #include "helpers/sizes.h"
@@ -119,6 +120,10 @@ void GambleSystem::initButtons() noexcept {
         registry->bet_amount += registry->bet_multiplicator;
         if (registry->bet_amount > registry->max_bet_amount) {
             registry->bet_amount = registry->max_bet_amount;
+        }
+        BigNumber am_money = registry->ecs.get<Amount>(registry->money()).am;
+        if (registry->bet_amount > am_money) {
+            registry->bet_amount = static_cast<int>(am_money.asDouble());
         }
         registry->bet_chips = create_chip_list(registry, registry->bet_amount);
     };
@@ -367,6 +372,7 @@ void GambleSystem::blackjackStep(const float delta) {
                 BigNumber amount = BigNumber(m_registry->bet_amount);
                 BigNumber &am = m_registry->ecs.get<Amount>(m_registry->money()).am;
                 am += amount;
+                StatsManager::instance().set("blackjack_win", amount);
                 reset_animation();
                 reset_blackjack();
             } else {
@@ -378,6 +384,12 @@ void GambleSystem::blackjackStep(const float delta) {
                 BigNumber amount = BigNumber(m_registry->bet_amount);
                 BigNumber &am = m_registry->ecs.get<Amount>(m_registry->money()).am;
                 am = am - amount;
+                StatsManager::instance().set("blackjack_lose", amount);
+                if (am < BigNumber(1)) {
+                    Achievement &a = m_registry->ecs.get<Achievement>(m_registry->achievement_entities["Bankrupt"]);
+                    a.done = true;
+                    m_ui->addPopupMessage("Achievement unlocked", a.name);
+                }
             }
             reset_animation();
             reset_blackjack();

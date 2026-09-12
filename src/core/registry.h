@@ -236,6 +236,7 @@ struct Achievement {
     std::string description = "Do ...";
     std::vector<std::string> needed_stat_types;
     BigNumber amount;
+    bool with_stats = true;
     bool done = false;
 };
 

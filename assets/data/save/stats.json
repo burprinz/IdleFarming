@@ -3,63 +3,77 @@
         {
             "name": "auto_collected",
             "value": {
-                "base": 2.95754400065002,
+                "base": 2.986105,
                 "exp": 7
             }
         },
         {
             "name": "auto_harvested",
             "value": {
-                "base": 1.890461762646046,
+                "base": 1.892837221,
                 "exp": 9
             }
         },
         {
             "name": "auto_planted",
             "value": {
-                "base": 1.8904620010646251,
+                "base": 1.8928374590000001,
                 "exp": 9
+            }
+        },
+        {
+            "name": "blackjack_lose",
+            "value": {
+                "base": 8.0,
+                "exp": 0
+            }
+        },
+        {
+            "name": "blackjack_win",
+            "value": {
+                "base": 4.0,
+                "exp": 0
             }
         },
         {
             "name": "items_bought",
             "value": {
-                "base": 7.0,
+                "base": 8.0,
                 "exp": 0
             }
         },
         {
             "name": "items_sold",
             "value": {
-                "base": 1.3499999046325684,
+                "base": 1.372,
                 "exp": 3
             }
         },
         {
             "name": "manual_collected",
             "value": {
-                "base": 1.196000099182129,
+                "base": 1.196,
                 "exp": 3
             }
         },
         {
             "name": "manual_harvested",
             "value": {
-                "base": 1.02839994430542,
+                "base": 1.0322,
                 "exp": 4
             }
         },
         {
             "name": "manual_planted",
             "value": {
-                "base": 1.0099999904632568,
+                "base": 1.01,
                 "exp": 4
             }
         },
         {
             "name": "tools_bought",
             "value": {
-                "base": 1.2999999523162842,
+                "base": 1.3,
                 "exp": 1
             }
         }

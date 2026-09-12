@@ -2,6 +2,7 @@
   "name": "Farmer",
   "desc_pre": "Plant",
   "desc_post": "plants",
+  "with_stats": true,
   "counting_stats": [
     "manual_planted"
   ],

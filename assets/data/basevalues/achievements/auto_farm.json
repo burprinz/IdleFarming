@@ -2,6 +2,7 @@
   "name": "Auto Farmer",
   "desc_pre": "Let helpers plant",
   "desc_post": "plants",
+  "with_stats": true,
   "counting_stats": [
     "auto_planted"
   ],

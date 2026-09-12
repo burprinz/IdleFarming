@@ -2,6 +2,9 @@
   "types": [
     "manual_farm",
     "auto_farm",
-    "tools_bought"
+    "tools_bought",
+    "blackjack_bankrupt",
+    "gamble_win",
+    "gamble_lose"
   ]
 }
