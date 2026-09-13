@@ -147,15 +147,27 @@
                     } else {
                         Inventory &inv = m_registry->ecs.get<Inventory>(field_id);
 
-                        int cycles = 0;
-                        while (f.grow >= grow_time && inv.amount < inv.size) {
-                            f.grow -= p.regrowTime;
-                            cycles++;
-                        }
+                        if (p.regrowTime > 0.0f) {
+                            float total_regrow = f.grow - grow_time;
+                            long long raw_cycles = static_cast<long long>(total_regrow / p.regrowTime) + 1;
 
-                        inv.amount += p.min_collect * cycles;
-                        if (inv.amount > inv.size) {
-                            inv.amount = inv.size;
+                            BigNumber space = inv.size - inv.amount;
+                            double max_cycles_by_space = (p.min_collect > 0)
+                                ? std::ceil(space.asDouble() / p.min_collect)
+                                : 0.0;
+
+                            long long cycles = std::min<long long>(raw_cycles, static_cast<long long>(max_cycles_by_space));
+                            cycles = std::max<long long>(cycles, 0);
+
+                            inv.amount += p.min_collect * static_cast<double>(cycles);
+                            if (inv.amount > inv.size) {
+                                inv.amount = inv.size;
+                            }
+                            f.grow -= p.regrowTime * static_cast<float>(cycles);
+
+                            if (inv.amount >= inv.size && f.grow > grow_time) {
+                                f.grow = grow_time;
+                            }
                         }
 
                         if (f.grow < p.growTime) {
