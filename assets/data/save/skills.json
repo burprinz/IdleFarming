@@ -1,0 +1,34 @@
+{
+    "skills": [
+        {
+            "done": false,
+            "level": 2,
+            "name": "plants_speed_01"
+        },
+        {
+            "done": false,
+            "level": 1,
+            "name": "grow_speed_01"
+        },
+        {
+            "done": false,
+            "level": 4,
+            "name": "tree_speed_01"
+        },
+        {
+            "done": true,
+            "level": 1,
+            "name": "unlock_tree_field"
+        },
+        {
+            "done": false,
+            "level": 3,
+            "name": "flower_speed_01"
+        },
+        {
+            "done": true,
+            "level": 1,
+            "name": "unlock_flower_field"
+        }
+    ]
+}

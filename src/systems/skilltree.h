@@ -47,27 +47,16 @@ private:
 
         Registry *registry = m_registry;
 
-        entt::entity id;
-        if (m_registry->skilltree_entities.find(id_name) != m_registry->skilltree_entities.end()) {
-            id = m_registry->skilltree_entities[id_name];
-        } else {
-            id = m_registry->ecs.create();
-        }
-
-
-        Skill skill;
+        entt::entity id = m_registry->skilltree_entities[id_name];;
+        Skill &skill = m_registry->ecs.get<Skill>(id);
         skill.name = name;
         skill.description = description;
         skill.parent = parent;
         skill.pos = pos;
-        skill.level = 0;
         skill.max_level = levels;
         skill.display_lines = create_lines(description, effects);
-        m_registry->ecs.emplace<Skill>(id, skill);
 
-        Unlockable skill_unlock;
-        skill_unlock.unlocked = false;
-        m_registry->ecs.emplace<Unlockable>(id, skill_unlock);
+
 
         TextButton skill_button;
         skill_button.pos = pos;

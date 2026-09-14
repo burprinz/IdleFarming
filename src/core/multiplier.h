@@ -39,6 +39,12 @@ public:
         multiplier["full_cave_machines_growth"] = multiplier["skilltree_cave_machines_growth"] * multiplier["skilltree_overall_growth"];
     }
 
+    inline void set(std::string name, float value) {
+        multiplier[name] = value;
+        recalculate();
+    }
+
+
     inline float get_stat(std::string name) noexcept {
         return multiplier[name];
     }

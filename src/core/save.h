@@ -159,3 +159,15 @@ inline nlohmann::json create_stats_json() noexcept {
     result["stats"] = stats;
     return result;
 }
+
+inline nlohmann::json create_skill_json(Registry* m_registry, entt::entity id) noexcept {
+    Skill s = m_registry->ecs.get<Skill>(id);
+    Unlockable u = m_registry->ecs.get<Unlockable>(id);
+
+    nlohmann::json result;
+    result["name"] = s.id_name;
+    result["level"] = s.level;
+    result["done"] = u.unlocked;
+
+    return result;
+}

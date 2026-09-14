@@ -120,6 +120,10 @@ else()
 	target_compile_options(compiler_flags INTERFACE -Wall -Wextra -Wpedantic)
 endif()
 
+if (MINGW)
+	target_compile_options(compiler_flags INTERFACE $<$<CONFIG:Debug>:-g1>)
+endif()
+
 # Configure header containing project metadata
 configure_file(${PROJECT_SOURCE_DIR}/src/project_config.h.in project_config.h)
 

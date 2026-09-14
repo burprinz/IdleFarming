@@ -198,3 +198,16 @@ inline void load_current_stats(nlohmann::json json) noexcept {
         StatsManager::instance().set(stat["name"].get<std::string>(), extract_bignumber(stat["value"]));
     }
 }
+
+inline void load_skill_json(Registry* m_registry, nlohmann::json skill) {
+    std::string name = skill["name"].get<std::string>();
+    int level = skill["level"].get<int>();
+    bool done = skill["done"].get<bool>();
+    entt::entity skill_id = m_registry->skilltree_entities[name];
+
+    Skill &s = m_registry->ecs.get<Skill>(skill_id);
+    Unlockable &u = m_registry->ecs.get<Unlockable>(skill_id);
+
+    s.level = level;
+    u.unlocked = done;
+}

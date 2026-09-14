@@ -2,6 +2,27 @@
   "skills":[
     {
       "name": "unlock_flower_field"
+    },
+    {
+      "name": "flower_speed_01"
+    },
+    {
+      "name": "unlock_tree_field"
+    },
+    {
+      "name": "tree_speed_01"
+    },
+    {
+      "name": "unlock_cave_field"
+    },
+    {
+      "name": "cave_speed_01"
+    },
+    {
+      "name": "grow_speed_01"
+    },
+    {
+      "name": "plants_speed_01"
     }
   ]
 }
