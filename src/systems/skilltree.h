@@ -43,7 +43,7 @@ private:
     }
 
 
-    inline entt::entity create_skill(glm::vec2 pos, std::string id_name, std::string name, std::string description, std::vector<std::string> effects, std::function<void()> check_func, int levels, entt::entity parent=entt::null) noexcept {
+    inline entt::entity create_skill(glm::vec2 pos, std::string id_name, std::string name, std::string description, std::vector<std::string> effects, std::function<void(entt::entity)> check_func, int levels, entt::entity parent=entt::null) noexcept {
 
         Registry *registry = m_registry;
 
@@ -74,7 +74,7 @@ private:
             Skill &s = registry->ecs.get<Skill>(id);
             if (s.level < s.max_level) {
                 s.level++;
-                check_func();
+                check_func(id);
                 s.display_lines = create_lines(description, effects);
 
 
@@ -86,6 +86,13 @@ private:
 
         };
         m_ui->m_skilltree_buttons.push_back(skill_button);
+
+        std::cout<<skill.name<<" "<<skill.level<<std::endl;
+
+        if (skill.level > 0) {
+            check_func(id);
+            skill.display_lines = create_lines(description, effects);
+        }
 
         return id;
     }

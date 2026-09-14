@@ -1,18 +1,28 @@
 {
     "skills": [
         {
-            "done": false,
-            "level": 2,
+            "done": true,
+            "level": 10,
             "name": "plants_speed_01"
         },
         {
-            "done": false,
-            "level": 1,
+            "done": true,
+            "level": 10,
             "name": "grow_speed_01"
         },
         {
-            "done": false,
-            "level": 4,
+            "done": true,
+            "level": 10,
+            "name": "cave_speed_01"
+        },
+        {
+            "done": true,
+            "level": 1,
+            "name": "unlock_cave_field"
+        },
+        {
+            "done": true,
+            "level": 10,
             "name": "tree_speed_01"
         },
         {
@@ -21,8 +31,8 @@
             "name": "unlock_tree_field"
         },
         {
-            "done": false,
-            "level": 3,
+            "done": true,
+            "level": 10,
             "name": "flower_speed_01"
         },
         {

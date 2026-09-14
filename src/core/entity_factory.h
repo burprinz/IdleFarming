@@ -385,7 +385,7 @@ private:
             return;
         }
 
-        // TODO Set and Recalculate multiplier
+        // TODO Prüfen, ob stats auch bei offline time verwendet werden
         for (const auto& skill : json["skills"]) {
             load_skill_json(m_registry, skill);
         }

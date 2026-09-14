@@ -37,7 +37,8 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "Flowers",
                 "Unlocks Flower Field",
                 {},
-                [&field_unlock] {
+                [&field_unlock](entt::entity id) {
+                    (void) id;
                     field_unlock.unlocked = true;
                 }, 1);
     m_registry->skilltree_entities["unlock_flower_field"] = unlock_flower_field_id;
@@ -47,8 +48,9 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "Flowers Grow Speed",
                 "Flowers Grow Speed multiplier + 0.2",
                 {"skilltree_flowers_growth"},
-                [] {
-                    Multiplier::instance().higher("skilltree_flowers_growth", 0.2);
+                [registry](entt::entity id) {
+                    Skill s = registry->ecs.get<Skill>(id);
+                    Multiplier::instance().set("skilltree_flowers_growth", 1+s.level*0.2);
                 }, 10, unlock_flower_field_id);
     m_registry->skilltree_entities["flower_speed_01"] = flower_speed_01_id;
 
@@ -59,7 +61,8 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "Trees",
                 "Unlocks Tree Field",
     {},
-                [&tree_unlock] {
+                [&tree_unlock](entt::entity id) {
+                    (void)id;
                     tree_unlock.unlocked = true;
                 }, 1, unlock_flower_field_id);
     m_registry->skilltree_entities["unlock_tree_field"] = unlock_tree_field_id;
@@ -70,8 +73,9 @@ void SkilltreeSystem::init_buttons() noexcept {
             "Trees Grow Speed",
             "Trees Grow Speed multiplier + 0.2",
                 {"skilltree_trees_growth"},
-            [] {
-                Multiplier::instance().higher("skilltree_trees_growth", 0.2);
+            [registry](entt::entity id) {
+                Skill s = registry->ecs.get<Skill>(id);
+                Multiplier::instance().set("skilltree_trees_growth", 1+s.level*0.2);
             }, 10, unlock_tree_field_id);
     m_registry->skilltree_entities["tree_speed_01"] = tree_speed_01_id;
 
@@ -83,7 +87,8 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "Cave",
                 "Unlocks Cave Machines",
             {},
-                [&cave_unlock] {
+                [&cave_unlock](entt::entity id) {
+                    (void)id;
                     cave_unlock.unlocked = true;
                 }, 1, unlock_tree_field_id);
     m_registry->skilltree_entities["unlock_cave_field"] = unlock_cave_field_id;
@@ -94,8 +99,9 @@ void SkilltreeSystem::init_buttons() noexcept {
             "Caves Grow Speed",
             "Caves Grow Speed multiplier + 0.2",
 {"skilltree_cave_machines_growth"},
-            [] {
-                Multiplier::instance().higher("skilltree_cave_machines_growth", 0.2);
+            [registry](entt::entity id) {
+                Skill s = registry->ecs.get<Skill>(id);
+                Multiplier::instance().set("skilltree_cave_machines_growth", 1+s.level*0.2);
             }, 10, unlock_cave_field_id);
     m_registry->skilltree_entities["cave_speed_01"] = cave_speed_01_id;
 
@@ -105,8 +111,9 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "Grow Speed",
                 "Grow Speed multiplier + 0.1",
         {"skilltree_overall_growth"},
-                [] {
-                    Multiplier::instance().higher("skilltree_overall_growth", 0.1);
+                [registry](entt::entity id) {
+                    Skill s = registry->ecs.get<Skill>(id);
+                    Multiplier::instance().set("skilltree_overall_growth", 1+s.level*0.2);
                 }, 10);
     m_registry->skilltree_entities["grow_speed_01"] = grow_speed_01_id;
 
@@ -116,8 +123,9 @@ void SkilltreeSystem::init_buttons() noexcept {
                 "Plants Grow Speed",
                 "Plants Grow Speed multiplier + 0.2",
                 {"skilltree_plants_growth"},
-                [] {
-                    Multiplier::instance().higher("skilltree_plants_growth", 0.2);
+                [registry](entt::entity id) {
+                    Skill s = registry->ecs.get<Skill>(id);
+                    Multiplier::instance().set("skilltree_plants_growth", 1+s.level*0.2);
                 }, 10, grow_speed_01_id);
     m_registry->skilltree_entities["plants_speed_01"] = plants_speed_01_id;
 
