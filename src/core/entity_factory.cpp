@@ -119,16 +119,19 @@ void EntityFactory::create_plant_like(nlohmann::json plant, std::vector<entt::en
     Price price = extract_price(plant["price"]);
     m_registry->ecs.emplace<Price>(plant_id, price);
 
+
     std::string id_name = plant["id_name"].get<std::string>();
-    IconTexture it;
-    it.icon = create_icon(id_name);
+    TextureInformation item_text = create_icon(id_name);;
+    m_registry->ecs.emplace<TextureInformation>(plant_id, item_text);
+
+    GrowingTexture grow_text;
     if (!is_tree && !has_inv) {
-        it.info = create_icon(id_name);
+        grow_text.ungrown_text = create_icon(id_name);
     } else {
-        it.info = create_icon(id_name + "_grown");
-        it.ungrownInfo = create_icon(id_name + "_ungrown");
+        grow_text.grown_text = create_icon(id_name + "_grown");
+        grow_text.ungrown_text = create_icon(id_name + "_ungrown");
     }
-    m_registry->ecs.emplace<IconTexture>(plant_id, it);
+    m_registry->ecs.emplace<GrowingTexture>(plant_id, grow_text);
 
     order.push_back(plant_id);
     m_registry->market_item_order.push_back(plant_id);

@@ -52,9 +52,9 @@ public:
         load_item_amounts();
         load_tools();
         load_done_achievements();
+        load_skilltree_progress();
         load_fields(time_diff);
         load_helpers(time_diff);
-        load_skilltree_progress();
     }
 
     inline void save_values() noexcept {

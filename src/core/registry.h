@@ -266,10 +266,9 @@ struct TextureInformation {
     glm::vec2 base_size;
 };
 
-struct IconTexture {
-    TextureInformation info;
-    TextureInformation ungrownInfo;
-    TextureInformation icon;
+struct GrowingTexture {
+    TextureInformation grown_text;
+    TextureInformation ungrown_text;
 };
 
 // NOTE: For your own project you may want to move the registry to a different file, as it grows in size.

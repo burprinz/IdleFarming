@@ -87,7 +87,6 @@ private:
         };
         m_ui->m_skilltree_buttons.push_back(skill_button);
 
-        std::cout<<skill.name<<" "<<skill.level<<std::endl;
 
         if (skill.level > 0) {
             check_func(id);

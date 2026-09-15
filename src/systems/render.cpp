@@ -192,14 +192,14 @@ void RenderSystem::drawMarketplace() noexcept {
 
         entt::entity p_id = buts[0].id_label;
         Item i = m_registry->ecs.get<Item>(p_id);
-        IconTexture it = m_registry->ecs.get<IconTexture>(p_id);
+        TextureInformation it = m_registry->ecs.get<TextureInformation>(p_id);
 
         float y = buts[0].pos.y - 0.1;
 
         // Item Icon
         glm::vec2 icon_size = (glm::vec2{buts[0].size.y, buts[0].size.y} / 2.0f);
         glm::vec2 pos = (0.1f + glm::vec2{trade_buttons_topleft.x + icon_size.x / 2.0f, y});
-        m_draw->drawTexture(it.icon.text, pos, icon_size);
+        m_draw->drawTexture(it.text, pos, icon_size);
 
         // Item Name
         pos.x += icon_size.x + medium_button_size.x / 2.0f + 0.1f;
@@ -712,12 +712,20 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity> > &fie
                 }
 
                 if (!for_helper || f.helper_active) {
-                    IconTexture iconText = m_registry->ecs.get<IconTexture>(f.plant);
+                    GrowingTexture iconText = m_registry->ecs.get<GrowingTexture>(f.plant);
+                    Texture text = iconText.ungrown_text.text;
+                    if (f.is_regrowable_field && f.harvestable) {
+                        text = iconText.grown_text.text;
+                    }
+                    m_draw->drawTexture(text, fPos, {radius, radius});
+                    /*
+                    GrowingTexture iconText = m_registry->ecs.get<GrowingTexture>(f.plant);
                     TextureInformation icon = iconText.info;
                     if (f.is_regrowable_field && !f.harvestable) {
                         icon = iconText.ungrownInfo;
                     }
                     m_draw->drawTexture(icon.text, fPos, {radius, radius});
+                    */
                 }
             }
         }
