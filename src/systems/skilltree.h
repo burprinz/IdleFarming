@@ -4,6 +4,7 @@
 
 #include "ui.h"
 #include "window.h"
+#include "core/lang.h"
 #include "core/multiplier.h"
 #include "core/registry.h"
 #include "helpers/sizes.h"
@@ -36,7 +37,7 @@ private:
         if (effects.size() > 0 ) {
             result.push_back("Current Effects)");
             for (std::string effect : effects) {
-                result.push_back(effect + " x" + std::to_string(Multiplier::instance().get_stat(effect)));
+                result.push_back(Language::instance().multiplier()[effect] + " x" + std::to_string(Multiplier::instance().get_stat(effect)));
             }
         }
         return result;

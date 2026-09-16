@@ -1,133 +1,23 @@
 //
-// Created by luisb on 10.03.2026.
+// Created by luisb on 16.09.2026.
 //
 
+#include "entity_factory.h"
 
-#include <iostream>
-#include <nlohmann/adl_serializer.hpp>
-
-#include "window.h"
-#include "core/registry.h"
-#include <nlohmann/json.hpp>
-
-#include "load.h"
-#include "save.h"
-#include "../helpers/sizes.h"
-#include "helpers/finder.h"
-#include "helpers/paths.h"
-#include "helpers/util.h"
-
-class EntityFactory {
-public:
-    static EntityFactory init(Window* window, Registry* registry) noexcept;
-
-    bool read(const std::string& path, nlohmann::json* json) noexcept;
-    bool save(const std::string& path, nlohmann::json json) noexcept;
-
-    inline void loadBaseValues() noexcept {
-
-        load_item_categories();
-
-        load_symbols();
-
-        load_base_fields();
-
-        create_tools();
-
-        create_helpers();
-
-        create_achievements();
-
-        create_playing_cards();
-        create_poker_chips();
-
-        preload_skilltree_infos();
-
-        int time_diff = static_cast<int>(load_time_difference());
-        std::cout<<"Offline progress time: "<<time_diff<<"s"<<std::endl;
-
-        load_stats();
-        load_unlocked_plants();
-        load_money();
-        load_item_amounts();
-        load_tools();
-        load_done_achievements();
-        load_skilltree_progress();
-        load_fields(time_diff);
-        load_helpers(time_diff);
-    }
-
-    inline void save_values() noexcept {
-        save_time();
-        save_unlocked_plants();
-        save_money();
-        save_item_amounts();
-        save_tools();
-        save_fields();
-        save_helpers();
-        save_stats();
-        save_done_achievements();
-        save_skilltree_progress();
-    }
-
-
-private:
-    Registry* m_registry;
-    Window* m_window;
-
-    std::string texture_path = getBasePath() + "/assets/textures/";
-
-    nlohmann::json m_json;
-
-    nlohmann::json m_levelJson;
-    nlohmann::json m_objectJson;
-
-    void load_symbols() noexcept;
-
-    void load_item_categories() noexcept;
-
-    void load_base_fields() noexcept;
-
-    void load_field_plants(Field *f, bool is_tree, bool has_inv, entt::entity parent_id) noexcept;
-
-    void create_field(std::vector<std::vector<entt::entity>> &tiles, bool is_regrowable, entt::entity parent_field_id) noexcept;
-
-    void create_plant_like(nlohmann::json plant, std::vector<entt::entity> &order, bool is_tree, bool has_inv) noexcept;
-
-    void create_tools() noexcept;
-
-    void load_tool_list(nlohmann::json tool_list) noexcept;
-
-    void create_helpers() noexcept;
-
-    void load_helper(nlohmann::json raw_helper_infos, std::string type) noexcept;
-
-    void create_achievements() noexcept;
-
-    void create_achievement_type(std::string name) noexcept;
-
-    void create_playing_cards() noexcept;
-
-    void create_poker_chips() noexcept;
-
-    void preload_skilltree_infos() noexcept;
-
-
-
-    inline void save_time() noexcept {
+    void EntityFactory::save_time() noexcept {
         nlohmann::json j;
         j["time"] = get_current_timestamp();
         save("save_time.json", j);
 
     }
 
-    inline long long load_time_difference() noexcept {
+    long long EntityFactory::load_time_difference() noexcept {
         long long start_time = load_time();
         long long current_time = get_current_timestamp();
         return current_time - start_time;
     }
 
-    inline long long load_time() noexcept {
+    long long EntityFactory::load_time() noexcept {
         std::string json_path = save_path + "save_time.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -139,13 +29,13 @@ private:
         return json["time"].get<long long>();
     }
 
-    inline void save_money() noexcept {
+    void EntityFactory::save_money() noexcept {
         BigNumber money = m_registry->ecs.get<Amount>(m_registry->money()).am;
         nlohmann::json result = {{"money", create_bignumber_json(money)}};
         save("money.json", result);
     }
 
-    inline void load_money() noexcept {
+    void EntityFactory::load_money() noexcept {
         std::string json_path = save_path + "money.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -161,7 +51,7 @@ private:
         m_registry->ecs.emplace_or_replace<Amount>(m_registry->money(), a);
     }
 
-    inline void save_item_amounts() noexcept {
+    void EntityFactory::save_item_amounts() noexcept {
         std::vector<nlohmann::json> item_list;
         for (entt::entity item_id : m_registry->ecs.view<Item>()) {
             if (m_registry->ecs.all_of<Amount>(item_id)) {
@@ -174,7 +64,7 @@ private:
         save("item_amounts.json", results);
     }
 
-    inline void load_item_amounts() noexcept {
+    void EntityFactory::load_item_amounts() noexcept {
         std::string json_path = save_path + "item_amounts.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -193,7 +83,7 @@ private:
         }
     }
 
-    inline void save_tools() noexcept {
+    void EntityFactory::save_tools() noexcept {
         nlohmann::json unlocked_tools = create_unlocked_tools_json(m_registry);
         nlohmann::json activated_tools = create_activated_tools_json(m_registry);
 
@@ -201,7 +91,7 @@ private:
         save("tools.json", result);
     }
 
-    inline void load_tools() noexcept {
+    void EntityFactory::load_tools() noexcept {
         std::string json_path = save_path + "tools.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -224,7 +114,7 @@ private:
         }
     }
 
-    inline void save_fields() noexcept {
+    void EntityFactory::save_fields() noexcept {
 
         std::vector<nlohmann::json> fields;
 
@@ -240,7 +130,7 @@ private:
 
     }
 
-    inline void load_fields(int time_diff) noexcept {
+    void EntityFactory::load_fields(int time_diff) noexcept {
         std::string json_path = save_path + "fields.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -257,7 +147,7 @@ private:
         }
     }
 
-    inline void save_helpers() noexcept {
+    void EntityFactory::save_helpers() noexcept {
         std::vector<nlohmann::json> helpers;
 
         for (entt::entity id : m_registry->ecs.view<FarmHelper>()) {
@@ -272,7 +162,7 @@ private:
         save("helpers.json", result);
     }
 
-    inline void load_helpers(int time_diff) noexcept {
+    void EntityFactory::load_helpers(int time_diff) noexcept {
         std::string json_path = save_path + "helpers.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -286,7 +176,7 @@ private:
         }
     }
 
-    inline void save_unlocked_plants() noexcept {
+    void EntityFactory::save_unlocked_plants() noexcept {
         nlohmann::json result;
 
         std::vector<std::string> unlocked_plants;
@@ -300,7 +190,7 @@ private:
         save("unlocked_plants.json", result);
     }
 
-    inline void load_unlocked_plants() noexcept {
+    void EntityFactory::load_unlocked_plants() noexcept {
         std::string json_path = save_path + "unlocked_plants.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -316,12 +206,12 @@ private:
         }
     }
 
-    inline void save_stats() noexcept {
+    void EntityFactory::save_stats() noexcept {
         nlohmann::json result = create_stats_json();
         save("stats.json", result);
     }
 
-    inline void load_stats() noexcept {
+    void EntityFactory::load_stats() noexcept {
         std::string json_path = save_path + "stats.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -332,7 +222,7 @@ private:
         load_current_stats(json);
     }
 
-    inline void save_done_achievements() noexcept {
+    void EntityFactory::save_done_achievements() noexcept {
         std::vector<std::string> done;
         for (entt::entity id : m_registry->ecs.view<Achievement>()) {
             Achievement a = m_registry->ecs.get<Achievement>(id);
@@ -345,7 +235,7 @@ private:
         save("done_achievements.json", result);
     }
 
-    inline void load_done_achievements() noexcept {
+    void EntityFactory::load_done_achievements() noexcept {
         std::string json_path = save_path + "done_achievements.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -359,7 +249,7 @@ private:
         }
     }
 
-    inline void save_skilltree_progress() noexcept {
+    void EntityFactory::save_skilltree_progress() noexcept {
 
         std::vector<nlohmann::json> skills;
 
@@ -376,7 +266,7 @@ private:
         save("skills.json", result);
     }
 
-    inline void load_skilltree_progress() noexcept {
+    void EntityFactory::load_skilltree_progress() noexcept {
         std::string json_path = save_path + "skills.json";
         nlohmann::json json;
         bool loaded = read(json_path, &json);
@@ -390,4 +280,3 @@ private:
             load_skill_json(m_registry, skill);
         }
     }
-};

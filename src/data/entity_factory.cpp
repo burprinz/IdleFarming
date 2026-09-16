@@ -8,6 +8,7 @@
 
 #include <iostream>
 
+#include "../core/lang.h"
 #include "../utils/geometry.h"
 
 EntityFactory EntityFactory::init(Window *window, Registry *registry) noexcept {
@@ -560,5 +561,21 @@ void EntityFactory::preload_skilltree_infos() noexcept {
         m_registry->ecs.emplace<Unlockable>(id, u);
         TextureInformation text = create_skilltree_texture(name);
         m_registry->ecs.emplace<TextureInformation>(id, text);
+    }
+}
+
+void EntityFactory::load_lang(std::string lang) noexcept {
+    std::string json_path = "/assets/data/basevalues/lang/" + lang + ".json";
+    nlohmann::json json;
+    bool loaded = read(json_path, &json);
+    if (!loaded) {
+        std::cout<<"Error loading lang "<<lang<<std::endl;
+    }
+
+    for (auto& [key, value] : json["multiplier"].items()) {
+        Language::instance().multiplier()[key] = value.get<std::string>();
+    }
+    for (auto& [k, v] : Language::instance().multiplier()) {
+        std::cout<<k<<" "<<v<<std::endl;
     }
 }

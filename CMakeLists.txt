@@ -120,8 +120,11 @@ else()
 	target_compile_options(compiler_flags INTERFACE -Wall -Wextra -Wpedantic)
 endif()
 
+#if (MINGW)
+#	target_compile_options(compiler_flags INTERFACE $<$<CONFIG:Debug>:-g1>)
+#endif()
 if (MINGW)
-	target_compile_options(compiler_flags INTERFACE $<$<CONFIG:Debug>:-g1>)
+	target_compile_options(compiler_flags INTERFACE $<$<CONFIG:Debug>:-g1 -Wa,-mbig-obj>)
 endif()
 
 # Configure header containing project metadata
@@ -149,8 +152,9 @@ add_executable(${PROJECT_NAME}
 		src/utils/geometry.h
 		src/discord.cpp
 		src/discord.h
-		src/core/entity_factory.cpp
-		src/core/entity_factory.h
+		src/data/save_and_load_factory.cpp
+		src/data/entity_factory.cpp
+		src/data/entity_factory.h
 		src/utils/BigNumber.h
 		src/systems/field.cpp
 		src/systems/field.h
@@ -183,6 +187,7 @@ add_executable(${PROJECT_NAME}
 		src/systems/toolsmith.cpp
 		src/systems/toolsmith.h
 		src/core/multiplier.h
+		src/core/lang.h
 )
 
 

@@ -11,7 +11,7 @@
 #include "../utils/draw.h"
 #include "systems/field.h"
 #include "systems/unlock.h"
-#include "core/entity_factory.h"
+#include "data/entity_factory.h"
 #include "systems/achievement.h"
 #include "systems/gamble.h"
 #include "systems/helper.h"

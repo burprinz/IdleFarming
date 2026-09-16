@@ -1,0 +1,13 @@
+{
+  "multiplier": {
+    "full_plants_growth": "Full plants growth multiplier",
+    "full_flowers_growth": "Full flower growth multiplier",
+    "full_trees_growth": "Full tree growth multiplier",
+    "full_cave_machines_growth": "Full cave growth multiplier",
+    "skilltree_overall_growth": "All growth multiplier",
+    "skilltree_plants_growth": "Plants growth multiplier",
+    "skilltree_flowers_growth": "Flower growth multiplier",
+    "skilltree_trees_growth": "Tree growth multiplier",
+    "skilltree_cave_machines_growth": "Cave growth multiplier"
+  }
+}
