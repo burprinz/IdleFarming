@@ -9,5 +9,18 @@
     "skilltree_flowers_growth": "Flower growth multiplier",
     "skilltree_trees_growth": "Tree growth multiplier",
     "skilltree_cave_machines_growth": "Cave growth multiplier"
+  },
+  "buttons":{
+    "buy": "Buy",
+    "sell": "Sell",
+    "blackjack_bet_am_base": "Bet Amount (1)",
+    "blackjack_bet_am_cut": "Bet Amount",
+    "blackjack_bet_place": "Place Bet",
+    "blackjack_bet_lower": "Lower",
+    "blackjack_bet_higher": "Higher",
+    "blackjack_double_down": "Double Down",
+    "blackjack_hit": "Hit",
+    "blackjack_stand": "Stand",
+    "blackhack_round_end": "End Round"
   }
 }

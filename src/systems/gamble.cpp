@@ -4,9 +4,11 @@
 
 #include "gamble.h"
 
+#include "core/lang.h"
 #include "core/stats.h"
 #include "glm/vec2.hpp"
 #include "glm/detail/func_packing_simd.inl"
+#include "helpers/finder.h"
 #include "helpers/sizes.h"
 
 GambleSystem GambleSystem::init(Window *window, Registry *registry, UISystem* ui) noexcept {
@@ -58,6 +60,7 @@ void GambleSystem::initButtons() noexcept {
     size_t idx = m_ui->m_blackjack_bet_buttons.size();
     TextButton multiplicatorB;
     multiplicatorB.text = "Bet Amount (1)";
+    multiplicatorB.lang_label = "blackjack_bet_am_base";
     multiplicatorB.pos = center;
     multiplicatorB.size = size;
     multiplicatorB.on_click = [registry, ui, idx] {
@@ -67,7 +70,10 @@ void GambleSystem::initButtons() noexcept {
             next_mult = 1;
         }
         registry->bet_multiplicator = next_mult;
-        ui->m_blackjack_bet_buttons[idx].text = "Bet Amount (" + std::to_string(registry->bet_multiplicator) + ")";
+
+        std::string lang = "blackjack_bet_am_cut";
+        lang = get_lang_if_in_map(Language::instance().button(), lang);
+        ui->m_blackjack_bet_buttons[idx].text = lang + " (" + std::to_string(registry->bet_multiplicator) + ")";
     };
     m_registry->bet_multiplicator = 1;
     m_ui->m_blackjack_bet_buttons.push_back(multiplicatorB);
@@ -78,7 +84,7 @@ void GambleSystem::initButtons() noexcept {
     size = normal_button_size;
     center = {config::CAMERA_VIEW_WIDTH / 2.0f, normal_button_size.y / 2.0 + normal_gap};
     TextButton placeBet;
-    placeBet.text = "Place Bet";
+    placeBet.lang_label = "blackjack_bet_place";
     placeBet.pos = center;
     placeBet.size = size;
     placeBet.on_click = [registry] {
@@ -96,7 +102,7 @@ void GambleSystem::initButtons() noexcept {
     center = calc_center(top_left, size);
 
     TextButton betLower;
-    betLower.text = "Lower";
+    betLower.lang_label = "blackjack_bet_lower";
     betLower.pos = center;
     betLower.size = size;
     betLower.on_click = [registry] {
@@ -113,7 +119,7 @@ void GambleSystem::initButtons() noexcept {
     center = calc_center(top_left, size);
 
     TextButton betHigher;
-    betHigher.text = "Higher";
+    betHigher.lang_label = "blackjack_bet_higher";
     betHigher.pos = center;
     betHigher.size = size;
     betHigher.on_click = [registry] {
@@ -132,7 +138,7 @@ void GambleSystem::initButtons() noexcept {
     size = normal_button_size;
     center = {config::CAMERA_VIEW_WIDTH / 2.0f, normal_button_size.y / 2.0 + normal_gap};
     TextButton double_down;
-    double_down.text = "Double Down";
+    double_down.lang_label = "blackjack_double_down";
     double_down.pos = center;
     double_down.size = size;
     double_down.on_click = [registry] {
@@ -150,7 +156,7 @@ void GambleSystem::initButtons() noexcept {
     size = normal_button_size;
     center = calc_center(top_left, size);
     TextButton hit;
-    hit.text = "Hit";
+    hit.lang_label = "blackjack_hit";
     hit.pos = center;
     hit.size = size;
     hit.on_click = [registry] {
@@ -163,7 +169,7 @@ void GambleSystem::initButtons() noexcept {
     size = normal_button_size;
     center = calc_center(top_left, size);
     TextButton stand;
-    stand.text = "Stand";
+    stand.lang_label = "blackjack_stand";
     stand.pos = center;
     stand.size = size;
     stand.on_click = [registry] {
@@ -174,7 +180,7 @@ void GambleSystem::initButtons() noexcept {
     size = normal_button_size;
     center = {x_middle, y_middle - small_gap - size.y / 2.0f};
     TextButton endGame;
-    endGame.text = "End Round";
+    endGame.lang_label = "blackhack_round_end";
     endGame.pos = center;
     endGame.size = size;
     endGame.on_click = [registry] {

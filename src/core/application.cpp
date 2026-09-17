@@ -233,6 +233,8 @@ void Application::reset() noexcept {
 	m_camera.reset();
 	m_unlock.reset();
 	m_achievement.reset();
+
+	m_ui->apply_lang_on_buttons();
 }
 
 void Application::changeWindow() noexcept {

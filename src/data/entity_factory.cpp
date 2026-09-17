@@ -576,4 +576,9 @@ void EntityFactory::load_lang(std::string lang) noexcept {
         Language::instance().multiplier()[key] = value.get<std::string>();
     }
 
+    for (auto& [key, value] : json["buttons"].items()) {
+        Language::instance().button()[key] = value.get<std::string>();
+    }
+
+
 }

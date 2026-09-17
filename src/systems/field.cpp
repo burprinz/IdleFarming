@@ -72,6 +72,7 @@ void FieldSystem::initButtons() noexcept {
         // Field Switch
         TextButton fieldB;
         fieldB.text = f.display_name;
+        fieldB.lang_label = f.display_name;
         fieldB.pos = center;
         fieldB.size = select_button_size;
         fieldB.id_label = field_entity;

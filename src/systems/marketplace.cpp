@@ -61,7 +61,7 @@ void MarketSystem::initButtons() noexcept {
 
         TextButton buyB;
         buyB.size = trade_button_size;
-        buyB.text = "Buy";
+        buyB.lang_label = "buy";
         buyB.id_label = plant_id;
         buyB.on_click = [registry, plant_id] {
             BigNumber &money = registry->ecs.get<Amount>(registry->money()).am;
@@ -78,7 +78,7 @@ void MarketSystem::initButtons() noexcept {
 
         TextButton sellB;
         sellB.size = trade_button_size;
-        sellB.text = "Sell";
+        sellB.lang_label = "sell";
         sellB.id_label = plant_id;
         sellB.on_click = [registry, plant_id] {
             BigNumber price = registry->ecs.get<Price>(plant_id).sell;

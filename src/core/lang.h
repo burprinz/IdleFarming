@@ -23,10 +23,12 @@ public:
     }
 
     inline std::unordered_map<std::string, std::string>& multiplier() {return multipliers;}
+    inline std::unordered_map<std::string, std::string>& button() {return buttons;}
 
 
 private:
 
     std::unordered_map<std::string, std::string> multipliers;
+    std::unordered_map<std::string, std::string> buttons;
 
 };
