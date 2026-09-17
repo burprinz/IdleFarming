@@ -7,6 +7,7 @@
 #include "core/lang.h"
 #include "core/multiplier.h"
 #include "core/registry.h"
+#include "helpers/finder.h"
 #include "helpers/sizes.h"
 
 class SkilltreeSystem {
@@ -35,9 +36,11 @@ private:
         std::vector<std::string> result;
         result.push_back(desc);
         if (effects.size() > 0 ) {
+            std::unordered_map<std::string, std::string> &lang_map = Language::instance().multiplier();
             result.push_back("Current Effects)");
             for (std::string effect : effects) {
-                result.push_back(Language::instance().multiplier()[effect] + " x" + std::to_string(Multiplier::instance().get_stat(effect)));
+                std::string name = get_lang_if_in_map(lang_map, effect);
+                result.push_back(name + " x" + std::to_string(Multiplier::instance().get_stat(effect)));
             }
         }
         return result;

@@ -71,3 +71,12 @@ template<typename T> inline bool is_in_list(std::vector<T> &list, T value) noexc
     }
     return false;
 }
+
+inline bool key_in_unordered_map(const std::unordered_map<std::string, std::string>& map, const std::string& key) {
+    return map.contains(key);
+}
+
+inline std::string get_lang_if_in_map(std::unordered_map<std::string, std::string> &lang_map, const std::string& key) {
+    auto i = lang_map.find(key);
+    return i != lang_map.end() ? i->second : key;
+}
