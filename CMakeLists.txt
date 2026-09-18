@@ -188,6 +188,8 @@ add_executable(${PROJECT_NAME}
 		src/systems/toolsmith.h
 		src/core/multiplier.h
 		src/core/lang.h
+		src/systems/village.cpp
+		src/systems/village.h
 )
 
 

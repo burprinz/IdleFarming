@@ -5,6 +5,7 @@
 #include "multiplier.h"
 #include "../helpers/config.h"
 #include "systems/achievement.h"
+#include "systems/village.h"
 #include "utils/BigNumber.h"
 
 static void glfwErrorCallback(int error, const char* description) {
@@ -85,6 +86,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_achievement = AchievementSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_gamble = GambleSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_skilltree = SkilltreeSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_village = VillageSystem::init(self.m_window, self.m_registry, self.m_ui);
 
 	return self;
 }
@@ -101,6 +103,7 @@ void Application::deinit() noexcept {
 	m_achievement.deinit();
 	m_gamble.deinit();
 	m_skilltree.deinit();
+	m_village.deinit();
 
 	m_draw->deinit();
 
@@ -164,6 +167,8 @@ void Application::run() noexcept {
 
 		m_skilltree.step(delta_time);
 
+		m_village.step(delta_time);
+
 		m_ui->step(delta_time);
 
 		m_camera.step(delta_time);
@@ -216,6 +221,7 @@ void Application::reset() noexcept {
 	m_helper.reset();
 	m_gamble.reset();
 	m_skilltree.reset();
+	m_village.reset();
 
 	/**
 	 * Reset UI
@@ -275,6 +281,8 @@ void Application::onMouseClickCallback(GLFWwindow *window, int button, int actio
 			click_found = m_gamble.left_click();
 		} else if (m_registry->window() == SKILLTREE) {
 			click_found = m_skilltree.left_click();
+		} else if (m_registry->window() == VILLAGE) {
+			click_found = m_village.left_click();
 		}
 
 		if (!click_found) {

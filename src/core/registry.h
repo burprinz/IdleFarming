@@ -17,6 +17,7 @@ constexpr int HELPERS = 3;
 constexpr int ACHIEVEMENTS = 4;
 constexpr int GAMBLING = 5;
 constexpr int SKILLTREE = 6;
+constexpr int VILLAGE = 7;
 
 /**
  * Field State

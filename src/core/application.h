@@ -44,8 +44,8 @@ class Application {
 		FieldSystem m_field;
 		ToolSystem m_tools;
 		MarketSystem m_market;
-
 		HelperSystem m_helper;
+		VillageSystem m_village;
 
 		UnlockSystem m_unlock;
 		AchievementSystem m_achievement;

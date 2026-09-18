@@ -124,6 +124,17 @@ void UISystem::initWindowSwitchButtons() noexcept {
         registry->change_window(SKILLTREE);
     };
     m_window_buttons.push_back(skilltreeButton);
+
+    pos.x += size.x + normal_gap;
+
+    TextButton villageButton;
+    villageButton.pos = pos;
+    villageButton.size = size;
+    villageButton.text = "Village";
+    villageButton.on_click = [registry] {
+        registry->change_window(VILLAGE);
+    };
+    m_window_buttons.push_back(villageButton);
 }
 
 
