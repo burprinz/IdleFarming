@@ -1,19 +1,4 @@
 {
-    "activated": [
-        "gold_hoe",
-        "iron_crane",
-        "iron_basket",
-        "iron_sickle",
-        "iron_axe"
-    ],
-    "unlocked": [
-        "iron_wrecking_ball",
-        "iron_truck",
-        "iron_crane",
-        "iron_axe",
-        "iron_basket",
-        "iron_sickle",
-        "gold_hoe",
-        "iron_hoe"
-    ]
+    "activated": [],
+    "unlocked": []
 }

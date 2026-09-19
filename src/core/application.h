@@ -13,6 +13,7 @@
 #include "systems/unlock.h"
 #include "data/entity_factory.h"
 #include "systems/achievement.h"
+#include "systems/cursor.h"
 #include "systems/gamble.h"
 #include "systems/helper.h"
 #include "systems/marketplace.h"
@@ -41,6 +42,7 @@ class Application {
 		UISystem* m_ui;
 		Draw* m_draw;
 		RenderSystem m_render;
+		CursorSystem m_cursor;
 
 		FieldSystem m_field;
 		ToolSystem m_tools;

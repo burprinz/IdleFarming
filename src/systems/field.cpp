@@ -204,6 +204,7 @@ void FieldSystem::try_to_plant(std::vector<std::vector<entt::entity>> field, ent
         }
     }
 
+    m_registry->current_hover_field_tile = entt::null;
     for (size_t y = 0; y < field.size(); y++) {
         std::vector<entt::entity> row = field[y];
         for (size_t x = 0; x < row.size(); x++) {
@@ -218,6 +219,7 @@ void FieldSystem::try_to_plant(std::vector<std::vector<entt::entity>> field, ent
                 pointFound = true;
                 f.marked = true;
 
+                m_registry->current_hover_field_tile = fieldID;
 
                 // Left Click and Plant selected -> Try to plant in radius
                 if (m_registry->keys["mouse_left"] && p_id != entt::null) {

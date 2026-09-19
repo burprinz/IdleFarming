@@ -87,6 +87,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_gamble = GambleSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_skilltree = SkilltreeSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_village = VillageSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_cursor = CursorSystem::init(self.m_window, self.m_registry, self.m_ui);
 
 	return self;
 }
@@ -104,6 +105,7 @@ void Application::deinit() noexcept {
 	m_gamble.deinit();
 	m_skilltree.deinit();
 	m_village.deinit();
+	m_cursor.deinit();
 
 	m_draw->deinit();
 
@@ -173,6 +175,8 @@ void Application::run() noexcept {
 
 		m_camera.step(delta_time);
 
+		m_cursor.step(delta_time);
+
 		m_draw->start();
 		m_render.step(delta_time);
 		m_draw->finish();
@@ -226,6 +230,7 @@ void Application::reset() noexcept {
 	/**
 	 * Reset UI
 	 */
+	m_cursor.reset();
 	m_ui->reset();
 	m_ui->initButtons();
 

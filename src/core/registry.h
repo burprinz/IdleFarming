@@ -339,6 +339,7 @@ public:
     std::vector<entt::entity> last_selected_plant;
     std::vector<entt::entity> current_selected_plant;
     std::vector<std::vector<std::vector<entt::entity>>> plant_field_tiles;
+    entt::entity current_hover_field_tile = entt::null;
 
     /**
      * Toolsmith
