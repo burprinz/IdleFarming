@@ -18,6 +18,7 @@
 #include "systems/marketplace.h"
 #include "systems/skilltree.h"
 #include "systems/toolsmith.h"
+#include "systems/village.h"
 
 
 class Application {

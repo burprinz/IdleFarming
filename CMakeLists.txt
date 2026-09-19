@@ -190,6 +190,8 @@ add_executable(${PROJECT_NAME}
 		src/core/lang.h
 		src/systems/village.cpp
 		src/systems/village.h
+		src/systems/cursor.cpp
+		src/systems/cursor.h
 )
 
 

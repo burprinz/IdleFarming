@@ -89,6 +89,8 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         MessagePopup *popup = m_ui->getCurrentMessagePopup();
         drawPopup(popup->title, popup->text);
     }
+
+    m_draw->drawRectBySize(full_field_center, field_tool_cursor_size, green);
 }
 
 void RenderSystem::drawField() noexcept {

@@ -40,6 +40,9 @@ constexpr glm::vec2 field_cell_topleft = {0.1, config::CAMERA_VIEW_HEIGHT-0.65};
 constexpr glm::vec2 field_plant_selection_topleft = {6.0, config::CAMERA_VIEW_HEIGHT-1.2};
 constexpr glm::vec2 field_helper_topleft = {config::CAMERA_VIEW_WIDTH - medium_button_size.x - normal_gap, field_plant_selection_topleft.y};
 constexpr float field_size = 0.5;
+constexpr glm::vec2 full_field_size = glm::vec2{field_size*normal_field_width, field_size*normal_filed_height};//
+constexpr glm::vec2 full_field_center = glm::vec2{0.25, 0.25 + field_size*normal_filed_height} + glm::vec2{full_field_size.x/2.0f, -full_field_size.y/2.0f};
+constexpr glm::vec2 field_tool_cursor_size = full_field_size + glm::vec2{normal_gap, normal_gap};
 
 constexpr glm::vec2 helper_config_topleft = {normal_topleft.x, field_plant_selection_topleft.y};
 constexpr glm::vec2 helper_config_size = {config::CAMERA_VIEW_WIDTH-normal_topleft.x*2.0f, field_plant_selection_topleft.y - normal_gap};
