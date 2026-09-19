@@ -25,7 +25,7 @@ bool EntityFactory::read(const std::string& path, nlohmann::json* json_link) noe
     // Allows for path to be just the filename
     if (!std::ifstream(fullPath).good())
     {
-        fullPath = basePath + "/assets/roomSchemes/" + path;
+        fullPath = basePath + path;
     }
 
     //Tries Reading File

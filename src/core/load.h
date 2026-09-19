@@ -1,3 +1,4 @@
+#pragma once
 //
 // Created by luisb on 05.08.2026.
 //
@@ -12,6 +13,8 @@
 #include "helpers/field_editor.h"
 #include "helpers/finder.h"
 #include "helpers/sizes.h"
+#include <nlohmann/json.hpp>
+
 /**
  * For Overall loading
  */
@@ -71,6 +74,15 @@ inline std::string getTexturePath(std::string relative_path) noexcept {
 
 inline bool does_file_exist(std::string path) {
     return std::filesystem::exists(path);
+}
+
+inline Texture create_single_texture(std::string path) {
+    std::string text_path = getTexturePath(path);
+    if (does_file_exist(text_path)) {
+        return Texture::init(text_path);
+    }
+    std::cout<<"Could not find texture "<<path<<std::endl;
+    return Texture::init(getTexturePath("symbols/notfound.png"));
 }
 
 inline TextureInformation create_texture(std::string path) {

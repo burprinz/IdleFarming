@@ -9,13 +9,8 @@
 #include "window.h"
 #include "core/registry.h"
 #include <nlohmann/json.hpp>
-
-#include "../core/load.h"
 #include "../core/save.h"
-#include "../helpers/sizes.h"
-#include "helpers/finder.h"
-#include "helpers/paths.h"
-#include "helpers/util.h"
+#include "core/load.h"
 
 class EntityFactory {
 public:
@@ -78,6 +73,8 @@ private:
     Window* m_window;
 
     std::string texture_path = getBasePath() + "/assets/textures/";
+    std::string save_path = "/assets/data/save/";
+
 
     nlohmann::json m_json;
 

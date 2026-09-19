@@ -3,21 +3,21 @@
         {
             "name": "auto_collected",
             "value": {
-                "base": 3.1505417,
+                "base": 3.152887,
                 "exp": 7
             }
         },
         {
             "name": "auto_harvested",
             "value": {
-                "base": 1.907919515,
+                "base": 1.908137848,
                 "exp": 9
             }
         },
         {
             "name": "auto_planted",
             "value": {
-                "base": 1.907919753,
+                "base": 1.908138146,
                 "exp": 9
             }
         },
@@ -52,28 +52,28 @@
         {
             "name": "manual_collected",
             "value": {
-                "base": 2.562,
+                "base": 3.579,
                 "exp": 3
             }
         },
         {
             "name": "manual_harvested",
             "value": {
-                "base": 1.0472,
+                "base": 1.0589,
                 "exp": 4
             }
         },
         {
             "name": "manual_planted",
             "value": {
-                "base": 1.0188,
+                "base": 1.0279,
                 "exp": 4
             }
         },
         {
             "name": "tools_bought",
             "value": {
-                "base": 1.6,
+                "base": 2.4,
                 "exp": 1
             }
         }

@@ -89,13 +89,6 @@ void RenderSystem::step(const float /*delta*/) noexcept {
         MessagePopup *popup = m_ui->getCurrentMessagePopup();
         drawPopup(popup->title, popup->text);
     }
-
-    m_draw->drawRectBySize(full_field_center, field_tool_cursor_size, green);
-    if (m_registry->current_hover_field_tile != entt::null) {
-        glm::vec2 pos = m_registry->ecs.get<Position>(m_registry->current_hover_field_tile).pos;
-        glm::vec2 size = m_registry->ecs.get<Dimension>(m_registry->current_hover_field_tile).dim;
-        m_draw->fillRectBySize(pos, size, green, 1.0f);
-    }
 }
 
 void RenderSystem::drawField() noexcept {
