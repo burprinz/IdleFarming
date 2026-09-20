@@ -6,6 +6,11 @@
 // Created by luisb on 25.06.2026.
 //
 
+// Screen
+constexpr glm::vec2 screen_bot_left = {0,0};
+constexpr glm::vec2 screen_top_left = {0, config::CAMERA_VIEW_HEIGHT};
+constexpr glm::vec2 screen_top_right = {config::CAMERA_VIEW_WIDTH, config::CAMERA_VIEW_HEIGHT};
+constexpr glm::vec2 screen_bot_right = glm::vec2{config::CAMERA_VIEW_WIDTH, 0};
 
 constexpr glm::vec2 base_icon_size = {32, 32};
 constexpr glm::vec2 base_helper_size = {300, 600};
@@ -81,6 +86,12 @@ constexpr float dealer_card_hand_y = 6.0f;
 
 // Skilltree
 constexpr glm::vec2 skill_button_size = {1.0, 1.5};
+
+// Village
+constexpr glm::vec2 village_window_topleft = field_cell_topleft - glm::vec2{0, 0.1f};
+constexpr glm::vec2 village_window_size = {config::CAMERA_VIEW_HEIGHT-0.75, config::CAMERA_VIEW_HEIGHT-0.85};
+constexpr glm::vec2 village_window_center = village_window_topleft + glm::vec2{village_window_size.x, -village_window_size.y}/2.0f;
+
 
 // Message Popup
 constexpr float message_popup_w = 3.0f;

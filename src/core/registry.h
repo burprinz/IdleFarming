@@ -3,6 +3,8 @@
 #include <common.h>
 #include <entt/entt.hpp>
 
+#include "glm/vec2.hpp"
+#include "glm/detail/func_packing_simd.inl"
 #include "utils/BigNumber.h"
 #include "utils/texture.h"
 
@@ -404,6 +406,10 @@ public:
     glm::vec2 skilltree_pos_offset = {0.f, 0.f};
     float skilltree_zoom = 1.0f;
 
+    /**
+     * Village
+     */
+    glm::vec2 village_pos_offset = {0.f, 0.f};
 
     /**
      * Buying

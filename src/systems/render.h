@@ -25,6 +25,7 @@ class RenderSystem {
 		Draw* m_draw;
 		UISystem* m_ui;
 
+		void drawUpperSelection() noexcept;
 		void drawField() noexcept;
 		void drawMarketplace() noexcept;
 		void drawToolsmith() noexcept;
@@ -32,8 +33,8 @@ class RenderSystem {
 		void drawAchievements() noexcept;
 		void drawGambling() noexcept;
 		void drawSkilltree() noexcept;
-
 		void drawBlackjack() noexcept;
+		void drawVillage() noexcept;
 
 		void drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color, bool with_max_size) noexcept;
 		void drawBasicTextButton(TextButton &b, glm::vec3 text_color, bool with_max_size) noexcept;

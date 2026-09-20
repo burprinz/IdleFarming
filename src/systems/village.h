@@ -24,4 +24,10 @@ private:
 
     void initButtons() noexcept;
 
+
+    // Movement
+    bool right_click_pressed = false;
+    glm::vec2 origin_mouse = {0.0, 0.0};
+    glm::vec2 old_offset = {0.0, 0.0};
+
 };

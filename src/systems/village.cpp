@@ -33,6 +33,24 @@ bool VillageSystem::left_click() noexcept {
 
 void VillageSystem::step(const float delta) noexcept {
     (void) delta;
+
+    if (m_registry->window() == VILLAGE) {
+        glm::vec2 mouse_pos = m_window->getMousePosition();
+
+        if (m_registry->keys["mouse_right"]) {
+            if (!right_click_pressed && point_in_rect(mouse_pos, village_window_center, village_window_size)) {
+                right_click_pressed = true;
+                origin_mouse = mouse_pos;
+                old_offset = m_registry->village_pos_offset;
+            }
+            if (right_click_pressed) {
+                glm::vec2 next_offset = mouse_pos - origin_mouse;
+                m_registry->village_pos_offset = old_offset + next_offset;
+            }
+        } else {
+            right_click_pressed = false;
+        }
+    }
 }
 
 

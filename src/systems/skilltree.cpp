@@ -139,9 +139,10 @@ bool SkilltreeSystem::left_click() noexcept {
 
 void SkilltreeSystem::step(const float delta) noexcept {
     (void) delta;
-    glm::vec2 mouse_pos = m_window->getMousePosition();
 
     if (m_registry->window() == SKILLTREE) {
+        glm::vec2 mouse_pos = m_window->getMousePosition();
+
         if (m_registry->keys["mouse_right"]) {
             if (!right_click_pressed) {
                 right_click_pressed = true;

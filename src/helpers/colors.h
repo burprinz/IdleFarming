@@ -19,6 +19,8 @@ constexpr glm::vec3 gray = {0.5, 0.5, 0.5};
 constexpr glm::vec3 selected = {0.2, 1.0, 0.2};
 
 
+constexpr glm::vec3 background = {0.296875,0.296875,0.296875};
+
 // Button farben
 constexpr float button_fading_speed = 2.5f;
 constexpr glm::vec3 button_inner_color = {0.094, 0.094, 0.106};

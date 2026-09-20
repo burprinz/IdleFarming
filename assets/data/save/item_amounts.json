@@ -2,56 +2,56 @@
     "list": [
         {
             "amount": {
-                "base": 6.3079,
-                "exp": 4
+                "base": 4.851079,
+                "exp": 6
             },
             "name": "iron"
         },
         {
             "amount": {
-                "base": 1.625658,
+                "base": 1.661972,
                 "exp": 6
             },
             "name": "lemon"
         },
         {
             "amount": {
-                "base": 1.788178,
+                "base": 1.828111,
                 "exp": 6
             },
             "name": "orange"
         },
         {
             "amount": {
-                "base": 2.38423,
+                "base": 2.43746,
                 "exp": 6
             },
             "name": "cherry"
         },
         {
             "amount": {
-                "base": 3.577029,
+                "base": 3.656879,
                 "exp": 6
             },
             "name": "apple"
         },
         {
             "amount": {
-                "base": 2.84312,
+                "base": 2.86307,
                 "exp": 6
             },
             "name": "tulips"
         },
         {
             "amount": {
-                "base": 2.9566638,
+                "base": 2.9774247,
                 "exp": 7
             },
             "name": "dandelion"
         },
         {
             "amount": {
-                "base": 4.5487156,
+                "base": 4.5806556,
                 "exp": 7
             },
             "name": "daisy"
@@ -72,28 +72,28 @@
         },
         {
             "amount": {
-                "base": 1.48889349,
+                "base": 1.49029086,
                 "exp": 8
             },
             "name": "corn"
         },
         {
             "amount": {
-                "base": 2.55221293,
+                "base": 2.55449412,
                 "exp": 8
             },
             "name": "tomato"
         },
         {
             "amount": {
-                "base": 4.46637192,
+                "base": 4.47036436,
                 "exp": 8
             },
             "name": "cucumber"
         },
         {
             "amount": {
-                "base": 9.65435779,
+                "base": 9.6607455,
                 "exp": 8
             },
             "name": "carrot"

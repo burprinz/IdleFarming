@@ -126,6 +126,17 @@ public:
         return result;
     }
 
+    inline void drawOutOfSquare(glm::vec2 top_left, glm::vec2 size, glm::vec3 color, float opacity=1.0f) noexcept {
+        glm::vec2 top_right = top_left + glm::vec2{size.x, 0};
+        glm::vec2 bot_left = top_left + glm::vec2{0, -size.y};
+        glm::vec2 bot_right = top_right + glm::vec2{0, -size.y};
+
+        fillRect(screen_top_left, screen_top_right, {screen_top_left.x, top_left.y}, {screen_top_right.x, top_right.y}, color, opacity);
+        fillRect({screen_bot_left.x, bot_left.y}, {screen_bot_right.x, bot_left.y}, screen_bot_left, screen_bot_right, color, opacity);
+        fillRect(screen_top_left, {top_left.x, screen_top_left.y}, screen_bot_left, {bot_left.x, screen_bot_left.y}, color, opacity);
+        fillRect({top_right.x, screen_top_right.y}, screen_top_right, {bot_right.x, screen_bot_right.y}, screen_bot_right, color, opacity);
+    }
+
     glm::mat4 getViewMatrix() noexcept;
 
     void onResizeCallback(GLFWwindow* window, int width, int height) noexcept;

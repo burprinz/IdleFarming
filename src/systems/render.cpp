@@ -38,6 +38,53 @@ void RenderSystem::reset() noexcept {
 }
 
 void RenderSystem::step(const float /*delta*/) noexcept {
+
+
+    if (m_registry->window() == VILLAGE) {
+
+        drawVillage();
+
+        m_draw->drawOutOfSquare(village_window_topleft, village_window_size, background);
+
+        drawUpperSelection();
+
+    } else {
+        drawUpperSelection();
+
+        /**
+         * Draw Mode
+         */
+        if (m_registry->window() == FIELDS) {
+            drawField();
+        } else if (m_registry->window() == MARKETPLACE) {
+            drawMarketplace();
+        } else if (m_registry->window() == TOOLSMITH) {
+            drawToolsmith();
+        } else if (m_registry->window() == HELPERS) {
+            drawHelpers();
+        } else if (m_registry->window() == ACHIEVEMENTS) {
+            drawAchievements();
+        } else if (m_registry->window() == GAMBLING) {
+            drawGambling();
+        } else if (m_registry->window() == SKILLTREE) {
+            drawSkilltree();
+        }
+    }
+
+
+
+
+
+    /**
+     * Draw popup if available
+     */
+    if (m_ui->messagePopupAvailable()) {
+        MessagePopup *popup = m_ui->getCurrentMessagePopup();
+        drawPopup(popup->title, popup->text);
+    }
+}
+
+void RenderSystem::drawUpperSelection() noexcept {
     /**
      * Draw Window switch Buttons
      */
@@ -62,33 +109,6 @@ void RenderSystem::step(const float /*delta*/) noexcept {
     std::string text = "Money: " + money.toString();
     m_draw->drawStringInBox(text, {config::CAMERA_VIEW_WIDTH - 1.0, config::CAMERA_VIEW_HEIGHT - 0.25}, {2.0, 0.5},
                             black);
-
-    /**
-     * Draw Mode
-     */
-    if (m_registry->window() == FIELDS) {
-        drawField();
-    } else if (m_registry->window() == MARKETPLACE) {
-        drawMarketplace();
-    } else if (m_registry->window() == TOOLSMITH) {
-        drawToolsmith();
-    } else if (m_registry->window() == HELPERS) {
-        drawHelpers();
-    } else if (m_registry->window() == ACHIEVEMENTS) {
-        drawAchievements();
-    } else if (m_registry->window() == GAMBLING) {
-        drawGambling();
-    } else if (m_registry->window() == SKILLTREE) {
-        drawSkilltree();
-    }
-
-    /**
-     * Draw popup if available
-     */
-    if (m_ui->messagePopupAvailable()) {
-        MessagePopup *popup = m_ui->getCurrentMessagePopup();
-        drawPopup(popup->title, popup->text);
-    }
 }
 
 void RenderSystem::drawField() noexcept {
@@ -636,6 +656,18 @@ void RenderSystem::drawSkilltree() noexcept {
         m_draw->drawMultilinePopupAtMouse(s.name, s.display_lines, true, white, small_popup_text_size);
     }
 }
+
+void RenderSystem::drawVillage() noexcept {
+
+    glm::vec2 offset = m_registry->village_pos_offset;
+
+    m_draw->fillCircle(offset, 0.5f, white, 1.0f);
+
+    m_draw->drawRectBySize(village_window_center, village_window_size, black);
+
+}
+
+
 
 
 void RenderSystem::drawBasicTextButtons(std::vector<TextButton> &buttons, glm::vec3 text_color,
