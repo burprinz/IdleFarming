@@ -32,6 +32,7 @@ enum struct Shader {
 	round_rect,
 	fade_rect,
 	fade_rect_hollow,
+	shimmer,
 	count
 };
 

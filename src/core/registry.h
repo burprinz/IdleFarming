@@ -410,6 +410,7 @@ public:
      * Village
      */
     glm::vec2 village_pos_offset = {0.f, 0.f};
+    float village_hover_intensity = 0.0f;
 
     /**
      * Buying

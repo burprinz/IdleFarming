@@ -4,6 +4,7 @@
 
 #include <iostream>
 
+#include "village.h"
 #include "../helpers/colors.h"
 #include "../helpers/sizes.h"
 #include "core/stats.h"
@@ -661,10 +662,16 @@ void RenderSystem::drawVillage() noexcept {
 
     glm::vec2 offset = m_registry->village_pos_offset;
 
-    m_draw->fillCircle(offset, 0.5f, white, 1.0f);
+    if (m_registry->village_hover_intensity > 0.001f) {
+        m_draw->drawShimmer(glm::vec2{2,2} + offset, glm::vec2(village_building_radius * 2.0f), ShimmerShape::Circle,
+                                  m_registry->village_hover_intensity, white, 1.0f);
+    }
 
     m_draw->drawRectBySize(village_window_center, village_window_size, black);
 
+    m_draw->fillCircle(glm::vec2{2, 2} + offset, 0.5f, black, 1.0f);
+
+    m_draw->drawRectBySize(village_window_center, village_window_size, black);
 }
 
 

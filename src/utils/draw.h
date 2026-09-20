@@ -22,6 +22,10 @@ struct Character {
     unsigned int advance;
 };
 
+enum class ShimmerShape {
+    Circle = 0,
+    Square = 1,
+};
 
 
 class Draw {
@@ -86,10 +90,15 @@ public:
     void drawPopupAtMouse(std::string text, glm::vec3 text_color=white, float text_size=normal_popup_text_size) noexcept;
     void drawMultilinePopupAtMouse(std::string title, std::vector<std::string> lines, bool with_title, glm::vec3 text_color=white, float text_size=normal_popup_text_size) noexcept;
 
+    void drawShimmer(glm::vec2 center, glm::vec2 size, ShimmerShape shape, float intensity,
+                                 glm::vec3 glow_color, float height_factor) noexcept;
+
     float getOptimalScalingForMultipleLines(std::vector<std::string> lines, float line_gap, glm::vec2 size) noexcept;
     float getOptimalScaling(std::string text, glm::vec2 size) noexcept;
     float getStringWidth(std::string text, float scale) noexcept;
     float getStringHeight(std::string text, float scale) noexcept;
+
+
 
 
     inline void drawButton(std::string text, glm::vec2 center, glm::vec2 size, glm::vec3 outer_color, glm::vec3 inner_color, glm::vec3 text_color, bool with_max_size) noexcept {
@@ -172,6 +181,10 @@ private:
     GLuint m_quad_vao;
     GLuint m_quad_ebo;
 
+    Shader m_shimmer_shader;
+    GLuint m_shimmer_vao, m_shimmer_vbo, m_shimmer_ebo;
+
+
     struct Line { glm::vec2 position; };
     GLuint m_line_vao;
     GLuint m_line_vbo;
@@ -212,6 +225,27 @@ private:
             { center.x + w, center.y + h,  1.0f,  1.0f }, // top-right
             { center.x - w, center.y - h, -1.0f, -1.0f }, // bottom-left
             { center.x + w, center.y - h,  1.0f, -1.0f }, // bottom-right
+        };
+
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(verts), verts);
+    }
+
+
+    static void setupHoverShimmerQuad(GLuint vbo, glm::vec2 center, glm::vec2 size, float height_factor) noexcept {
+        float w = size.x / 2.0f;
+        float h = size.y / 2.0f;
+        float top_extra = size.y * height_factor;
+
+        float bottom = center.y - h;
+        float top = center.y + h + top_extra;
+
+        // vec4: worldPos.xy, localCoord.xy (-1..1, y=-1 an der Basis, y=1 an der Spitze)
+        glm::vec4 verts[4] = {
+            { center.x - w, top,    -1.0f,  1.0f }, // top-left
+            { center.x + w, top,     1.0f,  1.0f }, // top-right
+            { center.x - w, bottom, -1.0f, -1.0f }, // bottom-left
+            { center.x + w, bottom,  1.0f, -1.0f }, // bottom-right
         };
 
         glBindBuffer(GL_ARRAY_BUFFER, vbo);

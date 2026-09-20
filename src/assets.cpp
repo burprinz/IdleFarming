@@ -32,7 +32,8 @@ static constexpr std::array<const char*, static_cast<size_t>(assets::Shader::cou
 	"polygon",
 	"round_rect",
 	"fade_rect",
-	"fade_rect_hollow"
+	"fade_rect_hollow",
+	"shimmer"
 };
 
 template<> std::string assets::getAssetPath<assets::Shader>(const assets::Shader asset_id) noexcept {

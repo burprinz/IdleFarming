@@ -177,6 +177,25 @@ Draw *Draw::init(Window* window, Registry* registry) noexcept {
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(fade_rect_indices), fade_rect_indices, GL_STATIC_DRAW);
 
 
+    // Hover Shimmer
+    self->m_shimmer_shader = Shader::init(assets::Shader::shimmer).value();
+
+    glGenVertexArrays(1, &self->m_shimmer_vao);
+    glBindVertexArray(self->m_shimmer_vao);
+
+    glGenBuffers(1, &self->m_shimmer_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, self->m_shimmer_vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * 4, nullptr, GL_DYNAMIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), (void*)sizeof(glm::vec2));
+
+    GLuint shimmer_indices[6] = { 0, 2, 1, 1, 2, 3 };
+    glGenBuffers(1, &self->m_shimmer_ebo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, self->m_shimmer_ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(shimmer_indices), shimmer_indices, GL_STATIC_DRAW);
+
     return self;
 }
 
@@ -193,6 +212,7 @@ void Draw::deinit() noexcept {
     m_round_rect_shader.deinit();
     m_fade_rect_shader.deinit();
     m_fade_rect_hollow_shader.deinit();
+    m_shimmer_shader.deinit();
 }
 
 void Draw::start() noexcept {
@@ -816,5 +836,26 @@ void Draw::drawProgressBar(glm::vec2 center, glm::vec2 size, float progress, glm
     fillRectBySize(glm::vec2{top_left.x + progress_w + remaining_w/2.0f, center.y}, glm::vec2{remaining_w, size.y}, background_color, 1.0f);
 }
 
+void Draw::drawShimmer(glm::vec2 center, glm::vec2 size, ShimmerShape shape, float intensity,
+                             glm::vec3 glow_color, float height_factor) noexcept {
+    if (intensity <= 0.001f) return; // unsichtbar -> Draw-Call sparen
 
+    glBindVertexArray(m_shimmer_vao);
+    setupHoverShimmerQuad(m_shimmer_vbo, center, size, height_factor);
+
+    // additiv blenden fürs Leuchten, danach wieder normales Alpha-Blending herstellen
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+
+    m_shimmer_shader.use()
+        .setMat4("view", view)
+        .setMat4("projection", projection)
+        .setFloat("shapeMode", static_cast<float>(shape))
+        .setFloat("intensity", intensity)
+        .setFloat("time", static_cast<float>(glfwGetTime()))
+        .setVec3("glowColor", glow_color);
+
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}
 
