@@ -7,8 +7,6 @@
 // Created by luisb on 18.09.2026.
 //
 
-constexpr float village_building_radius = 1.0f;
-
 class VillageSystem {
 public:
     static VillageSystem init(Window *window, Registry *registry, UISystem* ui) noexcept;

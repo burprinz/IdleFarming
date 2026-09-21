@@ -52,17 +52,37 @@ void VillageSystem::step(const float delta) noexcept {
             right_click_pressed = false;
         }
 
-        // Hover-Shimmer: prüft, ob die Maus über dem Gebäude/Platzhalter (Kreis bei village_pos_offset) ist,
-        // und blendet die Intensität weich über delta ein/aus. Wird in RenderSystem::drawVillage() genutzt.
+
+        bool hovering = false;
+        for (entt::entity id : m_registry->ecs.view<Village>()) {
+            Village &v = m_registry->ecs.get<Village>(id);
+            if (hovering) {
+                v.hovering = false;
+                break;
+            }
+
+            glm::vec2 village_pos = m_registry->ecs.get<Position>(id).pos + m_registry->village_pos_offset;
+            glm::vec2 village_size = m_registry->ecs.get<Dimension>(id).dim;
+
+            hovering = point_in_rect(mouse_pos, village_pos, village_size);
+            v.hovering = hovering;
+            float target_intensity = hovering ? 1.0f : 0.0f;
+            float lerp_speed = 8.0f;
+
+            m_registry->village_hover_intensity += (target_intensity - m_registry->village_hover_intensity)
+                                                * std::clamp(delta * lerp_speed, 0.0f, 1.0f);
+        }
+
+        /*
         glm::vec2 village_pos = glm::vec2{2,2}+m_registry->village_pos_offset;
-        bool hovering = point_in_rect(mouse_pos, village_pos, glm::vec2{2,2});//glm::length(mouse_pos - m_registry->village_pos_offset) <= village_building_radius;
+        bool hovering = point_in_rect(mouse_pos, village_pos, glm::vec2(village_building_radius * 2.0f));
         float target_intensity = hovering ? 1.0f : 0.0f;
         float lerp_speed = 8.0f; // je größer, desto schneller blendet der Schimmer ein/aus
 
 
         m_registry->village_hover_intensity += (target_intensity - m_registry->village_hover_intensity)
                                                 * std::clamp(delta * lerp_speed, 0.0f, 1.0f);
-
+        */
     }
 
 }

@@ -662,14 +662,20 @@ void RenderSystem::drawVillage() noexcept {
 
     glm::vec2 offset = m_registry->village_pos_offset;
 
-    if (m_registry->village_hover_intensity > 0.001f) {
-        m_draw->drawShimmer(glm::vec2{2,2} + offset, glm::vec2(village_building_radius * 2.0f), ShimmerShape::Circle,
-                                  m_registry->village_hover_intensity, white, 1.0f);
+    for (entt::entity id : m_registry->ecs.view<Village>()) {
+        Village village = m_registry->ecs.get<Village>(id);
+        glm::vec2 village_pos = m_registry->ecs.get<Position>(id).pos + offset;
+        glm::vec2 village_size = m_registry->ecs.get<Dimension>(id).dim;
+
+        if (village.hovering && m_registry->village_hover_intensity > 0.001f) {
+            m_draw->drawShimmer(village_pos, {village_size.x*1.6, village_size.y}, ShimmerShape::Circle,
+                          m_registry->village_hover_intensity, white, 1.0f);
+        }
+
+        m_draw->fillCircle(village_pos, village_size.x/2.0f, black, 1.0f);
     }
 
-    m_draw->drawRectBySize(village_window_center, village_window_size, black);
 
-    m_draw->fillCircle(glm::vec2{2, 2} + offset, 0.5f, black, 1.0f);
 
     m_draw->drawRectBySize(village_window_center, village_window_size, black);
 }

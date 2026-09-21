@@ -19,27 +19,42 @@ float hash(float n) {
 void main() {
     vec2 p = localCoord;
 
-    // normierte Höhe: 0 = Basis (am Objekt), 1 = Spitze des Schimmers
+    // Normierte Höhe
     float h = clamp((p.y + 1.0) * 0.5, 0.0, 1.0);
 
-    // Strahlenbündel verjüngt sich leicht nach oben
+    // Strahlenbündel
+
+    float taper;
+    if (h < 0.5) {
+        float t = h / 0.5; // 0 (Bodenspitze) .. 1 (Objektoberkante)
+        taper = (shapeMode < 0.5)
+        ? sqrt(max(0.0, 1.0 - (1.0 - t) * (1.0 - t))) // Kreisprofil: läuft unten auf 0 zu
+        : 1.0;                                         // Quadrat: unten schon voll breit
+    } else {
+        float t = (h - 0.5) / 0.5;
+        taper = mix(1.0, 0.35, t);
+    }
+    float x = p.x / max(taper, 0.02);
+
+    /*
     float taper = mix(1.0, 0.35, h);
     float x = p.x / max(taper, 0.001);
+    */
 
-    // Silhouette an der Basis: rund oder eckig
+    // Silhouette: rund oder eckig
     float baseShape;
     if (shapeMode < 0.5) {
         baseShape = 1.0 - smoothstep(0.7, 1.0, length(vec2(x, p.y)));
     } else {
         baseShape = 1.0 - smoothstep(0.7, 1.0, max(abs(x), abs(p.y)));
     }
-    baseShape *= (1.0 - h); // nur unten relevant, oben übernehmen die Strahlen
+    baseShape *= (1.0 - h);
 
-    // horizontales und vertikales Ausbleichen des Bündels
+    // Ausgleichen
     float horizontalFalloff = 1.0 - smoothstep(0.0, 1.0, abs(x));
     float verticalFalloff = pow(1.0 - h, 1.3);
 
-    // prozedurale, ungleichmäßig verteilte "Sonnenstrahlen" (nur nach oben, kein Ring)
+
     float rayPattern = 0.0;
     const int RAYS = 7;
     for (int i = 0; i < RAYS; i++) {
@@ -53,7 +68,6 @@ void main() {
     }
     rayPattern = clamp(rayPattern, 0.0, 1.0);
 
-    // Helligkeitswelle, die kontinuierlich nach oben "wandert"
     float travel = fract(h * 1.5 - time * 0.5);
     float travelBand = smoothstep(0.0, 0.25, travel) * smoothstep(0.65, 0.25, travel);
 

@@ -38,6 +38,8 @@ public:
 
         preload_skilltree_infos();
 
+        create_villages();
+
         load_lang("english");
 
         int time_diff = static_cast<int>(load_time_difference());
@@ -112,6 +114,12 @@ private:
     void preload_skilltree_infos() noexcept;
 
     void load_lang(std::string lang) noexcept;
+
+    void create_villages() noexcept;
+
+    void create_village(std::string name) noexcept;
+
+
 
 
     void save_time() noexcept;

@@ -255,6 +255,11 @@ struct Skill {
     int max_level = 1;
 };
 
+struct Village {
+    std::string name = "???";
+    bool hovering = false;
+};
+
 struct BuyAmount {
     std::vector<entt::entity> item_ids;
     std::vector<BigNumber> amounts;
