@@ -668,11 +668,14 @@ void RenderSystem::drawVillage() noexcept {
         glm::vec2 village_size = m_registry->ecs.get<Dimension>(id).dim;
 
         if (village.hovering && m_registry->village_hover_intensity > 0.001f) {
-            m_draw->drawShimmer(village_pos, {village_size.x*1.6, village_size.y}, ShimmerShape::Circle,
+            m_draw->drawShimmer(village_pos, {village_size.x, village_size.y}, ShimmerShape::Circle,
                           m_registry->village_hover_intensity, white, 1.0f);
         }
 
-        m_draw->fillCircle(village_pos, village_size.x/2.0f, black, 1.0f);
+        Texture village_text = m_registry->ecs.get<TextureInformation>(id).text;
+        m_draw->drawTexture(village_text, village_pos, village_size/2.0f);
+
+        //m_draw->fillCircle(village_pos, village_size.x/2.0f, black, 1.0f);
     }
 
 

@@ -36,5 +36,8 @@ void EntityFactory::create_village(std::string name) noexcept {
     m_registry->ecs.emplace<Village>(entity, v);
     m_registry->ecs.emplace<Position>(entity, pos);
     m_registry->ecs.emplace<Dimension>(entity, size);
+
+    TextureInformation text = create_village_texture(name);
+    m_registry->ecs.emplace<TextureInformation>(entity, text);
 }
 
