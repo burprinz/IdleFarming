@@ -203,7 +203,7 @@ inline void load_current_helpers(Registry* m_registry, nlohmann::json helper_jso
         }
         helper.working_area.push_back(field_id);
         helper.working_plants.push_back(plant_id);
-        apply_helper_growtime(m_registry, field_id, time_diff);
+        apply_helper_growtime(m_registry, field_id, time_diff, nullptr);
     }
 }
 

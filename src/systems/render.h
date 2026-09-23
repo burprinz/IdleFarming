@@ -3,6 +3,7 @@
 #include <core/registry.h>
 #include <window.h>
 
+#include "animation.h"
 #include "ui.h"
 #include "utils/draw.h"
 
@@ -12,7 +13,7 @@ class RenderSystem {
 		RenderSystem() = default;
 		~RenderSystem() = default;
 
-		static RenderSystem init(Window* window, Registry* registry, UISystem* m_ui, Draw* m_draw) noexcept;
+		static RenderSystem init(Window* window, Registry* registry, UISystem* m_ui, Draw* m_draw, AnimationSystem* animation) noexcept;
 		void deinit() noexcept;
 		void step(const float delta) noexcept;
 		void reset() noexcept;
@@ -24,6 +25,7 @@ class RenderSystem {
 		Window* m_window;
 		Draw* m_draw;
 		UISystem* m_ui;
+		AnimationSystem* m_animation;
 
 		void drawUpperSelection() noexcept;
 		void drawField() noexcept;

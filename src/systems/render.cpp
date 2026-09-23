@@ -21,13 +21,14 @@ constexpr float LIGHT_EFFECT_ANIMATION_SPEED = 0.1f; // time (in seconds) per fr
 constexpr float SHADOW_EXTEND_DISTANCE = 100.0f; // distance of shadow cast
 
 
-RenderSystem RenderSystem::init(Window *window, Registry *registry, UISystem *ui, Draw *draw) noexcept {
+RenderSystem RenderSystem::init(Window *window, Registry *registry, UISystem *ui, Draw *draw, AnimationSystem* animation) noexcept {
     RenderSystem self;
 
     self.m_window = window;
     self.m_registry = registry;
     self.m_draw = draw;
     self.m_ui = ui;
+    self.m_animation = animation;
 
     return self;
 }
@@ -202,6 +203,15 @@ void RenderSystem::drawField() noexcept {
         std::string text = std::to_string(helper.working_area.size()) + "/" + std::to_string(helper.amount_fields) +
                            " fields";
         m_draw->drawStringInBox(text, pos, size, white);
+    }
+
+    // Draw harvested Item animations
+    for (size_t i = 0; i < m_animation->m_field_item_move_animations[m_registry->current_selected_field].size(); i++) {
+        TextureMoveAnimation anim = m_animation->m_field_item_move_animations[m_registry->current_selected_field][i];
+        Texture text = m_registry->ecs.get<TextureInformation>(anim.texture).text;
+        glm::vec2 pos = anim.start + anim.path*anim.progress;
+        float size = field_size/2.0f*(1.0-anim.progress+EPSILON);
+        m_draw->drawTexture(text, pos, glm::vec2{size,size});
     }
 }
 

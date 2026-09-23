@@ -76,12 +76,15 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_ui->initBaseButtons();
 	self.m_ui->initButtons();
 
-	self.m_render = RenderSystem::init(self.m_window, self.m_registry, self.m_ui, self.m_draw);
+	self.m_animation = new AnimationSystem;
+	*self.m_animation = AnimationSystem::init(self.m_window, self.m_registry);
+
+	self.m_render = RenderSystem::init(self.m_window, self.m_registry, self.m_ui, self.m_draw, self.m_animation);
 	self.m_camera = CameraSystem::init(self.m_registry);
-	self.m_field = FieldSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_field = FieldSystem::init(self.m_window, self.m_registry, self.m_ui, self.m_animation);
 	self.m_tools = ToolSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_market = MarketSystem::init(self.m_window, self.m_registry, self.m_ui);
-	self.m_helper = HelperSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_helper = HelperSystem::init(self.m_window, self.m_registry, self.m_ui, self.m_animation);
 	self.m_unlock = UnlockSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_achievement = AchievementSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_gamble = GambleSystem::init(self.m_window, self.m_registry, self.m_ui);
@@ -106,6 +109,7 @@ void Application::deinit() noexcept {
 	m_skilltree.deinit();
 	m_village.deinit();
 	m_cursor.deinit();
+	m_animation->deinit();
 
 	m_draw->deinit();
 
@@ -173,6 +177,9 @@ void Application::run() noexcept {
 
 		m_ui->step(delta_time);
 
+		m_animation->step(delta_time);
+
+
 		m_camera.step(delta_time);
 
 		m_cursor.step(delta_time);
@@ -233,6 +240,8 @@ void Application::reset() noexcept {
 	m_cursor.reset();
 	m_ui->reset();
 	m_ui->initButtons();
+
+	m_animation->reset();
 
 	m_achievement.init_achievement_hover();
 

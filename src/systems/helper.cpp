@@ -13,11 +13,12 @@
 #include "helpers/util.h"
 
 
-HelperSystem HelperSystem::init(Window *window, Registry *registry, UISystem* ui) noexcept {
+HelperSystem HelperSystem::init(Window *window, Registry *registry, UISystem* ui, AnimationSystem* animation) noexcept {
     HelperSystem self;
     self.m_registry = registry;
     self.m_window = window;
     self.m_ui = ui;
+    self.m_animation = animation;
     return self;
 }
 
@@ -139,7 +140,7 @@ void HelperSystem::step(const float delta) noexcept {
         for (size_t i = 0; i < helper.working_area.size(); i++) {
             entt::entity field_id = helper.working_area[i];
 
-            apply_helper_growtime(m_registry, field_id, growspeed);
+            apply_helper_growtime(m_registry, field_id, growspeed, m_animation);
             /**
             entt::entity plant_id = helper.working_plants[i];
 

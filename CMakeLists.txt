@@ -193,6 +193,8 @@ add_executable(${PROJECT_NAME}
 		src/systems/cursor.cpp
 		src/systems/cursor.h
 		src/data/village_factory.cpp
+		src/systems/animation.cpp
+		src/systems/animation.h
 )
 
 

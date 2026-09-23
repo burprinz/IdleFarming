@@ -11,11 +11,12 @@
 #include "helpers/field_editor.h"
 #include "helpers/sizes.h"
 
-FieldSystem FieldSystem::init(Window *window, Registry *registry, UISystem* ui) noexcept {
+FieldSystem FieldSystem::init(Window *window, Registry *registry, UISystem* ui, AnimationSystem* animation) noexcept {
     FieldSystem self;
     self.m_registry = registry;
     self.m_window = window;
     self.m_ui = ui;
+    self.m_animation = animation;
     return self;
 }
 
@@ -231,10 +232,10 @@ void FieldSystem::try_to_plant(std::vector<std::vector<entt::entity>> field, ent
 
                     if (current_field.plant_type == NORMAL_PLANT || m_registry->keys["shift"]) {
                         // Normale Pflanze oder regrow/inv + shift -> Ernten und entfernen
-                        harvest_with_radius(m_registry, field, x, y, harvest_radius);
+                        harvest_with_radius(m_registry, field, x, y, harvest_radius, m_animation);
                     } else {
                         // regrow/inv -> Collecten
-                        collect_with_radius(m_registry, field, x, y, collect_radius);
+                        collect_with_radius(m_registry, field, x, y, collect_radius, m_animation);
                     }
 
                 }

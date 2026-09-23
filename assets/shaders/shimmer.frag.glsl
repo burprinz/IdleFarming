@@ -4,7 +4,7 @@ in vec2 localCoord;
 
 out vec4 fragColor;
 
-uniform float shapeMode;   // aktuell ungenutzt, bleibt für Kompatibilität mit dem C++-Aufruf erhalten
+uniform float shapeMode;
 uniform float intensity;
 uniform float time;
 uniform vec3 glowColor;

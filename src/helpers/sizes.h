@@ -113,3 +113,6 @@ constexpr glm::vec2 message_popup_close_button_center =
     message_popup_topleft + glm::vec2{message_popup_size.x / 2.0f, -message_popup_size.y + small_gap + message_popup_close_button_size.y + small_gap + message_popup_close_button_size.y/2.0f};
 
 constexpr glm::vec2 message_popup_center = message_popup_topleft + (glm::vec2{message_popup_size.x, -message_popup_size.y} / 2.0f);
+
+// Animation
+constexpr glm::vec2 field_move_animation_end = {config::CAMERA_VIEW_WIDTH - normal_gap, config::CAMERA_VIEW_HEIGHT - normal_gap};

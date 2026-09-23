@@ -13,6 +13,7 @@
 #include "systems/unlock.h"
 #include "data/entity_factory.h"
 #include "systems/achievement.h"
+#include "systems/animation.h"
 #include "systems/cursor.h"
 #include "systems/gamble.h"
 #include "systems/helper.h"
@@ -40,6 +41,7 @@ class Application {
 		WorldSystem m_world;
 
 		UISystem* m_ui;
+		AnimationSystem* m_animation;
 		Draw* m_draw;
 		RenderSystem m_render;
 		CursorSystem m_cursor;
@@ -100,7 +102,7 @@ class Application {
 			f.helper_active = true;
 			helper.working_area.push_back(fieldID);
 			helper.working_plants.push_back(plantID);
-			apply_helper_growtime(m_registry, fieldID, 100);
+			apply_helper_growtime(m_registry, fieldID, 100, nullptr);
 
 			std::cout<<"3) Values:"<<
 				" auto_planted="<<StatsManager::instance().get("auto_planted").toString()<<
