@@ -195,6 +195,7 @@ add_executable(${PROJECT_NAME}
 		src/data/village_factory.cpp
 		src/systems/animation.cpp
 		src/systems/animation.h
+		src/core/settings.h
 )
 
 

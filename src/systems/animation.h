@@ -1,6 +1,7 @@
 #pragma once
 #include "ui.h"
 #include "window.h"
+#include "core/settings.h"
 //
 // Created by luisb on 23.09.2026.
 //
@@ -29,7 +30,7 @@ public:
 
     std::vector<std::vector<TextureMoveAnimation>> m_field_item_move_animations;
     inline void add_field_move_animation(size_t id, TextureMoveAnimation anim) noexcept {
-        if (m_registry->current_selected_field == id) {
+        if (SettingsManager::instance().farmed_plants_animation_enabled && m_registry->current_selected_field == id) {
             anim.path = anim.end - anim.start;
             m_field_item_move_animations[id].push_back(anim);
         }
