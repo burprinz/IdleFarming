@@ -75,6 +75,7 @@ public:
 
     std::vector<TextButton> m_skilltree_buttons;
 
+    std::vector<TextButton> m_settings_buttons;
 
     inline void apply_lang_on_buttons() {
         apply_lang_on_single_button_lists(message_popup_close_buttons);

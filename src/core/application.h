@@ -18,6 +18,7 @@
 #include "systems/gamble.h"
 #include "systems/helper.h"
 #include "systems/marketplace.h"
+#include "systems/settings.h"
 #include "systems/skilltree.h"
 #include "systems/toolsmith.h"
 #include "systems/village.h"
@@ -57,6 +58,7 @@ class Application {
 
 		GambleSystem m_gamble;
 		SkilltreeSystem m_skilltree;
+		SettingsSystem m_settings;
 
 		EntityFactory m_entity_factory;
 

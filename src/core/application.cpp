@@ -90,6 +90,7 @@ std::optional<Application> Application::init(const CommandLineOptions& options) 
 	self.m_gamble = GambleSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_skilltree = SkilltreeSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_village = VillageSystem::init(self.m_window, self.m_registry, self.m_ui);
+	self.m_settings = SettingsSystem::init(self.m_window, self.m_registry, self.m_ui);
 	self.m_cursor = CursorSystem::init(self.m_window, self.m_registry, self.m_ui);
 
 	return self;
@@ -108,6 +109,7 @@ void Application::deinit() noexcept {
 	m_gamble.deinit();
 	m_skilltree.deinit();
 	m_village.deinit();
+	m_settings.deinit();
 	m_cursor.deinit();
 	m_animation->deinit();
 
@@ -175,10 +177,11 @@ void Application::run() noexcept {
 
 		m_village.step(delta_time);
 
+		m_settings.step(delta_time);
+
 		m_ui->step(delta_time);
 
 		m_animation->step(delta_time);
-
 
 		m_camera.step(delta_time);
 
@@ -233,6 +236,7 @@ void Application::reset() noexcept {
 	m_gamble.reset();
 	m_skilltree.reset();
 	m_village.reset();
+	m_settings.reset();
 
 	/**
 	 * Reset UI
@@ -297,6 +301,8 @@ void Application::onMouseClickCallback(GLFWwindow *window, int button, int actio
 			click_found = m_skilltree.left_click();
 		} else if (m_registry->window() == VILLAGE) {
 			click_found = m_village.left_click();
+		} else if (m_registry->window() == SETTINGS) {
+			click_found = m_settings.left_click();
 		}
 
 		if (!click_found) {

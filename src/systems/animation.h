@@ -1,7 +1,7 @@
 #pragma once
 #include "ui.h"
 #include "window.h"
-#include "core/settings.h"
+#include "core/settings_manager.h"
 //
 // Created by luisb on 23.09.2026.
 //

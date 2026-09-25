@@ -135,6 +135,17 @@ void UISystem::initWindowSwitchButtons() noexcept {
         registry->change_window(VILLAGE);
     };
     m_window_buttons.push_back(villageButton);
+
+    pos.x += size.x + normal_gap;
+
+    TextButton settingsButton;
+    settingsButton.pos = pos;
+    settingsButton.size = size;
+    settingsButton.text = "Settings";
+    settingsButton.on_click = [registry] {
+        registry->change_window(SETTINGS);
+    };
+    m_window_buttons.push_back(settingsButton);
 }
 
 
@@ -228,6 +239,8 @@ void UISystem::step(const float delta) noexcept {
         }
     } else if (m_registry->window() == SKILLTREE) {
         selection_found = update_text_button_list(m_skilltree_buttons, mousePos, false, m_registry->skilltree_pos_offset, m_registry->skilltree_zoom);
+    } else if (m_registry->window() == SETTINGS) {
+        selection_found = update_text_button_list(m_settings_buttons, mousePos, false);
     }
 }
 

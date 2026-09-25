@@ -3,21 +3,21 @@
         {
             "name": "auto_collected",
             "value": {
-                "base": 3.2920561,
+                "base": 3.3228603,
                 "exp": 7
             }
         },
         {
             "name": "auto_harvested",
             "value": {
-                "base": 1.918704466,
+                "base": 1.921043232,
                 "exp": 9
             }
         },
         {
             "name": "auto_planted",
             "value": {
-                "base": 1.918704824,
+                "base": 1.92104359,
                 "exp": 9
             }
         },

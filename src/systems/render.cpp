@@ -70,6 +70,8 @@ void RenderSystem::step(const float /*delta*/) noexcept {
             drawGambling();
         } else if (m_registry->window() == SKILLTREE) {
             drawSkilltree();
+        } else if (m_registry->window() == SETTINGS) {
+            drawSettings();
         }
     }
 
@@ -691,6 +693,10 @@ void RenderSystem::drawVillage() noexcept {
 
 
     m_draw->drawRectBySize(village_window_center, village_window_size, black);
+}
+
+void RenderSystem::drawSettings() noexcept {
+    drawBasicTextButtons(m_ui->m_settings_buttons, white, true);
 }
 
 
