@@ -115,6 +115,9 @@ private:
 
     void load_lang(std::string lang) noexcept;
 
+    /**
+     * Village Factory
+     */
     void create_villages() noexcept;
 
     void create_village(std::string name) noexcept;

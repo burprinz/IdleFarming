@@ -198,6 +198,13 @@ add_executable(${PROJECT_NAME}
 		src/core/settings_manager.h
 		src/systems/settings.cpp
 		src/systems/settings.h
+		src/data/gamble_factory.cpp
+		src/data/file_management.cpp
+		src/data/field_factory.cpp
+		src/data/tool_factory.cpp
+		src/data/helper_factory.cpp
+		src/data/achievement_factory.cpp
+		src/data/skilltree_factory.cpp
 )
 
 
