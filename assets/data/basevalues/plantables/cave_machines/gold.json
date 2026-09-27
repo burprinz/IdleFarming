@@ -1,0 +1,41 @@
+{
+  "name": "Gold",
+  "id_name": "gold",
+  "categories": [
+    "all",
+    "materials"
+  ],
+  "color": {
+    "r": 0.9,
+    "g": 0.56,
+    "b": 0.11
+  },
+  "growtime": 0,
+  "regrowtime": 8,
+  "collect_amount": {
+    "min": 1,
+    "max": 3
+  },
+  "price": {
+    "buy": {
+      "base": 150.0,
+      "exp": 0
+    },
+    "sell": {
+      "base": 1.0,
+      "exp": 0
+    }
+  },
+  "unlock": {
+    "unlocked": true,
+    "price": {
+      "base": 0.0,
+      "exp": 0
+    }
+  },
+  "has_inventory": true,
+  "inventory_size": {
+    "base": 50.0,
+    "exp": 0
+  }
+}

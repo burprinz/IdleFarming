@@ -1,7 +1,8 @@
 {
   "name": "Cave",
   "plants": [
-    "iron"
+    "iron",
+    "gold"
   ],
   "color": {
     "r": 0.67,

@@ -80,1043 +80,393 @@
             "name": "cave_machines",
             "plants": [
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.5956707000732422,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.7,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 0,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.49655818939208984,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.7,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 1,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.0955963134765625,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.8,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 2,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.545100212097168,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.8,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 3,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.44664859771728516,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.9,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 4,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.19722938537597656,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.9,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 5,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.39746856689453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.0,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 6,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.049091339111328125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.0,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 7,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.049091339111328125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.1,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 8,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.049091339111328125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.1,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 9,
                         "y": 0
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.5956707000732422,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.7,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 0,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.49655818939208984,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.7,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 1,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.0955963134765625,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.8,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 2,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.545100212097168,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.8,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 3,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.44664859771728516,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.9,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 4,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.19722938537597656,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.9,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 5,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.39746856689453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.0,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 6,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.049091339111328125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.0,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 7,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.049091339111328125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.1,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 8,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.049091339111328125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.1,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 9,
                         "y": 1
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.5956707000732422,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.7,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 0,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.49655818939208984,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.7,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 1,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.0955963134765625,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.8,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 2,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.545100212097168,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.8,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 3,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.44664859771728516,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.9,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 4,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.19722938537597656,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 2.9,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 5,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.39746856689453125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.0,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 6,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.049091339111328125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.0,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 7,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.049091339111328125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.1,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 8,
                         "y": 2
                     }
                 },
                 {
-                    "current_growtime": 1.0,
+                    "current_growtime": 0.049091339111328125,
                     "harvestable": false,
                     "inventory": {
-                        "base": 1.0,
-                        "exp": 2
+                        "base": 3.1,
+                        "exp": 1
                     },
-                    "plant_name": "iron",
+                    "plant_name": "gold",
                     "pos": {
                         "x": 9,
                         "y": 2
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 0,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 1,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 2,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 3,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 4,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 5,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 6,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 7,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 8,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 9,
-                        "y": 3
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 0,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 1,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 2,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 3,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 4,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 5,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 6,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 7,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 8,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 9,
-                        "y": 4
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 0,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 1,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 2,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 3,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 4,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 5,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 6,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 7,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 8,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 9,
-                        "y": 5
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 0,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 1,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 2,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 3,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 4,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 5,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 6,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 7,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 8,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 9,
-                        "y": 6
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 0,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 1,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 2,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 3,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 4,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 5,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 6,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 7,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 8,
-                        "y": 7
-                    }
-                },
-                {
-                    "current_growtime": 1.0,
-                    "harvestable": false,
-                    "inventory": {
-                        "base": 1.0,
-                        "exp": 2
-                    },
-                    "plant_name": "iron",
-                    "pos": {
-                        "x": 9,
-                        "y": 7
                     }
                 }
             ]
