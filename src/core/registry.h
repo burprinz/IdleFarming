@@ -259,6 +259,7 @@ struct Skill {
 struct Village {
     std::string name = "???";
     bool hovering = false;
+    bool selected = false;
 };
 
 struct BuyAmount {
@@ -417,6 +418,7 @@ public:
      */
     glm::vec2 village_pos_offset = {0.f, 0.f};
     float village_hover_intensity = 0.0f;
+    float village_select_intensity = 0.0f;
 
     /**
      * Buying

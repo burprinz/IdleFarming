@@ -80,10 +80,10 @@
             "name": "cave_machines",
             "plants": [
                 {
-                    "current_growtime": 0.5956707000732422,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.7,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -93,10 +93,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.49655818939208984,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.7,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -106,10 +106,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0955963134765625,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.8,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -119,10 +119,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.545100212097168,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.8,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -132,10 +132,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.44664859771728516,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.9,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -145,10 +145,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.19722938537597656,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.9,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -158,10 +158,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.39746856689453125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.0,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -171,10 +171,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.049091339111328125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.0,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -184,10 +184,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.049091339111328125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.1,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -197,10 +197,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.049091339111328125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.1,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -210,10 +210,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5956707000732422,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.7,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -223,10 +223,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.49655818939208984,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.7,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -236,10 +236,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0955963134765625,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.8,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -249,10 +249,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.545100212097168,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.8,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -262,10 +262,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.44664859771728516,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.9,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -275,10 +275,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.19722938537597656,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.9,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -288,10 +288,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.39746856689453125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.0,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -301,10 +301,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.049091339111328125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.0,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -314,10 +314,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.049091339111328125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.1,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -327,10 +327,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.049091339111328125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.1,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -340,10 +340,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.5956707000732422,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.7,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -353,10 +353,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.49655818939208984,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.7,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -366,10 +366,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.0955963134765625,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.8,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -379,10 +379,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.545100212097168,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.8,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -392,10 +392,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.44664859771728516,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.9,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -405,10 +405,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.19722938537597656,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 2.9,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -418,10 +418,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.39746856689453125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.0,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -431,10 +431,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.049091339111328125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.0,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -444,10 +444,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.049091339111328125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.1,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",
@@ -457,10 +457,10 @@
                     }
                 },
                 {
-                    "current_growtime": 0.049091339111328125,
+                    "current_growtime": 1.0,
                     "harvestable": false,
                     "inventory": {
-                        "base": 3.1,
+                        "base": 5.0,
                         "exp": 1
                     },
                     "plant_name": "gold",

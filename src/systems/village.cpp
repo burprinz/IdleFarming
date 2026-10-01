@@ -54,6 +54,8 @@ void VillageSystem::step(const float delta) noexcept {
 
 
         bool hovering = false;
+        bool select_found = false;
+        entt::entity selected_entity = entt::null;
         for (entt::entity id : m_registry->ecs.view<Village>()) {
             Village &v = m_registry->ecs.get<Village>(id);
             if (hovering) {
@@ -71,6 +73,21 @@ void VillageSystem::step(const float delta) noexcept {
 
             m_registry->village_hover_intensity += (target_intensity - m_registry->village_hover_intensity)
                                                 * std::clamp(delta * lerp_speed, 0.0f, 1.0f);
+
+            m_registry->village_select_intensity += (1.0f - m_registry->village_select_intensity)
+                                                            * std::clamp(delta * lerp_speed, 0.0f, 1.0f);
+
+            if (!select_found && v.hovering && m_registry->keys["mouse_left"]) {
+                select_found = true;
+                selected_entity = id;
+            }
+        }
+
+        if (selected_entity != entt::null) {
+            for (entt::entity id : m_registry->ecs.view<Village>()) {
+                Village &v = m_registry->ecs.get<Village>(id);
+                v.selected = selected_entity == id;
+            }
         }
 
         /*
