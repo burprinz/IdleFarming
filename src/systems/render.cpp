@@ -45,9 +45,6 @@ void RenderSystem::step(const float /*delta*/) noexcept {
     if (m_registry->window() == VILLAGE) {
 
         drawVillage();
-
-        m_draw->drawOutOfSquare(village_window_topleft, village_window_size, background);
-
         drawUpperSelection();
 
     } else {
@@ -674,6 +671,8 @@ void RenderSystem::drawVillage() noexcept {
 
     glm::vec2 offset = m_registry->village_pos_offset;
 
+    entt::entity selected_id = entt::null;
+
     for (entt::entity id : m_registry->ecs.view<Village>()) {
         Village village = m_registry->ecs.get<Village>(id);
         glm::vec2 village_pos = m_registry->ecs.get<Position>(id).pos + offset;
@@ -689,6 +688,7 @@ void RenderSystem::drawVillage() noexcept {
                 m_draw->drawShimmer(village_pos, {village_size.x, village_size.y}, ShimmerShape::Circle,
                           m_registry->village_select_intensity, green, 1.0f);
             }
+            selected_id = id;
         }
 
 
@@ -696,9 +696,22 @@ void RenderSystem::drawVillage() noexcept {
         m_draw->drawTexture(village_text, village_pos, village_size/2.0f);
     }
 
-
-
     m_draw->drawRectBySize(village_window_center, village_window_size, black);
+    m_draw->drawOutOfSquare(village_window_topleft, village_window_size, background);
+
+    if (selected_id != entt::null) {
+        Village village = m_registry->ecs.get<Village>(selected_id);
+
+        m_draw->drawRectBySize(village_info_center, village_info_size, green);
+
+        float x_center = village_info_center.x;
+        float y_top = village_window_topleft.y;
+
+        glm::vec2 center = {x_center, y_top - normal_text_box_height/2.0f};
+        glm::vec2 size = {village_info_size.x, normal_text_box_height};
+        m_draw->drawStringInBox(village.name, center, size, black);
+    }
+
 }
 
 void RenderSystem::drawSettings() noexcept {

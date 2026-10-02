@@ -91,6 +91,9 @@ constexpr glm::vec2 skill_button_size = {1.0, 1.5};
 constexpr glm::vec2 village_window_topleft = field_cell_topleft - glm::vec2{0, 0.1f};
 constexpr glm::vec2 village_window_size = {config::CAMERA_VIEW_HEIGHT-0.75, config::CAMERA_VIEW_HEIGHT-0.85};
 constexpr glm::vec2 village_window_center = village_window_topleft + glm::vec2{village_window_size.x, -village_window_size.y}/2.0f;
+constexpr glm::vec2 village_info_topleft = village_window_topleft + glm::vec2{village_window_size.x + small_gap, 0.0f};
+constexpr glm::vec2 village_info_size = {config::CAMERA_VIEW_WIDTH - small_gap - village_info_topleft.x,village_window_size.y};
+constexpr glm::vec2 village_info_center = village_info_topleft + glm::vec2{village_info_size.x, -village_info_size.y}/2.0f;
 
 
 // Message Popup

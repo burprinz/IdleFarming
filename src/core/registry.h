@@ -258,6 +258,7 @@ struct Skill {
 
 struct Village {
     std::string name = "???";
+    std::string id_name = "???";
     bool hovering = false;
     bool selected = false;
 };

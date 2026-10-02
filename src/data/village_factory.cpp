@@ -31,7 +31,8 @@ void EntityFactory::create_village(std::string name) noexcept {
     glm::vec2 size = extract_vec2(json["size"]);
 
     Village v;
-    v.name = id_name;
+    v.name = name;
+    v.id_name = id_name;
 
     m_registry->ecs.emplace<Village>(entity, v);
     m_registry->ecs.emplace<Position>(entity, pos);
