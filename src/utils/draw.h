@@ -111,7 +111,7 @@ public:
      *Texture
      */
     void drawTexture(Texture& texture, glm::vec2 position, glm::vec2 scale) noexcept;
-
+    void drawTextureByID(GLuint textureId, glm::vec2 position, glm::vec2 scale) noexcept;
     /*
      * Helpers
      */

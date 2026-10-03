@@ -712,6 +712,13 @@ void RenderSystem::drawVillage() noexcept {
         m_draw->drawStringInBox(village.name, center, size, black);
     }
 
+    glm::vec2 pos = {5, 4.5};
+    for (size_t i = 0; i < m_registry->cloudTextures.size(); i++) {
+        GLuint textid = m_registry->cloudTextures[i];
+        m_draw->drawTextureByID(textid, pos, {0.5, 0.5});
+        pos += glm::vec2{1.0, 0};
+    }
+
 }
 
 void RenderSystem::drawSettings() noexcept {

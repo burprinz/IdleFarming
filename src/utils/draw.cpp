@@ -717,6 +717,28 @@ void Draw::drawTexture(Texture& texture, glm::vec2 position, glm::vec2 scale) no
     glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, 1);
 }
 
+void Draw::drawTextureByID(GLuint textureId, glm::vec2 position, glm::vec2 scale) noexcept {
+
+    glBindVertexArray(m_quad_vao);
+    Shader& sprite_shader = m_sprite_shader;
+    sprite_shader.use()
+    .setMat4("view", view)
+    .setMat4("projection", projection)
+    .setSampler("sprite", 0)
+    .setVec3("fcolor", {1, 1, 1})
+    .setFloat("alpha", 1.0);
+
+    glm::mat4 model = glm::identity<glm::mat4>();
+    model = glm::translate(model, glm::vec3(position, 0));
+    model = glm::scale(model, glm::vec3(scale, 1));
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, textureId);
+
+    sprite_shader.setMat4("model[0]", model);
+    glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, 1);
+}
+
 void Draw::drawPopup(std::string text, glm::vec2 pos, glm::vec2 size, glm::vec3 text_color) noexcept {
     float angle = 10.0;
 

@@ -4,6 +4,7 @@
 
 #include "village.h"
 
+#include "helpers/cloud_generation.h"
 #include "helpers/sizes.h"
 
 VillageSystem VillageSystem::init(Window *window, Registry *registry, UISystem *ui) noexcept {
@@ -20,6 +21,9 @@ void VillageSystem::deinit() noexcept {
 
 void VillageSystem::reset() noexcept {
     initButtons();
+
+    m_registry->cloudTextures.clear();
+    initClouds(m_registry->cloudTextures, 6);
 }
 
 void VillageSystem::initButtons() noexcept {

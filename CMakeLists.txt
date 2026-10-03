@@ -205,6 +205,7 @@ add_executable(${PROJECT_NAME}
 		src/data/helper_factory.cpp
 		src/data/achievement_factory.cpp
 		src/data/skilltree_factory.cpp
+		src/helpers/cloud_generation.h
 )
 
 
