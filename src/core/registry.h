@@ -263,6 +263,16 @@ struct Village {
     bool selected = false;
 };
 
+struct Cloud {
+    GLuint texture_id;
+};
+
+struct CloudRange {
+    float y_min = 0.0f;
+    float y_max = 0.0f;
+    std::vector<entt::entity> clouds;
+};
+
 struct BuyAmount {
     std::vector<entt::entity> item_ids;
     std::vector<BigNumber> amounts;

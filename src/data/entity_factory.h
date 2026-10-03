@@ -119,8 +119,7 @@ private:
      * Village Factory
      */
     void create_villages() noexcept;
-
-    void create_village(std::string name) noexcept;
+    nlohmann::json load_village_json(std::string name) noexcept;
 
 
 

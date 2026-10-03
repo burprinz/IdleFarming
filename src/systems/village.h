@@ -2,10 +2,18 @@
 #include "ui.h"
 #include "window.h"
 #include "core/registry.h"
+#include "helpers/sizes.h"
 
 //
 // Created by luisb on 18.09.2026.
 //
+
+constexpr float MIN_Y_OFFSET = 0.0f;
+constexpr float MAX_Y_OFFSET = 10.0f;
+
+constexpr float min_x = village_window_topleft.x;
+constexpr float max_x = village_window_topleft.x + village_window_size.x;
+constexpr float mid_x = village_window_topleft.x + village_window_size.x/2.0f;
 
 class VillageSystem {
 public:

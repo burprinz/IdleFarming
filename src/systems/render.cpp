@@ -691,9 +691,20 @@ void RenderSystem::drawVillage() noexcept {
             selected_id = id;
         }
 
+        CloudRange range = m_registry->ecs.get<CloudRange>(id);
+        m_draw->drawLine(offset+glm::vec2{village_window_topleft.x, range.y_min}, offset+glm::vec2{village_window_topleft.x + village_window_size.x, range.y_min}, red);
+        m_draw->drawLine(offset+glm::vec2{village_window_topleft.x, range.y_max}, offset+glm::vec2{village_window_topleft.x + village_window_size.x, range.y_max}, red);
+
 
         Texture village_text = m_registry->ecs.get<TextureInformation>(id).text;
         m_draw->drawTexture(village_text, village_pos, village_size/2.0f);
+    }
+
+    for (entt::entity cloud_id : m_registry->ecs.view<Cloud>()) {
+        glm::vec2 pos = m_registry->ecs.get<Position>(cloud_id).pos + offset;
+        glm::vec2 size = m_registry->ecs.get<Dimension>(cloud_id).dim;
+        GLuint text_id = m_registry->ecs.get<Cloud>(cloud_id).texture_id;
+        m_draw->drawTextureByID(text_id, pos, size);
     }
 
     m_draw->drawRectBySize(village_window_center, village_window_size, black);
@@ -710,13 +721,6 @@ void RenderSystem::drawVillage() noexcept {
         glm::vec2 center = {x_center, y_top - normal_text_box_height/2.0f};
         glm::vec2 size = {village_info_size.x, normal_text_box_height};
         m_draw->drawStringInBox(village.name, center, size, black);
-    }
-
-    glm::vec2 pos = {5, 4.5};
-    for (size_t i = 0; i < m_registry->cloudTextures.size(); i++) {
-        GLuint textid = m_registry->cloudTextures[i];
-        m_draw->drawTextureByID(textid, pos, {0.5, 0.5});
-        pos += glm::vec2{1.0, 0};
     }
 
 }
@@ -808,14 +812,6 @@ void RenderSystem::drawCurrentField(std::vector<std::vector<entt::entity> > &fie
                         text = iconText.grown_text.text;
                     }
                     m_draw->drawTexture(text, fPos, {radius, radius});
-                    /*
-                    GrowingTexture iconText = m_registry->ecs.get<GrowingTexture>(f.plant);
-                    TextureInformation icon = iconText.info;
-                    if (f.is_regrowable_field && !f.harvestable) {
-                        icon = iconText.ungrownInfo;
-                    }
-                    m_draw->drawTexture(icon.text, fPos, {radius, radius});
-                    */
                 }
             }
         }

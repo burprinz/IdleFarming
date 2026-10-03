@@ -157,3 +157,7 @@ inline int calculate_blackjack_hand(Registry* registry, std::vector<entt::entity
 
     return result;
 }
+
+inline float calc_y_middle(float y1, float y2) noexcept {
+    return (y1 + y2) * 0.5f;
+}
