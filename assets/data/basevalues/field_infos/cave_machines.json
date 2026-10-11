@@ -2,6 +2,7 @@
   "name": "Cave",
   "plants": [
     "iron",
+    "copper",
     "gold"
   ],
   "color": {
