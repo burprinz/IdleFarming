@@ -4,7 +4,8 @@
     "iron",
     "copper",
     "gold",
-    "diamond"
+    "diamond",
+    "emerald"
   ],
   "color": {
     "r": 0.67,
