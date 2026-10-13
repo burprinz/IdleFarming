@@ -3,7 +3,8 @@
   "plants": [
     "iron",
     "copper",
-    "gold"
+    "gold",
+    "diamond"
   ],
   "color": {
     "r": 0.67,
